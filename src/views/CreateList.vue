@@ -18,10 +18,12 @@
     <div class="relative">
       <div class="my-4 fixed bottom-0 left-0 w-full flex justify-center">
         <div class="menu-box flex justify-around">
-          <div class=" flex flex-col items-center px-3">
-            <img src="../assets/menu/home.svg" alt="">
-            <p class=" pt-2 text-xs">Home</p>
-          </div>
+          <router-link to="/">
+            <div class=" flex flex-col items-center px-3">
+              <img src="../assets/menu/home.svg" alt="">
+              <p class=" pt-2 text-xs">Home</p>
+            </div>
+          </router-link>
           <div class=" flex flex-col items-center px-3">
             <img src="../assets/menu/create.svg" alt="">
             <p class=" pt-2 text-xs">Create</p>
