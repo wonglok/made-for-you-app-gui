@@ -1,5 +1,7 @@
 <template>
   <div class="relative">
+    <div class=" h-32">
+    </div>
     <div class="my-4 mb-6 fixed bottom-0 left-0 w-full flex justify-center">
       <div class="menu-box flex justify-around">
         <router-link to="/">

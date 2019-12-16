@@ -1,9 +1,10 @@
 <template>
-  <div class="flex justify-center">
-    <div class="relative min-h-screen w-r25">
+  <div class="flex flex-col items-center justify-center">
+    <div class="relative p-4 w-r25">
       <div class="mt-2 mx-4 text-2xl font-bold py-2 border-b border-gray-200">
         MadeForYouApp.com
       </div>
+
       <div class="mx-4 my-4">
         <img class="w-full" src="../assets/images/noisy.png" alt="Social is noisy. Let's be what's meant to be.">
       </div>
@@ -27,7 +28,7 @@
             by making and giving more.
         </p>
       </div>
-      <div class="h-24"></div>
+      <div class="h-32"></div>
     </div>
     <div class="relative">
       <div class="my-4 fixed bottom-0 left-0 w-full flex justify-center">

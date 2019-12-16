@@ -1,8 +1,6 @@
 <template>
   <div class="flex items-center flex-col">
     <router-view></router-view>
-    <div class=" h-32">
-    </div>
     <TabBar></TabBar>
   </div>
 </template>
