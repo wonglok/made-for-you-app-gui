@@ -1,29 +1,29 @@
 <template>
   <div class="relative">
-    <div class=" h-32">
+    <div class="h-32 lg:hide">
     </div>
-    <div class="my-4 mb-6 fixed bottom-0 left-0 w-full flex justify-center">
-      <div class="menu-box flex justify-around">
+    <div class="my-4 mb-6 menu-pos w-full flex justify-center">
+      <div class="menu-box fadeinleft flex justify-around">
         <router-link to="/">
-          <div class=" flex flex-col items-center px-4">
+          <div class=" flex flex-col items-center px-4 lg:py-4">
             <img src="../assets/menu/home.svg" alt="Home">
             <p class=" pt-1 text-xs">Home</p>
           </div>
         </router-link>
         <router-link to="/create">
-          <div class=" flex flex-col items-center px-4">
+          <div class=" flex flex-col items-center px-4 lg:py-4">
             <img src="../assets/menu/create.svg" alt="Create">
             <p class=" pt-1 text-xs">Create</p>
           </div>
         </router-link>
         <router-link to="/save">
-          <div class=" flex flex-col items-center px-4">
+          <div class=" flex flex-col items-center px-4 lg:py-4">
             <img src="../assets/menu/give.svg" alt="Save">
             <p class=" pt-1 text-xs">Save</p>
           </div>
         </router-link>
         <router-link to="/inspire">
-          <div class=" flex flex-col items-center px-4">
+          <div class=" flex flex-col items-center px-4 lg:py-4">
             <img src="../assets/menu/inspire.svg" alt="Inspire">
             <p class=" pt-1 text-xs">Inspire</p>
           </div>
@@ -39,12 +39,51 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
+.menu-pos{
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+}
+
+@screen lg {
+  .menu-pos{
+    position: fixed;
+    top: 0px;
+    left: -17rem;
+    bottom: unset;
+    height: unset;
+  }
+}
+
 .menu-box{
   background: #F1F1F1;
-  border: 0 solid #979797;
+  border: 1px solid #d4d4d4;
   border-radius: 44px;
   padding: 15px 20px;
-  box-shadow: 0px 0px 30px 0px #979797;
+  box-shadow: 0px 0px 20px 0px #F1F1F1;
+}
+
+@screen lg {
+  .menu-box{
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@keyframes fadeinleft {
+  0%{
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+@screen lg{
+  .fadeinleft{
+    animation: fadeinleft 1s ease-in-out 0s 1 normal both;
+  }
 }
 </style>

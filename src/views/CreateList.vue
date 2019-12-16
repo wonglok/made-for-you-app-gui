@@ -1,5 +1,5 @@
 <template>
-  <div class="relative min-h-screen w-r25">
+  <div class="relative mx-auto max-w-sm">
     <!-- Title -->
     <div class="mt-2 mx-4 text-2xl font-bold py-2 border-b border-gray-200">
       Craft Essential Message
@@ -7,7 +7,7 @@
 
     <!-- Content -->
     <div class="mx-4 my-4" :key="i" v-for="(content, i) in contentTypes">
-      <img class="pointer w-full image-presize" :src="content.src" :alt="content.alt">
+      <img class="cursor-pointer w-full image-presize" :src="content.src" :alt="content.alt">
       <p class="py-3">
         {{ content.alt }}
       </p>
