@@ -8,7 +8,7 @@
     <!-- Content -->
     <div class="mx-4 my-4" :key="i" v-for="(content, i) in contentTypes">
       <img class="cursor-pointer w-full image-presize" :src="content.src" :alt="content.alt">
-      <p class="py-3">
+      <p class="cursor-pointer my-3">
         {{ content.alt }}
       </p>
     </div>
@@ -62,6 +62,6 @@ export default {
   width: 100%;
 }
 .image-presize{
-  min-height: calc((25rem / 368 * 173) - 1rem);
+  min-height: calc(8rem);
 }
 </style>
