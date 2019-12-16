@@ -2,7 +2,7 @@
   <div class="flex items-center flex-col">
     <div class="relative min-h-screen w-r25">
       <div class="mt-2 mx-4 text-2xl font-bold py-2 border-b border-gray-200">
-        Craft Essential Message
+        Inspire
       </div>
       <div class="mx-4 my-4" :key="i" v-for="(content, i) in cTypes">
         <img class="w-full" :src="content.src" :alt="content.alt">
