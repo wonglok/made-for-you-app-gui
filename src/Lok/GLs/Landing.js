@@ -7,8 +7,8 @@ export const getID = () => {
 let THREE = {
   ...require('three'),
   ...require('three/examples/jsm/controls/OrbitControls.js'),
-  ...require('three/examples/jsm/loaders/SVGLoader.js'),
-  ...require('three/examples/jsm/loaders/OBJLoader.js'),
+  // ...require('three/examples/jsm/loaders/SVGLoader.js'),
+  // ...require('three/examples/jsm/loaders/OBJLoader.js'),
   ...require('three/examples/jsm/shaders/FresnelShader.js'),
 
   ...require('three/examples/jsm/controls/OrbitControls.js'),
@@ -45,9 +45,9 @@ export const makeCubeCam = ({ api, parent, renderer, scene }) => {
 
   // var cam = webcam.setup()
 
-  var sphereGeo = new THREE.SphereBufferGeometry(5000, 64, 64)
-  var chromeMaterial = new THREE.MeshLambertMaterial({ color: 0xeeeeee, side: THREE.BackSide })
-  var sphere = new THREE.Mesh(sphereGeo, chromeMaterial)
+  var sphereGeo = new THREE.SphereBufferGeometry(50000, 64, 64)
+  var aroundMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000, side: THREE.BackSide })
+  var sphere = new THREE.Mesh(sphereGeo, aroundMaterial)
   scene.add(sphere)
 
   let texture = cubeCamera.renderTarget.texture
@@ -214,8 +214,8 @@ export const setupBloomComposer = ({ renderer, scene, camera, api }) => {
   var rID = getID()
   var params = {
     exposure: 1,
-    bloomThreshold: 0.68,
-    bloomStrength: 1.1,
+    bloomThreshold: 0.89,
+    bloomStrength: 1.9,
     bloomRadius: 0.95
   }
 
@@ -329,56 +329,6 @@ export const FSCalc = ({ zPos, camera }) => {
   }
 }
 
-export const makeDiamond = async ({ parent, scene, camera, renderer, mounter, api }) => {
-  let loader = new THREE.OBJLoader()
-  let envMap = await makeCubeTexture([
-    require('../Textures/cubemap/diamond/px.png'), require('../Textures/cubemap/diamond/nx.png'),
-    require('../Textures/cubemap/diamond/py.png'), require('../Textures/cubemap/diamond/ny.png'),
-    require('../Textures/cubemap/diamond/pz.png'), require('../Textures/cubemap/diamond/nz.png')
-  ])
-  scene.background = new THREE.Color('#000000')
-
-  // var shader = THREE.FresnelShader
-  // var uniforms = THREE.UniformsUtils.clone(shader.uniforms)
-  // uniforms['tCube'].value = envMap
-  // var mat = new THREE.ShaderMaterial({
-  //   uniforms: uniforms,
-  //   vertexShader: shader.vertexShader,
-  //   fragmentShader: shader.fragmentShader
-  // })
-
-  var mat = new THREE.MeshBasicMaterial({ opacity: 0.9, transparent: true })
-  // mat.map = await loadTexture(require('../Textures/demos/cat.png'))
-  mat.color = new THREE.Color(`#fff`)
-  mat.refractionRatio = 0.1
-  mat.reflectionRatio = 0.1
-
-  mat.envMap = envMap
-  mat.envMap.mapping = THREE.CubeReflectionMapping
-  // mat.envMap.mapping = THREE.CubeRefractionMapping
-  mat.needsUpdate = true
-
-  // eslint-disable-next-line
-  loader.load(require('file-loader!../Model/diamond/diamond-1.obj'), (obj) => {
-    let mesh = obj.children[0]
-    mesh.material = mat
-    var light = new THREE.PointLight(0xffffff, 1, 10000000)
-    light.position.set(500, 500, 500)
-    scene.add(light)
-    scene.add(mesh)
-    console.log(obj)
-  })
-  let rID = getID()
-  var controls = new THREE.OrbitControls(camera, renderer.domElement)
-  api.tasks[rID] = () => {
-    controls.update()
-  }
-  api.teardown[rID] = () => {
-    api.tasks[rID] = () => {
-    }
-  }
-}
-
 export const mobileAndTabletcheck = () => {
   var check = false
   let a = navigator.userAgent || navigator.vendor || window.opera
@@ -438,13 +388,10 @@ export const setupBase = async ({ api, mounter, vm }) => {
   // setupControls({ camera, api, mounter })
   camera.position.z = 20
 
-  // let camVideo = require('../GLService/cam-video.js').setup()
-  // console.log(camVideo)
-  makeDiamond({ ...env })
-
   scene.add(parent)
 
-  let composer = setupBloomComposer({ renderer, scene, camera, api })
+  var composer = setupBloomComposer({ renderer, scene, camera, api })
+
   var rAFID = 0
   var animate = function () {
     rAFID = requestAnimationFrame(animate)
@@ -453,7 +400,6 @@ export const setupBase = async ({ api, mounter, vm }) => {
     }
 
     // camVideo.update()
-
     // renderer.render(scene, camera)
 
     if (composer) {
