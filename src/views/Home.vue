@@ -27,7 +27,7 @@
             by making and giving more.
         </p>
       </div>
-      <div class="h-32"></div>
+      <div class="h-24"></div>
     </div>
     <div class="relative">
       <div class="my-4 fixed bottom-0 left-0 w-full flex justify-center">
