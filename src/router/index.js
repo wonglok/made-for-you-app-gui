@@ -7,7 +7,7 @@ const routes = [
 
   {
     path: '',
-    component: () => import(/* webpackChunkName: "tabapp" */ '../views/TabApp.vue'),
+    component: () => import(/* webpackChunkName: "tabapp" */ '../views-ui/TabApp.vue'),
     children: [
       {
         path: '/',

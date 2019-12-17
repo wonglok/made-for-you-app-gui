@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-sm mx-auto">
+  <div class="max-w-sm mx-auto app-box">
     <router-view></router-view>
     <TabBar></TabBar>
   </div>
@@ -19,4 +19,6 @@ export default {
 </script>
 
 <style scoped lang="postcss">
+.app-box{
+}
 </style>

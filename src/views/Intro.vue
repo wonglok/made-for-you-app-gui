@@ -28,8 +28,8 @@
       </p>
     </div>
 
-    <div class="mx-4 pt-1">
-      <router-link to="/create" class="">
+    <div class="pt-1 fixed w-full bottom-0 left-0 flex justify-center">
+      <router-link to="/create" class="block pb-5 max-w-sm mx-auto">
         <img class="cursor-pointer" src="../assets/images/craft-cta.png" alt="Social is noisy. Let's be what's meant to be.">
       </router-link>
     </div>
