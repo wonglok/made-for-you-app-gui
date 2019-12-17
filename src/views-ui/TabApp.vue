@@ -3,6 +3,7 @@
     <div class="max-w-sm h-full w-full lg:max-w-lg mx-auto app-box relative border-on-large">
       <div class=" overflow-y-auto scrolling-touch h-full w-full">
         <router-view></router-view>
+        <div class="h-24"></div>
       </div>
       <TabBar></TabBar>
     </div>

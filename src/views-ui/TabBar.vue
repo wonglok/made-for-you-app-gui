@@ -1,6 +1,6 @@
 <template>
   <div v-if="!isAtLanding">
-    <!-- <div class="h-24"></div> -->
+    <!-- -->
     <div class="absolute bottom-0 left-0 w-full pb-5 flex justify-center">
       <div class="bg-white px-4 py-3 rounded-full border-gray-400 border fadeinleft flex justify-around">
         <router-link class="fade-in-scale" exact-active-class="active-route" to="/home">
