@@ -26,7 +26,7 @@ const routes = [
       {
         path: '/create',
         name: 'create',
-        component: () => import(/* webpackChunkName: "create" */ '../views/CreateList.vue')
+        component: () => import(/* webpackChunkName: "create" */ '../views/LetsCreate.vue')
       },
       {
         path: '/give',

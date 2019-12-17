@@ -114,7 +114,12 @@ export default {
   animation: fadeinbottom 0.5s ease-in-out 0s 1 normal both;
   animation-delay: calc(var(--delay) * 11);
 }
+.dot{
+  transition: transform 1s;
+  transform: scale(0);
+}
 .active-route .dot{
+  transform: scale(1);
   border-bottom: lime solid 1px;
   width: 100%;
   margin-bottom: -1px;
