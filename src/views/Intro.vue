@@ -1,7 +1,7 @@
 <template>
   <div class="relative">
     <TitleUI>
-      Made For You App.com
+      Made For You app.com
     </TitleUI>
 
     <div class="mx-4">
@@ -20,11 +20,11 @@
         <span class="orange-label">Be love and 🤲🏻 Give Love.</span>
       </p>
       <p class="my-4">
-          Let’s ❤️ love yourself
-          <br />
-          a little bit more everyday
-          <br />
-          by making and giving more.
+        Let’s ❤️ love yourself
+        <br />
+        a little bit more everyday
+        <br />
+        by making and giving more.
       </p>
     </div>
 
