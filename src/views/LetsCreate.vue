@@ -71,57 +71,56 @@ export default {
   }
 }
 .fadeinright{
-  --delay: 0.2s;
+  --delay: 0.12s;
 }
 .fadeinright:nth-child(1) {
-  animation: fadeinright 1s ease-in-out 0s 1 normal both;
+  animation: fadeinright 0.5s ease-in-out 0s 1 normal both;
   animation-delay: calc(var(--delay) * 0);
 }
 .fadeinright:nth-child(2) {
-  animation: fadeinright 1s ease-in-out 0s 1 normal both;
+  animation: fadeinright 0.5s ease-in-out 0s 1 normal both;
   animation-delay: calc(var(--delay) * 1);
 }
 .fadeinright:nth-child(3) {
-  animation: fadeinright 1s ease-in-out 0s 1 normal both;
+  animation: fadeinright 0.5s ease-in-out 0s 1 normal both;
   animation-delay: calc(var(--delay) * 2);
 }
 .fadeinright:nth-child(4) {
-  animation: fadeinright 1s ease-in-out 0s 1 normal both;
+  animation: fadeinright 0.5s ease-in-out 0s 1 normal both;
   animation-delay: calc(var(--delay) * 3);
 }
 .fadeinright:nth-child(5) {
-  animation: fadeinright 1s ease-in-out 0s 1 normal both;
+  animation: fadeinright 0.5s ease-in-out 0s 1 normal both;
   animation-delay: calc(var(--delay) * 4);
 }
 .fadeinright:nth-child(6) {
-  animation: fadeinright 1s ease-in-out 0s 1 normal both;
+  animation: fadeinright 0.5s ease-in-out 0s 1 normal both;
   animation-delay: calc(var(--delay) * 5);
 }
 .fadeinright:nth-child(7) {
-  animation: fadeinright 1s ease-in-out 0s 1 normal both;
+  animation: fadeinright 0.5s ease-in-out 0s 1 normal both;
   animation-delay: calc(var(--delay) * 6);
 }
 .fadeinright:nth-child(8) {
-  animation: fadeinright 1s ease-in-out 0s 1 normal both;
+  animation: fadeinright 0.5s ease-in-out 0s 1 normal both;
   animation-delay: calc(var(--delay) * 7);
 }
 .fadeinright:nth-child(9) {
-  animation: fadeinright 1s ease-in-out 0s 1 normal both;
+  animation: fadeinright 0.5s ease-in-out 0s 1 normal both;
   animation-delay: calc(var(--delay) * 8);
 }
 .fadeinright:nth-child(10) {
-  animation: fadeinright 1s ease-in-out 0s 1 normal both;
+  animation: fadeinright 0.5s ease-in-out 0s 1 normal both;
   animation-delay: calc(var(--delay) * 9);
 }
 .fadeinright:nth-child(11) {
-  animation: fadeinright 1s ease-in-out 0s 1 normal both;
+  animation: fadeinright 0.5s ease-in-out 0s 1 normal both;
   animation-delay: calc(var(--delay) * 10);
 }
 .fadeinright:nth-child(12) {
-  animation: fadeinright 1s ease-in-out 0s 1 normal both;
+  animation: fadeinright 0.5s ease-in-out 0s 1 normal both;
   animation-delay: calc(var(--delay) * 11);
 }
 /* @screen lg{
-
 } */
 </style>
