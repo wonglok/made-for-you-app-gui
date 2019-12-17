@@ -1,12 +1,12 @@
 <template>
-  <div class="relative mx-auto rem24 max-w-sm">
+  <div class="relative w-full overflow-x-hidden">
     <!-- Title -->
-    <div class="mt-2 mx-4 text-2xl font-bold py-2 border-b border-gray-200">
+    <div class="mt-2 mb-5 mx-4 text-2xl font-bold py-2 border-b border-gray-200">
       Craft Essential Message
     </div>
 
     <!-- Content -->
-    <div class="mx-4 my-4 fadeinright" :key="i" v-for="(content, i) in contentTypes">
+    <div class="px-4 pb-4 fadeinright" :key="i" v-for="(content, i) in contentTypes">
       <img class="cursor-pointer w-full" :src="content.src" :alt="content.alt">
       <p class="cursor-pointer my-3">
         {{ content.alt }}
@@ -55,16 +55,6 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-.w-r25{
-  width: 25rem;
-}
-.img-r25{
-  width: 100%;
-}
-.rem24{
-  width: 24rem;
-}
-
 @keyframes fadeinright {
   0%{
     opacity: 0;

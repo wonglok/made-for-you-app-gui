@@ -1,17 +1,16 @@
 <template>
-  <div class="relative min-h-screen w-r25">
+  <div class="relative">
     <div class="mt-2 mx-4 text-2xl font-bold py-2 border-b border-gray-200">
-      Save your creation
+      Save Your Creation
     </div>
     <div class="mx-4 my-4">
       <div class="w-full">
-        Login to save your work to your account.
+        Register to save to cloud.
       </div>
       <p class="py-3">
         Feature Under Development.
       </p>
     </div>
-
   </div>
 </template>
 
@@ -29,7 +28,4 @@ export default {
 </script>
 
 <style scoped>
-.w-r25{
-  width: 25rem;
-}
 </style>

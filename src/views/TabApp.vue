@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center flex-col">
+  <div>
     <router-view></router-view>
     <TabBar></TabBar>
   </div>
@@ -19,5 +19,4 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-
 </style>

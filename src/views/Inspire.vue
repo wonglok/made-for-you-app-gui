@@ -1,5 +1,5 @@
 <template>
-  <div class="relative min-h-screen w-r25">
+  <div class="relative">
     <div class="mt-2 mx-4 text-2xl font-bold py-2 border-b border-gray-200">
       Inspirational Content
     </div>
@@ -29,7 +29,4 @@ export default {
 </script>
 
 <style scoped>
-.w-r25{
-  width: 25rem;
-}
 </style>
