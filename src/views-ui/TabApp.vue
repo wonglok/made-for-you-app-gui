@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-sm mx-auto app-box">
+  <div class="max-w-sm lg:max-w-lg mx-auto app-box">
     <router-view></router-view>
     <TabBar></TabBar>
   </div>
