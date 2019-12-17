@@ -121,6 +121,4 @@ export default {
   animation: fadeinright 0.5s ease-in-out 0s 1 normal both;
   animation-delay: calc(var(--delay) * 11);
 }
-/* @screen lg{
-} */
 </style>
