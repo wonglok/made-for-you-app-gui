@@ -457,7 +457,7 @@ export const makeCanvasCubeTexture = async ({ poserAPI, api, mounter }) => {
       let color = `${((point.vx + 1) / 2) * 255}, ${((point.vy + 1) / 2) *
         255}, ${intensity * 255}`
 
-      color = `${(intensity * 255).toFixed(0)}, 50%, 80%`
+      color = `${(intensity * 255).toFixed(0)}, 65%, 50%`
       // color = `${(intensity * 360).toFixed(0)}, 65%, 94%`
 
       let offset = this.size * 5
@@ -542,8 +542,8 @@ export const makeCanvasCubeTexture = async ({ poserAPI, api, mounter }) => {
     cubeTexture.needsUpdate = true
   }
 
-  window.addEventListener('mousemove', on.onMouseMove, { passive: false })
-  window.addEventListener('touchmove', on.onTouchMove, { passive: false })
+  mounter.addEventListener('mousemove', on.onMouseMove, { passive: false })
+  mounter.addEventListener('touchmove', on.onTouchMove, { passive: false })
 
   let cubeTexture = new THREE.CubeTexture([
     t.canvas,
