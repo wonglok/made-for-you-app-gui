@@ -8,9 +8,8 @@
         Love is real.
       </p>
     </TitleUI>
-    <div class="mx-4 my-4">
-
-      <p class="py-3">
+    <div class="mx-4">
+      <p class="pb-3">
         Feature Under Development.
       </p>
     </div>

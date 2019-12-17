@@ -9,15 +9,12 @@
       </p>
     </TitleUI>
     <div class="mx-4 my-4">
-      <div class="w-full py-2">
-        Home Page
-      </div>
+      <p class="pb-3">
+        Feature Under Development.
+      </p>
       <div class="w-full py-2">
         Register to save to cloud.
       </div>
-      <p class="py-2">
-        Feature Under Development.
-      </p>
     </div>
   </div>
 </template>
