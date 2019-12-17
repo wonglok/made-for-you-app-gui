@@ -1,39 +1,45 @@
 <template>
-  <div class="relative full">
-    <TitleUI>
-      Made For You app.com
-    </TitleUI>
+  <div class="full flex items-center">
+    <div class="relative full max-w-sm h-full w-full lg:max-w-lg mx-auto app-box relative border-on-large">
+      <div class="lg:overflow-y-auto lg:scrolling-touch h-full w-full">
+        <TitleUI>
+          Made For You app.com
+        </TitleUI>
 
-    <div class="mx-4">
-      <img class="w-full" src="../assets/images/noisy.png" alt="Social is noisy. Let's be what's meant to be.">
+        <div class="mx-4">
+          <img class="w-full" src="../assets/images/noisy.png" alt="Social is noisy. Let's be what's meant to be.">
+        </div>
+
+        <div class="px-6">
+          <p class="my-4">
+            When the Social World is too noisy,
+            all we really want is
+            <span class="green-label">realness</span>, <span class="blue-label">kindness</span>, and <span class="red-label">love</span>. 💎
+          </p>
+          <p class="my-4">
+            The quickest way to have real love is to
+            <br />
+            <span class="orange-label">Be love and 🤲🏻 Give Love.</span>
+          </p>
+          <p class="my-4">
+            Let’s ❤️ love yourself
+            <br />
+            a little bit more everyday
+            <br />
+            by making and giving more.
+          </p>
+        </div>
+
+        <div class="h-32"></div>
+      </div>
+
+      <div class="pt-1 absolute w-full bottom-0 left-0 flex justify-center">
+        <router-link to="/create" class="block pb-5 px-4 max-w-sm lg:max-w-lg mx-auto">
+          <img class="cursor-pointer" src="../assets/images/craft-cta.png" alt="Social is noisy. Let's be what's meant to be.">
+        </router-link>
+      </div>
     </div>
 
-    <div class="px-6">
-      <p class="my-4">
-        When the Social World is too noisy,
-        all we really want is
-        <span class="green-label">realness</span>, <span class="blue-label">kindness</span>, and <span class="red-label">love</span>. 💎
-      </p>
-      <p class="my-4">
-        The quickest way to have real love is to
-        <br />
-        <span class="orange-label">Be love and 🤲🏻 Give Love.</span>
-      </p>
-      <p class="my-4">
-        Let’s ❤️ love yourself
-        <br />
-        a little bit more everyday
-        <br />
-        by making and giving more.
-      </p>
-    </div>
-    <div class="h-24"></div>
-
-    <div class="pt-1 absolute w-full bottom-0 left-0 flex justify-center">
-      <router-link to="/create" class="block pb-5 px-4 max-w-sm lg:max-w-lg mx-auto">
-        <img class="cursor-pointer" src="../assets/images/craft-cta.png" alt="Social is noisy. Let's be what's meant to be.">
-      </router-link>
-    </div>
   </div>
 </template>
 
@@ -52,4 +58,13 @@ export default {
 </script>
 
 <style lang="postcss">
+.app-box{
+  max-width: 32rem;
+  max-height: calc(32rem * 16 / 9);
+}
+@media screen and (min-height: 57rem) {
+  .border-on-large{
+    @apply border border-gray-400 rounded-lg;
+  }
+}
 </style>

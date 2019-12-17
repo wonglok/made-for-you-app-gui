@@ -5,14 +5,15 @@ Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/',
+    name: 'intro',
+    component: () => import(/* webpackChunkName: "intro" */ '../views/Intro.vue')
+  },
+  {
     path: '',
     component: () => import(/* webpackChunkName: "uis" */ '../views-ui/TabApp.vue'),
     children: [
-      {
-        path: '/',
-        name: 'intro',
-        component: () => import(/* webpackChunkName: "intro" */ '../views/Intro.vue')
-      },
+
       {
         path: '/home',
         name: 'home',
