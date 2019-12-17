@@ -5,15 +5,16 @@ import Home from '../views/Home.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: Home
-  },
+
   {
     path: '',
     component: () => import(/* webpackChunkName: "tabapp" */ '../views/TabApp.vue'),
     children: [
+      {
+        path: '/',
+        name: 'home',
+        component: Home
+      },
       {
         path: '/lok',
         name: 'lok',

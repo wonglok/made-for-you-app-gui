@@ -1,31 +1,35 @@
 <template>
-  <div class="relative">
+  <div class="relative" :class="{ 'hidden lg:block': isAtHome }">
     <div class="h-32 lg:hide">
     </div>
     <div class="my-4 mb-6 menu-pos w-full flex justify-center">
       <div class="menu-box fadeinleft flex justify-around">
-        <router-link to="/">
+        <router-link exact-active-class="active-route" to="/">
           <div class=" flex flex-col items-center px-4 lg:py-4">
             <img src="../assets/menu/home.svg" alt="Home">
             <p class=" pt-1 text-xs">Home</p>
+            <div class="dot"></div>
           </div>
         </router-link>
-        <router-link to="/create">
+        <router-link exact-active-class="active-route" to="/create">
           <div class=" flex flex-col items-center px-4 lg:py-4">
             <img src="../assets/menu/create.svg" alt="Create">
             <p class=" pt-1 text-xs">Create</p>
+            <div class="dot"></div>
           </div>
         </router-link>
-        <router-link to="/save">
+        <router-link exact-active-class="active-route" to="/save">
           <div class=" flex flex-col items-center px-4 lg:py-4">
             <img src="../assets/menu/give.svg" alt="Save">
             <p class=" pt-1 text-xs">Save</p>
+            <div class="dot"></div>
           </div>
         </router-link>
-        <router-link to="/inspire">
+        <router-link exact-active-class="active-route" to="/inspire">
           <div class=" flex flex-col items-center px-4 lg:py-4">
             <img src="../assets/menu/inspire.svg" alt="Inspire">
             <p class=" pt-1 text-xs">Inspire</p>
+            <div class="dot"></div>
           </div>
         </router-link>
       </div>
@@ -35,7 +39,11 @@
 
 <script>
 export default {
-
+  computed: {
+    isAtHome () {
+      return this.$route.fullPath === '/'
+    }
+  }
 }
 </script>
 
@@ -85,5 +93,11 @@ export default {
   .fadeinleft{
     animation: fadeinleft 1s ease-in-out 0s 1 normal both;
   }
+}
+.active-route .dot{
+  border-bottom: lime solid 1px;
+  width: 100%;
+  margin-bottom: -1px;
+  box-shadow: 0px 0px 7px 0px lime;
 }
 </style>

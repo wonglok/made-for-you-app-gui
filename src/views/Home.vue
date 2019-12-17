@@ -28,17 +28,19 @@
             by making and giving more.
         </p>
       </div>
+
       <div class="h-32 lg:hidden"></div>
     </div>
 
     <div class="mx-auto max-w-sm">
-      <div class="fixed bottom-0 left-0 lg:relative flex justify-center">
-        <router-link to="/create" class="mt-4 p-4">
+      <div class="fixed bottom-0 left-0 lg:relative mt-4 p-4 flex justify-center">
+        <router-link to="/create" class="">
           <img class="rem24 cursor-pointer" src="../assets/images/craft-cta.png" alt="Social is noisy. Let's be what's meant to be.">
         </router-link>
       </div>
     </div>
 
+    <!-- <TabBar class="hidden lg:block"></TabBar> -->
   </div>
 </template>
 
@@ -46,6 +48,7 @@
 export default {
   name: 'home',
   components: {
+    // TabBar: require('./TabBar.vue').default
   }
 }
 </script>
