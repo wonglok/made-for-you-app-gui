@@ -70,6 +70,6 @@ export default {
   }
 }
 .bg-white-trans{
-  background-color: rgba(255,255,255,0.65);
+  background-color: rgba(255,255,255,0.2);
 }
 </style>
