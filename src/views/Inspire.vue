@@ -1,7 +1,12 @@
 <template>
   <div class="relative">
     <TitleUI>
-      Inspirational Content
+      <p slot="default">
+        Inspirational Content
+      </p>
+      <p slot="subtitle">
+        Be Fun and Have Fun.
+      </p>
     </TitleUI>
     <div class="mx-4 my-4">
       <div class="w-full">

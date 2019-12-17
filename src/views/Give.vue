@@ -1,7 +1,12 @@
 <template>
   <div class="relative">
     <TitleUI>
-      Save Your Creation
+      <p slot="default">
+        Give Thanks
+      </p>
+      <p slot="subtitle">
+        Love is real.
+      </p>
     </TitleUI>
     <div class="mx-4 my-4">
       <div class="w-full">

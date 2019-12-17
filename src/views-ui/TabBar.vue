@@ -17,7 +17,7 @@
             <div class="dot"></div>
           </div>
         </router-link>
-        <router-link class="fadeinbottom" exact-active-class="active-route" to="/save">
+        <router-link class="fadeinbottom" exact-active-class="active-route" to="/give">
           <div class=" flex flex-col items-center mx-4">
             <img src="../assets/menu/give.svg" alt="Save">
             <p class=" pt-1 text-xs">Give</p>

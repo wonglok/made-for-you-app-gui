@@ -1,7 +1,12 @@
 <template>
   <div class="relative">
     <TitleUI>
-      Home
+      <p slot="default">
+        Home
+      </p>
+      <p slot="subtitle">
+        A Place to Love.
+      </p>
     </TitleUI>
     <div class="mx-4 my-4">
       <div class="w-full">

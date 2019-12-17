@@ -2,7 +2,12 @@
   <div class="relative w-full overflow-x-hidden">
     <!-- Title -->
     <TitleUI>
-      Craft Essential Message
+      <p slot="default">
+        Let's Start
+      </p>
+      <p slot="subtitle">
+        Make Your Essential Message!
+      </p>
     </TitleUI>
 
     <!-- Content -->
