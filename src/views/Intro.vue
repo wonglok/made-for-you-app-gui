@@ -27,6 +27,7 @@
         by making and giving more.
       </p>
     </div>
+    <div class="h-24"></div>
 
     <div class="pt-1 fixed w-full bottom-0 left-0 flex justify-center">
       <router-link to="/create" class="block pb-5 px-4 max-w-sm lg:max-w-lg mx-auto">
