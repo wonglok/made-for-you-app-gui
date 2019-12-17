@@ -32,9 +32,9 @@
     </div>
 
     <div class="mx-auto max-w-sm">
-      <div class="fixed bottom-0 left-0 lg:relative w-full flex justify-center">
+      <div class="fixed bottom-0 left-0 lg:relative flex justify-center">
         <router-link to="/create" class="mt-4 p-4">
-          <img class="my-shadow  w-full cursor-pointer" src="../assets/images/craft-cta.png" alt="Social is noisy. Let's be what's meant to be.">
+          <img class="rem24 cursor-pointer" src="../assets/images/craft-cta.png" alt="Social is noisy. Let's be what's meant to be.">
         </router-link>
       </div>
     </div>
@@ -53,6 +53,9 @@ export default {
 <style scoped>
 .w-r25{
   width: 25rem;
+}
+.rem24{
+  width: 24rem;
 }
 .img-r25{
   width: 100%;

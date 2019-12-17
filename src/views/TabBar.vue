@@ -57,11 +57,11 @@ export default {
 }
 
 .menu-box{
-  background: #F1F1F1;
-  border: 1px solid #d4d4d4;
+  background: #f9f9f9;
+  border: 1px solid #ececec;
   border-radius: 44px;
   padding: 15px 20px;
-  box-shadow: 0px 0px 20px 0px #F1F1F1;
+  box-shadow: 0px 0px 20px 0px #ececec;
 }
 
 @screen lg {
