@@ -1,10 +1,7 @@
 <template>
-  <div class="full flex items-center">
-    <div class="max-w-sm h-full w-full lg:max-w-lg mx-auto app-box relative border-on-large">
-      <div class="lg:overflow-y-auto lg:scrolling-touch lg:h-full w-full">
-        <router-view></router-view>
-        <div class="h-24"></div>
-      </div>
+  <div class="full relative flex items-center">
+    <div class="max-w-sm h-full w-full lg:max-w-lg mx-auto app-box relative border-on-large bg-white">
+      <router-view></router-view>
       <TabBar class="fixed lg:absolute"></TabBar>
     </div>
   </div>

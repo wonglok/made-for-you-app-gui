@@ -1,23 +1,25 @@
 <template>
-  <div class="relative">
-    <TitleUI>
-      <p slot="default">
-        Inspirational Content
-      </p>
-      <p slot="subtitle">
-        Be Fun and Have Fun.
-      </p>
-    </TitleUI>
-    <div class="mx-4 my-4">
-      <div class="w-full">
-        Love is in the Air.
+  <Scroller>
+    <div class="relative">
+      <TitleUI>
+        <p slot="default">
+          Inspirational Content
+        </p>
+        <p slot="subtitle">
+          Be Fun and Have Fun.
+        </p>
+      </TitleUI>
+      <div class="mx-4 my-4">
+        <div class="w-full">
+          Love is in the Air.
+        </div>
+        <p class="py-3">
+          Feature Under Development.
+        </p>
       </div>
-      <p class="py-3">
-        Feature Under Development.
-      </p>
-    </div>
 
-  </div>
+    </div>
+  </Scroller>
 </template>
 
 <script>

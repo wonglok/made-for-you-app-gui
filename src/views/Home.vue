@@ -1,22 +1,24 @@
 <template>
-  <div class="relative">
-    <TitleUI>
-      <p slot="default">
-        Home
-      </p>
-      <p slot="subtitle">
-        A Place to Love.
-      </p>
-    </TitleUI>
-    <div class="mx-4 my-4">
-      <p class="pb-3">
-        Feature Under Development.
-      </p>
-      <div class="w-full py-2">
-        Register to save to cloud.
+  <Scroller>
+    <div class="relative">
+      <TitleUI>
+        <p slot="default">
+          Home
+        </p>
+        <p slot="subtitle">
+          A Place to Love.
+        </p>
+      </TitleUI>
+      <div class="mx-4 my-4">
+        <p class="pb-3">
+          Feature Under Development.
+        </p>
+        <div class="w-full py-2">
+          Register to save to cloud.
+        </div>
       </div>
     </div>
-  </div>
+  </Scroller>
 </template>
 
 <script>

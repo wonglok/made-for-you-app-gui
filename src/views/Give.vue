@@ -1,19 +1,21 @@
 <template>
-  <div class="relative">
-    <TitleUI>
-      <p slot="default">
-        Give it away
-      </p>
-      <p slot="subtitle">
-        Love is real.
-      </p>
-    </TitleUI>
-    <div class="mx-4">
-      <p class="pb-3">
-        Feature Under Development.
-      </p>
+  <Scroller>
+    <div class="relative">
+      <TitleUI>
+        <p slot="default">
+          Give it away
+        </p>
+        <p slot="subtitle">
+          Love is real.
+        </p>
+      </TitleUI>
+      <div class="mx-4">
+        <p class="pb-3">
+          Feature Under Development.
+        </p>
+      </div>
     </div>
-  </div>
+  </Scroller>
 </template>
 
 <script>

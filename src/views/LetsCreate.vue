@@ -1,23 +1,25 @@
 <template>
-  <div class="relative w-full overflow-x-hidden">
-    <!-- Title -->
-    <TitleUI>
-      <p slot="default">
-        Let's Start
-      </p>
-      <p slot="subtitle">
-        Make Your Essential Message!
-      </p>
-    </TitleUI>
+  <Scroller>
+    <div class="relative w-full overflow-x-hidden">
+      <!-- Title -->
+      <TitleUI>
+        <p slot="default">
+          Let's Start
+        </p>
+        <p slot="subtitle">
+          Make Your Essential Message!
+        </p>
+      </TitleUI>
 
-    <!-- Content -->
-    <div class="px-4 pb-6 fadeinright" :key="i" v-for="(content, i) in contentTypes">
-      <img class="cursor-pointer w-full" :src="content.src" :alt="content.alt">
-      <p class="cursor-pointer my-3">
-        {{ content.alt }}
-      </p>
+      <!-- Content -->
+      <div class="px-4 pb-6 fadeinright" :key="i" v-for="(content, i) in contentTypes">
+        <img class="cursor-pointer w-full" :src="content.src" :alt="content.alt">
+        <p class="cursor-pointer my-3">
+          {{ content.alt }}
+        </p>
+      </div>
     </div>
-  </div>
+  </Scroller>
 </template>
 
 <script>

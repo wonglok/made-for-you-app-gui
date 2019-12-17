@@ -11,19 +11,18 @@ const routes = [
   },
   {
     path: '',
-    component: () => import(/* webpackChunkName: "uis" */ '../views-ui/TabApp.vue'),
+    component: () => import(/* webpackChunkName: "uis" */ '../views-ui/AppBox.vue'),
     children: [
-
       {
         path: '/home',
         name: 'home',
         component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
       },
-      {
-        path: '/lok',
-        name: 'lok',
-        component: () => import(/* webpackChunkName: "lok" */ '../views/GL.vue')
-      },
+      // {
+      //   path: '/lok',
+      //   name: 'lok',
+      //   component: () => import(/* webpackChunkName: "lok" */ '../views/GL.vue')
+      // },
       {
         path: '/create',
         name: 'create',
