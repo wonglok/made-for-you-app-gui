@@ -1,8 +1,8 @@
 <template>
   <div class="relative">
-    <div class="mt-2 mx-4 text-2xl font-bold py-2 border-b border-gray-200">
+    <TitleUI>
       Inspirational Content
-    </div>
+    </TitleUI>
     <div class="mx-4 my-4">
       <div class="w-full">
         Love is in the Air.
@@ -19,7 +19,7 @@
 export default {
   name: 'save',
   components: {
-    // TabBar: require('./TabBar.vue').default
+    ...require('../views-ui/UIs.js').default
   },
   data () {
     return {

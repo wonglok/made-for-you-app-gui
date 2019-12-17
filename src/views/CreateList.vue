@@ -1,9 +1,9 @@
 <template>
   <div class="relative w-full overflow-x-hidden">
     <!-- Title -->
-    <div class="mt-2 mb-5 mx-4 text-2xl font-bold py-2 border-b border-gray-200">
+    <TitleUI>
       Craft Essential Message
-    </div>
+    </TitleUI>
 
     <!-- Content -->
     <div class="px-4 pb-6 fadeinright" :key="i" v-for="(content, i) in contentTypes">
@@ -19,7 +19,7 @@
 export default {
   name: 'home',
   components: {
-    // TabBar: require('./TabBar.vue').default
+    ...require('../views-ui/UIs.js').default
   },
   data () {
     return {

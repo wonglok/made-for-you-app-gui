@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="max-w-sm mx-auto">
     <router-view></router-view>
     <TabBar></TabBar>
   </div>
@@ -9,7 +9,7 @@
 export default {
   name: 'tab-app',
   components: {
-    TabBar: require('./TabBar.vue').default
+    ...require('../views-ui/UIs.js').default
   },
   data () {
     return {
