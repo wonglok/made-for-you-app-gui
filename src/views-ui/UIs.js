@@ -1,4 +1,4 @@
 export default {
-  TabBar: () => import(/* webpackChunkName: "uis" */ './TabBar.vue'),
-  TitleUI: () => import(/* webpackChunkName: "uis" */ './TitleUI.vue')
+  TabBar: () => import(/* webpackChunkName: "TabBar" */ './TabBar.vue'),
+  TitleUI: () => import(/* webpackChunkName: "TitleUI" */ './TitleUI.vue')
 }

@@ -2,31 +2,31 @@
   <div v-if="!isAtLanding">
     <div class="h-24"></div>
     <div class="fixed bottom-0 left-0 w-full pb-5 flex justify-center">
-      <div class="bg-white px-4 py-3 rounded-full border-gray-500 border fadeinleft flex justify-around">
+      <div class="bg-white px-4 py-3 rounded-full border-gray-400 border fadeinleft flex justify-around">
         <router-link class="fadeinbottom" exact-active-class="active-route" to="/home">
           <div class=" flex flex-col items-center mx-4">
-            <img src="../assets/menu/home.svg" alt="Home">
+            <img class="icon-sizer" src="../assets/menu/home.svg" alt="Home">
             <p class=" pt-1 text-xs">Home</p>
             <div class="dot"></div>
           </div>
         </router-link>
         <router-link class="fadeinbottom" exact-active-class="active-route" to="/create">
           <div class=" flex flex-col items-center mx-4">
-            <img src="../assets/menu/create.svg" alt="Create">
+            <img class="icon-sizer" src="../assets/menu/create.svg" alt="Create">
             <p class=" pt-1 text-xs">Create</p>
             <div class="dot"></div>
           </div>
         </router-link>
         <router-link class="fadeinbottom" exact-active-class="active-route" to="/give">
           <div class=" flex flex-col items-center mx-4">
-            <img src="../assets/menu/give.svg" alt="Save">
+            <img class="icon-sizer" src="../assets/menu/give.svg" alt="Save">
             <p class=" pt-1 text-xs">Give</p>
             <div class="dot"></div>
           </div>
         </router-link>
         <router-link class="fadeinbottom" exact-active-class="active-route" to="/inspire">
           <div class=" flex flex-col items-center mx-4">
-            <img src="../assets/menu/inspire.svg" alt="Inspire">
+            <img class="icon-sizer" src="../assets/menu/inspire.svg" alt="Inspire">
             <p class=" pt-1 text-xs">Inspire</p>
             <div class="dot"></div>
           </div>
@@ -47,6 +47,9 @@ export default {
 </script>
 
 <style scoped lang="postcss">
+.icon-sizer{
+  height: 24px;
+}
 @keyframes fadeinbottom {
   0%{
     opacity: 0;

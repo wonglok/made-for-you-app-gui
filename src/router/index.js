@@ -4,10 +4,9 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
-
   {
     path: '',
-    component: () => import(/* webpackChunkName: "tabapp" */ '../views-ui/TabApp.vue'),
+    component: () => import(/* webpackChunkName: "uis" */ '../views-ui/TabApp.vue'),
     children: [
       {
         path: '/',
