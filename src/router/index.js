@@ -11,7 +11,7 @@ const routes = [
   },
   {
     path: '',
-    component: () => import(/* webpackChunkName: "uis" */ '../views-ui/AppBox.vue'),
+    component: () => import(/* webpackChunkName: "intro" */ '../views-ui/AppBox.vue'),
     children: [
       {
         path: '/home',
@@ -26,7 +26,7 @@ const routes = [
       {
         path: '/create',
         name: 'create',
-        component: () => import(/* webpackChunkName: "create" */ '../views/LetsCreate.vue')
+        component: () => import(/* webpackChunkName: "intro" */ '../views/LetsCreate.vue')
       },
       {
         path: '/give',
