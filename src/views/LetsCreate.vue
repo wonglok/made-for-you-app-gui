@@ -1,10 +1,10 @@
 <template>
-  <div class="w-full h-screen">
+  <div class="lg:h-full lg:w-full">
     <!-- <div class="absolute top-0 left-0 w-full h-screen">
       <MagicBG></MagicBG>
     </div> -->
-    <Scroller>
-      <div class="relative w-full overflow-x-hidden">
+    <Scroller class="">
+      <div class="relative h-full w-full overflow-x-hidden">
         <!-- Title -->
         <TitleUI>
           <p slot="default">

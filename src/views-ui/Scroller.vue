@@ -1,5 +1,5 @@
 <template>
-  <div class="lg:overflow-y-auto lg:scrolling-touch lg:h-full w-full">
+  <div class="overflow-y-auto scrolling-touch h-full w-full">
     <slot></slot>
     <div class="h-24"></div>
   </div>
