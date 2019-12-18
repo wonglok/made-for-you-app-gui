@@ -6,7 +6,7 @@
           Inspirational Content
         </p>
         <p slot="subtitle">
-          Be Fun and Have Fun.
+          Be Fun, Have Fun, then Spread da Funzzz.
         </p>
       </TitleUI>
       <div class="mx-4 my-4">
@@ -30,6 +30,9 @@
         </p>
         <p class="py-3">
           "Be yourself; everyone else is already taken." - Oscar Wilde
+        </p>
+        <p class="py-3 text-gray-600">
+          Thank you for Raycelle for providing her favourite quotes~
         </p>
       </div>
     </div>
