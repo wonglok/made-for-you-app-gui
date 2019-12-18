@@ -1,7 +1,7 @@
 <template>
   <div class="overflow-y-auto scrolling-touch h-full w-full">
     <slot></slot>
-    <div class="h-24"></div>
+    <div class="h-32"></div>
   </div>
 </template>
 
