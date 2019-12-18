@@ -1,6 +1,6 @@
 <template>
   <div class="full flex items-center">
-    <div class="relative full max-w-sm h-full w-full lg:max-w-lg mx-auto app-box relative border-on-large bg-white-trans">
+    <div class="relative full max-w-sm h-full w-full lg:max-w-lg mx-auto app-box relative border-on-large">
       <div class="lg:overflow-y-auto lg:scrolling-touch h-full w-full">
         <div class="pinbtm top-0 left-0 full">
           <div class="max-w-sm h-full w-full lg:max-w-lg mx-auto">
@@ -80,8 +80,5 @@ export default {
   .pinbtm{
     position: absolute;
   }
-}
-.bg-white-trans{
-  background-color: rgba(255,255,255,0.2);
 }
 </style>
