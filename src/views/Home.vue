@@ -1,5 +1,10 @@
 <template>
   <Scroller>
+    <div class="pinbtm top-0 left-0 full">
+      <div class="h-full w-full lg:max-w-lg mx-auto">
+        <MagicBG class=""></MagicBG>
+      </div>
+    </div>
     <div class="relative">
       <TitleUI>
         <p slot="default">
@@ -14,7 +19,7 @@
           Feature Under Development.
         </p>
         <div class="w-full py-2">
-          Register to save to cloud.
+          Register to Save to Cloud.
         </div>
       </div>
     </div>
@@ -35,4 +40,13 @@ export default {
 </script>
 
 <style scoped>
+
+.pinbtm{
+  position: fixed;
+}
+@media screen and (min-height: 57rem) {
+  .pinbtm{
+    position: absolute;
+  }
+}
 </style>
