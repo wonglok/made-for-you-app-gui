@@ -1,8 +1,8 @@
 <template>
   <div class="full flex items-center">
     <div class="relative full max-w-sm h-full w-full lg:max-w-lg mx-auto app-box relative border-on-large bg-white-trans">
+      <MagicBG class="absolute top-0 left-0"></MagicBG>
       <div class="lg:overflow-y-auto lg:scrolling-touch h-full w-full">
-        <MagicBG class="absolute top-0 left-0"></MagicBG>
         <div class="absolute z-50">
           <div class="mx-4 pt-5">
             <img class="w-full" src="../assets/images/noisy.png" alt="Social is noisy. Let's be what's meant to be.">
