@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import * as GLIntro from '../Lok/GLs/GLIntro'
+import * as MagicBG from '../Lok/GLs/MagicBG'
 export default {
   components: {
   },
@@ -14,7 +14,7 @@ export default {
     }
   },
   async mounted () {
-    this.rAPI = await GLIntro.install({ mounter: this.$refs['mounter'], vm: this })
+    this.rAPI = await MagicBG.install({ mounter: this.$refs['mounter'], vm: this })
   },
   beforeDestroy () {
     this.rAPI.clean()

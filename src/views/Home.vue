@@ -2,7 +2,7 @@
   <Scroller>
     <div class="pinbtm top-0 left-0 full">
       <div class="h-full w-full lg:max-w-lg mx-auto">
-        <MagicBG class=""></MagicBG>
+        <MagicBG></MagicBG>
       </div>
     </div>
     <div class="relative">
@@ -41,12 +41,4 @@ export default {
 
 <style scoped>
 
-.pinbtm{
-  position: fixed;
-}
-@media screen and (min-height: 57rem) {
-  .pinbtm{
-    position: absolute;
-  }
-}
 </style>
