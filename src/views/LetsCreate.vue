@@ -1,5 +1,10 @@
 <template>
   <Scroller>
+    <div class="pinbtm top-0 left-0 full">
+      <div class="h-full w-full lg:max-w-lg mx-auto">
+        <MagicBG></MagicBG>
+      </div>
+    </div>
     <div class="relative w-full overflow-x-hidden">
       <!-- Title -->
       <TitleUI>
