@@ -7,36 +7,36 @@ const routes = [
   {
     path: '/',
     name: 'intro',
-    component: () => import(/* webpackChunkName: "intro" */ '../views/Intro.vue')
+    component: () => import(/* webpackChunkName: "first" */ '../views/Intro.vue')
   },
   {
     path: '',
-    component: () => import(/* webpackChunkName: "intro" */ '../views-ui/AppBox.vue'),
+    component: () => import(/* webpackChunkName: "first" */ '../views-ui/AppBox.vue'),
     children: [
       {
         path: '/home',
         name: 'home',
-        component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
+        component: () => import(/* webpackChunkName: "first" */ '../views/Home.vue')
       },
       // {
       //   path: '/lok',
       //   name: 'lok',
-      //   component: () => import(/* webpackChunkName: "lok" */ '../views/GL.vue')
+      //   component: () => import(/* webpackChunkName: "first" */ '../views/GL.vue')
       // },
       {
         path: '/create',
         name: 'create',
-        component: () => import(/* webpackChunkName: "create" */ '../views/LetsCreate.vue')
+        component: () => import(/* webpackChunkName: "first" */ '../views/LetsCreate.vue')
       },
       {
         path: '/give',
         name: 'give',
-        component: () => import(/* webpackChunkName: "give" */ '../views/Give.vue')
+        component: () => import(/* webpackChunkName: "first" */ '../views/Give.vue')
       },
       {
         path: '/inspire',
         name: 'inspire',
-        component: () => import(/* webpackChunkName: "inspire" */ '../views/Inspire.vue')
+        component: () => import(/* webpackChunkName: "first" */ '../views/Inspire.vue')
       }
     ]
   }

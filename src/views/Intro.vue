@@ -40,7 +40,7 @@
       </div>
 
       <div class="pt-1 pinbtm z-50 w-full bottom-0 left-0 flex justify-center">
-        <router-link to="/create" class="block pb-5 px-4 max-w-sm lg:max-w-lg mx-auto">
+        <router-link to="/create" class="block pb-5 px-0 max-w-sm lg:max-w-lg mx-auto">
           <img class="cursor-pointer" src="../assets/images/craft-cta.png" alt="Social is noisy. Let's be what's meant to be.">
         </router-link>
       </div>
