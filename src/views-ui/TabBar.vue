@@ -32,6 +32,14 @@
           <div class="dot"></div>
         </div>
       </router-link>
+
+      <router-link class="fade-in-scale" exact-active-class="active-route" to="/">
+        <div class=" flex flex-col items-center mx-4">
+          <img class="icon-sizer" src="../assets/menu/info.svg" alt="What is this site?">
+          <p class=" pt-1 text-xs">Info</p>
+          <div class="dot"></div>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>

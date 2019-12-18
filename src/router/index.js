@@ -18,6 +18,7 @@ const routes = [
         name: 'home',
         component: () => import(/* webpackChunkName: "first" */ '../views/Home.vue')
       },
+
       // {
       //   path: '/lok',
       //   name: 'lok',
