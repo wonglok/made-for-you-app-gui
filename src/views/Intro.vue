@@ -3,7 +3,7 @@
     <div class="relative full max-w-sm h-full w-full lg:max-w-lg mx-auto app-box relative border-on-large">
       <div class="lg:overflow-y-auto lg:scrolling-touch h-full w-full">
         <div class="pinbtm top-0 left-0 full">
-          <div class="max-w-sm h-full w-full lg:max-w-lg mx-auto">
+          <div class="h-full w-full lg:max-w-lg mx-auto">
             <MagicBG class=""></MagicBG>
           </div>
         </div>
