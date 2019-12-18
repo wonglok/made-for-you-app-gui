@@ -2,7 +2,11 @@
   <div class="full flex items-center">
     <div class="relative full max-w-sm h-full w-full lg:max-w-lg mx-auto app-box relative border-on-large bg-white-trans">
       <div class="lg:overflow-y-auto lg:scrolling-touch h-full w-full">
-        <MagicBG class="pinbtm top-0 left-0"></MagicBG>
+        <div class="pinbtm top-0 left-0 full">
+          <div class="max-w-sm h-full w-full lg:max-w-lg mx-auto">
+            <MagicBG class=""></MagicBG>
+          </div>
+        </div>
         <div class="absolute z-40">
           <div class="mx-4 pt-5">
             <img class="w-full" src="../assets/images/noisy.png" alt="Social is noisy. Let's be what's meant to be.">
