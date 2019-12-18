@@ -22,6 +22,8 @@
             {{ content.alt }}
           </p>
         </div>
+
+        <div class="h-32"></div>
       </div>
     </Scroller>
   </div>
