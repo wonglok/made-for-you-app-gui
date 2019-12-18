@@ -7,6 +7,8 @@
         </p>
         <p slot="subtitle">
           Thanks for learning more about us.
+          <br />
+          (System under development)
         </p>
       </TitleUI>
       <div class="mx-4 my-4">

@@ -7,6 +7,8 @@
         </p>
         <p slot="subtitle">
           Love is real.
+          <br />
+          (System under development)
         </p>
       </TitleUI>
       <div class="mx-4">

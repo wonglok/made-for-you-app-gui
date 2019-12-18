@@ -7,6 +7,8 @@
         </p>
         <p slot="subtitle">
           Be Fun, Have Fun, then Spread da Funzzz.
+          <br />
+          (System under development)
         </p>
       </TitleUI>
       <div class="mx-4 my-4">
