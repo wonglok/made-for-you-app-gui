@@ -14,10 +14,9 @@
           <router-link to="/" class="underline">About this project.</router-link>
         </div>
         <p class="py-3">
-
+          author: twitter.com/wonglok831
         </p>
       </div>
-
     </div>
   </Scroller>
 </template>
