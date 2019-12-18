@@ -1,9 +1,9 @@
 <template>
   <div class="full flex items-center">
     <div class="relative full max-w-sm h-full w-full lg:max-w-lg mx-auto app-box relative border-on-large bg-white-trans">
-      <MagicBG class="absolute top-0 left-0"></MagicBG>
       <div class="lg:overflow-y-auto lg:scrolling-touch h-full w-full">
-        <div class="absolute z-50">
+        <MagicBG class="pinbtm top-0 left-0"></MagicBG>
+        <div class="absolute z-40">
           <div class="mx-4 pt-5">
             <img class="w-full" src="../assets/images/noisy.png" alt="Social is noisy. Let's be what's meant to be.">
           </div>
@@ -35,7 +35,7 @@
         </div>
       </div>
 
-      <div class="pt-1 absolute w-full bottom-0 left-0 flex justify-center">
+      <div class="pt-1 pinbtm z-50 w-full bottom-0 left-0 flex justify-center">
         <router-link to="/create" class="block pb-5 px-4 max-w-sm lg:max-w-lg mx-auto">
           <img class="cursor-pointer" src="../assets/images/craft-cta.png" alt="Social is noisy. Let's be what's meant to be.">
         </router-link>
@@ -67,6 +67,14 @@ export default {
 @media screen and (min-height: 57rem) {
   .border-on-large{
     @apply border border-gray-400 rounded-lg;
+  }
+}
+.pinbtm{
+  position: fixed;
+}
+@media screen and (min-height: 57rem) {
+  .pinbtm{
+    position: absolute;
   }
 }
 .bg-white-trans{
