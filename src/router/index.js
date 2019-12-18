@@ -38,6 +38,11 @@ const routes = [
         path: '/inspire',
         name: 'inspire',
         component: () => import(/* webpackChunkName: "first" */ '../views/Inspire.vue')
+      },
+      {
+        path: '/contact',
+        name: 'contact',
+        component: () => import(/* webpackChunkName: "first" */ '../views/Contact.vue')
       }
     ]
   }
