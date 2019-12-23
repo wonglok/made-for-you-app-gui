@@ -1,10 +1,10 @@
 <template>
-  <div class="menu">
-    <NavRowMobile v-if="small" @menu-click="open = !open" />
-    <NavRowDesktop v-if="!small" />
+  <div class="menu h-full w-full">
     <transition name="fade">
       <NavRowFullscreen @close="open = false" v-if="small && open" />
     </transition>
+    <NavRowMobile v-if="small" @menu-click="open = !open" />
+    <NavRowDesktop v-if="!small" />
   </div>
 </template>
 
@@ -16,9 +16,16 @@ export default {
     NavRowDesktop: require('./NavRowDesktop.vue').default
   },
   data () {
+    this.$root.$open = false
     return {
       open: false,
       small: true
+    }
+  },
+  watch: {
+    open () {
+      this.$root.$open = this.$open
+      this.$root.$forceUpdate()
     }
   },
   mounted () {
@@ -53,6 +60,5 @@ export default {
 .menu{
   position: sticky;
   top: 0px;
-  background-color: rgba(213, 205, 239, 0.925);
 }
 </style>

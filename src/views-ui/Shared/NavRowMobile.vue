@@ -1,9 +1,11 @@
 <template>
   <div class="flex justify-between h-16 bg-white border-gray-500 border-b">
     <div class="inline-block h-16 w-16 flex justify-center items-center">
-      <img src="../../assets/images/logo.svg" alt="Logo">
+      <router-link to="/">
+        <img src="../../assets/images/logo.svg" alt="Logo">
+      </router-link>
     </div>
-    <div class="inline-block nav-title font-title px-3 flex items-center">
+    <div class="inline-block nav-title font-title font-black px-3 flex items-center">
       MadeForYouApp
     </div>
     <div class="inline-block w-16 h-16 flex justify-center items-center bg-white border-gray-500 border-l border-b cursor-pointer"  @click="$emit('menu-click')">
@@ -14,7 +16,6 @@
 
 <script>
 export default {
-
 }
 </script>
 

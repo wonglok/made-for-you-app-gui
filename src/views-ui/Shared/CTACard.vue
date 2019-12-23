@@ -4,7 +4,7 @@
       <div class="ml-4 p-3 w-full">
         <input type="text" class="outline-none w-full" placeholder="Give your eCard a Title">
       </div>
-      <div class=" cursor-pointer w-32 bg-brand-primary flex p-3 flex justify-center rounded-full">
+      <div class=" cursor-pointer w-32 bg-brand-primary hover:bg-purple-500 flex p-3 flex justify-center rounded-full ">
         <img class="select-none" src="../../assets/images/arrow-right.svg" alt="">
       </div>
     </div>

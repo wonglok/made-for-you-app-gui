@@ -4,7 +4,7 @@
       <div class="inline-block h-16 w-16 flex justify-center items-center">
         <img src="../../assets/images/logo.svg" alt="Logo">
       </div>
-      <div class="inline-block nav-title font-title px-3 flex items-center">
+      <div class="inline-block nav-title font-title font-black px-3 flex items-center">
         Menu
       </div>
       <div class="inline-block w-16 h-16 flex justify-center items-center bg-white border-gray-500 border-l border-b cursor-pointer"  @click="$emit('close')">
@@ -44,16 +44,17 @@ export default {
   font-weight: black;
   font-size: 20px;
 }
-/* @keyframes fadein {
+@keyframes floating {
   from {
-    opacity: 0;
+    transform: translateZ(-5px);
   }
   to{
-    opacity: 1;
+    transform: translateZ(5px);
   }
 }
 
-.fadein{
-  animation: fadein 1s ease-in-out 0s 1 normal both;
-} */
+.floating{
+  z-index: 0;
+  animation: floating 1s ease-in-out 0s infinite alternate both;
+}
 </style>

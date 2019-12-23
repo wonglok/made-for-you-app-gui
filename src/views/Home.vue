@@ -1,6 +1,6 @@
 <template>
-  <div class=" bg-brand-secondary min-h-full">
-    <div class="max-w-6xl mx-auto">
+  <div class="bg-brand-secondary w-full min-h-full">
+    <div class="max-w-6xl mx-auto flex flex-col">
       <NavRow></NavRow>
       <HeroUnit></HeroUnit>
     </div>
