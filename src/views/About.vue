@@ -2,7 +2,6 @@
   <div class=" bg-brand-secondary min-h-full">
     <div class="max-w-6xl mx-auto">
       <NavRow></NavRow>
-      <HeroUnit></HeroUnit>
     </div>
   </div>
 </template>

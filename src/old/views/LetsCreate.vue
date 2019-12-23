@@ -81,7 +81,7 @@ export default {
   }
 }
 .fadeinright{
-  --delay: 0.12s;
+  --delay: 0.14s;
 }
 .fadeinright:nth-child(1) {
   animation: fadeinright 0.5s ease-in-out 0s 1 normal both;

@@ -1,0 +1,19 @@
+<svg width="32px" height="24px" viewBox="0 0 32 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Foundation:-niceverynice.com" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Main-Page" transform="translate(-675.000000, -467.000000)">
+            <g id="Header" fill="#D5CDEF" fill-rule="nonzero">
+                <rect id="Rectangle-4" x="0" y="0" width="1400" height="710"></rect>
+            </g>
+            <g id="text_input" transform="translate(121.000000, 439.000000)">
+                <rect id="Rectangle" fill="#FFFFFF" x="0" y="0" width="630" height="80" rx="40"></rect>
+                <g id="Group-3" transform="translate(520.000000, 10.000000)">
+                    <rect id="Rectangle-Copy-2" fill="#AEA3EF" x="0" y="0" width="100" height="60" rx="30"></rect>
+                    <path d="M65.8791111,30.5267707 C65.8097778,30.7033611 65.7084444,30.8713791 65.5591111,31.0153945 L54.4942222,41.5988142 C53.9395556,42.1337286 53.0382222,42.1337286 52.4835556,41.5988142 C51.9271111,41.0690431 51.9271111,40.2083795 52.4835556,39.676894 L61.2302222,31.3085688 L35.3617778,31.3085688 C34.6097778,31.3085688 34,30.7205058 34,29.9952852 C34,29.2700646 34.6097778,28.6820016 35.3617778,28.6820016 L61.2213333,28.6820016 L52.4835556,20.3222488 C51.9271111,19.7907633 51.9271111,18.9300997 52.4835556,18.3986141 C53.0382222,17.8671286 53.9395556,17.8671286 54.4942222,18.3986141 L65.5591111,28.9837483 C65.7048889,29.1226203 65.808,29.2872093 65.8773333,29.4620852 C65.9537778,29.6249598 66,29.8032646 66,29.9952852 C66,30.1855913 65.9537778,30.3638961 65.8791111,30.5267707 L65.8791111,30.5267707 Z" id="Shape" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

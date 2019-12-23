@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="45px" height="44px" viewBox="0 0 45 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="320" height="64"></rect>
+        <filter x="-8.1%" y="-34.4%" width="116.2%" height="181.2%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.17254902   0 0 0 0 0.196078431   0 0 0 0 0.254901961  0 0 0 0.08 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#F12711" offset="0%"></stop>
+            <stop stop-color="#F5AF19" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="0.546347128%" id="linearGradient-4">
+            <stop stop-color="#A49ADE" offset="0%"></stop>
+            <stop stop-color="#D7F3FF" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-5" x="3" y="3" width="11" height="42" rx="5.5"></rect>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="0.546347128%" id="linearGradient-6">
+            <stop stop-color="#A49ADE" offset="0%"></stop>
+            <stop stop-color="#D7F3FF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="0.546347128%" id="linearGradient-7">
+            <stop stop-color="#A49ADE" offset="0%"></stop>
+            <stop stop-color="#D7F3FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Foundation:-niceverynice.com" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Responsive" transform="translate(-14.000000, -11.000000)">
+            <rect id="Rectangle-4" fill="#D5CDEF" fill-rule="nonzero" x="0" y="0" width="320" height="909"></rect>
+            <g id="Rectangle" fill-rule="nonzero">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#FFFFFF" xlink:href="#path-1"></use>
+            </g>
+            <g id="Group-3" transform="translate(12.000000, 9.000000)">
+                <g id="Group-2">
+                    <g id="Group">
+                        <g id="Rectangle">
+                            <use fill="url(#linearGradient-3)" xlink:href="#path-5"></use>
+                            <use stroke="#FFFFFF" stroke-width="1" fill="url(#linearGradient-4)" xlink:href="#path-5"></use>
+                        </g>
+                        <rect id="Rectangle-Copy-2" stroke="#FFFFFF" fill="url(#linearGradient-4)" x="35" y="3" width="11" height="42" rx="5.5"></rect>
+                        <rect id="Rectangle-Copy-3" stroke="#FFFFFF" fill="url(#linearGradient-6)" transform="translate(32.928850, 18.064178) rotate(40.000000) translate(-32.928850, -18.064178) " x="27.4288496" y="0.0641777725" width="11" height="36" rx="5.5"></rect>
+                        <rect id="Rectangle-Copy-4" stroke="#FFFFFF" fill="url(#linearGradient-7)" transform="translate(16.392544, 18.447200) scale(-1, 1) rotate(40.000000) translate(-16.392544, -18.447200) " x="10.8925442" y="-0.052800006" width="11" height="37" rx="5.5"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

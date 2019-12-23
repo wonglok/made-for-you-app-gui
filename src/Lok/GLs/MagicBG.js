@@ -457,7 +457,7 @@ export const makeCanvasCubeTexture = async ({ poserAPI, api, mounter }) => {
       let color = `${((point.vx + 1) / 2) * 255}, ${((point.vy + 1) / 2) *
         255}, ${intensity * 255}`
 
-      color = `${(intensity * 255).toFixed(0)}, 65%, 75%`
+      color = `${(intensity * 255).toFixed(0)}, 65%, 65%`
       // color = `${(intensity * 360).toFixed(0)}, 65%, 94%`
 
       let offset = this.size * 5

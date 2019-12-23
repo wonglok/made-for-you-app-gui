@@ -6,46 +6,53 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'intro',
-    component: () => import(/* webpackChunkName: "first" */ '../views/Intro.vue')
+    component: () => import(/* webpackChunkName: "first" */ '../views/Home.vue')
   },
   {
-    path: '',
-    component: () => import(/* webpackChunkName: "first" */ '../views-ui/AppBox.vue'),
-    children: [
-      {
-        path: '/home',
-        name: 'home',
-        component: () => import(/* webpackChunkName: "first" */ '../views/Home.vue')
-      },
-
-      // {
-      //   path: '/lok',
-      //   name: 'lok',
-      //   component: () => import(/* webpackChunkName: "first" */ '../views/GL.vue')
-      // },
-      {
-        path: '/create',
-        name: 'create',
-        component: () => import(/* webpackChunkName: "first" */ '../views/LetsCreate.vue')
-      },
-      {
-        path: '/give',
-        name: 'give',
-        component: () => import(/* webpackChunkName: "first" */ '../views/Give.vue')
-      },
-      {
-        path: '/inspire',
-        name: 'inspire',
-        component: () => import(/* webpackChunkName: "first" */ '../views/Inspire.vue')
-      },
-      {
-        path: '/contact',
-        name: 'contact',
-        component: () => import(/* webpackChunkName: "first" */ '../views/Contact.vue')
-      }
-    ]
+    path: '/about',
+    component: () => import(/* webpackChunkName: "first" */ '../views/About.vue')
+  },
+  {
+    path: '/gallery',
+    component: () => import(/* webpackChunkName: "first" */ '../views/Gallery.vue')
   }
+  // {
+  //   path: '',
+  //   component: () => import(/* webpackChunkName: "first" */ '../views-ui/AppBox.vue'),
+  //   children: [
+  //     {
+  //       path: '/home',
+  //       name: 'home',
+  //       component: () => import(/* webpackChunkName: "first" */ '../views/Home.vue')
+  //     },
+
+  //     // {
+  //     //   path: '/lok',
+  //     //   name: 'lok',
+  //     //   component: () => import(/* webpackChunkName: "first" */ '../views/GL.vue')
+  //     // },
+  //     {
+  //       path: '/create',
+  //       name: 'create',
+  //       component: () => import(/* webpackChunkName: "first" */ '../views/LetsCreate.vue')
+  //     },
+  //     {
+  //       path: '/give',
+  //       name: 'give',
+  //       component: () => import(/* webpackChunkName: "first" */ '../views/Give.vue')
+  //     },
+  //     {
+  //       path: '/inspire',
+  //       name: 'inspire',
+  //       component: () => import(/* webpackChunkName: "first" */ '../views/Inspire.vue')
+  //     },
+  //     {
+  //       path: '/contact',
+  //       name: 'contact',
+  //       component: () => import(/* webpackChunkName: "first" */ '../views/Contact.vue')
+  //     }
+  //   ]
+  // }
 ]
 
 const router = new VueRouter({

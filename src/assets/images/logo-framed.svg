@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" stop-opacity="0.5" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="60" height="60" rx="14"></rect>
+        <filter x="-18.3%" y="-11.7%" width="136.7%" height="136.7%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="3" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.05 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter2"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter2" result="shadowBlurOuter2"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter2" result="shadowMatrixOuter2"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="shadowMatrixOuter2"></feMergeNode>
+            </feMerge>
+        </filter>
+        <filter x="-10.8%" y="-4.2%" width="121.7%" height="121.7%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.1 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
+            <stop stop-color="#F12711" offset="0%"></stop>
+            <stop stop-color="#F5AF19" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="0.546347128%" id="linearGradient-6">
+            <stop stop-color="#A49ADE" offset="0%"></stop>
+            <stop stop-color="#D7F3FF" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-7" x="3" y="3" width="11" height="42" rx="5.5"></rect>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="0.546347128%" id="linearGradient-8">
+            <stop stop-color="#A49ADE" offset="0%"></stop>
+            <stop stop-color="#D7F3FF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="0.546347128%" id="linearGradient-9">
+            <stop stop-color="#A49ADE" offset="0%"></stop>
+            <stop stop-color="#D7F3FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Foundation:-niceverynice.com" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-3" transform="translate(6.000000, 2.000000)">
+            <g id="Base">
+                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                <use fill-opacity="0.100000001" fill="url(#linearGradient-1)" fill-rule="evenodd" style="mix-blend-mode: overlay;" xlink:href="#path-2"></use>
+                <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-2"></use>
+            </g>
+            <g id="Group-2" transform="translate(5.000000, 7.000000)">
+                <g id="Group">
+                    <g id="Rectangle">
+                        <use fill="url(#linearGradient-5)" xlink:href="#path-7"></use>
+                        <use stroke="#FFFFFF" stroke-width="1" fill="url(#linearGradient-6)" xlink:href="#path-7"></use>
+                    </g>
+                    <rect id="Rectangle-Copy-2" stroke="#FFFFFF" fill="url(#linearGradient-6)" x="35" y="3" width="11" height="42" rx="5.5"></rect>
+                    <rect id="Rectangle-Copy-3" stroke="#FFFFFF" fill="url(#linearGradient-8)" transform="translate(32.928850, 18.064178) rotate(40.000000) translate(-32.928850, -18.064178) " x="27.4288496" y="0.0641777725" width="11" height="36" rx="5.5"></rect>
+                    <rect id="Rectangle-Copy-4" stroke="#FFFFFF" fill="url(#linearGradient-9)" transform="translate(16.392544, 18.447200) scale(-1, 1) rotate(40.000000) translate(-16.392544, -18.447200) " x="10.8925442" y="-0.052800006" width="11" height="37" rx="5.5"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
