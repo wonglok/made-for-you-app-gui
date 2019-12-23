@@ -10,6 +10,10 @@
     </div>
     <IntroUnit></IntroUnit>
     <FeaturedCards></FeaturedCards>
+    <EffortsAndLove></EffortsAndLove>
+    <CelebratingLife></CelebratingLife>
+    <AwardWinningTech></AwardWinningTech>
+    <FooterCTA></FooterCTA>
   </div>
 </template>
 

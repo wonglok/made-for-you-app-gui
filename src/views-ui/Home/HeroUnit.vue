@@ -9,7 +9,7 @@
         <div class="pt-8 text-gray-700 text-2xl lg:text-3xl">
           Write your essential message for your loved ones!
         </div>
-        <CTACard></CTACard>
+        <CTAMakeCard></CTAMakeCard>
       </div>
     </div>
   </div>
@@ -18,7 +18,7 @@
 <script>
 export default {
   components: {
-    CTACard: require('../Shared/CTACard.vue').default
+    CTAMakeCard: require('../Shared/CTAMakeCard.vue').default
   }
 }
 </script>
