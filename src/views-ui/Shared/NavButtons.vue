@@ -15,7 +15,7 @@
         Card Gallery
       </div>
     </router-link>
-    <div class=" cursor-pointer mx-6 px-8 py-4 text-lg font-title font-black rounded-full bg-brand-primary text-white hover:bg-purple-400">
+    <div class=" cursor-pointer mx-6 px-8 py-4 text-lg font-title font-black rounded-full bg-brand-primary text-white hover:bg-purple-400 transition-bg transition-500">
       <span class="select-none">Login</span>
     </div>
   </div>

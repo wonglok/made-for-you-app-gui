@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-between h-16 bg-white border-gray-500 border-b">
-    <div class="inline-block h-16 w-16 flex justify-center items-center">
+    <div class="inline-block h-16 w-16 flex justify-center items-center border-r border-gray-500 border-b cursor-pointer">
       <router-link to="/">
         <img src="../../assets/images/logo.svg" alt="Logo">
       </router-link>

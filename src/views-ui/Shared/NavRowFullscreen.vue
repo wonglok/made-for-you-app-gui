@@ -1,7 +1,7 @@
 <template>
-  <div class="fixed top-0 left-0 bg-white w-full h-full">
+  <div class="fixed z-40 top-0 left-0 bg-white w-full h-full">
     <div class="flex justify-between h-16 bg-white border-gray-500 border-b">
-      <div class="inline-block h-16 w-16 flex justify-center items-center">
+      <div class="inline-block h-16 w-16 flex justify-center items-center border-r border-gray-500 border-b cursor-pointer">
         <img src="../../assets/images/logo.svg" alt="Logo">
       </div>
       <div class="inline-block nav-title font-title font-black px-3 flex items-center">

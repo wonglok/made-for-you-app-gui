@@ -1,9 +1,15 @@
 <template>
-  <div class="bg-brand-secondary w-full min-h-full">
-    <div class="max-w-6xl mx-auto flex flex-col">
-      <NavRow></NavRow>
-      <HeroUnit></HeroUnit>
+  <div class="w-full min-h-full">
+    <div class="bg-brand-secondary ">
+      <div class="home-container">
+        <NavRow></NavRow>
+      </div>
+      <div class="home-container">
+        <HeroUnit></HeroUnit>
+      </div>
     </div>
+    <IntroUnit></IntroUnit>
+    <FeaturedCards></FeaturedCards>
   </div>
 </template>
 
@@ -16,5 +22,7 @@ export default {
 </script>
 
 <style lang="postcss">
-
+.home-container{
+  @apply max-w-6xl mx-auto;
+}
 </style>
