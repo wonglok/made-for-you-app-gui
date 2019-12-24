@@ -13,7 +13,7 @@
             Give your eCard a title to begin the journey of story telling!
           </div>
           <div class="pt-12">
-            <CTAMakeCard></CTAMakeCard>
+            <MakeCardCTA></MakeCardCTA>
           </div>
         </div>
       </div>

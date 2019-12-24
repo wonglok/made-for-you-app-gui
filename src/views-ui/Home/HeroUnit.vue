@@ -9,7 +9,7 @@
         <div class="pt-8 text-gray-700 text-2xl lg:text-3xl">
           Write your essential message for your loved ones!
         </div>
-        <CTAMakeCard></CTAMakeCard>
+        <MakeCardCTA></MakeCardCTA>
       </div>
     </div>
   </div>
