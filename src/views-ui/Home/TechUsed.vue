@@ -17,16 +17,15 @@
         </div>
         <div class="lg:w-1/2 lg:order-2">
           <div class="lg:px-12">
-            <div class=" font-title font-bold text-xl tracking-tight text-green-500">
-              Created by Lok Lok with ❤️
+            <div class=" font-title font-bold text-xl tracking-tight text-blue-500">
+              Created with ❤️ by Lok Lok
             </div>
             <div class="py-4 font-title font-black text-5xl tracking-tighter leading-none text-black">
-              Utilisting Award Winning Web Technologies
+              Utilisting Award Winning Web Invetions
             </div>
             <div class="text-lg text-gray-700">
               “Practicing Composing Technology is a way to improve my thinking. EffectNode and iGraph are one of the my favourite invetions, my coding practices and healing activity.”
             </div>
-
             <div class="font-title text-lg text-black mt-5">
               Lok Lok
             </div>
