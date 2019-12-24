@@ -14,10 +14,10 @@
             </a>
           </div>
           <div class="pt-3 text-gray-500">
-            EffectNode got nominated for Website Technology Achivement in 2019.
+            EffectNode got Nominated for <a target="_blank" class="underline" href="https://www.webbyawards.com/winners/2019/websites/features-design/technical-achievement/effectnodecom/">Webby's Website Technology Achivement</a> in 2019.
           </div>
-          <div class="text-gray-500">
-            iGraph got W3 Awards Silver in 2019.
+          <div class="text-gray-500 ">
+            iGraph got <a target="_blank" class="underline" href="https://www.w3award.com/winners/list/view/?search=iGraph&event=1031&award=2">W3 Award Silver </a> in 2019.
           </div>
           <div class="h-16"></div>
         </div>
@@ -36,7 +36,7 @@
               Lok Lok
             </div>
             <div class="text-md text-gray-500">
-              A Webby’s Judge & Creative Technologist at EffectNode.com
+              A Webby’s Judge & Creative Technologist at <a target="_blank" class="underline" href="https://effectnode.com">EffectNode.com</a>
             </div>
             <div class="h-8 lg:h-16"></div>
           </div>
