@@ -5,7 +5,7 @@
         <img src="../../assets/images/logo.svg" alt="Logo">
       </router-link>
     </div>
-    <div class="inline-block text-xl font-title font-black px-3 flex items-center">
+    <div class="inline-block text-xl font-title font-black px-3 flex items-center  tracking-tighter">
       <router-link to="/">
         MadeForYouApp.com
       </router-link>

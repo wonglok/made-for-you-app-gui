@@ -4,7 +4,7 @@
       <div class="inline-block h-16 w-16 flex justify-center items-center border-r border-gray-500 border-b cursor-pointer">
         <img src="../../assets/images/logo.svg" alt="Logo">
       </div>
-      <div class="inline-block text-xl font-title font-black px-3 flex items-center">
+      <div class="inline-block text-xl font-title font-black px-3 flex items-center  tracking-tighter">
         Menu
       </div>
       <div class="inline-block w-16 h-16 flex justify-center items-center bg-white border-gray-500 border-l border-b cursor-pointer"  @click="$emit('close')">
@@ -14,7 +14,7 @@
 
     <div class="mt-5 text-center">
       <router-link exact-active-class="font-bold " to="/">
-        <div class="my-12 mx-6 hover:underline cursor-pointer tracking-tighter">
+        <div class="my-12 mx-6 hover:underline cursor-pointer">
           Home
         </div>
       </router-link>
