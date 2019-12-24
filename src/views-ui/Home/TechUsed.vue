@@ -1,0 +1,51 @@
+<template>
+  <div class="bg">
+    <div class="home-container">
+      <div class="px-6 flex flex-col lg:flex-row">
+        <div class="order-2 lg:order-1 ">
+          <div class="flex justify-center px-12">
+            <a target="_blank" href="https://effectnode.com">
+              <img src="../../assets/images/effectnode-webby.png" alt="">
+            </a>
+          </div>
+          <div class="flex justify-center px-12">
+            <a target="_blank" href="https://igraph.effectnode.com">
+              <img src="../../assets/images/igraph-w3.png" alt="">
+            </a>
+          </div>
+          <div class="h-16"></div>
+        </div>
+        <div class="lg:w-1/2 lg:order-2">
+          <div class="lg:px-12">
+            <div class=" font-title font-bold text-xl tracking-tight text-green-500">
+              Created by Lok Lok with ❤️
+            </div>
+            <div class="py-4 font-title font-black text-5xl tracking-tighter leading-none text-black">
+              Utilisting Award Winning Web Technologies
+            </div>
+            <div class="text-lg text-gray-700">
+              “Practicing Composing Technology is a way to improve my thinking. EffectNode and iGraph are one of the my favourite invetions, my coding practices and healing activity.”
+            </div>
+
+            <div class="font-title text-lg text-black mt-5">
+              Lok Lok
+            </div>
+            <div class="text-md text-gray-500">
+              A Webby’s Judge & Creative Technologist at EffectNode.com
+            </div>
+            <div class="h-8 lg:h-16"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style scoped lang="postcss">
+</style>

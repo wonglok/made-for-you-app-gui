@@ -12,7 +12,8 @@
     <FeaturedCards></FeaturedCards>
     <EffortsAndLove></EffortsAndLove>
     <CelebratingLife></CelebratingLife>
-    <AwardWinningTech></AwardWinningTech>
+    <TechUsed></TechUsed>
+    <!-- <AwardWinningTech></AwardWinningTech> -->
     <FooterCTA></FooterCTA>
     <FooterSection></FooterSection>
   </div>
