@@ -6,10 +6,10 @@
           <img src="../../assets/images/puppy-waiting.png" alt="Puppt Waiting">
         </div>
         <div class="lg:w-2/3 px-6">
-          <div class="py-4 font-title font-black text-5xl tracking-tighter leading-none text-black text-center">
+          <div class="py-4 font-title font-black text-5xl tracking-tighter leading-none text-black">
             Little Puppy is waiting for you!
           </div>
-          <div class="text-lg leading-relaxed text-gray-700 text-center">
+          <div class="text-lg leading-relaxed text-gray-700">
             Give your eCard a title to begin the journey of story telling!
           </div>
           <div class="pt-12">
