@@ -13,6 +13,12 @@
               <img src="../../assets/images/igraph-w3.png" alt="">
             </a>
           </div>
+          <div class="pt-3 text-gray-500">
+            EffectNode got nominated for Website Technology Achivement in 2019.
+          </div>
+          <div class="text-gray-500">
+            iGraph got W3 Awards Silver in 2019.
+          </div>
           <div class="h-16"></div>
         </div>
         <div class="lg:w-1/2 lg:order-2">
@@ -24,7 +30,7 @@
               Utilisting Award Winning Web Invetions
             </div>
             <div class="text-lg text-gray-700">
-              “Practicing Composing Technology is a way to improve my thinking. EffectNode and iGraph are one of the my favourite invetions, my coding practices and healing activity.”
+              “Practicing Composing Technology is a way to improve my thinking. EffectNode and iGraph are one of the my favourite invetions, my coding practices and discovery for inspiration.”
             </div>
             <div class="font-title text-lg text-black mt-5">
               Lok Lok
