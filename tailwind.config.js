@@ -79,7 +79,7 @@ module.exports = {
           'monospace'
         ],
         sans: [
-          'WorkSans',
+          'WorkSans-Regular',
           'Work Sans',
           'Avenir',
           '-apple-system',
