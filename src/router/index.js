@@ -15,6 +15,10 @@ const routes = [
   {
     path: '/gallery',
     component: () => import(/* webpackChunkName: "first" */ '../views/Gallery.vue')
+  },
+  {
+    path: '/connect',
+    component: () => import(/* webpackChunkName: "first" */ '../views/Connect.vue')
   }
   // {
   //   path: '',
