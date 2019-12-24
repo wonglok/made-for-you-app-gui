@@ -16,7 +16,6 @@ export default {
     NavRowDesktop: require('./NavRowDesktop.vue').default
   },
   data () {
-    this.$root.$open = false
     return {
       open: false,
       small: true
@@ -24,8 +23,6 @@ export default {
   },
   watch: {
     open () {
-      this.$root.$open = this.$open
-      this.$root.$forceUpdate()
     }
   },
   mounted () {
