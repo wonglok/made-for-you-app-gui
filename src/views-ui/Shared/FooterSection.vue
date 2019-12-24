@@ -29,10 +29,10 @@
         <div class="lg:w-3/12">
           <div class="title-height text-xl font-title font-black tracking-tighter text-black">Credits</div>
           <div class="text-md font-title tracking-tighter text-black">
-            Illustration by icons8.com/ouch
+            <a target="_blank" href="https://icons8.com/ouch">Illustration by icons8.com/ouch ↗️</a>
           </div>
           <div class="text-md font-title tracking-tighter text-black">
-            Design by niceverynice.com
+            <a target="_blank" href="https://niceverynice.com">Design by niceverynice.com ↗️</a>
           </div>
         </div>
       </div>
