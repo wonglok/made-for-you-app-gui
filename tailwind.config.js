@@ -52,6 +52,8 @@ module.exports = {
       },
       fontFamily: {
         title: [
+          'WorkSans-Bold',
+          'WorkSans',
           'Work Sans',
           'Avenir',
           '-apple-system',
@@ -77,6 +79,7 @@ module.exports = {
           'monospace'
         ],
         sans: [
+          'WorkSans',
           'Work Sans',
           'Avenir',
           '-apple-system',

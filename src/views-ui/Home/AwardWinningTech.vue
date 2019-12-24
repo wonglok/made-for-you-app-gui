@@ -20,14 +20,14 @@
           <div class=" font-title font-black text-xl tracking-tighter leading-loose text-center text-blue-700">
             Created by Lok Lok with ❤️ utilising Award Winning Web Technologies
           </div>
-          <div class="font-title text-lg text-center lg:w-1/2 mx-auto text-gray-700">
+          <div class="text-lg text-center lg:w-1/2 mx-auto text-gray-700">
             “Practicing Composing Technology is a way to improve my thinking. EffectNode and iGraph are one of the my favourite invetions, my coding practices and healing activity.”
           </div>
 
           <div class="font-title text-lg text-center lg:w-1/2 mx-auto text-black mt-5">
             Lok Lok
           </div>
-          <div class="font-title text-md text-center mx-auto text-gray-500 mt-5 lg:w-1/3">
+          <div class="text-md text-center mx-auto text-gray-500 mt-5 lg:w-1/3">
             A Webby’s Judge & Creative Technologist at EffectNode.com
           </div>
         </div>

@@ -16,11 +16,11 @@
             <div class="py-4 font-title font-black text-5xl tracking-tighter leading-none text-black">
               Celebrating Life is meaningful.
             </div>
-            <div class=" text-lg font-title leading-relaxed py-3">
+            <div class=" text-lg leading-relaxed py-3">
               Nice things are hard to be here. You are not a mistake but a miracle.
             </div>
 
-            <div class="text-lg font-title leading-relaxed text-gray-700">
+            <div class="text-lg leading-relaxed text-gray-700">
               “When you create, it exists; Therefore, your loving act, is the power source of you dream life through nurturing realtionships.” - Wong Lok
             </div>
           </div>

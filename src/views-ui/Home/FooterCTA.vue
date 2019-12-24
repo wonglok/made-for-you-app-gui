@@ -9,7 +9,7 @@
           <div class="py-4 font-title font-black text-5xl tracking-tighter leading-none text-black text-center">
             Little Puppy is waiting for you!
           </div>
-          <div class="text-lg font-title leading-relaxed text-gray-700 text-center">
+          <div class="text-lg leading-relaxed text-gray-700 text-center">
             Give your eCard a title to begin the journey of story telling!
           </div>
           <div class="pt-12">
