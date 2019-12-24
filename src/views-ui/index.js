@@ -18,5 +18,4 @@ function importAll (r) {
   })
 }
 
-importAll(require.context('./Home', false, /\.vue$/))
-importAll(require.context('./Shared', false, /\.vue$/))
+importAll(require.context('./', true, /\.vue$/))

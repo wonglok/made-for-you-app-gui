@@ -19,6 +19,14 @@ const routes = [
   {
     path: '/connect',
     component: () => import(/* webpackChunkName: "first" */ '../views/Connect.vue')
+  },
+  // {
+  //   path: '/wizard/create',
+  //   component: () => import(/* webpackChunkName: "first" */ '../views/WizardCreate.vue')
+  // },
+  {
+    path: '/card-maker/:cardID',
+    component: () => import(/* webpackChunkName: "first" */ '../views/CardMaker.vue')
   }
   // {
   //   path: '',
