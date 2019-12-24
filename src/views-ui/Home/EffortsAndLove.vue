@@ -14,7 +14,7 @@
               The Meaningful eCard.
             </div>
             <div class="py-4 font-title font-black text-5xl tracking-tighter leading-none text-black">
-              Efforts + Love = <br/> Meaning in Life
+              Efforts + Love = Meaning in Life
             </div>
             <div class=" text-lg font-title leading-relaxed">
               The time and thoughtfulness you put into the content means everything you want the receipient to feel.
