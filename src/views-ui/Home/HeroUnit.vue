@@ -18,7 +18,8 @@
 <script>
 export default {
   components: {
-    CTAMakeCard: require('../Shared/CTAMakeCard.vue').default
+    ...require('../index.js')
+    // CTAMakeCard: require('../Shared/CTAMakeCard.vue').default
   }
 }
 </script>

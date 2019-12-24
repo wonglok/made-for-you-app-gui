@@ -2,7 +2,7 @@
   <div class="w-full">
     <div class="flex lg:justify-between bg-white text-xl rounded-full text-gray-500 p-2 my-3 lg:mx-5 enterbox lg:w-5/6">
       <div class="ml-4 p-3 w-full">
-        <input type="text" class="outline-none w-full" placeholder="Give your eCard a Title">
+        <input type="text" class="outline-none w-full" placeholder="Start with a Title for your eCard">
       </div>
       <div class=" cursor-pointer w-32 bg-brand-primary hover:bg-purple-500 flex p-3 flex justify-center rounded-full transition-bg transition-500">
         <img class="select-none" src="../../assets/images/arrow-right.svg" alt="">

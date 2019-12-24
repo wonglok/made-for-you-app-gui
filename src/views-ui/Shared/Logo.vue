@@ -4,10 +4,10 @@
       <img src="../../assets/images/logo-framed.svg" alt="">
     </div>
     <div class="flex flex-col items-start justify-center adjust-some">
-      <div class="pl-2 text-lg font-black">
+      <div class="pl-2 text-xl font-title font-black text-black">
         MadeForYouApp.com
       </div>
-      <div class="pl-2 text-gray-700">
+      <div class="pl-2 text-lg font-title text-gray-700">
         Craft Your Essential Message
       </div>
     </div>

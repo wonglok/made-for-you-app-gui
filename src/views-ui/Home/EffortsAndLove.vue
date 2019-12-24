@@ -4,7 +4,7 @@
       <div class="px-6 flex flex-col lg:flex-row">
         <div class="order-2 lg:order-1">
           <img src="../../assets/images/dancing.png" alt="Dancing">
-          <div class="text-gray-500 py-3 pb-12">
+          <div class="text-gray-500 py-3 pb-12  text-center">
             Saying “Love you” vs “Taking action”. Time can tell the difference.
           </div>
         </div>
@@ -33,5 +33,4 @@ export default {
 </script>
 
 <style scoped lang="postcss">
-
 </style>

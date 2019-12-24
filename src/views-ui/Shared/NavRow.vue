@@ -1,5 +1,5 @@
 <template>
-  <div class="menu h-full w-full">
+  <div class="h-full w-full">
     <transition name="fade">
       <NavRowFullscreen @close="open = false" v-if="small && open" />
     </transition>
@@ -58,6 +58,7 @@ export default {
   opacity: 0;
 }
 .menu{
+  z-index: 100;
   position: sticky;
   top: 0px;
 }

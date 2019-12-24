@@ -6,7 +6,9 @@
       </router-link>
     </div>
     <div class="inline-block nav-title font-title font-black px-3 flex items-center">
-      MadeForYouApp
+      <router-link to="/">
+        MadeForYouApp.com
+      </router-link>
     </div>
     <div class="inline-block w-16 h-16 flex justify-center items-center bg-white border-gray-500 border-l border-b cursor-pointer"  @click="$emit('menu-click')">
       <img src="../../assets/icons/menu.svg" alt="Menu">

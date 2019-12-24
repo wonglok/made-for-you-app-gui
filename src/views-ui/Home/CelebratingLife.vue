@@ -4,7 +4,7 @@
       <div class="px-6 flex flex-col lg:flex-row">
         <div class="order-2 lg:order-2 lg:w-1/2">
           <img src="../../assets/images/christmas-gift.png" class="py-3" alt="Dancing">
-          <div class="text-gray-500 py-3 pb-12">
+          <div class="text-gray-500 py-3 pb-12  text-center">
             You got the gift of life! Make the best of it!
           </div>
         </div>

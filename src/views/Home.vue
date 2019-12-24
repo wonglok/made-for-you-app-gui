@@ -14,6 +14,7 @@
     <CelebratingLife></CelebratingLife>
     <AwardWinningTech></AwardWinningTech>
     <FooterCTA></FooterCTA>
+    <FooterSection></FooterSection>
   </div>
 </template>
 
