@@ -2,7 +2,7 @@
   <div class="bg">
     <div class="home-container">
       <div class="px-6 flex flex-col lg:flex-row">
-        <div class="order-2 lg:order-1 ">
+        <div class="lg:w-1/2 order-2 lg:order-1 ">
           <div class="flex justify-center px-12">
             <a target="_blank" href="https://effectnode.com">
               <img src="../../assets/images/effectnode-webby.png" alt="">
@@ -15,8 +15,6 @@
           </div>
           <div class="pt-3 text-gray-500">
             EffectNode got Nominated for <a target="_blank" class="underline" href="https://www.webbyawards.com/winners/2019/websites/features-design/technical-achievement/effectnodecom/">Webby's Website Technology Achivement</a> in 2019.
-          </div>
-          <div class="text-gray-500 ">
             iGraph got <a target="_blank" class="underline" href="https://www.w3award.com/winners/list/view/?search=iGraph&event=1031&award=2">W3 Award Silver </a> in 2019.
           </div>
           <div class="h-16"></div>
