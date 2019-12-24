@@ -5,7 +5,7 @@
         <img src="../../assets/images/logo.svg" alt="Logo">
       </router-link>
     </div>
-    <div class="inline-block nav-title font-title font-black px-3 flex items-center">
+    <div class="inline-block text-xl font-title font-black px-3 flex items-center">
       <router-link to="/">
         MadeForYouApp.com
       </router-link>
@@ -24,7 +24,7 @@ export default {
 <style scoped lang="postcss">
 .nav-title{
   /* font-family: 'Work Sans', Avenir, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
-  font-weight: black;
+  /* font-weight: black; */
   font-size: 20px;
 }
 </style>
