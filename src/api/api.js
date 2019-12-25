@@ -107,6 +107,7 @@ export const updateCard = async ({ cardID, password, data }) => {
     url: `/cards/${cardID}`,
     data: {
       ...data,
+      cardID,
       password,
       creationID
     }
@@ -150,8 +151,13 @@ export const setAdminPW = async ({ cardID, password, newPassword }) => {
 
 export const makeEditor = ({ cardID }) => {
   let api = {
+    password: '',
     card: false,
-    canEdit: false
+    dirtJSON: false,
+    dirty: true,
+    canEdit: false,
+    cardMatchDevice: false,
+    ready: false
   }
 
   api.loadCard = ({ _id = cardID }) => {
@@ -161,6 +167,57 @@ export const makeEditor = ({ cardID }) => {
       }, () => {
       })
   }
+
+  api.checkAdmin = async ({ password = '' }) => {
+    return checkAdmin({ cardID, password, creationID: CreationDevice.uuid })
+      .then(() => {
+        api.canEdit = true
+      }, () => {
+        api.canEdit = false
+      })
+  }
+
+  api.checkDevice = async () => {
+    return checkAdmin({ cardID, password: '', creationID: CreationDevice.uuid })
+      .then(() => {
+        api.cardMatchDevice = true
+      }, () => {
+        api.cardMatchDevice = false
+      })
+  }
+
+  api.enterPW = ({ password = '' }) => {
+    api.password = password
+  }
+
+  api.updatePW = async ({ password = '', newPassword = '' }) => {
+    return setAdminPW({ cardID: cardID, password, newPassword })
+  }
+
+  api.updateCard = () => {
+    if (api.card && api.canEdit) {
+      return updateCard({ cardID, password: api.password, data: api.card })
+    }
+  }
+
+  setInterval(() => {
+    if (api.dirtJSON !== JSON.stringify(api.card)) {
+      api.dirtJSON = JSON.stringify(api.card)
+      api.dirty = true
+      api.updateCard()
+    } else {
+      api.dirty = false
+    }
+  }, 750)
+
+  // init
+  api.loadCard({ _id: cardID })
+  api.checkAdmin({ password: '' })
+    .then(() => {
+      setTimeout(() => {
+        api.ready = true
+      }, 10)
+    })
 
   return api
 }

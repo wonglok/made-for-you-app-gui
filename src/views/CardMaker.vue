@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CMMain :cardID="cardID"></CMMain>
+    <CardMakerEngine :cardID="cardID"></CardMakerEngine>
   </div>
 </template>
 

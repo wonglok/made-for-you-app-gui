@@ -1,10 +1,13 @@
 <template>
   <div>
-    <div>
-        Mode: {{ canWrite ? 'You Can Edit' : 'You can read Only' }}
+    <div v-if="core.canEdit">
+      You can edit now.
     </div>
-    <div v-if="!canWrite">
-      <input type="password" class="bg-red-200" v-model="password" @keydown.enter="checkBoth()" />
+    <div v-if="!core.canEdit">
+      You need to login to Enable Editing.
+    </div>
+    <div v-if="!core.canEdit">
+      <input type="password" class="bg-red-200" v-model="core.password" @keydown.enter="checkBoth()" />
     </div>
   </div>
 </template>
@@ -14,14 +17,14 @@ import * as API from '../../api/api'
 
 export default {
   props: {
-    cardID: {}
+    cardID: {},
+    core: {}
   },
   data () {
     return {
       creationID: API.CreationDevice.uuid,
       password: '',
-      card: false,
-      canWrite: false
+      card: false
     }
   },
   async mounted () {
@@ -29,17 +32,7 @@ export default {
   },
   methods: {
     async checkBoth () {
-      this.canWrite = false
-      return API.checkAdmin({ cardID: this.cardID, password: this.password })
-        .then((data) => {
-          if (data.ok) {
-            this.canWrite = true
-          }
-        }, () => {
-        })
-        .then(() => {
-          this.$emit('can-edit', this.canWrite)
-        })
+      this.core.checkAdmin({ cardID: this.cardID, password: this.core.password })
     }
   }
 }
