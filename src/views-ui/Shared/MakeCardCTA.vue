@@ -14,20 +14,23 @@
     </div>
 
     <!-- use the modal component, pass in the prop -->
-    <PopupBox v-if="showCreating" @close="showCreating = false" :locked="true">
-      <Spinner />
+    <PopupBox v-if="showPopup" @close="showPopup = false" :locked="true">
+      <div>
+        <SpinnerGrid />
+      </div>
     </PopupBox>
   </div>
 </template>
 
 <script>
+import * as API from '../../api/api'
 export default {
   components: {
     ...require('../index.js')
   },
   data () {
     return {
-      showCreating: false,
+      showPopup: false,
       card: {
         title: ''
       }
@@ -35,14 +38,20 @@ export default {
   },
   methods: {
     createWizard () {
-      this.showCreating = true
-      setTimeout(() => {
-        this.showCreating = false
-        let cardID = 'omgomgomgs'
-        this.$router.push({
-          path: `/card-maker/${cardID}`
+      this.showPopup = true
+      API.createCard({ title: this.card.title || 'My New Card' })
+        .then((data) => {
+          console.log(data)
+          setTimeout(() => {
+            let cardID = data._id
+            this.$router.push({
+              path: `/card-maker/${cardID}`
+            })
+            this.showPopup = false
+          }, 1500)
+        }, () => {
+          this.showPopup = false
         })
-      }, 2000)
     }
   }
 }

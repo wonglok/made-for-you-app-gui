@@ -3,6 +3,10 @@ import App from './App.vue'
 import router from './router'
 // import store from './store'
 import './app.postcss'
+import '@fortawesome/fontawesome-free/css/all.css'
+
+import * as API from './api/api.js'
+API.initCreationDevice()
 
 Vue.config.productionTip = false
 

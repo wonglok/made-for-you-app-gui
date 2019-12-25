@@ -11,7 +11,7 @@
         </transition>
         <transition name="fadescale">
           <div class="wrapper" v-if="showme">
-            <div class="container">
+            <div class="container mx-auto">
               <slot></slot>
             </div>
           </div>
@@ -93,7 +93,7 @@ export default {
 .fadescale-enter-active, .fadescale-leave-active {
   transition: opacity 1s, transform 1s;
   transform: scale(1.0);
-  transition-delay: 0.5s;
+  transition-delay: 0.15s;
 }
 .fadescale-enter, .fadescale-leave-to /* .fadescale-leave-active below version 2.1.8 */ {
   opacity: 0;

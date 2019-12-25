@@ -70,6 +70,7 @@ module.exports = {
           '"Noto Color Emoji"'
         ],
         mono: [
+          'WorkSans-Regular',
           'RobotoMono-Medium',
           'Menlo',
           'Monaco',
@@ -96,6 +97,7 @@ module.exports = {
           '"Noto Color Emoji"'
         ],
         serif: [
+          'WorkSans-Regular',
           'Poppins',
           'Georgia',
           'Cambria',
