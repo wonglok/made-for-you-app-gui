@@ -211,13 +211,20 @@ export const makeEditor = ({ cardID }) => {
   }, 750)
 
   // init
-  api.loadCard({ _id: cardID })
-  api.checkAdmin({ password: '' })
-    .then(() => {
-      setTimeout(() => {
-        api.ready = true
-      }, 10)
-    })
+  api.bootup = () => {
+    api.ready = false
+    api.loadCard({ _id: cardID })
+    Promise.all([
+      api.checkAdmin({ password: '' }),
+      api.checkDevice()
+    ])
+      .then(() => {
+        setTimeout(() => {
+          api.ready = true
+        }, 10)
+      })
+  }
 
+  api.bootup()
   return api
 }

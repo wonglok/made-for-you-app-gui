@@ -28,7 +28,6 @@ export default {
     }
   },
   async mounted () {
-    this.checkBoth()
   },
   methods: {
     async checkBoth () {

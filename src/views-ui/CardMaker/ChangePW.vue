@@ -9,8 +9,7 @@
       </div>
     </div>
     <div v-else>
-      You can change password on the same place you created it.
-      <!-- Authorised by CreationDevice: {{ creationID }} -->
+      You can change Password.
     </div>
 
     <div>
@@ -26,7 +25,7 @@
 </template>
 
 <script>
-import * as API from '../../api/api'
+// import * as API from '../../api/api'
 
 export default {
   props: {
@@ -36,14 +35,11 @@ export default {
   data () {
     return {
       msg: '',
-      creationID: API.CreationDevice.uuid,
       password: '',
-      newPassword: '',
-      cardMatchesDeviceID: false
+      newPassword: ''
     }
   },
   async mounted () {
-    this.core.checkDevice()
   },
   methods: {
     async setAdminPW () {
