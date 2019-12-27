@@ -27,7 +27,7 @@ export default {
   },
   data () {
     return {
-      core: API.makeEditor({ cardID: this.cardID })
+      core: API.makeCardEditor({ cardID: this.cardID, vm: this })
     }
   },
   async mounted () {

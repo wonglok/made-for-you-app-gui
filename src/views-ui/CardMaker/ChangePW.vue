@@ -1,15 +1,12 @@
 <template>
   <div v-if="core.ready">
-    <div v-if="!core.cardMatchDevice">
+    <div v-if="!core.isCreationDevice">
       <div>
         You need an old password to udpate the password.
       </div>
       <div>
         Old Password: <input class="bg-blue-200" type="text" v-model="password" @keydown.enter="setAdminPW()">
       </div>
-    </div>
-    <div v-else>
-      You can change Password.
     </div>
 
     <div>
@@ -32,8 +29,12 @@ export default {
     cardID: {},
     core: {}
   },
+  components: {
+    // ...require('../index.js')
+  },
   data () {
     return {
+      open: true,
       msg: '',
       password: '',
       newPassword: ''

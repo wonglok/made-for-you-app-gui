@@ -7,6 +7,7 @@ import '@fortawesome/fontawesome-free/css/all.css'
 
 import * as API from './api/api.js'
 API.initCreationDevice()
+API.initCardList()
 
 Vue.config.productionTip = false
 
