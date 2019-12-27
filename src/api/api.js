@@ -5,7 +5,7 @@ export const guiURL = `https://madeforyouapp.com`
 export var apiURL = `https://api-ec2-3-91-80-85.madeforyouapp.com`
 
 if (process.env.NODE_ENV === 'development') {
-  apiURL = `http://` + location.hostname + ':1337'
+  // apiURL = `http://` + location.hostname + ':1337'
 }
 
 // console.log(apiURL)
@@ -161,9 +161,9 @@ export const getDeviceCards = async () => {
   return resp.data
 }
 
-export const updateCard = async ({ cardID, password, data }) => {
+export const updateCard = ({ cardID, password, data }) => {
   let creationID = CreationDevice.uuid
-  const resp = await axios({
+  return axios({
     method: 'PUT',
     baseURL: apiURL,
     url: `/cards/${cardID}`,
@@ -173,9 +173,9 @@ export const updateCard = async ({ cardID, password, data }) => {
       password,
       creationID
     }
+  }).then((resp) => {
+    return resp.data
   })
-
-  return resp.data
 }
 
 export const checkAdmin = async ({ cardID, password }) => {
