@@ -5,7 +5,7 @@ export const guiURL = `https://madeforyouapp.com`
 export var apiURL = `https://api-ec2-3-91-80-85.madeforyouapp.com`
 
 if (process.env.NODE_ENV === 'development') {
-  // apiURL = `http://` + location.hostname + ':1337'
+  apiURL = `http://` + location.hostname + ':1337'
 }
 
 // console.log(apiURL)
@@ -219,6 +219,7 @@ export const makeCardEditor = ({ cardID }) => {
     canEdit: false,
     isCreationDevice: false,
     notFound: false,
+    saving: false,
     ready: false
   }
 
@@ -230,6 +231,7 @@ export const makeCardEditor = ({ cardID }) => {
     return getCard({ cardID: _id })
       .then((data) => {
         api.card = data
+        api.dirtJSON = JSON.stringify(api.card)
       }, () => {
       })
   }
@@ -262,7 +264,8 @@ export const makeCardEditor = ({ cardID }) => {
       return updateCard({ cardID, password: api.password, data: api.card })
         .then(() => {
           api.saving = false
-        }, () => {
+        })
+        .catch(() => {
           api.saving = false
         })
     }

@@ -1,18 +1,5 @@
 <template>
-  <div>
-    <div>
-      <div class=" text-2xl">
-        Change Password
-      </div>
-      <ChangePW :core="core" :cardID="cardID"></ChangePW>
-    </div>
-    <div>
-      <div class=" text-2xl">
-        Editor
-      </div>
-      <AuthIndicator :core="core" :cardID="cardID"></AuthIndicator>
-      <CardTitleEditor :core="core" :cardID="cardID"></CardTitleEditor>
-    </div>
+  <div class="min-h-full bg-teal-200">
   </div>
 </template>
 

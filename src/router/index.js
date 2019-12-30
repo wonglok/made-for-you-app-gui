@@ -13,8 +13,8 @@ const routes = [
     component: () => import(/* webpackChunkName: "first" */ '../views/About.vue')
   },
   {
-    path: '/gallery',
-    component: () => import(/* webpackChunkName: "first" */ '../views/Gallery.vue')
+    path: '/my-cards',
+    component: () => import(/* webpackChunkName: "first" */ '../views/MyCards.vue')
   },
   {
     path: '/connect',

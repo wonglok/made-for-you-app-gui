@@ -2,7 +2,7 @@
   <div class="w-full">
     <div class="flex lg:justify-between bg-white text-xl rounded-full text-gray-500 p-2 my-3 lg:mx-5 enterbox lg:w-5/6">
       <div class="ml-4 p-3 w-full">
-        <input v-model="card.title" type="text" class="outline-none w-full" placeholder="Name Your eCard" @keydown.enter="createWizard">
+        <input v-model="card.title" type="text" class="outline-none w-full" placeholder="To Begin, Give it a Title" @keydown.enter="createWizard">
       </div>
       <div class=" cursor-pointer w-32 bg-brand-primary hover:bg-purple-500 flex p-3 flex justify-center rounded-full transition-bg transition-500"  @click="createWizard">
         <img class="select-none" src="../../assets/images/arrow-right.svg" alt="">
@@ -48,7 +48,7 @@ export default {
               path: `/card-maker/${cardID}`
             })
             this.showPopup = false
-          }, 1500)
+          }, 1)
         }, () => {
           this.showPopup = false
         })

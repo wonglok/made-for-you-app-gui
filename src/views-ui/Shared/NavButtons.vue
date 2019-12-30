@@ -10,9 +10,9 @@
         Creator's Story
       </div>
     </router-link>
-    <router-link exact-active-class="font-bold " to="/gallery" >
+    <router-link exact-active-class="font-bold " to="/my-cards">
       <div class="mx-6 hover:underline  cursor-pointer">
-        Gallery
+        My Cards
       </div>
     </router-link>
     <a target="_blank" exact-active-class="font-bold " href="https://github.com/wonglok/made-for-you-app-gui" to="/gallery" >
