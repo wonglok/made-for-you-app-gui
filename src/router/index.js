@@ -13,8 +13,8 @@ const routes = [
     component: () => import(/* webpackChunkName: "first" */ '../views/About.vue')
   },
   {
-    path: '/my-cards',
-    component: () => import(/* webpackChunkName: "first" */ '../views/MyCards.vue')
+    path: '/my-art',
+    component: () => import(/* webpackChunkName: "first" */ '../views/MyART.vue')
   },
   {
     path: '/connect',
@@ -27,8 +27,8 @@ const routes = [
     component: () => import(/* webpackChunkName: "first" */ '../views/CardAdmin.vue')
   },
   {
-    path: '/card-maker/:cardID',
-    component: () => import(/* webpackChunkName: "first" */ '../views/CardMaker.vue')
+    path: '/art-maker/:cardID',
+    component: () => import(/* webpackChunkName: "first" */ '../views/ARTMaker.vue')
   }
   // {
   //   path: '',

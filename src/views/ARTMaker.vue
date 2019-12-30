@@ -1,5 +1,5 @@
 <template>
-  <CardMakerEngine :cardID="cardID"></CardMakerEngine>
+  <ARTMakerEngine :cardID="cardID"></ARTMakerEngine>
 </template>
 
 <script>

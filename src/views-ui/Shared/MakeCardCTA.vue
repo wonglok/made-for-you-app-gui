@@ -45,7 +45,7 @@ export default {
           setTimeout(() => {
             let cardID = data._id
             this.$router.push({
-              path: `/card-maker/${cardID}`
+              path: `/art-maker/${cardID}`
             })
             this.showPopup = false
           }, 1)

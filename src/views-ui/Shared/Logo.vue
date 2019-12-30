@@ -8,7 +8,7 @@
         MadeForYouApp.com
       </div>
       <div class="pl-2 text-lg text-gray-700">
-        Craft Your Essential Message
+        Your ART, Your Essential Message
       </div>
     </div>
   </div>
