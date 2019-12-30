@@ -4,7 +4,7 @@
       <div class="flex justify-around flex-col lg:flex-row">
         <div class="px-12 py-12 pb-6 lg:py-20 lg:w-1/2">
           <div class="text-xl font-title tracking-tighter">
-            Why eCards?
+            Why made for you app?
           </div>
           <div class="">
             When the Social World is too noisy, all we really want is realness, kindness, and love. 💎
