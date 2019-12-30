@@ -10,7 +10,7 @@
             Little Puppy is waiting for you!
           </div>
           <div class="text-lg leading-relaxed text-gray-700">
-            Give your eCard a title to begin the journey of story telling!
+            Give your ART & Craft a title to begin the journey of story telling!
           </div>
           <div class="pt-12">
             <MakeCardCTA></MakeCardCTA>
