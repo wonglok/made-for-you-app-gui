@@ -4,18 +4,18 @@
       <div class="flex justify-around flex-col lg:flex-row">
         <div class="px-12 py-12 pb-6 lg:py-20 lg:w-1/2">
           <div class="text-xl font-title tracking-tighter">
-            Why made for you app?
+            Why did our inventor made this? 💎
           </div>
           <div class="">
-            When the Social World is too noisy, all we really want is realness, kindness, and love. 💎
+            Lok Lok dreamed about making the Web more and more Fancy and 3D. So he decided to build different tools to democratise digital visual effect. 😎
           </div>
         </div>
         <div class="px-12 py-12 pt-6 lg:py-20 lg:w-1/2">
           <div class="text-xl font-title tracking-tighter">
-            How do I get true love? Be true love.
+            Remembering what I dremaed about. ❤️
           </div>
           <div class="">
-            The quickest way to have real love is to be love and give Love. 🤲🏻
+            Being truthful to myself has helped me a lot in life and career. By taking action and practicing coding, I'm keeping my dream self alive. It's my way of realising my vision. 🤲🏻
           </div>
         </div>
       </div>

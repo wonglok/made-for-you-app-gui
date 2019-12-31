@@ -14,15 +14,16 @@
               For me...
             </div>
             <div class="py-4 font-title font-black text-5xl tracking-tighter leading-none text-black">
-              Celebrating Life is meaningful.
+              Living your life to the fullest
             </div>
             <div class=" text-lg leading-relaxed py-3">
-              Nice things are hard to be here. You are not a mistake but a miracle.
+              To celebrate the Gift of Life, I try to build hard things. Nice things are hard to be here, but it's always worth it.
             </div>
 
             <div class="text-lg leading-relaxed text-gray-700">
               “When you create, it exists; Therefore, your loving act, is the power source of you dream life through nurturing realtionships.” - Wong Lok
             </div>
+
           </div>
         </div>
       </div>

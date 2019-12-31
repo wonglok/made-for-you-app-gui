@@ -17,7 +17,7 @@
               Efforts + Love = Meaning in Life
             </div>
             <div class=" text-lg  leading-relaxed">
-              The time and thoughtfulness you put into the content means everything you want the receipient to feel.
+              The time and thoughtfulness you put into the content means everything you want the receipient to feel. With GLSL Effect Code, we can create countless combination of viration of visual alchemy.
             </div>
           </div>
         </div>

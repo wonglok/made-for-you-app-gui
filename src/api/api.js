@@ -21,9 +21,11 @@ export const getCardByID = async ({ id }) => {
 }
 
 export const CreationDevice = {
-  uuid: null,
-  note: 'CreationDevice'
+  finder: null,
+  uuid: null
 }
+
+window.CreationDevice = CreationDevice
 
 export const CardList = {
   list: []
@@ -52,12 +54,14 @@ export const isJSON = (json, version) => {
 }
 
 export const initCreationDevice = () => {
-  let stringFromLS = localStorage.getItem(apiURL + '@CreationDevice')
+  let NameSpace = apiURL + '@CreationDevice@'
+  let stringFromLS = localStorage.getItem(NameSpace)
   if (stringFromLS === null || !isJSON(stringFromLS)) {
-    localStorage.setItem(apiURL + '@CreationDevice', JSON.stringify({
-      uuid: genUUID()
+    localStorage.setItem(NameSpace, JSON.stringify({
+      uuid: genUUID(),
+      finder: genUUID()
     }))
-    stringFromLS = localStorage.getItem(apiURL + '@CreationDevice')
+    stringFromLS = localStorage.getItem(NameSpace)
   }
   let data = JSON.parse(stringFromLS)
   for (var kn in data) {
@@ -89,6 +93,7 @@ export const initCardList = () => {
 }
 
 export const createCard = async ({ title }) => {
+  let finderID = CreationDevice.finder
   let creationID = CreationDevice.uuid
   let displayName = title
   const cardResp = await axios({
@@ -96,7 +101,7 @@ export const createCard = async ({ title }) => {
     baseURL: apiURL,
     url: `/cards`,
     data: {
-      creationID,
+      finderID,
       displayName
     }
   })
@@ -107,6 +112,7 @@ export const createCard = async ({ title }) => {
     url: `/card-secrets`,
     data: {
       creationID,
+      finderID,
       password: '',
       card: cardResp.data
     }
@@ -145,11 +151,14 @@ export const getCard = async ({ cardID }) => {
 }
 
 export const getDeviceCards = async () => {
-  let IDs = CardList.list
-  let qs = IDs.reduce((acc, item, key) => {
-    acc += `&id_in=${encodeURIComponent(item)}`
-    return acc
-  }, '')
+  // let IDs = CardList.list
+  // let qs = IDs.reduce((acc, item, key) => {
+  //   acc += `&id_in=${encodeURIComponent(item)}`
+  //   return acc
+  // }, '')
+
+  let finderID = CreationDevice.finder
+  let qs = `finderID=${encodeURIComponent(finderID)}`
   const resp = await axios({
     method: 'GET',
     baseURL: apiURL,

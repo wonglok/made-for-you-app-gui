@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
-    <title>Group 3</title>
+    <title>logo framed</title>
     <desc>Created with Sketch.</desc>
     <defs>
         <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
@@ -27,41 +27,20 @@
             <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.1 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
         </filter>
         <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
-            <stop stop-color="#F12711" offset="0%"></stop>
-            <stop stop-color="#F5AF19" offset="100%"></stop>
-        </linearGradient>
-        <linearGradient x1="50%" y1="100%" x2="50%" y2="0.546347128%" id="linearGradient-6">
-            <stop stop-color="#A49ADE" offset="0%"></stop>
-            <stop stop-color="#D7F3FF" offset="100%"></stop>
-        </linearGradient>
-        <rect id="path-7" x="3" y="3" width="11" height="42" rx="5.5"></rect>
-        <linearGradient x1="50%" y1="100%" x2="50%" y2="0.546347128%" id="linearGradient-8">
-            <stop stop-color="#A49ADE" offset="0%"></stop>
-            <stop stop-color="#D7F3FF" offset="100%"></stop>
-        </linearGradient>
-        <linearGradient x1="50%" y1="100%" x2="50%" y2="0.546347128%" id="linearGradient-9">
-            <stop stop-color="#A49ADE" offset="0%"></stop>
-            <stop stop-color="#D7F3FF" offset="100%"></stop>
+            <stop stop-color="#B600FF" offset="0%"></stop>
+            <stop stop-color="#8000FF" offset="100%"></stop>
         </linearGradient>
     </defs>
-    <g id="Foundation:-niceverynice.com" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group-3" transform="translate(6.000000, 2.000000)">
-            <g id="Base">
-                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
-                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
-                <use fill-opacity="0.100000001" fill="url(#linearGradient-1)" fill-rule="evenodd" style="mix-blend-mode: overlay;" xlink:href="#path-2"></use>
-                <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-2"></use>
-            </g>
-            <g id="Group-2" transform="translate(5.000000, 7.000000)">
-                <g id="Group">
-                    <g id="Rectangle">
-                        <use fill="url(#linearGradient-5)" xlink:href="#path-7"></use>
-                        <use stroke="#FFFFFF" stroke-width="1" fill="url(#linearGradient-6)" xlink:href="#path-7"></use>
-                    </g>
-                    <rect id="Rectangle-Copy-2" stroke="#FFFFFF" fill="url(#linearGradient-6)" x="35" y="3" width="11" height="42" rx="5.5"></rect>
-                    <rect id="Rectangle-Copy-3" stroke="#FFFFFF" fill="url(#linearGradient-8)" transform="translate(32.928850, 18.064178) rotate(40.000000) translate(-32.928850, -18.064178) " x="27.4288496" y="0.0641777725" width="11" height="36" rx="5.5"></rect>
-                    <rect id="Rectangle-Copy-4" stroke="#FFFFFF" fill="url(#linearGradient-9)" transform="translate(16.392544, 18.447200) scale(-1, 1) rotate(40.000000) translate(-16.392544, -18.447200) " x="10.8925442" y="-0.052800006" width="11" height="37" rx="5.5"></rect>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Menu" transform="translate(1.000000, 1.000000)">
+            <g id="logo-framed" transform="translate(5.000000, 1.000000)">
+                <g id="Base">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <use fill-opacity="0.100000001" fill="url(#linearGradient-1)" fill-rule="evenodd" style="mix-blend-mode: overlay;" xlink:href="#path-2"></use>
+                    <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-2"></use>
                 </g>
+                <path d="M31.923763,30.2355231 L42.703683,14.7186763 C43.2121698,13.9530424 43.0596238,12.881155 42.2968936,12.3196901 C41.4833147,11.7582253 40.4154924,11.9623943 39.856157,12.7280282 L30.4491513,26.2542269 L21.143843,12.7280282 C20.5845076,11.9623943 19.4658366,11.7582253 18.7031064,12.3196901 C17.9403762,12.881155 17.7878302,13.9530424 18.296317,14.7186763 L29.076237,30.1844808 C29.1779343,30.3886499 29.3304804,30.5417767 29.4830264,30.6438612 C30.2457566,31.2563683 31.3644275,31.0521993 31.923763,30.2355231 Z M14,49 C15.1176471,49 16,48.2560322 16,47.3136729 L16,13.6863271 C16,12.7439678 15.1176471,12 14,12 C12.8823529,12 12,12.7439678 12,13.6863271 L12,47.3136729 C12,48.2560322 12.8823529,49 14,49 Z M46.9411765,49 C48.1176471,49 49,48.2560322 49,47.3136729 L49,13.6863271 C49,12.7439678 48.1176471,12 46.9411765,12 C45.8823529,12 45,12.7439678 45,13.6863271 L45,47.3136729 C45,48.2560322 45.8823529,49 46.9411765,49 Z M40.3218884,49 C41.2596567,49 42,48.2351048 42,47.2662376 L42,25.696193 C42,24.7783188 41.2596567,24.0134236 40.3218884,24.0134236 C39.7296137,24.0134236 39.2360515,24.3193817 38.9399142,24.7783188 L30.4506438,37.271607 L22.0600858,24.7273258 C21.5171674,23.9624306 20.4313305,23.7584585 19.6909871,24.3193817 C19.2467811,24.6253398 19,25.1862629 19,25.696193 L19,47.2662376 C19,48.2351048 19.7403433,49 20.6287554,49 C21.6158798,49 22.3562232,48.2351048 22.3562232,47.2662376 L22.3562232,31.2034384 L29.1180258,41.249062 C29.2167382,41.4020411 29.3648069,41.5550201 29.5128755,41.7079991 C30.2532189,42.2179293 31.3390558,42.0139572 31.8819742,41.249062 L38.6437768,31.2034384 L38.6437768,47.2662376 C38.6437768,48.2351048 39.3841202,49 40.3218884,49 Z" id="M" fill="url(#linearGradient-5)" fill-rule="nonzero"></path>
             </g>
         </g>
     </g>

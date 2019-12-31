@@ -7,12 +7,12 @@
     </router-link>
     <router-link exact-active-class="font-bold " to="/about">
       <div class="mx-6 hover:underline  cursor-pointer">
-        Creator's Story
+        Inventor's Story
       </div>
     </router-link>
-    <router-link exact-active-class="font-bold " to="/my-cards">
+    <router-link exact-active-class="font-bold " to="/my-sites">
       <div class="mx-6 hover:underline  cursor-pointer">
-        My ART
+        My Sites
       </div>
     </router-link>
     <a target="_blank" exact-active-class="font-bold " href="https://github.com/wonglok/made-for-you-app-gui" to="/gallery" >

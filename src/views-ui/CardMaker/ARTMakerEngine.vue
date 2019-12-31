@@ -1,6 +1,6 @@
 <template>
-  <div class="min-h-full bg-teal-200">
-    Under construction....
+  <div class="min-h-full bg-teal-400">
+
   </div>
 </template>
 
@@ -26,5 +26,4 @@ export default {
 </script>
 
 <style>
-
 </style>
