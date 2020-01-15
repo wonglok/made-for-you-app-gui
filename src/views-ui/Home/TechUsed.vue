@@ -34,7 +34,7 @@
               Lok Lok
             </div>
             <div class="text-md text-gray-500">
-              A Webby’s Judge & Creative Technologist at <a target="_blank" class="underline" href="https://effectnode.com">EffectNode.com</a>
+              A <a target="_blank" class="underline" href="https://www.iadas.net/membership/bio/lok-wong/7842">Webby’s Judge</a> & Creative Technologist at <a target="_blank" class="underline" href="https://effectnode.com">EffectNode.com</a>
             </div>
             <div class="h-8 lg:h-16"></div>
           </div>

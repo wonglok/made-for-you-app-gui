@@ -32,7 +32,7 @@
       </div>
     </router-link>
 
-    <div v-if="TKN.Profile" class="py-5 px-6 rounded-full inline-block text-purple-600 border border-purple-600 hover:border-purple-400 cursor-pointer bg-transparent hover:text-white hover:bg-purple-400 transition-bg transition-500" @click="logout">Logout</div>
+    <div v-if="TKN.Profile" class="py-4 px-6 rounded-full inline-block text-purple-600 border border-purple-600 hover:border-purple-400 cursor-pointer bg-transparent hover:text-white hover:bg-purple-400 transition-bg transition-500" @click="logout">Logout</div>
 
     <!-- use the modal component, pass in the prop -->
     <PopupBox v-if="showAuthBox" @close="showAuthBox = false" :locked="false">

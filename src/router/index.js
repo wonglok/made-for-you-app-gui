@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import * as API from '../api/api.js'
 
 Vue.use(VueRouter)
 
@@ -14,6 +15,18 @@ const routes = [
   },
   {
     path: '/profile',
+    beforeEnter: async (to, from, next) => {
+      if (await API.checkLogin()) {
+        next()
+      } else {
+        next({
+          path: '/connect',
+          query: {
+            redirect: to.fullPath
+          }
+        })
+      }
+    },
     component: () => import(/* webpackChunkName: "first" */ '../views/Profile.vue')
   },
   {
@@ -23,6 +36,10 @@ const routes = [
   {
     path: '/admin',
     component: () => import(/* webpackChunkName: "first" */ '../views/CardAdmin.vue')
+  },
+  {
+    path: '/site-editor/:slug/:siteID',
+    component: () => import(/* webpackChunkName: "second" */ '../views/SiteEditorPage.vue')
   }
 
   // ,

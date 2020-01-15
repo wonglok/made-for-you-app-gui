@@ -9,7 +9,7 @@
         Login Form
       </div>
 
-      <form class="" autocomplete="login" @submit.prevent="goLogin">
+      <form autocomplete="login" @submit.prevent="goLogin">
         <input type="text" class="p-3 my-2 mr-3 rounded-lg" v-model="login.identifier" placeholder="E-mail / Username">
         <input ref="login-password" type="password" class="p-3 my-2 mr-3 rounded-lg" v-model="login.password" placeholder="Password">
         <button class="p-3 my-2 bg-white rounded-lg">Login</button>
@@ -22,7 +22,7 @@
       <div class="text-2xl mb-3">
         Regisration Form
       </div>
-      <form class="" autocomplete="registration" @submit.prevent="goRegister">
+      <form autocomplete="registration" @submit.prevent="goRegister">
         <input type="text" class="p-3 my-2 mr-3 rounded-lg" v-model="register.username" placeholder="Username">
         <input type="password" class="p-3 my-2 mr-3 rounded-lg" v-model="register.password" placeholder="Password">
         <input type="email" class="p-3 my-2 mr-3 rounded-lg" v-model="register.email" placeholder="E-mail">

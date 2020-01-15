@@ -135,24 +135,90 @@ export const checkLogin = async () => {
   return !!Token.Profile
 }
 
-export const checkUsernameTaken = async ({ username }) => {
+export const getHeaders = () => {
   let headers = {}
   if (Token.JWT) {
     headers['Authorization'] = `Bearer ${Token.JWT}`
   }
+  return headers
+}
+
+export const checkUsernameTaken = async ({ username }) => {
   return axios({
     method: 'POST',
     baseURL: apiURL,
     url: `/apis/checkUsernameTaken`,
-    headers,
+    headers: getHeaders(),
     data: {
       username
     }
-  }).then((resp) => {
-    return resp.data
-  }, (err) => {
-    return Promise.reject(err.response.data)
-  })
+  }).then(onResOK, onResError)
+}
+
+export const createSite = ({ title, owner }) => {
+  return axios({
+    method: 'POST',
+    baseURL: apiURL,
+    url: `/sites`,
+    headers: getHeaders(),
+    data: {
+      owner,
+      title
+    }
+  }).then(onResOK, onResError)
+}
+
+export const removeVisuals = async () => {
+  console.log('TODO: removeVisuals')
+}
+
+export const removePages = async () => {
+  console.log('TODO: removePages')
+}
+
+export const removeSite = async ({ site }) => {
+  await Promise.all([
+    removeVisuals(site),
+    removePages(site)
+  ])
+  return axios({
+    method: 'DELETE',
+    baseURL: apiURL,
+    url: `/sites/${site._id}`,
+    headers: getHeaders()
+  }).then(onResOK, onResError)
+}
+
+export const listSite = ({ owner, pageAt = 0, perPage = 25, search = '' }) => {
+  console.log(owner)
+  let qs = `_start=${pageAt * perPage}&_limit=${perPage}${search ? `&title_contains=` + encodeURIComponent(search) : ''}`
+  return axios({
+    method: 'GET',
+    baseURL: apiURL,
+    url: `/sites?owner._id=${owner._id}&${qs}`,
+    headers: getHeaders()
+  }).then(onResOK, onResError)
+}
+
+export const onResOK = (resp) => {
+  return resp.data
+}
+
+export const onResError = (err) => {
+  let msg = ''
+  if (
+    err &&
+    err.response &&
+    err.response.data &&
+    err.response.data.message &&
+    err.response.data.message[0] &&
+    err.response.data.message[0].messages &&
+    err.response.data.message[0].messages[0] &&
+    err.response.data.message[0].messages[0].message
+  ) {
+    msg = err.response.data.message[0].messages[0].message
+  }
+  return Promise.reject(msg)
 }
 
 // export const createCard = async ({ title }) => {

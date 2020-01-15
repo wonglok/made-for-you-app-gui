@@ -2,9 +2,11 @@
   <div class=" bg-brand-secondary min-h-full">
     <div class="max-w-6xl mx-auto">
       <NavRow></NavRow>
-      <div>
+      <!-- <div>
         Temp Sites Created on this machine.
-      </div>
+      </div> -->
+      <CreateSite @ok="$refs['sites'] && $refs['sites'].$emit('load')"></CreateSite>
+      <ListSite ref="sites"></ListSite>
     </div>
   </div>
 </template>
