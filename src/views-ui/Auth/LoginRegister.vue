@@ -2,16 +2,20 @@
   <div>
 
     <div v-if="mode === 'login'">
-      <div class="text-2xl mb-3">
+      <div  class="text-2xl mb-3" v-if="focusat === 'login-password'">
+        Welcome back dear!
+      </div>
+      <div v-else class="text-2xl mb-3">
         Login Form
       </div>
+
       <form class="" autocomplete="login" @submit.prevent="goLogin">
         <input type="text" class="p-3 my-2 mr-3 rounded-lg" v-model="login.identifier" placeholder="E-mail / Username">
-        <input type="password" class="p-3 my-2 mr-3 rounded-lg" v-model="login.password" placeholder="Password">
+        <input ref="login-password" type="password" class="p-3 my-2 mr-3 rounded-lg" v-model="login.password" placeholder="Password">
         <button class="p-3 my-2 bg-white rounded-lg">Login</button>
       </form>
       <div v-if="bug" class=" text-red-500 text-xs mt-4">{{ bug }}</div>
-      <div class="mt-4 text-gray-700 text-xs font-light" @click="mode = 'register'">Switch to registration.</div>
+      <div class=" cursor-pointer mt-4 text-gray-700 text-xs font-light" @click="mode = 'register'">Switch to registration.</div>
     </div>
 
     <div v-if="mode === 'register'">
@@ -25,9 +29,8 @@
         <button class="p-3 my-2 bg-white rounded-lg">Register</button>
       </form>
       <div v-if="bug" class=" text-red-500 text-xs mt-4">{{ bug }}</div>
-      <div class="mt-4 text-gray-700 text-xs font-light" @click="mode = 'login'">Switch to login.</div>
+      <div class=" cursor-pointer mt-4 text-gray-700 text-xs font-light" @click="mode = 'login'">Switch to login.</div>
     </div>
-
   </div>
 </template>
 
@@ -36,6 +39,9 @@ import * as API from '../../api/api.js'
 export default {
   props: {
     username: {
+      default: ''
+    },
+    focusat: {
       default: ''
     },
     startwith: {
@@ -63,6 +69,11 @@ export default {
     }
   },
   mounted () {
+    this.$nextTick(() => {
+      if (this.$refs[this.focusat]) {
+        this.$refs[this.focusat].focus()
+      }
+    })
   },
   methods: {
     async goLogin () {

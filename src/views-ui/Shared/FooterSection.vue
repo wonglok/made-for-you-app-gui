@@ -32,7 +32,10 @@
             <a target="_blank" href="https://icons8.com/ouch">Illustration by icons8.com/ouch ↗️</a>
           </div>
           <div class="text-md">
-            <a target="_blank" href="https://niceverynice.com">Design by niceverynice.com ↗️</a>
+            <a target="_blank" href="https://niceverynice.com">Design Template by niceverynice.com ↗️</a>
+          </div>
+          <div class="text-md">
+            <a target="_blank" href="https://www.wonglok.com/">Love by LokLok ↗️</a>
           </div>
         </div>
       </div>

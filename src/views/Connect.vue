@@ -2,7 +2,7 @@
   <div class=" bg-brand-secondary min-h-full">
     <div class="max-w-6xl mx-auto">
       <NavRow></NavRow>
-      <div class="mx-3 mt-10 lg:mx-0 lg:mt-0">
+      <div class="mx-12 mt-10 lg:mx-0 lg:mt-0">
         <LoginRegister @successful="goDash"></LoginRegister>
       </div>
     </div>
@@ -23,5 +23,4 @@ export default {
 </script>
 
 <style lang="postcss">
-
 </style>

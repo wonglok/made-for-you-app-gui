@@ -135,6 +135,26 @@ export const checkLogin = async () => {
   return !!Token.Profile
 }
 
+export const checkUsernameTaken = async ({ username }) => {
+  let headers = {}
+  if (Token.JWT) {
+    headers['Authorization'] = `Bearer ${Token.JWT}`
+  }
+  return axios({
+    method: 'POST',
+    baseURL: apiURL,
+    url: `/apis/checkUsernameTaken`,
+    headers,
+    data: {
+      username
+    }
+  }).then((resp) => {
+    return resp.data
+  }, (err) => {
+    return Promise.reject(err.response.data)
+  })
+}
+
 // export const createCard = async ({ title }) => {
 //   let finderID = CreationDevice.finder
 //   let creationID = CreationDevice.uuid
