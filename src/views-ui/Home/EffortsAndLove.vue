@@ -11,7 +11,7 @@
         <div class="lg:w-1/2 lg:order-2">
           <div class="lg:px-12">
             <div class=" font-title font-bold text-xl tracking-tight text-green-500">
-              The Meaningful Art & Craft.
+              The Meaningful Story Telling
             </div>
             <div class="py-4 font-title font-black text-5xl tracking-tighter leading-none text-black">
               Efforts + Love = Meaning in Life

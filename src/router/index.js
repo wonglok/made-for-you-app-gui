@@ -13,8 +13,8 @@ const routes = [
     component: () => import(/* webpackChunkName: "first" */ '../views/About.vue')
   },
   {
-    path: '/my-sites',
-    component: () => import(/* webpackChunkName: "first" */ '../views/MySites.vue')
+    path: '/profile',
+    component: () => import(/* webpackChunkName: "first" */ '../views/Profile.vue')
   },
   {
     path: '/connect',
@@ -22,14 +22,20 @@ const routes = [
   },
   {
     path: '/admin',
-    // beforeEnter: (to, from, next) => {
-    // },
     component: () => import(/* webpackChunkName: "first" */ '../views/CardAdmin.vue')
-  },
-  {
-    path: '/builder/:cardID',
-    component: () => import(/* webpackChunkName: "first" */ '../views/ARTMaker.vue')
   }
+
+  // ,
+  // {
+  //   path: '/builder/:siteID',
+  //   component: () => import(/* webpackChunkName: "first" */ '../views/SiteBuilder.vue')
+  // }
+
+  // {
+  //   path: '/site/:slug',
+  //   component: () => import(/* webpackChunkName: "first" */ '../views/SiteViewer.vue')
+  // }
+
   // {
   //   path: '',
   //   component: () => import(/* webpackChunkName: "first" */ '../views-ui/AppBox.vue'),
@@ -39,7 +45,6 @@ const routes = [
   //       name: 'home',
   //       component: () => import(/* webpackChunkName: "first" */ '../views/Home.vue')
   //     },
-
   //     // {
   //     //   path: '/lok',
   //     //   name: 'lok',

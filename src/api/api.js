@@ -24,14 +24,13 @@ export const CreationDevice = {
   finder: null,
   uuid: null
 }
-
 window.CreationDevice = CreationDevice
 
-export const CardList = {
-  list: []
+export const Token = {
+  NS: 'StrapiJwtProfile@' + apiURL,
+  JWT: false,
+  Profile: false
 }
-
-window.CardList = CardList
 
 export const genUUID = () => {
   const generator = require('uuid/v4')
@@ -53,263 +52,264 @@ export const isJSON = (json, version) => {
   return result
 }
 
-export const initCreationDevice = () => {
-  let NameSpace = apiURL + '@CreationDevice@'
+// export const initCreationDevice = () => {
+//   let NameSpace = apiURL + '@CreationDevice@'
+//   let stringFromLS = localStorage.getItem(NameSpace)
+//   if (stringFromLS === null || !isJSON(stringFromLS)) {
+//     localStorage.setItem(NameSpace, JSON.stringify({
+//       uuid: genUUID(),
+//       finder: genUUID()
+//     }))
+//     stringFromLS = localStorage.getItem(NameSpace)
+//   }
+//   let data = JSON.parse(stringFromLS)
+//   for (var kn in data) {
+//     CreationDevice[kn] = data[kn]
+//   }
+//   // console.log(CreationDevice)
+// }
+
+export const initJWT = () => {
+  let NameSpace = Token.NS
   let stringFromLS = localStorage.getItem(NameSpace)
   if (stringFromLS === null || !isJSON(stringFromLS)) {
     localStorage.setItem(NameSpace, JSON.stringify({
-      uuid: genUUID(),
-      finder: genUUID()
+      JWT: false,
+      Profile: false
     }))
     stringFromLS = localStorage.getItem(NameSpace)
   }
   let data = JSON.parse(stringFromLS)
   for (var kn in data) {
-    CreationDevice[kn] = data[kn]
+    Token[kn] = data[kn]
   }
-  console.log(CreationDevice)
+  // console.log(Token)
 }
 
-export const initCardList = () => {
-  let stringFromLS = localStorage.getItem(apiURL + '@CardList')
-  if (stringFromLS === null || !isJSON(stringFromLS)) {
-    localStorage.setItem(apiURL + '@CardList', JSON.stringify({
-      list: []
-    }))
-    stringFromLS = localStorage.getItem(apiURL + '@CardList')
-  }
-  let data = JSON.parse(stringFromLS)
-  for (var kn in data) {
-    CardList[kn] = data[kn]
-  }
-  console.log(CardList)
-
-  setInterval(() => {
-    let json = JSON.stringify(CardList)
-    if (json !== localStorage.getItem(apiURL + '@CardList')) {
-      localStorage.setItem(apiURL + '@CardList', json)
-    }
-  }, 500)
+export const saveToken = () => {
+  let NameSpace = Token.NS
+  localStorage.setItem(NameSpace, JSON.stringify(Token))
 }
 
-export const createCard = async ({ title }) => {
-  let finderID = CreationDevice.finder
-  let creationID = CreationDevice.uuid
-  let displayName = title
-  const cardResp = await axios({
-    method: 'POST',
-    baseURL: apiURL,
-    url: `/cards`,
-    data: {
-      finderID,
-      displayName
-    }
-  })
-
-  await axios({
-    method: 'POST',
-    baseURL: apiURL,
-    url: `/card-secrets`,
-    data: {
-      creationID,
-      finderID,
-      password: '',
-      card: cardResp.data
-    }
-  })
-
-  CardList.list.push(cardResp.data._id)
-
-  return cardResp.data
-}
-
-export const listRenderables = async ({ pageAt = 0, perPage = 25, search = '' }) => {
-  let qs = `_start=${pageAt * perPage}&_limit=${perPage}${search ? `&displayName_contains=` + encodeURIComponent(search) : ''}`
-  // let creationID = CreationDevice.uuid
-  const resp = await axios({
-    method: 'GET',
-    baseURL: apiURL,
-    url: `/renderables?${qs}`,
-    data: {
-    }
-  })
-
-  return resp.data
-}
-
-export const getCard = async ({ cardID }) => {
-  // let creationID = CreationDevice.uuid
-  const resp = await axios({
-    method: 'GET',
-    baseURL: apiURL,
-    url: `/cards/${cardID}`,
-    data: {
-    }
-  })
-
-  return resp.data
-}
-
-export const getDeviceCards = async () => {
-  // let IDs = CardList.list
-  // let qs = IDs.reduce((acc, item, key) => {
-  //   acc += `&id_in=${encodeURIComponent(item)}`
-  //   return acc
-  // }, '')
-
-  let finderID = CreationDevice.finder
-  let qs = `finderID=${encodeURIComponent(finderID)}`
-  const resp = await axios({
-    method: 'GET',
-    baseURL: apiURL,
-    url: `/cards?${qs}`,
-    data: {
-    }
-  })
-
-  return resp.data
-}
-
-export const updateCard = ({ cardID, password, data }) => {
-  let creationID = CreationDevice.uuid
-  return axios({
-    method: 'PUT',
-    baseURL: apiURL,
-    url: `/cards/${cardID}`,
-    data: {
-      ...data,
-      cardID,
-      password,
-      creationID
-    }
-  }).then((resp) => {
-    return resp.data
-  })
-}
-
-export const checkAdmin = async ({ cardID, password }) => {
-  let creationID = CreationDevice.uuid
+export const authorise = async ({ identifier, password }) => {
   const resp = await axios({
     method: 'POST',
     baseURL: apiURL,
-    url: `/cards-checkAdmin`,
+    url: `/auth/local`,
     data: {
-      password,
-      creationID,
-      cardID
+      identifier,
+      password
     }
   })
 
+  Token.JWT = resp.data.jwt
+  Token.Profile = resp.data.user
+  saveToken()
   return resp.data
 }
-
-export const setAdminPW = async ({ cardID, password, newPassword }) => {
-  let creationID = CreationDevice.uuid
+export const register = async ({ username, email, password }) => {
   const resp = await axios({
     method: 'POST',
     baseURL: apiURL,
-    url: `/cards-setAdminPW`,
+    url: `/auth/local/register`,
     data: {
-      password,
-      newPassword,
-      creationID,
-      cardID
+      username,
+      email,
+      password
     }
   })
 
+  Token.JWT = resp.data.jwt
+  Token.Profile = resp.data.user
+  saveToken()
   return resp.data
 }
 
-export const makeCardEditor = ({ cardID }) => {
-  let api = {
-    password: '',
-    card: false,
-    dirtJSON: false,
-    canEdit: false,
-    isCreationDevice: false,
-    notFound: false,
-    saving: false,
-    ready: false
-  }
-
-  api.listRenderables = ({ pageAt, perPage, search = '' }) => {
-    return listRenderables({ pageAt, perPage, search })
-  }
-
-  api.loadCard = ({ _id = cardID }) => {
-    return getCard({ cardID: _id })
-      .then((data) => {
-        api.card = data
-        api.dirtJSON = JSON.stringify(api.card)
-      }, () => {
-      })
-  }
-
-  api.checkAdmin = async ({ password = '' }) => {
-    return checkAdmin({ cardID, password, creationID: CreationDevice.uuid })
-      .then(() => {
-        api.canEdit = true
-      }, () => {
-        api.canEdit = false
-      })
-  }
-
-  api.checkDevice = async () => {
-    return checkAdmin({ cardID, password: '', creationID: CreationDevice.uuid })
-      .then(() => {
-        api.isCreationDevice = true
-      }, () => {
-        api.isCreationDevice = false
-      })
-  }
-
-  api.updatePW = async ({ password = '', newPassword = '' }) => {
-    return setAdminPW({ cardID: cardID, password, newPassword })
-  }
-
-  api.updateCard = () => {
-    if (api.card && api.canEdit) {
-      api.saving = true
-      return updateCard({ cardID, password: api.password, data: api.card })
-        .then(() => {
-          api.saving = false
-        })
-        .catch(() => {
-          api.saving = false
-        })
-    }
-  }
-
-  // auto save
-  setInterval(() => {
-    if (api.card && api.dirtJSON !== JSON.stringify(api.card)) {
-      api.dirtJSON = JSON.stringify(api.card)
-      api.updateCard()
-    }
-  }, 1000)
-
-  // init
-  api.bootup = () => {
-    api.ready = false
-    api.loadCard({ _id: cardID })
-      .then(() => {}, () => {
-        api.notFound = true
-      })
-    checkAdmin({ cardID, password: '', creationID: CreationDevice.uuid })
-      .then(() => {
-        api.canEdit = true
-        api.isCreationDevice = true
-      }, () => {
-        api.canEdit = false
-        api.isCreationDevice = false
-      })
-      .then(() => {
-        setTimeout(() => {
-          api.ready = true
-        }, 10)
-      })
-  }
-
-  api.bootup()
-  return api
+export const logout = () => {
+  Token.JWT = false
+  Token.Profile = false
+  saveToken()
 }
+
+export const checkLogin = async () => {
+  return !!Token.Profile
+}
+
+// export const createCard = async ({ title }) => {
+//   let finderID = CreationDevice.finder
+//   let creationID = CreationDevice.uuid
+//   let displayName = title
+//   const cardResp = await axios({
+//     method: 'POST',
+//     baseURL: apiURL,
+//     url: `/cards`,
+//     data: {
+//       finderID,
+//       displayName
+//     }
+//   })
+
+//   await axios({
+//     method: 'POST',
+//     baseURL: apiURL,
+//     url: `/card-secrets`,
+//     data: {
+//       creationID,
+//       finderID,
+//       password: '',
+//       card: cardResp.data
+//     }
+//   })
+
+//   return cardResp.data
+// }
+
+// export const listRenderables = async ({ pageAt = 0, perPage = 25, search = '' }) => {
+//   let qs = `_start=${pageAt * perPage}&_limit=${perPage}${search ? `&displayName_contains=` + encodeURIComponent(search) : ''}`
+//   // let creationID = CreationDevice.uuid
+//   const resp = await axios({
+//     method: 'GET',
+//     baseURL: apiURL,
+//     url: `/renderables?${qs}`,
+//     data: {
+//     }
+//   })
+
+//   return resp.data
+// }
+
+// export const getCard = async ({ cardID }) => {
+//   // let creationID = CreationDevice.uuid
+//   const resp = await axios({
+//     method: 'GET',
+//     baseURL: apiURL,
+//     url: `/cards/${cardID}`,
+//     data: {
+//     }
+//   })
+
+//   return resp.data
+// }
+
+// export const getDeviceCards = async () => {
+//   let finderID = CreationDevice.finder
+//   let qs = `finderID=${encodeURIComponent(finderID)}`
+//   const resp = await axios({
+//     method: 'GET',
+//     baseURL: apiURL,
+//     url: `/cards?${qs}`,
+//     data: {
+//     }
+//   })
+
+//   return resp.data
+// }
+
+// export const prepareCardHeader = ({ cardID }) => {
+//   let creationID = CreationDevice.uuid
+//   let headers = {
+//     'X-Creation-ID': creationID,
+//     'X-Card-ID': cardID
+//   }
+//   if (Token.JWT) {
+//     headers['Authorization'] = `Bearer ${Token.JWT}`
+//   }
+//   return headers
+// }
+
+// export const updateCard = ({ cardID, data }) => {
+//   let headers = prepareCardHeader({ cardID })
+
+//   return axios({
+//     method: 'PUT',
+//     baseURL: apiURL,
+//     url: `/cards/${cardID}`,
+//     headers,
+//     data: {
+//       ...data
+//     }
+//   }).then((resp) => {
+//     return resp.data
+//   })
+// }
+
+// export const checkAdmin = async ({ cardID }) => {
+//   let headers = prepareCardHeader({ cardID })
+//   const resp = await axios({
+//     method: 'POST',
+//     baseURL: apiURL,
+//     url: `/cards-checkAdmin`,
+//     headers,
+//     data: {
+//     }
+//   })
+
+//   return resp.data
+// }
+
+// export class SiteEditor {
+//   constructor ({ cardID }) {
+//     this.cardID = cardID
+//     this.card = false
+//     this.canEdit = false
+//     this.ready = false
+
+//     this.init()
+//   }
+
+//   init () {
+//     let finallyLogic = () => {
+//       if (this.card) {
+//         this.ready = true
+//       } else {
+//         this.ready = false
+//       }
+//     }
+//     return Promise.all([
+//       this.getCard(),
+//       this.checkAdmin()
+//     ]).then(finallyLogic, finallyLogic)
+//   }
+
+//   getCard () {
+//     return getCard({ cardID: this.cardID }).then(card => {
+//       this.card = card
+//       return card
+//     })
+//   }
+
+//   authorise ({ identifier, password }) {
+//     return authorise({ identifier, password })
+//       .then(() => {
+//         return this.checkAdmin()
+//       })
+//   }
+
+//   checkAdmin () {
+//     return checkAdmin({ cardID: this.cardID })
+//       .then(() => {
+//         this.canEdit = true
+//       }, () => {
+//         this.canEdit = false
+//       })
+//   }
+
+//   listRenderables ({ pageAt = 0, perPage = 25, search = '' }) {
+//     return listRenderables({ pageAt, perPage, search })
+//       .then(r => {
+//         console.log(r)
+//         return r
+//       })
+//   }
+
+//   syncUp ({ card = this.card } = { card: this.card }) {
+//     clearTimeout(this.tout)
+//     window.onbeforeunload = () => { return 'unsaved changes' }
+//     this.tout = setTimeout(() => {
+//       updateCard({ cardID: this.cardID, data: card })
+//         .then(() => {
+//           window.onbeforeunload = undefined
+//         })
+//     }, 150)
+//   }
+// }

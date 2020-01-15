@@ -1,16 +1,18 @@
 <template>
   <div class="flex">
-    <div class="logo-holder">
-      <img src="../../assets/images/logo-framed.svg" alt="MadeForYouAppLogo">
-    </div>
-    <div class="flex flex-col items-start justify-center adjust-some">
-      <div class="pl-2 text-xl font-title font-black text-black">
-        MadeForYouApp.com
+    <router-link class="flex" to="/">
+      <div class="logo-holder">
+        <img src="../../assets/images/logo-framed.svg" alt="MadeForYouAppLogo">
       </div>
-      <div class="pl-2 text-lg text-gray-700">
-        Your visual effect site builder.
+      <div class="flex flex-col items-start justify-center adjust-some">
+        <div class="pl-2 text-xl font-title font-black text-black">
+          MadeForYouApp.com
+        </div>
+        <div class="pl-2 text-lg text-gray-700">
+          Your visual effect site builder.
+        </div>
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
 

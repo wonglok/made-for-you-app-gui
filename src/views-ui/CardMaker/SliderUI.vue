@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vue-slider
+    <VueSlider
       v-model="value"
       :tooltip="'none'"
       :process-style="{ backgroundColor: 'pink' }"
@@ -9,32 +9,24 @@
       <template v-slot:dot="{ value, focus }">
         <div :class="['custom-dot', { focus }]"></div>
       </template>
-    </vue-slider>
+    </VueSlider>
   </div>
 </template>
 
-<style>
-  .custom-dot {
-    width: 50px;
-    height: 50px;
-    border-radius: 0;
-    background-color: pink;
-    transition: all .3s;
-    transform: translateY(8px) translateY(-25px);
-    border-radius: 50%;
-  }
-  .custom-dot:hover {
-    transform: translateY(8px) translateY(-25px)rotateZ(45deg);
-  }
-  .custom-dot.focus {
-    border-radius: 50%;
-  }
-</style>
-
 <script>
 export default {
+  props: {
+    point: {
+      default: 0
+    }
+  },
   components: {
-    VueSlider: require('vue-slider-component').default
+    VueSlider: require('vue-slider-component')
+  },
+  watch: {
+    value () {
+      this.$emit('point', this.value)
+    }
   },
   data: function () {
     return {
@@ -43,3 +35,23 @@ export default {
   }
 }
 </script>
+
+<style>
+  .custom-dot {
+    width: 43px;
+    height: 43px;
+    border-radius: 0;
+    background-color: pink;
+    transition: all .3s;
+    transform: translateY(8px) translateY(calc(-43px / 2));
+    border-radius: 50%;
+    text-align: center;
+    line-height: 43px;
+  }
+  .custom-dot:hover {
+    transform: translateY(8px) translateY(calc(-43px / 2));
+  }
+  .custom-dot.focus {
+    border-radius: 50%;
+  }
+</style>

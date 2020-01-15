@@ -2,15 +2,26 @@
   <div class=" bg-brand-secondary min-h-full">
     <div class="max-w-6xl mx-auto">
       <NavRow></NavRow>
-      <LoginRegister></LoginRegister>
+
+      <div>
+        Temp Sites Created on this machine.
+      </div>
+
     </div>
   </div>
 </template>
 
 <script>
+// import * as API from '../api/api'
 export default {
   components: {
-    ...require('../views-ui')
+    ...require('../index.js')
+  },
+  data () {
+    return {
+    }
+  },
+  async mounted () {
   }
 }
 </script>
