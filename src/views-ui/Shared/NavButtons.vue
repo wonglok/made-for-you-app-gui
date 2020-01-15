@@ -6,7 +6,7 @@
       </div>
     </router-link>
     <router-link exact-active-class="font-bold " to="/about">
-      <div class="mx-6 mr-3 hover:underline  cursor-pointer">
+      <div class="mx-6 mr-4 hover:underline  cursor-pointer">
         About Lok
       </div>
     </router-link>

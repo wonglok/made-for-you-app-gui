@@ -9,9 +9,9 @@
       </div>
     </div>
 
-    <div class="flex text-gray-600 pl-12">
-      No Login or Credit Card Required.
-    </div>
+    <!-- <div class="flex text-gray-600 pl-12">
+      Let's go!
+    </div> -->
 
     <!-- use the modal component, pass in the prop -->
     <PopupBox v-if="showLoading" @close="showLoading = false" :locked="true">
