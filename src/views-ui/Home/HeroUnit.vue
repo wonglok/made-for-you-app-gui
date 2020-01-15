@@ -14,16 +14,23 @@
         </div>
         <div class="lg:h-12"></div>
         <MakeCardCTA></MakeCardCTA>
+        <!-- <GoDash v-if="Token.Profile"></GoDash> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import * as API from '../../api/api'
 export default {
   components: {
     ...require('../')
     // CTAMakeCard: require('../Shared/CTAMakeCard.vue').default
+  },
+  data () {
+    return {
+      Token: API.Token
+    }
   }
 }
 </script>
@@ -33,7 +40,6 @@ export default {
   from {
     transform: translateY(-5px);
   }
-
   to{
     transform: translateY(5px);
   }

@@ -20,12 +20,12 @@
       </router-link>
       <router-link exact-active-class="font-bold " to="/about">
         <div class="my-12 mx-6 hover:underline  cursor-pointer">
-          Our Story
+          About Lok
         </div>
       </router-link>
-      <router-link exact-active-class="font-bold " to="/gallery" >
+      <router-link exact-active-class="font-bold " to="/connect" >
         <div class="my-12 mx-6 hover:underline  cursor-pointer">
-          Card Gallery
+          Register / Login
         </div>
       </router-link>
     </div>

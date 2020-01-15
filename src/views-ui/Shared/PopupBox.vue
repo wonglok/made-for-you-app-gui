@@ -18,6 +18,13 @@
         </transition>
     </div>
   </transition>
+
+  <!-- use the modal component, pass in the prop -->
+  <!-- <PopupBox v-if="showLoading" @close="showLoading = false" :locked="true">
+    <div>
+      <SpinnerGrid />
+    </div>
+  </PopupBox> -->
 </template>
 
 <script>
@@ -82,7 +89,7 @@ export default {
 }
 
 .fademodal-enter-active, .fademodal-leave-active {
-  transition: opacity 1s, transform 1s;
+  transition: opacity 0.5s, transform 0.5s;
   transform: scale(1.0);
 }
 .fademodal-enter, .fademodal-leave-to /* .fademodal-leave-active below version 2.1.8 */ {
@@ -91,7 +98,7 @@ export default {
 }
 
 .fadescale-enter-active, .fadescale-leave-active {
-  transition: opacity 1s, transform 1s;
+  transition: opacity 0.5s, transform 0.5s;
   transform: scale(1.0);
   transition-delay: 0.15s;
 }
