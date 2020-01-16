@@ -4,42 +4,50 @@ import * as API from '../api/api.js'
 
 Vue.use(VueRouter)
 
+let checkLogin = async (to, from, next) => {
+  if (await API.checkLogin()) {
+    next()
+  } else {
+    next({
+      path: '/connect',
+      query: {
+        redirect: to.fullPath
+      }
+    })
+  }
+}
+
 const routes = [
   {
     path: '/',
-    component: () => import(/* webpackChunkName: "first" */ '../views/Home.vue')
+    component: () => import(/* webpackChunkName: "first" */ '../views/HomePage.vue')
   },
   {
     path: '/about',
-    component: () => import(/* webpackChunkName: "first" */ '../views/About.vue')
-  },
-  {
-    path: '/profile',
-    beforeEnter: async (to, from, next) => {
-      if (await API.checkLogin()) {
-        next()
-      } else {
-        next({
-          path: '/connect',
-          query: {
-            redirect: to.fullPath
-          }
-        })
-      }
-    },
-    component: () => import(/* webpackChunkName: "first" */ '../views/Profile.vue')
+    component: () => import(/* webpackChunkName: "first" */ '../views/AboutPage.vue')
   },
   {
     path: '/connect',
-    component: () => import(/* webpackChunkName: "first" */ '../views/Connect.vue')
+    component: () => import(/* webpackChunkName: "first" */ '../views/ConnectPage.vue')
+  },
+  {
+    path: '/profile',
+    beforeEnter: checkLogin,
+    component: () => import(/* webpackChunkName: "first" */ '../views/ProfilePage.vue')
   },
   {
     path: '/admin',
-    component: () => import(/* webpackChunkName: "first" */ '../views/CardAdmin.vue')
+    beforeEnter: checkLogin,
+    component: () => import(/* webpackChunkName: "first" */ '../views/CardAdminPage.vue')
   },
   {
     path: '/site-editor/:slug/:siteID',
+    beforeEnter: checkLogin,
     component: () => import(/* webpackChunkName: "second" */ '../views/SiteEditorPage.vue')
+  },
+  {
+    path: '/site-id/:siteID',
+    component: () => import(/* webpackChunkName: "second" */ '../views/SiteViewerPage.vue')
   }
 
   // ,

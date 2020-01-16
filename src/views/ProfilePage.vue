@@ -5,8 +5,10 @@
       <!-- <div>
         Temp Sites Created on this machine.
       </div> -->
-      <CreateSite @ok="$refs['sites'] && $refs['sites'].$emit('load')"></CreateSite>
-      <ListSite ref="sites"></ListSite>
+      <div class="px-5">
+        <CreateSite @ok="$refs['sites'] && $refs['sites'].$emit('load')"></CreateSite>
+        <ListSite ref="sites"></ListSite>
+      </div>
     </div>
   </div>
 </template>

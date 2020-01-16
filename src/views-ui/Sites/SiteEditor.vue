@@ -1,7 +1,11 @@
 <template>
   <div>
-    SiteEditor
-    {{ siteID }}
+    <div>
+      SiteEditor {{ siteID }}
+    </div>
+    <div>
+      <CubicBezierEditor @update="(v) => { info = v }"></CubicBezierEditor>
+    </div>
   </div>
 </template>
 
@@ -9,6 +13,14 @@
 export default {
   props: {
     siteID: {}
+  },
+  data () {
+    return {
+      info: false
+    }
+  },
+  components: {
+    ...require('../index.js')
   }
 }
 </script>

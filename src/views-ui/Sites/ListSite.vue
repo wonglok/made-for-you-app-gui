@@ -35,9 +35,8 @@
       </tbody>
     </table>
 
-    <ConfirmName ref="removeSite">
-    </ConfirmName>
-
+    <ConfirmCode ref="removeSite">
+    </ConfirmCode>
   </div>
 </template>
 
@@ -80,8 +79,11 @@ export default {
     ago (v) {
       return moment(v).calendar()
     },
-    goView () {
-      console.log('go view')
+    goView (site) {
+      // console.log('go edit')
+      this.$router.push({
+        path: `/site-id/${site._id}`
+      })
     },
     goEdit (site) {
       // console.log('go edit')

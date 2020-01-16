@@ -191,7 +191,7 @@ export const removeSite = async ({ site }) => {
 
 export const listSite = ({ owner, pageAt = 0, perPage = 25, search = '' }) => {
   console.log(owner)
-  let qs = `_start=${pageAt * perPage}&_limit=${perPage}${search ? `&title_contains=` + encodeURIComponent(search) : ''}`
+  let qs = `_start=${pageAt * perPage}&_limit=${perPage}${search ? `&title_contains=` + encodeURIComponent(search) : ''}&_sort=createdAt:DESC`
   return axios({
     method: 'GET',
     baseURL: apiURL,
