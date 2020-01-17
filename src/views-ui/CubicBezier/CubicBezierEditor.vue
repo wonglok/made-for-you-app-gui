@@ -20,8 +20,8 @@
       <line :x1="0" :y1="height + paddingY * 0.4" :x2="width" :y2="height + paddingY * 0.4" style="stroke:#0af;stroke-width:1px;" />
       <line :x1="0" :y1="height + paddingY * 0.75" :x2="width" :y2="height + paddingY * 0.75" style="stroke:green;stroke-width:1px;" />
 
-      <line :x1="start.x" :y1="start.y" :x2="CP1.x" :y2="CP1.y" style="stroke:rgb(255,0,0);stroke-width:2px;" />
-      <line :x1="end.x" :y1="end.y" :x2="CP2.x" :y2="CP2.y" style="stroke:rgb(255, 0,0);stroke-width:2px;" />
+      <line :x1="start.x" :y1="start.y" :x2="CP1.x" :y2="CP1.y" style="stroke:rgba(255,0,0, 0.5);stroke-width:1px;" />
+      <line :x1="end.x" :y1="end.y" :x2="CP2.x" :y2="CP2.y" style="stroke:rgba(255, 0,0, 0.5);stroke-width:1px;" />
 
       <ControlPoint @change="send" :scale="scale" :width="width" :height="height" :point="CP1"></ControlPoint>
       <ControlPoint @change="send" :scale="scale" :width="width" :height="height" :point="CP2"></ControlPoint>
@@ -29,12 +29,13 @@
       <circle :cx="start.x" :cy="start.y" r="5" fill="red"/>
       <circle :cx="end.x" :cy="end.y" r="5" fill="red"/>
     </svg>
-    <p>
+    <div class="text-center text-xs">Bezier: {{ cubicBezier }}</div>
+    <!-- <p>
       Green = Linear Speed
     </p>
     <p>
       Blue = cubic-bezier({{ cubicBezier }});
-    </p>
+    </p> -->
     <!--
     <p>
       {{ CP1 }}
@@ -47,12 +48,20 @@
 <script>
 import BezierEasing from 'bezier-easing'
 export default {
+  props: {
+    easing: {
+      default () {
+        return [0.11, 0.63, 0.10, 0.92]
+      }
+    }
+  },
   components: {
     ...require('../index.js')
   },
   data () {
-    let ww = 280
-    let hh = 280
+    let es = this.easing
+    let ww = 180
+    let hh = 180
     let padX = 30
     let padY = 30
     return {
@@ -73,12 +82,12 @@ export default {
       width: ww,
       height: hh,
       CP1: {
-        x: 42,
-        y: 80
+        x: es[0] * ww,
+        y: (1.0 - es[1]) * hh
       },
       CP2: {
-        x: 81,
-        y: 43
+        x: (es[2]) * ww,
+        y: (1.0 - es[3]) * hh
       },
       tt: 0,
       tester: 0

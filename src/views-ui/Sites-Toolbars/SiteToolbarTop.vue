@@ -1,7 +1,12 @@
 <template>
   <div class="site-tool-bar-top overflow-hidden">
     <div class=" float-left">
-      <ToolBarIcon :isOn="app.mode === 'code'" @on="app.mode = 'code'; $forceUpdate()" class="ml-3">
+      <ToolBarIcon :isOn="app.mode === 'home'" @on="$router.push('/profile')" class="ml-3">
+        <img slot="icon" src="./img/home.svg" alt="Home">
+        <span slot="name">Home</span>
+      </ToolBarIcon>
+
+      <ToolBarIcon :isOn="app.mode === 'code'" @on="app.mode = 'code'; $forceUpdate()" class="">
         <img slot="icon" src="./img/code.svg" alt="Code">
         <span slot="name">Code</span>
       </ToolBarIcon>
@@ -17,7 +22,6 @@
       </ToolBarIcon>
     </div>
     <div class="float-right">
-
       <ToolBarIcon class="" :isOn="app.mode === 'snippet'" @on="app.mode = 'snippet'; $forceUpdate()" >
         <img slot="icon" src="./img/snippet.svg" alt="Snippet">
         <span slot="name">Snippet</span>

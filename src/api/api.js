@@ -1,5 +1,7 @@
 import EventEmitter from 'events'
 import axios from 'axios'
+import BezierEasing from 'bezier-easing'
+
 // import slugify from 'slugify'
 
 export const guiURL = `https://madeforyouapp.com`
@@ -423,4 +425,8 @@ export const makeEditorApp = async () => {
   })
 
   return api
+}
+
+export const bezierMaker = ([b0, b1, b2, b3]) => {
+  return BezierEasing(b0, b1, b2, b3)
 }

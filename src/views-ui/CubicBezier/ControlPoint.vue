@@ -1,5 +1,5 @@
 <template>
-  <circle v-if="point" ref="control-point" @mousedown="onMD" class="cursor-move" :cx="point.x" :cy="point.y" r="15" fill="pink" />
+  <circle v-if="point" ref="control-point" @mousedown="onMD" class="cursor-move" :cx="point.x" :cy="point.y" r="10" stroke="rgba(255,0,0,0.5)" fill="rgb(255, 0,0, 1)" />
 </template>
 
 <script>

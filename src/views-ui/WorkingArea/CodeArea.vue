@@ -1,8 +1,9 @@
 <template>
   <div class="w-full h-full flex">
-    <OptionsCol></OptionsCol>
+    <OptionsCol>
+      <CubicBezierEditor></CubicBezierEditor>
+    </OptionsCol>
     TODO: CodeArea
-
   </div>
 </template>
 

@@ -22,7 +22,7 @@ export default {
 
 <style scoped>
 .icon-top{
-  padding-top: 6px;
+  padding-top: 8px;
 }
 .icon-font{
   padding-top: 2px;
@@ -31,8 +31,13 @@ export default {
 .icon-holder{
   height: 27px;
 }
+.light{
+  opacity: 0;
+  transition: opacity 1s;
+}
 .light.on{
-  margin-top: 1px;
+  opacity: 1;
+  margin-top: 0px;
   border-radius: 5px;
   width: 3px;
   height: 3px;
