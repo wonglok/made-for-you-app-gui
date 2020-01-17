@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="20px" viewBox="0 0 22 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="2.83467061%" id="linearGradient-1">
+            <stop stop-color="#D2D2D2" offset="0%"></stop>
+            <stop stop-color="#E5E5E5" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="TitleBar" transform="translate(-1081.000000, -15.000000)">
+            <rect id="Rectangle" fill="url(#linearGradient-1)" x="0" y="0" width="1280" height="63"></rect>
+            <g id="Group" transform="translate(1081.000000, 15.000000)" fill="#909090" fill-rule="nonzero">
+                <path d="M22,8.826 L22,11.175 C20.438,11.175 19,12.487 19,14.032 C19,16.213 20.281,20 13,20 L13,17.998 C17.917,17.998 16.966,16.398 16.966,14.031 C16.966,11.937 18.177,10.531 19.244,10 C18.177,9.469 16.966,8.562 16.966,6.688 C16.966,4.316 17.906,1.996 13,2.002 L13,4.4408921e-15 C20.285,4.4408921e-15 19,4.506 19,6.688 C19,8.232 20.438,8.826 22,8.826 Z M3,6.688 C3,4.506 1.715,8.8817842e-16 9,8.8817842e-16 L9,2.002 C4.094,1.995 5.034,4.315 5.034,6.688 C5.034,8.563 3.823,9.469 2.756,10 C3.823,10.531 5.034,11.938 5.034,14.031 C5.034,16.398 4.083,17.998 9,17.998 L9,20 C1.719,20 3,16.213 3,14.031 C3,12.486 1.562,11.174 0,11.174 L0,8.825 C1.562,8.826 3,8.232 3,6.688 L3,6.688 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

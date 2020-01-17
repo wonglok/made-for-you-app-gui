@@ -1,3 +1,4 @@
+import EventEmitter from 'events'
 import axios from 'axios'
 // import slugify from 'slugify'
 
@@ -399,3 +400,27 @@ export const onResError = (err) => {
 //     }, 150)
 //   }
 // }
+
+export const makeEditorApp = async () => {
+  let bus = new EventEmitter()
+  let handler = {
+    get (obj, prop) {
+      return obj[prop]
+    },
+    set (obj, prop, val) {
+      let old = obj[prop]
+      obj[prop] = val
+      bus.emit(`set:${prop}`, val, old)
+      return true
+    }
+  }
+  let api = new Proxy({}, handler)
+  api.previewURL = ''
+  api.mode = 'code'
+
+  bus.on('set:mode', (newVal, oldVal) => {
+    console.log(newVal, oldVal)
+  })
+
+  return api
+}

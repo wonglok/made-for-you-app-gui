@@ -1,6 +1,6 @@
 <template>
-  <div>
-    SitePageList
+  <div class="w-full h-full">
+    TODO: Store Area
   </div>
 </template>
 
@@ -10,6 +10,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="postcss">
 
 </style>

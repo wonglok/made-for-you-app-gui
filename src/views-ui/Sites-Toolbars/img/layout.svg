@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="2.83467061%" id="linearGradient-1">
+            <stop stop-color="#D2D2D2" offset="0%"></stop>
+            <stop stop-color="#E5E5E5" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="TitleBar" transform="translate(-138.000000, -11.000000)">
+            <rect id="Rectangle" fill="url(#linearGradient-1)" x="0" y="0" width="1280" height="63"></rect>
+            <g id="Group" transform="translate(138.000000, 11.000000)" fill="#909090" fill-rule="nonzero">
+                <path d="M18,10.031 L18,3.608 L11.964,4.4408921e-16 L6,3.569 L6,10.068 L0,13.292 L0,20.508 L6.136,24 L12,20.607 L17.864,24 L24,20.508 L24,13.331 L18,10.031 Z M16.857,10.067 L12.536,12.451 L12.536,7.495 L16.857,4.956 L16.857,10.067 Z M11.962,1.357 L16.234,3.953 L11.966,6.462 L7.79,3.908 L11.962,1.357 Z M11.393,7.491 L11.393,12.451 L7.143,10.03 L7.143,4.896 L11.393,7.491 L11.393,7.491 Z M5.563,22.333 L1.142,19.794 L1.142,14.618 L5.563,17.213 L5.563,22.333 Z M1.79,13.631 L6.568,11.101 L10.805,13.518 L6.137,16.185 L1.79,13.631 Z M6.707,17.218 L11.429,14.521 L11.429,19.577 L6.707,22.334 L6.707,17.218 L6.707,17.218 Z M17.293,22.333 L12.571,19.576 L12.571,14.46 L17.293,17.214 L17.293,22.333 Z M13.219,13.472 L17.466,11.082 L22.235,13.676 L17.868,16.185 L13.219,13.472 L13.219,13.472 Z M22.857,19.795 L18.436,22.334 L18.436,17.218 L22.857,14.68 L22.857,19.795 L22.857,19.795 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="2.83467061%" id="linearGradient-1">
+            <stop stop-color="#D2D2D2" offset="0%"></stop>
+            <stop stop-color="#E5E5E5" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="TitleBar" transform="translate(-1135.000000, -13.000000)">
+            <rect id="Rectangle" fill="url(#linearGradient-1)" x="0" y="0" width="1280" height="63"></rect>
+            <g id="Group" transform="translate(1135.000000, 13.000000)" fill="#909090" fill-rule="nonzero">
+                <path d="M9.939,0 L9,4.971 L9,6.069 C9,7.135 8.067,8 7,8 C5.933,8 5,7.135 5,6.068 L5,4.971 L7.996,0 L9.939,0 Z M6.887,0 L4,4.971 L4,6.069 C4,7.135 3.067,8 2,8 C0.933,8 0,7.135 0,6.068 L0,4.971 L4.874,0 L6.887,0 Z M24,6.068 C24,7.135 23.067,8 22,8 C20.933,8 20,7.067 20,6 L20,4.902 L17.113,0 L19.127,0 L24,4.971 L24,6.068 Z M14,4.9 L14,5.998 C14,7.064 13.067,8 12,8 C10.933,8 10,7.067 10,6 L10,4.902 L11.047,-1.33226763e-15 L12.952,-1.33226763e-15 L14,4.9 Z M16.004,-1.77635684e-15 L18.9970008,5.002 L18.9970008,6.1 C18.998,7.167 18.067,8 17,8 C15.933,8 15,7.067 15,6 L15,4.902 L14.061,-1.77635684e-15 L16.004,-1.77635684e-15 Z M1,10 L1,24 L11,24 L11,22 L3,22 L3,12 L21,12 L21,24 L23,24 L23,10 L1,10 Z M19,14 L13,14 L13,24 L19,24 L19,14 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

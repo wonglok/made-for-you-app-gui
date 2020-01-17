@@ -14,15 +14,10 @@
       <!-- <circle ref="cP1" class="cursor-move" cx="200" cy="200" r="10" fill="green"/> -->
       <!-- <circle ref="cP2" class="cursor-move" cx="400" cy="200" r="10" fill="green"/> -->
 
-      <!-- <path fill="none" stroke-width="2px" stroke="#0af" :d="`
-      M ${curve.x},${height}
-      L ${curve.x},${curve.y}
-      L 0, ${curve.y}
-      `"></path> -->
-
-      <circle :cx="width - curve.y" :cy="height + paddingY * 0.35" r="5" fill="#0af"/>
+      <circle :cx="width * tester" :cy="height + paddingY * 0.4" r="5" fill="#0af"/>
       <circle :cx="tt * width" :cy="height + paddingY * 0.75" r="5" fill="green"/>
-      <line :x1="0" :y1="height + paddingY * 0.35" :x2="width" :y2="height + paddingY * 0.35" style="stroke:#0af;stroke-width:1px;" />
+
+      <line :x1="0" :y1="height + paddingY * 0.4" :x2="width" :y2="height + paddingY * 0.4" style="stroke:#0af;stroke-width:1px;" />
       <line :x1="0" :y1="height + paddingY * 0.75" :x2="width" :y2="height + paddingY * 0.75" style="stroke:green;stroke-width:1px;" />
 
       <line :x1="start.x" :y1="start.y" :x2="CP1.x" :y2="CP1.y" style="stroke:rgb(255,0,0);stroke-width:2px;" />
@@ -61,10 +56,6 @@ export default {
     let padX = 30
     let padY = 30
     return {
-      curve: {
-        x: 0,
-        y: 0
-      },
       scale: {
         x: (ww + padX * 2) / ww,
         y: (hh + padY * 2) / hh
@@ -89,7 +80,8 @@ export default {
         x: 81,
         y: 43
       },
-      tt: 0
+      tt: 0,
+      tester: 0
     }
   },
   computed: {
@@ -98,6 +90,9 @@ export default {
     },
     cubicBezier () {
       return this.cubicBezierArray.map(e => e.toFixed(2)).join(', ')
+    },
+    easingFunction () {
+      return this.makeEasingFn()
     }
   },
   mounted () {
@@ -107,8 +102,11 @@ export default {
       if (this.tt > 1) {
         this.tt = 0
       }
-      this.curve = this.plotter(this.tt, this.start, this.CP1, this.CP2, this.end)
+
+      this.tester = this.easingFunction(this.tt)
     }, 1000 / 60)
+
+    this.send()
   },
   methods: {
     makeEasingFn () {
@@ -129,10 +127,7 @@ export default {
       return { x, y }
     },
     send () {
-      this.$emit('update', {
-        fnc: this.makeEasingFn(),
-        val: this.cubicBezierArray
-      })
+      this.$emit('easing', this.cubicBezierArray.slice())
     }
   }
 }

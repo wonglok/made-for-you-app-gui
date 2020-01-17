@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="18px" viewBox="0 0 24 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="2.83467061%" id="linearGradient-1">
+            <stop stop-color="#D2D2D2" offset="0%"></stop>
+            <stop stop-color="#E5E5E5" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="TitleBar" transform="translate(-1183.000000, -16.000000)">
+            <rect id="Rectangle" fill="url(#linearGradient-1)" x="0" y="0" width="1280" height="63"></rect>
+            <g id="Group" transform="translate(1183.000000, 16.000000)" fill="#909090" fill-rule="nonzero">
+                <path d="M9,9 C9,8.448 9.448,8 10.001,8 C10.554,8 11,8.448 11,9 C11,9.552 10.554,10 10.001,10 C9.448,10 9,9.552 9,9 Z M15.2,9 L13.5,11.6 L12.2,10 L9,14 L19,14 L15.2,9 Z M21,2 L21,0 L0,0 L0,15 L2,15 L2,2 L21,2 Z M24,4 L24,18 L4,18 L4,4 L24,4 Z M22,6 L6,6 L6,16 L22,16 L22,6 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
