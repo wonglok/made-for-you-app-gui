@@ -29,7 +29,7 @@
       <circle :cx="start.x" :cy="start.y" r="5" fill="red"/>
       <circle :cx="end.x" :cy="end.y" r="5" fill="red"/>
     </svg>
-    <div class="text-center text-xs">Bezier: {{ cubicBezier }}</div>
+    <div class="text-center text-xs text-gray-500">Bezier: {{ cubicBezier }}</div>
     <!-- <p>
       Green = Linear Speed
     </p>
@@ -121,20 +121,20 @@ export default {
     makeEasingFn () {
       return BezierEasing.apply({}, this.cubicBezierArray)
     },
-    plotter (t, p0, p1, p2, p3) {
-      var cX = 3 * (p1.x - p0.x)
-      var bX = 3 * (p2.x - p1.x) - cX
-      var aX = p3.x - p0.x - cX - bX
+    // plotter (t, p0, p1, p2, p3) {
+    //   var cX = 3 * (p1.x - p0.x)
+    //   var bX = 3 * (p2.x - p1.x) - cX
+    //   var aX = p3.x - p0.x - cX - bX
 
-      var cY = 3 * (p1.y - p0.y)
-      var bY = 3 * (p2.y - p1.y) - cY
-      var aY = p3.y - p0.y - cY - bY
+    //   var cY = 3 * (p1.y - p0.y)
+    //   var bY = 3 * (p2.y - p1.y) - cY
+    //   var aY = p3.y - p0.y - cY - bY
 
-      var x = (aX * Math.pow(t, 3)) + (bX * Math.pow(t, 2)) + (cX * t) + p0.x
-      var y = (aY * Math.pow(t, 3)) + (bY * Math.pow(t, 2)) + (cY * t) + p0.y
+    //   var x = (aX * Math.pow(t, 3)) + (bX * Math.pow(t, 2)) + (cX * t) + p0.x
+    //   var y = (aY * Math.pow(t, 3)) + (bY * Math.pow(t, 2)) + (cY * t) + p0.y
 
-      return { x, y }
-    },
+    //   return { x, y }
+    // },
     send () {
       this.$emit('easing', this.cubicBezierArray.slice())
     }
