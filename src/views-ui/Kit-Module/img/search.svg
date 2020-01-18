@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Pro-Editor" transform="translate(-9.000000, -73.000000)" fill="#000000">
+            <g id="Group" transform="translate(9.000000, 73.000000)">
+                <path d="M7.9265,8.28 C7.085,9.0385 5.971,9.5 4.75,9.5 C2.1285,9.5 0,7.3715 0,4.75 C0,2.1285 2.1285,0 4.75,0 C7.3715,0 9.5,2.1285 9.5,4.75 C9.5,5.971 9.0385,7.085 8.28,7.9265 L12,11.6465 L11.6465,12 L7.9265,8.28 Z M4.75,0.5 C7.0955,0.5 9,2.4045 9,4.75 C9,7.0955 7.0955,9 4.75,9 C2.4045,9 0.5,7.0955 0.5,4.75 C0.5,2.4045 2.4045,0.5 4.75,0.5 Z" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

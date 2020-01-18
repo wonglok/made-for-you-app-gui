@@ -1,0 +1,96 @@
+<template>
+  <div>
+    <ColumnHeader>
+      <div class="w-full h-full flex justify-between relative">
+        <div class="inline-flex justify-center items-center ml-2">
+          <img class="cursor-pointer" src="./img/search.svg" />
+        </div>
+
+        <div class="inline-flex justify-start items-center pl-1 pr-1">
+          <input class="input-filter text-xs" type="text" v-model="query" placeholder="All Modules" />
+        </div>
+
+        <div class="inline-flex justify-center items-center mr-2">
+          <img class="cursor-pointer" src="./img/plus.svg" @click="$root.$emit('close-all-dark-overlay'); show.createModule = true; " />
+        </div>
+
+        <CreateModule :show="show" :app="app"></CreateModule>
+      </div>
+    </ColumnHeader>
+    <div>
+      <div class="text-sm ml-2 mt-3 text-gray-600 font-bold" v-if="modules.filter(filterQuery).filter(m => m.type === 'page').length > 0">
+        Pages
+      </div>
+      <div class="" :key="mod._id" v-for="mod in modules.filter(filterQuery).filter(m => m.type === 'page')">
+        <ModuleEntry :app="app" @select="v => app.selected.moduleID = v._id" :mod="mod"></ModuleEntry>
+      </div>
+      <div class="text-sm ml-2 mt-3 text-gray-600 font-bold" v-if="modules.filter(filterQuery).filter(m => m.type === 'code').length > 0">
+        Code
+      </div>
+      <div class="" :key="mod._id" v-for="mod in modules.filter(filterQuery).filter(m => m.type === 'code')">
+        <ModuleEntry :app="app" @select="v => app.selected.moduleID = v._id" :mod="mod"></ModuleEntry>
+      </div>
+      <!-- {{ modules }} -->
+    </div>
+  </div>
+</template>
+
+<script>
+import * as API from '../../api/api'
+export default {
+  props: {
+    app: {
+      require: true
+    }
+  },
+  components: {
+    ...require('../index.js')
+  },
+  data () {
+    return {
+      show: {
+        createModule: false
+      },
+      query: ''
+    }
+  },
+  computed: {
+    modules () {
+      return this.app.modules
+    }
+  },
+  methods: {
+    filterQuery (mod) {
+      if (!this.query) {
+        return true
+      } else {
+        let q = this.query
+        let name = `@${mod.type}-${mod.key}`
+        if (name.indexOf(q) !== -1) {
+          return true
+        }
+      }
+    },
+    addModule ({ type = 'code' }) {
+      API.createModule({
+        key: `justCreated`,
+        type: type,
+        site: this.app.site
+      }).then(() => {
+        return API.getSiteModules({ siteID: this.app.siteID })
+          .then((data) => {
+            this.app.modules = data
+          })
+      })
+      this.show.createModule = false
+    }
+  }
+}
+</script>
+
+<style scoped>
+.input-filter{
+  background-color: #FAFAFA;
+  /* border-bottom: silver solid 1px; */
+}
+</style>

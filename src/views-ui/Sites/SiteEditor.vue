@@ -4,18 +4,23 @@
 
     <div class="app-content flex flex-row">
       <div class="nav-col">
+        <ModuleColumn :app="app"></ModuleColumn>
+      </div>
 
-      </div>
       <div class="working-area">
-        <CodeArea v-if="app.mode === 'code'"></CodeArea>
-        <AssetArea v-if="app.mode === 'asset'"></AssetArea>
-        <PreviewArea v-if="app.mode === 'preview'"></PreviewArea>
-        <Layout3DArea v-if="app.mode === 'layout'"></Layout3DArea>
-        <TimelineArea v-if="app.mode === 'timeline'"></TimelineArea>
-        <SnippetArea v-if="app.mode === 'snippet'"></SnippetArea>
-        <StoreArea v-if="app.mode === 'store'"></StoreArea>
+        <ModuleArea :app="app" v-if="app.mode === 'module'"></ModuleArea>
+        <SettingsArea :app="app" v-if="app.mode === 'settings'"></SettingsArea>
+        <AssetArea :app="app" v-if="app.mode === 'asset'"></AssetArea>
+        <PreviewArea :app="app" v-if="app.mode === 'preview'"></PreviewArea>
+        <Layout3DArea :app="app" v-if="app.mode === 'layout'"></Layout3DArea>
+        <TimelineArea :app="app" v-if="app.mode === 'timeline'"></TimelineArea>
+        <SnippetArea :app="app" v-if="app.mode === 'snippet'"></SnippetArea>
+        <StoreArea :app="app" v-if="app.mode === 'store'"></StoreArea>
       </div>
-      <div class="preview-col"></div>
+
+      <div class="preview-col">
+        <PreviewPhone :app="app"></PreviewPhone>
+      </div>
     </div>
 
     <!-- <div>
@@ -24,6 +29,16 @@
     <div>
       <!-- {{ easing }} -->
       <!-- <CubicBezierEditor @easing="(v) => { easing = v }"></CubicBezierEditor> -->
+    </div>
+  </div>
+  <div v-else-if="app === null" class="">
+    <div class="h-full w-full text-3xl flex justify-center items-center flex-col">
+      <div>
+        Sorry, Site Not Found 😭
+      </div>
+      <div @click="$router.go(-1)" class="hover:underline cursor-pointer">
+        ⬅️ Back
+      </div>
     </div>
   </div>
 </template>
@@ -48,7 +63,10 @@ export default {
   },
   methods: {
     async init () {
-      this.app = await API.makeEditorApp()
+      this.app = await API.makeEditorApp({ siteID: this.siteID, userID: API.Token.Profile._id })
+        .then(api => api, () => {
+          return null
+        })
     }
   }
 }

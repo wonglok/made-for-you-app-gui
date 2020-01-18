@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <svg class="" :viewBox="`${-1 * paddingX} ${-1 * paddingY} ${width + paddingX * 2} ${height + paddingY * 2}`" :width="width" :height="height" xmlns="http://www.w3.org/2000/svg">
-
+  <div class="inline-block">
+    <svg :viewBox="`${-1 * paddingX} ${-1 * paddingY} ${width + paddingX * 2} ${height + paddingY * 2}`" :width="width" :height="height" xmlns="http://www.w3.org/2000/svg">
       <path :d="`
       M ${start.x} ${start.y}
 
@@ -9,7 +8,7 @@
         ${CP2.x} ${CP2.y},
 
       ${end.x} ${end.y}
-      `" stroke="gray" fill="transparent" stroke-width="2" />
+      `" stroke="rgb(0,0,0,0.5)" fill="transparent" stroke-width="2" />
 
       <!-- <circle ref="cP1" class="cursor-move" cx="200" cy="200" r="10" fill="green"/> -->
       <!-- <circle ref="cP2" class="cursor-move" cx="400" cy="200" r="10" fill="green"/> -->
@@ -20,8 +19,8 @@
       <line :x1="0" :y1="height + paddingY * 0.4" :x2="width" :y2="height + paddingY * 0.4" style="stroke:#0af;stroke-width:1px;" />
       <line :x1="0" :y1="height + paddingY * 0.75" :x2="width" :y2="height + paddingY * 0.75" style="stroke:green;stroke-width:1px;" />
 
-      <line :x1="start.x" :y1="start.y" :x2="CP1.x" :y2="CP1.y" style="stroke:rgba(255,0,0, 0.5);stroke-width:1px;" />
-      <line :x1="end.x" :y1="end.y" :x2="CP2.x" :y2="CP2.y" style="stroke:rgba(255, 0,0, 0.5);stroke-width:1px;" />
+      <line :x1="start.x" :y1="start.y" :x2="CP1.x" :y2="CP1.y" style="stroke:rgba(255,0,0, 0.5);stroke-width:2px;" />
+      <line :x1="end.x" :y1="end.y" :x2="CP2.x" :y2="CP2.y" style="stroke:rgba(255, 0,0, 0.5);stroke-width:2px;" />
 
       <ControlPoint @change="send" :scale="scale" :width="width" :height="height" :point="CP1"></ControlPoint>
       <ControlPoint @change="send" :scale="scale" :width="width" :height="height" :point="CP2"></ControlPoint>
@@ -29,7 +28,7 @@
       <circle :cx="start.x" :cy="start.y" r="5" fill="red"/>
       <circle :cx="end.x" :cy="end.y" r="5" fill="red"/>
     </svg>
-    <div class="text-center text-xs text-gray-500">Bezier: {{ cubicBezier }}</div>
+    <div class="text-center text-xs text-gray-500" :style="{ width: width + 'px' }">Bezier: {{ cubicBezier }}</div>
     <!-- <p>
       Green = Linear Speed
     </p>

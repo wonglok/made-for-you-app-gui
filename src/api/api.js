@@ -165,29 +165,17 @@ export const createSite = ({ title, owner }) => {
     url: `/sites`,
     headers: getHeaders(),
     data: {
-      owner,
+      userID: owner._id,
       title
     }
   }).then(onResOK, onResError)
 }
 
-export const removeVisuals = async () => {
-  console.log('TODO: removeVisuals')
-}
-
-export const removePages = async () => {
-  console.log('TODO: removePages')
-}
-
-export const removeSite = async ({ site }) => {
-  await Promise.all([
-    removeVisuals(site),
-    removePages(site)
-  ])
+export const removeSite = async ({ owner, site }) => {
   return axios({
     method: 'DELETE',
     baseURL: apiURL,
-    url: `/sites/${site._id}`,
+    url: `/sites/${site._id}?userID=${owner._id}`,
     headers: getHeaders()
   }).then(onResOK, onResError)
 }
@@ -198,7 +186,7 @@ export const listSite = ({ owner, pageAt = 0, perPage = 25, search = '' }) => {
   return axios({
     method: 'GET',
     baseURL: apiURL,
-    url: `/sites?owner._id=${owner._id}&${qs}`,
+    url: `/sites?userID=${owner._id}&${qs}`,
     headers: getHeaders()
   }).then(onResOK, onResError)
 }
@@ -219,193 +207,14 @@ export const onResError = (err) => {
     err.response.data.message[0].messages[0] &&
     err.response.data.message[0].messages[0].message
   ) {
-    msg = err.response.data.message[0].messages[0].message
+    msg = err.response.data.message[0].messages[0]
   }
   return Promise.reject(msg)
 }
 
-// export const createCard = async ({ title }) => {
-//   let finderID = CreationDevice.finder
-//   let creationID = CreationDevice.uuid
-//   let displayName = title
-//   const cardResp = await axios({
-//     method: 'POST',
-//     baseURL: apiURL,
-//     url: `/cards`,
-//     data: {
-//       finderID,
-//       displayName
-//     }
-//   })
-
-//   await axios({
-//     method: 'POST',
-//     baseURL: apiURL,
-//     url: `/card-secrets`,
-//     data: {
-//       creationID,
-//       finderID,
-//       password: '',
-//       card: cardResp.data
-//     }
-//   })
-
-//   return cardResp.data
-// }
-
-// export const listRenderables = async ({ pageAt = 0, perPage = 25, search = '' }) => {
-//   let qs = `_start=${pageAt * perPage}&_limit=${perPage}${search ? `&displayName_contains=` + encodeURIComponent(search) : ''}`
-//   // let creationID = CreationDevice.uuid
-//   const resp = await axios({
-//     method: 'GET',
-//     baseURL: apiURL,
-//     url: `/renderables?${qs}`,
-//     data: {
-//     }
-//   })
-
-//   return resp.data
-// }
-
-// export const getCard = async ({ cardID }) => {
-//   // let creationID = CreationDevice.uuid
-//   const resp = await axios({
-//     method: 'GET',
-//     baseURL: apiURL,
-//     url: `/cards/${cardID}`,
-//     data: {
-//     }
-//   })
-
-//   return resp.data
-// }
-
-// export const getDeviceCards = async () => {
-//   let finderID = CreationDevice.finder
-//   let qs = `finderID=${encodeURIComponent(finderID)}`
-//   const resp = await axios({
-//     method: 'GET',
-//     baseURL: apiURL,
-//     url: `/cards?${qs}`,
-//     data: {
-//     }
-//   })
-
-//   return resp.data
-// }
-
-// export const prepareCardHeader = ({ cardID }) => {
-//   let creationID = CreationDevice.uuid
-//   let headers = {
-//     'X-Creation-ID': creationID,
-//     'X-Card-ID': cardID
-//   }
-//   if (Token.JWT) {
-//     headers['Authorization'] = `Bearer ${Token.JWT}`
-//   }
-//   return headers
-// }
-
-// export const updateCard = ({ cardID, data }) => {
-//   let headers = prepareCardHeader({ cardID })
-
-//   return axios({
-//     method: 'PUT',
-//     baseURL: apiURL,
-//     url: `/cards/${cardID}`,
-//     headers,
-//     data: {
-//       ...data
-//     }
-//   }).then((resp) => {
-//     return resp.data
-//   })
-// }
-
-// export const checkAdmin = async ({ cardID }) => {
-//   let headers = prepareCardHeader({ cardID })
-//   const resp = await axios({
-//     method: 'POST',
-//     baseURL: apiURL,
-//     url: `/cards-checkAdmin`,
-//     headers,
-//     data: {
-//     }
-//   })
-
-//   return resp.data
-// }
-
-// export class SiteEditor {
-//   constructor ({ cardID }) {
-//     this.cardID = cardID
-//     this.card = false
-//     this.canEdit = false
-//     this.ready = false
-
-//     this.init()
-//   }
-
-//   init () {
-//     let finallyLogic = () => {
-//       if (this.card) {
-//         this.ready = true
-//       } else {
-//         this.ready = false
-//       }
-//     }
-//     return Promise.all([
-//       this.getCard(),
-//       this.checkAdmin()
-//     ]).then(finallyLogic, finallyLogic)
-//   }
-
-//   getCard () {
-//     return getCard({ cardID: this.cardID }).then(card => {
-//       this.card = card
-//       return card
-//     })
-//   }
-
-//   authorise ({ identifier, password }) {
-//     return authorise({ identifier, password })
-//       .then(() => {
-//         return this.checkAdmin()
-//       })
-//   }
-
-//   checkAdmin () {
-//     return checkAdmin({ cardID: this.cardID })
-//       .then(() => {
-//         this.canEdit = true
-//       }, () => {
-//         this.canEdit = false
-//       })
-//   }
-
-//   listRenderables ({ pageAt = 0, perPage = 25, search = '' }) {
-//     return listRenderables({ pageAt, perPage, search })
-//       .then(r => {
-//         console.log(r)
-//         return r
-//       })
-//   }
-
-//   syncUp ({ card = this.card } = { card: this.card }) {
-//     clearTimeout(this.tout)
-//     window.onbeforeunload = () => { return 'unsaved changes' }
-//     this.tout = setTimeout(() => {
-//       updateCard({ cardID: this.cardID, data: card })
-//         .then(() => {
-//           window.onbeforeunload = undefined
-//         })
-//     }, 150)
-//   }
-// }
-
-export const makeEditorApp = async () => {
+export const makeEditorApp = async ({ siteID, userID }) => {
   let bus = new EventEmitter()
-  let handler = {
+  let notifier = {
     get (obj, prop) {
       return obj[prop]
     },
@@ -416,17 +225,100 @@ export const makeEditorApp = async () => {
       return true
     }
   }
-  let api = new Proxy({}, handler)
+  let api = new Proxy({
+    bus
+  }, notifier)
+  api.userID = userID
+  api.siteID = siteID
   api.previewURL = ''
-  api.mode = 'code'
+  api.mode = 'module'
 
-  bus.on('set:mode', (newVal, oldVal) => {
-    console.log(newVal, oldVal)
+  api.current = new Proxy({}, {
+    get (obj, prop) {
+      if (prop === 'module') {
+        return api.modules.find(m => m._id === api.selected.moduleID) || false
+      }
+      return obj[prop]
+    }
   })
+
+  api.selected = {
+    moduleID: false
+  }
+
+  api.site = await getSite({ siteID })
+  api.modules = await getSiteModules({ siteID })
+    .then((mods) => {
+      let pages = mods.filter(m => m.type === 'page')
+      if (pages[0]) {
+        api.selected.moduleID = pages[0]._id
+      }
+      return mods
+    }, () => [])
+
+  // bus.on('set:mode', (newVal, oldVal) => {
+  //   console.log(newVal, oldVal)
+  // })
 
   return api
 }
 
 export const bezierMaker = ([b0, b1, b2, b3]) => {
   return BezierEasing(b0, b1, b2, b3)
+}
+
+export const getSite = ({ siteID }) => {
+  return axios({
+    method: 'GET',
+    baseURL: apiURL,
+    url: `/sites/${siteID}`,
+    headers: getHeaders()
+  }).then(onResOK, onResError)
+}
+
+export const createModule = ({ key, type, siteID, userID }) => {
+  return axios({
+    method: 'POST',
+    baseURL: apiURL,
+    url: `/modules`,
+    headers: getHeaders(),
+    data: {
+      type,
+      siteID,
+      userID,
+      key
+    }
+  }).then(onResOK, onResError)
+}
+
+export const updateModule = ({ mod, userID }) => {
+  return axios({
+    method: 'PUT',
+    baseURL: apiURL,
+    url: `/modules/${mod._id}?userID=${userID}`,
+    headers: getHeaders(),
+    data: mod
+  }).then(onResOK, onResError)
+}
+
+export const removeModule = ({ moduleID, userID }) => {
+  return axios({
+    method: 'DELETE',
+    baseURL: apiURL,
+    url: `/modules/${moduleID}?userID=${userID}`,
+    headers: getHeaders()
+  }).then(onResOK, onResError)
+}
+
+export const getSiteModules = ({ siteID }) => {
+  return axios({
+    method: 'GET',
+    baseURL: apiURL,
+    url: `/modules?siteID=${siteID}&_sort=createdAt:DESC`,
+    headers: getHeaders()
+    // data: {
+    //   type,
+    //   key
+    // }
+  }).then(onResOK, onResError)
 }

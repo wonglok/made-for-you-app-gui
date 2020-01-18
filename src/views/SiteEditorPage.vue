@@ -6,7 +6,7 @@
         Please use desktop 🖥 / laptop 💻
       </p>
       <p>
-        to visit the site editor.
+        to visit the 3D visual effect site editor.
       </p>
       <p>
         <button class="brand-btn brand-btn-primary mt-6" @click="$router.go(-1)">⬅️ Back</button>
