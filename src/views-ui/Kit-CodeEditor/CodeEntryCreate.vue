@@ -6,12 +6,12 @@
     <transition name="fade">
       <div class="absolute tooltip rounded-lg mt-2 py-2 text-left px-2 border border-gray-200 bg-white hover:bg-gray-100 z-20" v-if="show.createCodeEntry">
         <div class="text-sm ml-1 mb-2">Create Code Entry</div>
-        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ type: 'js' })">📑 JavaScript</div>
-        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ type: 'css' })">📑 CSS</div>
-        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ type: 'html' })">📑 HTML</div>
-        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ type: 'vue' })">📑 Vue</div>
+        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ type: 'js' })">☕️ JavaScript</div>
         <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ type: 'vert' })">🌈 Vertex Shader</div>
         <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ type: 'frag' })">🌈 Fragment Shader</div>
+        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ type: 'html' })">🕸 HTML</div>
+        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ type: 'css' })">🕸 CSS</div>
+        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ type: 'vue' })">🕸 Vue</div>
       </div>
     </transition>
   </div>

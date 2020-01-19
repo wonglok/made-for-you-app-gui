@@ -8,7 +8,7 @@
 /*
 <div class="h-full w-full">
   <keep-alive>
-    <Brace class="w-full h-full" :key="code._id" :style="{ height }" :mode="'js'" :getter="() => { return code.value }" :setter="(v) => { code.value = v; }" @save="() => {}"></Brace>
+    <Brace class="w-full h-full" :key="code._id" :style="{ height }" :mode="code.type" :getter="() => { return code.value }" :setter="(v) => { code.value = v; }" @save="onSaveCode()"></Brace>
   </keep-alive>
 </div>
 */
@@ -81,6 +81,12 @@ export default {
     editor.session.setOption('useWorker', false)
 
     editor.$blockScrolling = Infinity
+
+    this.$el.addEventListener('wheel', (ev) => {
+      ev.preventDefault()
+      ev.stopPropagation()
+      ev.stopImmediatePropagation()
+    }, { passive: false })
 
     this.$nextTick(() => {
       // this.isKeyboard = false

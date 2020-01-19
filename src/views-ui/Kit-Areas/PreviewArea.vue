@@ -1,15 +1,19 @@
 <template>
   <div class="w-full h-full">
-    TODO: Preview Area
+    <PreviewPhone class="w-full h-full" type="area" v-if="app" :app="app"></PreviewPhone>
   </div>
 </template>
 
 <script>
 export default {
-
+  props: {
+    app: {}
+  },
+  components: {
+    ...require('../index.js')
+  }
 }
 </script>
 
 <style scoped lang="postcss">
-
 </style>

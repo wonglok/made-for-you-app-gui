@@ -51,6 +51,9 @@ export default {
   },
   mounted () {
     this.$root.$on('reload-iframe', () => {
+      if (this.currentPage && this.currentPage.type === 'page' && this.autoSync) {
+        this.pageKey = this.currentPage.key
+      }
       this.reload()
     })
   },
@@ -67,5 +70,9 @@ export default {
   width: 240px;
   height: calc(240px * 16 / 9);
   border-bottom: silver solid 1px;
+}
+.area{
+  width: 100%;
+  height: 100%;
 }
 </style>

@@ -41,9 +41,13 @@ const routes = [
     component: () => import(/* webpackChunkName: "first" */ '../views/CardAdminPage.vue')
   },
   {
-    path: '/site-editor/:slug/:siteID',
+    path: '/site-editor/:siteID',
     beforeEnter: checkLogin,
     component: () => import(/* webpackChunkName: "second" */ '../views/SiteEditorPage.vue')
+  },
+  {
+    path: '/site-id/:siteID',
+    component: () => import(/* webpackChunkName: "second" */ '../views/SiteViewerPage.vue')
   },
   {
     path: '/preview/:siteID',

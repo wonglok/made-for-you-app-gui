@@ -55,7 +55,9 @@ export default {
   },
   mounted () {
     let setHeight = () => {
-      this.height = (this.$refs.rect.getBoundingClientRect().height - 33) + 'px'
+      if (this.$refs && this.$refs.rect) {
+        this.height = (this.$refs.rect.getBoundingClientRect().height - 33) + 'px'
+      }
     }
     setHeight()
     window.addEventListener('resize', setHeight)

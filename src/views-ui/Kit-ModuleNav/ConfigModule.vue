@@ -40,6 +40,13 @@ export default {
       name: this.mod.key
     }
   },
+  watch: {
+    'show.configModule' () {
+      if (!this.show.configModule) {
+        this.$root.$emit('reload-iframe')
+      }
+    }
+  },
   methods: {
     onKeyEnter () {
       this.slugify()

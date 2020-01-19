@@ -19,7 +19,9 @@
       </div>
 
       <div class="preview-col">
-        <PreviewPhone v-if="app" :app="app"></PreviewPhone>
+        <keep-alive>
+          <PreviewPhone v-if="app" :app="app"></PreviewPhone>
+        </keep-alive>
       </div>
     </div>
 
@@ -34,10 +36,10 @@
   <div v-else-if="app === null" class="">
     <div class="h-full w-full text-3xl flex justify-center items-center flex-col">
       <div>
-        Sorry, Site Not Found 😭
+        Sorry, We can't find your siite 😭
       </div>
-      <div @click="$router.go(-1)" class="hover:underline cursor-pointer">
-        ⬅️ Back
+      <div @click="$router.push('/profile')" class="hover:underline cursor-pointer">
+        ⬅️ Back to Profile
       </div>
     </div>
   </div>

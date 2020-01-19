@@ -4,7 +4,7 @@ import Vue from 'vue'
 // import Entry from '../views-preview/Kit-Preview/Entry.vue'
 // import CP from '../views-preview/index.js'
 
-export const bezierMaker = ([b0, b1, b2, b3]) => {
+export const makeEasing = ([b0, b1, b2, b3]) => {
   return BezierEasing(b0, b1, b2, b3)
 }
 
@@ -16,30 +16,34 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
   }
   let routes = []
 
-  let initMods = (moduleItem, code) => {
+  let initCode = async (modItem, code) => {
     let env = {
-      moduleName: moduleItem.key,
+      moduleName: modItem.key,
       codeName: code.key,
       text: code.value,
       async run () { return code.value },
-      clean () {},
       app,
-      modules:
-      app.modules,
-      module: moduleItem,
-      code
+      modules: app.modules,
+      module: modItem,
+      code,
+      _: {
+        loop: {},
+        resize: {},
+        clean: {}
+      }
     }
 
     if (code.type === 'js') {
       // eslint-disable-next-line
       let starterFn = new Function('env', `
-        (async function(){
+        async function initFunc () {
           ${code.value}
-        }())
+        }
+        return initFunc();
       `)
-      starterFn(env)
-    }
 
+      await starterFn(env)
+    }
     return env
   }
 
@@ -49,7 +53,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
     myModules[mod.key] = myModules[mod.key] || {}
     for (var kncode in mod.codes) {
       let code = mod.codes[kncode]
-      myModules[mod.key][code.key] = initMods(mod, code)
+      myModules[mod.key][code.key] = await initCode(mod, code)
     }
   }
 
@@ -60,30 +64,76 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
         template: `<div ref="page" class="full"></div>`,
         data () {
           return {
-            main: mod.codes.find(c => c.key === 'main')
+            rAFID: 0
           }
         },
         async beforeDestroy () {
-          let main = this.main
-          let env = myModules[mod.key][main.key]
-          env.clean()
-        },
-        async mounted () {
-          let main = this.main
+          let main = mod.codes.find(c => c.key === 'main')
           if (main) {
             let env = myModules[mod.key][main.key]
-            await env.run({
-              get: (mk, ck) => {
+            let cleans = env._.clean
+            for (var cleanKN in cleans) {
+              cleans[cleanKN]()
+            }
+            cancelAnimationFrame(this.rAFID)
+          }
+        },
+        async mounted () {
+          let main = mod.codes.find(c => c.key === 'main')
+          if (main) {
+            let env = myModules[mod.key][main.key]
+            let api = {
+              getCode: (mk, ck) => {
                 return myModules[mk][ck]
               },
-              myModules,
-              router,
-              route: this.$route,
-              mounter: this.$refs['page'],
-              page: mod,
-              pageKey: mod.key
+              goTo: (path, query = {}) => {
+                return this.$router.push({
+                  path,
+                  query
+                })
+              },
+              getPageData: () => {
+                return this.$route.query
+              },
+
+              loop: (fn) => {
+                env._.loop[Math.random() + ''] = fn
+              },
+              resize: (fn) => {
+                env._.resize[Math.random() + ''] = fn
+              },
+              clean: (fn) => {
+                env._.clean[Math.random() + ''] = fn
+              },
+
+              // myModules,
+              // page: mod,
+              // router,
+              // route: this.$route,
+              mounter: this.$refs['page']
+            }
+            let looper = () => {
+              this.rAFID = requestAnimationFrame(looper)
+              let loops = env._.loop
+              for (var loopKN in loops) {
+                loops[loopKN]()
+              }
+            }
+            this.rAFID = requestAnimationFrame(looper)
+            let resize = () => {
+              let resizes = env._.resize
+              for (var resizeKN in resizes) {
+                resizes[resizeKN]()
+              }
+            }
+            window.addEventListener('resize', resize, false)
+            api.clean(() => {
+              window.removeEventListener('resize', resize, false)
             })
-          } else {
+
+            await env.run(api)
+
+            window.dispatchEvent(new Event('resize'))
           }
         }
       }
@@ -91,15 +141,16 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
   })
 
   routes.push({
-    path: '/404',
-    component: {
-      template: `<div class="full flex justify-center items-center">Home Not Found</div>`
-    }
-  })
-  routes.push({
     path: '/needs-to-add-mainjs',
     component: {
       template: `<div class="full flex justify-center items-center">Please add main.js</div>`
+    }
+  })
+
+  routes.push({
+    path: '/*',
+    component: {
+      template: `<div class="full flex justify-center items-center">Page Not Found</div>`
     }
   })
 
@@ -121,7 +172,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
       if (previewPageKey) {
         router.push('/' + previewPageKey)
       } else {
-        router.push('/404')
+        router.push('/home')
       }
     }
   }).$mount(mounter)

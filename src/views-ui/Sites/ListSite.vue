@@ -89,7 +89,7 @@ export default {
     goEdit (site) {
       // console.log('go edit')
       this.$router.push({
-        path: `/site-editor/${site.slug}/${site._id}`
+        path: `/site-editor/${site._id}`
       })
     },
     async goDelete (site) {
