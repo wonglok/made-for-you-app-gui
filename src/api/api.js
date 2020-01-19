@@ -232,6 +232,7 @@ export const makeSiteApp = async ({ siteID, userID = false, previewPageKey }) =>
   app.previewURL = ''
   app.mode = 'code'
   app.dirtyFiles = {}
+
   setInterval(() => {
     let hasDirty = Object.keys(app.dirtyFiles).length > 0
     if (hasDirty) {

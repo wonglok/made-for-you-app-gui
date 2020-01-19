@@ -16,15 +16,45 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
   }
   let routes = []
 
-  let initCode = async (modItem, code) => {
+  let SetupTasks = []
+  let initCode = (modItem, code, myModules, setups) => {
     let env = {
-      moduleName: modItem.key,
-      codeName: code.key,
-      text: code.value,
+      get moduleName () {
+        return modItem.key
+      },
+      get codeName () {
+        return code.key
+      },
+      get text () {
+        return code.value
+      },
       async run () { return code.value },
+      getCode: (mk, ck) => {
+        let mod = myModules[mk]
+        if (!mod) {
+          throw new Error('module not found')
+        }
+        if (!mod[ck]) {
+          throw new Error('module code not found')
+        }
+        return mod[ck]
+      },
+      stream (streamFunction) {
+        setInterval(() => {
+          let value = sessionStorage.getItem(code._id) || ''
+          if (value !== code.value) {
+            code.value = value
+            setTimeout(() => {
+              streamFunction(code.value)
+            })
+          }
+        })
+        streamFunction(code.value)
+      },
       app,
       modules: app.modules,
       module: modItem,
+      moduleID: modItem._id,
       code,
       _: {
         loop: {},
@@ -35,7 +65,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
 
     if (code.type === 'js') {
       // eslint-disable-next-line
-      let starterFn = new Function('env', `
+      let StarterFn = new Function('env', `
         async function initFunc () {
           try {
             ${code.value}
@@ -46,7 +76,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
         return initFunc();
       `)
 
-      await starterFn(env)
+      setups.push(async () => StarterFn(env))
     }
     return env
   }
@@ -57,9 +87,11 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
     myModules[mod.key] = myModules[mod.key] || {}
     for (var kncode in mod.codes) {
       let code = mod.codes[kncode]
-      myModules[mod.key][code.key] = await initCode(mod, code)
+      myModules[mod.key][code.key] = initCode(mod, code, myModules, SetupTasks)
     }
   }
+
+  await Promise.all(SetupTasks.map(fnc => fnc()))
 
   app.modules.filter(e => e.type === 'page').forEach((mod) => {
     routes.push({
@@ -87,16 +119,15 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
           if (main) {
             let env = myModules[mod.key][main.key]
             let api = {
-              getCode: (mk, ck) => {
-                return (myModules[mk] || {})[ck]
-              },
+              getCode: env.getCode,
               goTo: (path, query = {}) => {
                 return this.$router.push({
                   path,
                   query
                 })
               },
-              getPageData: () => {
+
+              getPageQuery: () => {
                 return this.$route.query
               },
 

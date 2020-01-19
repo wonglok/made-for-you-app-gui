@@ -11,7 +11,7 @@
       </select>
     </LayoutHeader>
     <LayoutContent>
-      <iframe ref="iframe" :class="{ [type]: true }" frameboder="0" :src="`/preview/${app.siteID}?previewPageKey=${pageKey}&r=${randomID}`"></iframe>
+      <iframe v-if="pageKey" ref="iframe" :class="{ [type]: true }" frameboder="0" :src="`/preview/${app.siteID}?previewPageKey=${pageKey}&r=${randomID}`"></iframe>
     </LayoutContent>
   </div>
 </template>
@@ -31,7 +31,7 @@ export default {
     return {
       randomID: 0,
       autoSync: true,
-      pageKey: this.app.modules.filter(m => m.type === 'page')[0].key
+      pageKey: false
     }
   },
   watch: {
@@ -56,6 +56,7 @@ export default {
       }
       this.reload()
     })
+    this.$root.$emit('reload-iframe')
   },
   methods: {
     reload () {

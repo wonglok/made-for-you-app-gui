@@ -12,7 +12,7 @@
       <!-- {{ code.value }}
       {{ copy }} -->
       <keep-alive>
-        <Brace class="w-full h-full" :key="code._id" :style="{ height }" :mode="code.type" :getter="() => { return code.value }" :setter="(v) => { code.value = v; }" @save="onSaveCode()"></Brace>
+        <Brace class="w-full h-full" :key="code._id" :style="{ height }" :mode="code.type" :getter="() => { return code.value }" :setter="setter" @save="onSaveCode()"></Brace>
       </keep-alive>
     </LayoutContent>
   </div>
@@ -63,6 +63,10 @@ export default {
     window.addEventListener('resize', setHeight)
   },
   methods: {
+    setter (v) {
+      this.code.value = v
+      sessionStorage.setItem(this.code._id, v)
+    },
     regDirty () {
       let isDirty = this.copy !== this.code.value
       if (isDirty) {
