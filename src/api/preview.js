@@ -37,7 +37,11 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
       // eslint-disable-next-line
       let starterFn = new Function('env', `
         async function initFunc () {
-          ${code.value}
+          try {
+            ${code.value}
+          } catch (e) {
+            console.error(e);
+          }
         }
         return initFunc();
       `)
@@ -84,7 +88,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
             let env = myModules[mod.key][main.key]
             let api = {
               getCode: (mk, ck) => {
-                return myModules[mk][ck]
+                return (myModules[mk] || {})[ck]
               },
               goTo: (path, query = {}) => {
                 return this.$router.push({

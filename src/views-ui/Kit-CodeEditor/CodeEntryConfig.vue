@@ -45,6 +45,13 @@ export default {
       name: this.code.key
     }
   },
+  watch: {
+    'show.configCode' () {
+      if (!this.show.configCode) {
+        this.$root.$emit('reload-iframe')
+      }
+    }
+  },
   methods: {
     onKeyEnter () {
       this.slugify()
@@ -62,6 +69,7 @@ export default {
           codeID: this.code._id,
           userID: this.app.userID
         })
+
         this.mod.codes.splice(this.mod.codes.findIndex(c => c._id === this.code._id), 1)
         this.show.configCode = false
       }

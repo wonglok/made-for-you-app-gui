@@ -1,9 +1,9 @@
 <template>
   <div class="h-full w-full" ref="rect">
     <LayoutHeader>
-      <span class="w-full"></span>
-      {{ code.key }}.<span>{{ code.type }}</span>
-      <span class="w-full">
+      <span class="w-1/3"></span>
+      <span class="w-1/3">{{ code.key }}.<span>{{ code.type }}</span></span>
+      <span class="w-1/3">
         <span class="pl-1" v-if="dirty">File Changed, Needs Save.</span>
         <span class="pl-1" v-if="saving">Saving</span>
       </span>
