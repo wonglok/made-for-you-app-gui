@@ -1,6 +1,5 @@
 import EventEmitter from 'events'
 import axios from 'axios'
-import BezierEasing from 'bezier-easing'
 
 // import slugify from 'slugify'
 
@@ -212,7 +211,7 @@ export const onResError = (err) => {
   return Promise.reject(msg)
 }
 
-export const makeEditorApp = async ({ siteID, userID }) => {
+export const makeSiteApp = async ({ siteID, pageID = false, userID = false }) => {
   let bus = new EventEmitter()
   let notifier = {
     get (obj, prop) {
@@ -225,33 +224,60 @@ export const makeEditorApp = async ({ siteID, userID }) => {
       return true
     }
   }
-  let api = new Proxy({
+  let app = new Proxy({
     bus
   }, notifier)
-  api.userID = userID
-  api.siteID = siteID
-  api.previewURL = ''
-  api.mode = 'module'
+  app.pageID = pageID
+  app.userID = userID
+  app.siteID = siteID
+  app.previewURL = ''
+  app.mode = 'code'
+  app.dirtyFiles = {}
+  setInterval(() => {
+    let hasDirty = Object.keys(app.dirtyFiles).length > 0
+    if (hasDirty) {
+      window.onbeforeunload = function () {
+        return 'You havent save some file(s). Are you sure you want to leave?'
+      }
+    } else {
+      window.onbeforeunload = false
+    }
+  })
 
-  api.current = new Proxy({}, {
+  app.current = new Proxy({}, {
     get (obj, prop) {
       if (prop === 'module') {
-        return api.modules.find(m => m._id === api.selected.moduleID) || false
+        return app.modules.find(m => m._id === app.selected.moduleID) || false
+      }
+      if (prop === 'code') {
+        let mod = app.modules.find(m => m._id === app.selected.moduleID) || false
+        if (mod) {
+          return mod.codes.find(c => c._id === app.selected.codeID) || false
+        } else {
+          return false
+        }
       }
       return obj[prop]
     }
   })
 
-  api.selected = {
-    moduleID: false
+  app.selected = {
+    previewPageID: false,
+    moduleID: false,
+    codeID: false
   }
 
-  api.site = await getSite({ siteID })
-  api.modules = await getSiteModules({ siteID })
+  app.site = await getSite({ siteID })
+  app.modules = await getSiteModules({ siteID })
     .then((mods) => {
       let pages = mods.filter(m => m.type === 'page')
       if (pages[0]) {
-        api.selected.moduleID = pages[0]._id
+        app.selected.moduleID = pages[0]._id
+        app.selected.previewPageID = pages[0]._id
+        let codes = pages[0].codes
+        if (codes && codes[0]) {
+          app.selected.codeID = codes[0]._id
+        }
       }
       return mods
     }, () => [])
@@ -260,11 +286,7 @@ export const makeEditorApp = async ({ siteID, userID }) => {
   //   console.log(newVal, oldVal)
   // })
 
-  return api
-}
-
-export const bezierMaker = ([b0, b1, b2, b3]) => {
-  return BezierEasing(b0, b1, b2, b3)
+  return app
 }
 
 export const getSite = ({ siteID }) => {
@@ -276,6 +298,7 @@ export const getSite = ({ siteID }) => {
   }).then(onResOK, onResError)
 }
 
+// ----- Module Start --------
 export const createModule = ({ key, type, siteID, userID }) => {
   return axios({
     method: 'POST',
@@ -322,3 +345,56 @@ export const getSiteModules = ({ siteID }) => {
     // }
   }).then(onResOK, onResError)
 }
+// ----- Module End --------
+
+// ----- Code Start --------
+export const createCode = ({ key, type, value = '', siteID, userID, moduleID }) => {
+  return axios({
+    method: 'POST',
+    baseURL: apiURL,
+    url: `/codes`,
+    headers: getHeaders(),
+    data: {
+      type,
+      siteID,
+      userID,
+      moduleID,
+      key,
+      value
+    }
+  }).then(onResOK, onResError)
+}
+
+export const updateCode = ({ code, userID }) => {
+  return axios({
+    method: 'PUT',
+    baseURL: apiURL,
+    url: `/codes/${code._id}?userID=${userID}`,
+    headers: getHeaders(),
+    data: code
+  }).then(onResOK, onResError)
+}
+
+export const removeCode = ({ codeID, userID }) => {
+  return axios({
+    method: 'DELETE',
+    baseURL: apiURL,
+    url: `/codes/${codeID}?userID=${userID}`,
+    headers: getHeaders()
+  }).then(onResOK, onResError)
+}
+
+export const getCode = ({ codeID }) => {
+  return axios({
+    method: 'GET',
+    baseURL: apiURL,
+    url: `/codes/${codeID}`,
+    headers: getHeaders()
+    // data: {
+    //   type,
+    //   key
+    // }
+  }).then(onResOK, onResError)
+}
+
+// ----- Code End --------

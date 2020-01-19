@@ -1,7 +1,7 @@
 <template>
   <div>
-    <ColumnHeader>
-      <div class="w-full h-full flex justify-between relative">
+    <LayoutHeader class="relative">
+      <div class="w-full h-full flex justify-between">
         <div class="inline-flex justify-center items-center ml-2">
           <img class="cursor-pointer" src="./img/search.svg" />
         </div>
@@ -14,20 +14,20 @@
           <img class="cursor-pointer" src="./img/plus.svg" @click="$root.$emit('close-all-dark-overlay'); show.createModule = true; " />
         </div>
 
-        <CreateModule :show="show" :app="app"></CreateModule>
       </div>
-    </ColumnHeader>
+      <CreateModule :show="show" :app="app"></CreateModule>
+    </LayoutHeader>
     <div>
-      <div class="text-sm ml-2 mt-3 text-gray-600 font-bold" v-if="modules.filter(filterQuery).filter(m => m.type === 'page').length > 0">
+      <div class="text-sm ml-2 mt-3 text-gray-600 font-bold" v-if="getType('page').length > 0">
         Pages
       </div>
-      <div class="" :key="mod._id" v-for="mod in modules.filter(filterQuery).filter(m => m.type === 'page')">
+      <div class="" :key="mod._id" v-for="mod in getType('page')">
         <ModuleEntry :app="app" @select="v => app.selected.moduleID = v._id" :mod="mod"></ModuleEntry>
       </div>
-      <div class="text-sm ml-2 mt-3 text-gray-600 font-bold" v-if="modules.filter(filterQuery).filter(m => m.type === 'code').length > 0">
-        Code
+      <div class="text-sm ml-2 mt-3 text-gray-600 font-bold" v-if="getType('code').length > 0">
+        Reusable Module
       </div>
-      <div class="" :key="mod._id" v-for="mod in modules.filter(filterQuery).filter(m => m.type === 'code')">
+      <div class="" :key="mod._id" v-for="mod in getType('code')">
         <ModuleEntry :app="app" @select="v => app.selected.moduleID = v._id" :mod="mod"></ModuleEntry>
       </div>
       <!-- {{ modules }} -->
@@ -60,6 +60,9 @@ export default {
     }
   },
   methods: {
+    getType (type = 'page') {
+      return this.modules.filter(this.filterQuery).filter(m => m.type === type)
+    },
     filterQuery (mod) {
       if (!this.query) {
         return true

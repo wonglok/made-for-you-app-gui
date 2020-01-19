@@ -46,7 +46,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "second" */ '../views/SiteEditorPage.vue')
   },
   {
-    path: '/site-id/:siteID',
+    path: '/preview/:siteID',
     component: () => import(/* webpackChunkName: "second" */ '../views/SiteViewerPage.vue')
   }
 

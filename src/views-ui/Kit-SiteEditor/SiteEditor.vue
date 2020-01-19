@@ -1,14 +1,14 @@
 <template>
   <div class="w-full h-hull bg-white" v-if="app">
-    <SiteToolbarTop :app="app"></SiteToolbarTop>
+    <SiteEditorToolbarTop :app="app"></SiteEditorToolbarTop>
 
     <div class="app-content flex flex-row">
       <div class="nav-col">
-        <ModuleColumn :app="app"></ModuleColumn>
+        <ModuleBrowser :app="app"></ModuleBrowser>
       </div>
 
       <div class="working-area">
-        <ModuleArea :app="app" v-if="app.mode === 'module'"></ModuleArea>
+        <CodeArea :app="app" v-if="app.mode === 'code'"></CodeArea>
         <SettingsArea :app="app" v-if="app.mode === 'settings'"></SettingsArea>
         <AssetArea :app="app" v-if="app.mode === 'asset'"></AssetArea>
         <PreviewArea :app="app" v-if="app.mode === 'preview'"></PreviewArea>
@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     async init () {
-      this.app = await API.makeEditorApp({ siteID: this.siteID, userID: API.Token.Profile._id })
+      this.app = await API.makeSiteApp({ siteID: this.siteID, userID: API.Token.Profile._id })
         .then(api => api, () => {
           return null
         })

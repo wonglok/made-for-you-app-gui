@@ -1,19 +1,17 @@
 <template>
-  <div class="w-full h-full flex" v-if="app">
-    <OptionsColumn>
-      <ColumnHeader>
-        Settings
-      </ColumnHeader>
-      <!-- <CubicBezierEditor></CubicBezierEditor> -->
-    </OptionsColumn>
-    <CodeColumn>
-      <ColumnHeader>
-        Settings Area
-      </ColumnHeader>
-      <!-- <CubicBezierEditor></CubicBezierEditor> -->
-      TODO: SettingsArea
-      {{ app.current.module.key }}
-    </CodeColumn>
+  <div class="w-full h-full" v-if="app">
+    <LayoutHeader>
+      Settings Area
+    </LayoutHeader>
+    <div class="content">
+      <div>
+        <CubicBezierEditor></CubicBezierEditor>
+      </div>
+      <div>
+        TODO: SettingsArea
+        {{ app.current.module.key }}
+      </div>
+    </div>
   </div>
 </template>
 

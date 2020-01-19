@@ -59,10 +59,10 @@ export default {
   },
   data () {
     let es = this.easing
-    let ww = 180
-    let hh = 180
-    let padX = 30
-    let padY = 30
+    let ww = 300
+    let hh = 300
+    let padX = 35
+    let padY = 35
     return {
       scale: {
         x: (ww + padX * 2) / ww,

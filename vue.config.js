@@ -1,5 +1,3 @@
-// const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin')
-
 module.exports = {
   devServer: {
     // proxy: {
@@ -9,12 +7,13 @@ module.exports = {
     //   }
     // }
   },
+  runtimeCompiler: true,
   css: {
     extract: false
   },
   configureWebpack: {
     plugins: [
-      // new MonacoWebpackPlugin()
+
     ]
   }
 }

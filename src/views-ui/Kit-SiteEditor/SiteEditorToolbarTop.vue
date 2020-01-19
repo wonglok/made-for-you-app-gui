@@ -6,7 +6,7 @@
         <span slot="name">Home</span>
       </ToolBarIcon>
 
-      <ToolBarIcon :isOn="app.mode === 'module'" @on="app.mode = 'module'; $forceUpdate()" class="ml-12">
+      <ToolBarIcon :isOn="app.mode === 'code'" @on="app.mode = 'code'; $forceUpdate()" class="ml-12">
         <img slot="icon" src="./img/code.svg" alt="Code">
         <span slot="name">Code</span>
       </ToolBarIcon>

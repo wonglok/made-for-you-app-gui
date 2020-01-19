@@ -1,10 +1,10 @@
 <template>
   <div>
     <transition name="fade">
-      <div class="fixed top-0 left-0 w-full h-full closer z-0" v-if="show.configModule" @click="show.configModule = false"></div>
+      <div class="fixed top-0 left-0 w-full h-full closer z-10" v-if="show.configModule" @click="show.configModule = false"></div>
     </transition>
     <transition name="fade">
-      <div class="absolute tooltip rounded-lg mt-2 py-2 text-left px-2 border border-gray-200 bg-white hover:bg-gray-100 z-10" v-if="show.configModule">
+      <div class="absolute tooltip rounded-lg mt-2 py-2 text-left px-2 border border-gray-200 bg-white hover:bg-gray-100 z-20" v-if="show.configModule">
         <div class="text-sm ml-1 mb-2">Config Module</div>
         <div class="text-xs">
           <div>
@@ -12,7 +12,7 @@
               <option value="page">Page</option>
               <option value="code">Code</option>
             </select>
-            <input class="ml-1 rounded-lg px-3 py-1 border border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500" type="text" v-model="name" @input="slugify" />
+            <input autofocus class="ml-1 rounded-lg px-3 py-1 border border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500" type="text" @keydown.enter="onKeyEnter" v-model="name" @input="slugify" />
           </div>
           <div class="ml-1 mt-3 flex justify-between">
             <button class="px-3 rounded-lg py-1 border border-red-500 text-red-500 hover:bg-red-400 hover:text-white  mr-1" @click="removeModule()">Remove</button>
@@ -41,6 +41,10 @@ export default {
     }
   },
   methods: {
+    onKeyEnter () {
+      this.slugify()
+      this.show.configModule = false
+    },
     slugify () {
       this.mod.key = slugify(this.name, {
         replace: '_'
@@ -48,7 +52,7 @@ export default {
       this.updateModuleKey()
     },
     removeModule () {
-      if (window.confirm('Remove:' + '@' + this.mod.type + '-' + this.mod.key + ' ?')) {
+      if (window.prompt('Please type "' + this.mod.key + '" to confirm remove this module?') === this.mod.key) {
         API.removeModule({
           moduleID: this.mod._id,
           userID: this.app.userID
