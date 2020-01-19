@@ -20,7 +20,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
     let env = {
       moduleName: moduleItem.key,
       codeName: code.key,
-      codeVal: code.value,
+      text: code.value,
       async run () { return code.value },
       clean () {},
       app,
@@ -29,13 +29,16 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
       module: moduleItem,
       code
     }
-    // eslint-disable-next-line
-    let starterFn = new Function('env', `
-      (async function(){
-        ${code.value}
-      }())
-    `)
-    starterFn(env)
+
+    if (code.type === 'js') {
+      // eslint-disable-next-line
+      let starterFn = new Function('env', `
+        (async function(){
+          ${code.value}
+        }())
+      `)
+      starterFn(env)
+    }
 
     return env
   }
@@ -70,7 +73,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
           if (main) {
             let env = myModules[mod.key][main.key]
             await env.run({
-              getEnv: (mk, ck) => {
+              get: (mk, ck) => {
                 return myModules[mk][ck]
               },
               myModules,
