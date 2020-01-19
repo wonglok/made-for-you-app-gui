@@ -1,8 +1,8 @@
 <template>
   <div :class="{ 'bg-green-200' : app.selected.moduleID === mod._id }" class="relative text-xs py-1 px-2 hover:bg-blue-200 flex justify-between rowhover hover:text-black flex justify-between items-center">
     <div class="pl-2 text-xs w-full overflow-hidden cursor-defaults cursor-pointer hover:underline" @click="$emit('select', mod)">
-      <span v-if="mod.type === 'code'">{{ mod.key }}</span>
-      <span v-if="mod.type === 'page'">{{ mod.key }}</span>
+      <span v-if="mod.type === 'code'">💎 {{ mod.key }}</span>
+      <span v-if="mod.type === 'page'">📑 {{ mod.key }}</span>
     </div>
 
     <img class="cursor-pointer h-4 hidden showme"  @click="$root.$emit('close-all-dark-overlay'); show.configModule = true; " src="./img/gear.svg" alt="">

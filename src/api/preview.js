@@ -40,7 +40,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
         return mod[ck]
       },
       stream (streamFunction) {
-        setInterval(() => {
+        let intervalTimer = setInterval(() => {
           let value = sessionStorage.getItem(code._id) || ''
           if (value !== code.value) {
             code.value = value
@@ -50,6 +50,9 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
           }
         })
         streamFunction(code.value)
+        env._.clean[Math.random()] = () => {
+          clearInterval(intervalTimer)
+        }
       },
       app,
       modules: app.modules,

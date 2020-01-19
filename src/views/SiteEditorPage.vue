@@ -9,7 +9,7 @@
         to visit the 3D visual effect site editor.
       </p>
       <p>
-        <button class="brand-btn brand-btn-primary mt-6" @click="$router.go(-1)">⬅️ Back</button>
+        <button class="brand-btn brand-btn-primary mt-6" @click="$router.push('/profile')">⬅️ Back to Profile</button>
       </p>
       <p>
         <button class="brand-btn brand-btn-secondary border border-blue-400 mt-6" @click="$router.push({ path: `/site-id/${siteID}` })">👀 View Site</button>

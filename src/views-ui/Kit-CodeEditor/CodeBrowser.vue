@@ -17,7 +17,9 @@
       <CodeEntryCreate :app="app" :show="show" :mod="mod"></CodeEntryCreate>
     </LayoutHeader>
     <div class="">
-      <div :key="code._id" v-for="code in app.current.module.codes">
+      <div :key="code._id" v-for="code in app.current.module.codes.slice().sort((a, b) => {
+        return b.value.length - a.value.length
+      })">
         <CodeEntry :app="app" :mod="mod" :code="code"></CodeEntry>
       </div>
     </div>
