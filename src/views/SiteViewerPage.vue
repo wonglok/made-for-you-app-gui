@@ -13,8 +13,8 @@ export default {
     siteID () {
       return this.$route.params.siteID
     },
-    pageID () {
-      return this.$route.query.pageID || false
+    previewPageKey () {
+      return this.$route.query.previewPageKey || false
     }
   },
   data () {
@@ -23,8 +23,8 @@ export default {
     }
   },
   async mounted () {
-    this.app = await API.makeSiteApp({ siteID: this.siteID, pageID: this.pageID })
-    this.preview = await Preview.makePreviewer({ app: this.app, mounter: this.$refs.mounter })
+    this.app = await API.makeSiteApp({ siteID: this.siteID })
+    this.preview = await Preview.makePreviewer({ app: this.app, mounter: this.$refs.mounter, previewPageKey: this.previewPageKey })
   }
 }
 </script>

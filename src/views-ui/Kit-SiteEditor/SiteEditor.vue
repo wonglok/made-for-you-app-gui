@@ -19,7 +19,7 @@
       </div>
 
       <div class="preview-col">
-        <PreviewPhone :app="app"></PreviewPhone>
+        <PreviewPhone v-if="app" :app="app"></PreviewPhone>
       </div>
     </div>
 

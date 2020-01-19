@@ -1,16 +1,17 @@
 <template>
   <div class="w-full h-full">
     <LayoutHeader>
-      <span @click="reload" class="mx-2 cursor-pointer">🔄</span>
+      <span @click="reload" class="mr-1 cursor-pointer">🔄</span>
+      <input type="checkbox" class="mr-1" v-model="autoSync">
       <span>
         Preview:
       </span>
-      <select v-model="app.selected.previewPageID">
-        <option :value="mod._id" :key="mod._id" v-for="mod in pages">{{ mod.key }}</option>
+      <select v-model="pageKey">
+        <option :value="mod.key" :key="mod._id" v-for="mod in pages">{{ mod.key }}</option>
       </select>
     </LayoutHeader>
     <LayoutContent>
-      <iframe ref="iframe" class="phone" frameboder="0" :src="`/preview/${app.siteID}?pageID=${app.selected.previewPageID}`"></iframe>
+      <iframe ref="iframe" :class="{ [type]: true }" frameboder="0" :src="`/preview/${app.siteID}?previewPageKey=${pageKey}&r=${randomID}`"></iframe>
     </LayoutContent>
   </div>
 </template>
@@ -18,12 +19,32 @@
 <script>
 export default {
   props: {
+    type: {
+      default: 'phone'
+    },
     app: {}
   },
   components: {
     ...require('../index.js')
   },
+  data () {
+    return {
+      randomID: 0,
+      autoSync: true,
+      pageKey: this.app.modules.filter(m => m.type === 'page')[0].key
+    }
+  },
+  watch: {
+    currentPage () {
+      if (this.currentPage && this.currentPage.type === 'page' && this.autoSync) {
+        this.pageKey = this.currentPage.key
+      }
+    }
+  },
   computed: {
+    currentPage () {
+      return this.app.current.module
+    },
     pages () {
       return this.app.modules.filter(m => m.type === 'page')
     }
@@ -35,7 +56,7 @@ export default {
   },
   methods: {
     reload () {
-      this.$refs['iframe'].contentWindow.location.reload()
+      this.randomID = (Math.random() * 10000000).toFixed(0)
     }
   }
 }

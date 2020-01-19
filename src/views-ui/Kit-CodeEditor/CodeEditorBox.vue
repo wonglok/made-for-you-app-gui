@@ -12,7 +12,7 @@
       <!-- {{ code.value }}
       {{ copy }} -->
       <keep-alive>
-        <Brace class="w-full h-full" :key="code._id" :style="{ height }" :mode="code.type" :getter="() => { return code.value }" :setter="(v) => { code.value = v; }" @save="onSave()"></Brace>
+        <Brace class="w-full h-full" :key="code._id" :style="{ height }" :mode="code.type" :getter="() => { return code.value }" :setter="(v) => { code.value = v; }" @save="onSaveCode()"></Brace>
       </keep-alive>
     </LayoutContent>
   </div>
@@ -69,7 +69,7 @@ export default {
         delete this.app.dirtyFiles[this.code._id]
       }
     },
-    onSave () {
+    onSaveCode () {
       this.saving = true
       API.updateCode({
         userID: this.app.userID,

@@ -8,34 +8,96 @@ export const bezierMaker = ([b0, b1, b2, b3]) => {
   return BezierEasing(b0, b1, b2, b3)
 }
 
-export const makePreviewer = async ({ app, mounter }) => {
+export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
   let api = {
     vue: false,
     router: false,
     app
   }
-  let routes = [
-    {
-      path: '/404-home',
-      component: {
-        template: `<div class="full flex">Home Not Found</div>`
-      }
-    }
-  ]
+  let routes = []
 
-  app.modules.filter(m => m.type === 'page').forEach((pageMod) => {
+  let initMods = (moduleItem, code) => {
+    let env = {
+      moduleName: moduleItem.key,
+      codeName: code.key,
+      codeVal: code.value,
+      async run () { return code.value },
+      clean () {},
+      app,
+      modules:
+      app.modules,
+      module: moduleItem,
+      code
+    }
+    // eslint-disable-next-line
+    let starterFn = new Function('env', `
+      (async function(){
+        ${code.value}
+      }())
+    `)
+    starterFn(env)
+
+    return env
+  }
+
+  let myModules = {}
+  for (var knmods in app.modules) {
+    let mod = app.modules[knmods]
+    myModules[mod.key] = myModules[mod.key] || {}
+    for (var kncode in mod.codes) {
+      let code = mod.codes[kncode]
+      myModules[mod.key][code.key] = initMods(mod, code)
+    }
+  }
+
+  app.modules.filter(e => e.type === 'page').forEach((mod) => {
     routes.push({
-      path: `/${pageMod.key}`,
+      path: `/${mod.key}`,
       component: {
-        template: `<div ref="page" class="full">home</div>`,
-        mounted () {
-          let main = pageMod.codes.find(c => c.key === 'main' && c.type === 'js')
-          // eslint-disable-next-line
-          let fn = new Function('env', main.value)
-          fn({ app })
+        template: `<div ref="page" class="full"></div>`,
+        data () {
+          return {
+            main: mod.codes.find(c => c.key === 'main')
+          }
+        },
+        async beforeDestroy () {
+          let main = this.main
+          let env = myModules[mod.key][main.key]
+          env.clean()
+        },
+        async mounted () {
+          let main = this.main
+          if (main) {
+            let env = myModules[mod.key][main.key]
+            await env.run({
+              getEnv: (mk, ck) => {
+                return myModules[mk][ck]
+              },
+              myModules,
+              router,
+              route: this.$route,
+              mounter: this.$refs['page'],
+              page: mod,
+              pageKey: mod.key
+            })
+          } else {
+          }
         }
       }
     })
+  })
+
+  routes.push({
+    path: '/404',
+    component: {
+      template: `<div class="full flex justify-center items-center">Home Not Found</div>`
+    }
+  })
+  routes.push({
+    path: '/needs-to-add-mainjs',
+    component: {
+      template: `<div class="full flex justify-center items-center">Please add main.js</div>`
+    }
   })
 
   let router = api.router = new VueRouter({
@@ -53,11 +115,10 @@ export const makePreviewer = async ({ app, mounter }) => {
     router: router,
     template: `<router-view></router-view>`,
     mounted () {
-      let home = app.modules.find(m => m.key === 'home')
-      if (home) {
-        router.push('/home')
+      if (previewPageKey) {
+        router.push('/' + previewPageKey)
       } else {
-        router.push('/404-home')
+        router.push('/404')
       }
     }
   }).$mount(mounter)

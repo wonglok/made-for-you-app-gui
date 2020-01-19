@@ -26,6 +26,7 @@
           </td>
         </tr>
       </tbody>
+      <!-- type="module" -->
       <tbody v-if="sites.length === 0">
         <tr>
           <td colspan="4" class="px-4 py-2 text-center border">
