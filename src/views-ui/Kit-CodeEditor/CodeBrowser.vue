@@ -16,18 +16,15 @@
       </div>
       <CodeEntryCreate :app="app" :show="show" :mod="mod"></CodeEntryCreate>
     </LayoutHeader>
-    <div class="">
-      <div :key="code._id" v-for="code in app.current.module.codes.slice().sort((a, b) => {
-        return b.value.length - a.value.length
-      })">
+    <LayoutContent>
+      <div :key="code._id" v-for="code in app.current.module.codes">
         <CodeEntry :app="app" :mod="mod" :code="code"></CodeEntry>
       </div>
-    </div>
+    </LayoutContent>
   </div>
 </template>
 
 <script>
-// import * as API from '../../api/api'
 export default {
   props: {
     app: {},
@@ -44,7 +41,6 @@ export default {
     }
   },
   methods: {
-
   }
 }
 </script>

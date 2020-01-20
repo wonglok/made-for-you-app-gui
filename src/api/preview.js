@@ -42,7 +42,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
       stream (streamFunction) {
         let intervalTimer = setInterval(() => {
           let value = sessionStorage.getItem(code._id) || ''
-          if (value !== code.value) {
+          if (value && value !== code.value) {
             code.value = value
             setTimeout(() => {
               streamFunction(code.value)

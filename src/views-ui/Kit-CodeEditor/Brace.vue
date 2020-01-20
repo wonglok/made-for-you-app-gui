@@ -25,8 +25,6 @@ export default {
   },
   data () {
     return {
-      tt: 0,
-      isme: false,
       divid: `_brace_${Math.floor(Math.random() * 10000)}`
     }
   },
@@ -38,7 +36,6 @@ export default {
     }
   },
   beforeDestroy () {
-    clearInterval(this.tt)
   },
   mounted () {
     var ace = require('brace')
