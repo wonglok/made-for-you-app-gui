@@ -170,7 +170,6 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
             })
 
             await env.run(api)
-
             window.dispatchEvent(new Event('resize'))
           }
         }

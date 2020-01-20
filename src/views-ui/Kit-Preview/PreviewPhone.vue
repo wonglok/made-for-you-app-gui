@@ -10,8 +10,8 @@
         <option :value="mod.key" :key="mod._id" v-for="mod in pages">{{ mod.key }}</option>
       </select>
     </LayoutHeader>
-    <LayoutContent>
-      <iframe v-if="pageKey" ref="iframe" :class="{ [type]: true }" frameboder="0" :src="`/preview/${app.siteID}?previewPageKey=${pageKey}&r=${randomID}`"></iframe>
+    <LayoutContent class="flex justify-center">
+      <iframe class="object-contain object-center" v-if="pageKey" ref="iframe" :class="{ [type]: true }" frameboder="0" :src="`/preview/${app.siteID}?previewPageKey=${pageKey}&r=${randomID}`"></iframe>
     </LayoutContent>
   </div>
 </template>
@@ -70,7 +70,14 @@ export default {
 .phone{
   width: 240px;
   height: calc(240px * 16 / 9);
-  border-bottom: silver solid 1px;
+}
+.tab-v{
+  width: 480px;
+  height: calc(480px * 4 / 3);
+}
+.phone-xl{
+  width: 376px;
+  height: calc(376px * 16 / 9);
 }
 .area{
   width: 100%;

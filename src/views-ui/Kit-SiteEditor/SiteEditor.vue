@@ -2,7 +2,12 @@
   <div class="w-full h-hull bg-white" v-if="app">
     <SiteEditorToolbarTop :app="app"></SiteEditorToolbarTop>
 
-    <div class="app-content flex flex-row">
+    <div class="app-content flex justify-around items-center" v-if="app.mode === 'preview'">
+      <PreviewPhone type="phone" v-if="app" :app="app"></PreviewPhone>
+      <PreviewPhone type="phone-xl" v-if="app" :app="app"></PreviewPhone>
+      <PreviewPhone type="tab-v" v-if="app" :app="app"></PreviewPhone>
+    </div>
+    <div v-else class="app-content flex flex-row">
       <div class="nav-col">
         <ModuleBrowser :app="app"></ModuleBrowser>
       </div>
@@ -11,7 +16,7 @@
         <CodeArea :app="app" v-if="app.mode === 'code'"></CodeArea>
         <SettingsArea :app="app" v-if="app.mode === 'settings'"></SettingsArea>
         <AssetArea :app="app" v-if="app.mode === 'asset'"></AssetArea>
-        <PreviewArea :app="app" v-if="app.mode === 'preview'"></PreviewArea>
+        <!-- <PreviewArea :app="app" v-if="app.mode === 'preview'"></PreviewArea> -->
         <Layout3DArea :app="app" v-if="app.mode === 'layout'"></Layout3DArea>
         <TimelineArea :app="app" v-if="app.mode === 'timeline'"></TimelineArea>
         <SnippetArea :app="app" v-if="app.mode === 'snippet'"></SnippetArea>
