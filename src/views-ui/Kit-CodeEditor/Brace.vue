@@ -74,6 +74,7 @@ export default {
     editor.setTheme('ace/theme/chrome')
     editor.setValue(this.getter() || '', -1)
     editor.setOption('fontSize', '12px')
+
     editor.session.setOptions({ tabSize: 2, useSoftTabs: true })
     editor.session.setOption('useWorker', false)
 
