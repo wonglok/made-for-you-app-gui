@@ -51,15 +51,17 @@ export default {
   },
   mounted () {
     this.$root.$on('reload-iframe', () => {
-      if (this.currentPage && this.currentPage.type === 'page' && this.autoSync) {
-        this.pageKey = this.currentPage.key
-      }
       this.reload()
     })
     this.$root.$emit('reload-iframe')
   },
   methods: {
     reload () {
+      if (this.currentPage && this.currentPage.type === 'page' && this.autoSync) {
+        this.pageKey = this.currentPage.key
+      } else {
+        this.pageKey = 'home'
+      }
       this.randomID = (Math.random() * 10000000).toFixed(0)
     }
   }
@@ -77,7 +79,7 @@ export default {
 }
 .phone-xl{
   width: 376px;
-  height: calc(376px * 16 / 9);
+  height: calc(376px * 2);
 }
 .area{
   width: 100%;
