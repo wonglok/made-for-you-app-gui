@@ -39,6 +39,8 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
         }
         return mod[ck]
       },
+      getOtherCode: (mk, ck) => env.getCode(mk, ck),
+      getLocalCode: (codeKey) => env.getCode(modItem.key, codeKey),
       stream (streamFunction) {
         let intervalTimer = setInterval(() => {
           let value = sessionStorage.getItem(code._id) || ''
@@ -110,10 +112,14 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
           let main = mod.codes.find(c => c.key === 'main')
           if (main) {
             let env = myModules[mod.key][main.key]
-            let cleans = env._.clean
-            for (var cleanKN in cleans) {
-              cleans[cleanKN]()
+            for (var cleanKN in env._.clean) {
+              env._.clean[cleanKN]()
             }
+
+            for (var loopKN in env._.loop) {
+              delete env._.loop[loopKN]
+            }
+
             cancelAnimationFrame(this.rAFID)
           }
         },
@@ -122,15 +128,13 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
           if (main) {
             let env = myModules[mod.key][main.key]
             let api = {
-              getCode: env.getCode,
-              goTo: (path, query = {}) => {
+              goPage: (path, query = {}) => {
                 return this.$router.push({
                   path,
                   query
                 })
               },
-
-              getPageQuery: () => {
+              getQuery: () => {
                 return this.$route.query
               },
 
@@ -152,16 +156,14 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
             }
             let looper = () => {
               this.rAFID = requestAnimationFrame(looper)
-              let loops = env._.loop
-              for (var loopKN in loops) {
-                loops[loopKN]()
+              for (var loopKN in env._.loop) {
+                env._.loop[loopKN]()
               }
             }
             this.rAFID = requestAnimationFrame(looper)
             let resize = () => {
-              let resizes = env._.resize
-              for (var resizeKN in resizes) {
-                resizes[resizeKN]()
+              for (var resizeKN in env._.resize) {
+                env._.resize[resizeKN]()
               }
             }
             window.addEventListener('resize', resize, false)
@@ -171,6 +173,8 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
 
             await env.run(api)
             window.dispatchEvent(new Event('resize'))
+          } else {
+            this.$router.push('/needs-to-add-mainjs')
           }
         }
       }
@@ -180,7 +184,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
   routes.push({
     path: '/needs-to-add-mainjs',
     component: {
-      template: `<div class="full flex justify-center items-center">Please add main.js</div>`
+      template: `<div class="full flex justify-center items-center text-center p-5">Please add main.js to the current module / page</div>`
     }
   })
 

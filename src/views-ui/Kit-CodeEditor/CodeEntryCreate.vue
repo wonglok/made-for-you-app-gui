@@ -6,12 +6,15 @@
     <transition name="fade">
       <div class="absolute tooltip rounded-lg mt-2 py-2 text-left px-2 border border-gray-200 bg-white hover:bg-gray-100 z-20" v-if="show.createCodeEntry">
         <div class="text-sm ml-1 mb-2">Create Code Entry</div>
-        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ type: 'js' })">☕️ JavaScript</div>
-        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ type: 'vert' })">🌈 Vertex Shader</div>
-        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ type: 'frag' })">🌈 Fragment Shader</div>
-        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ type: 'html' })">🕸 HTML</div>
-        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ type: 'css' })">🕸 CSS</div>
-        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ type: 'vue' })">🕸 Vue</div>
+
+        <input placeholder="New Code Name" autofocus class="ml-1 rounded-lg px-3 py-1 mb-2 border border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500" type="text" v-model="key" />
+
+        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ key, type: 'js' })">☕️ JavaScript</div>
+        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ key, type: 'vert' })">🌈 Vertex Shader</div>
+        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ key, type: 'frag' })">🌈 Fragment Shader</div>
+        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ key, type: 'html' })">🕸 HTML</div>
+        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ key, type: 'css' })">🕸 CSS</div>
+        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ key, type: 'vue' })">🕸 Vue</div>
       </div>
     </transition>
   </div>
@@ -26,10 +29,15 @@ export default {
     app: {},
     mod: {}
   },
+  data () {
+    return {
+      key: ''
+    }
+  },
   methods: {
-    addCode ({ type }) {
+    addCode ({ type, key = 'newCode' }) {
       API.createCode({
-        key: 'newCode',
+        key: key,
         type: type,
         value: '',
         siteID: this.app.siteID,
@@ -45,6 +53,7 @@ export default {
         })
       this.show.createCodeEntry = false
     },
+
     // addCode ({ type = 'code' }) {
     //   // API.createCodeEntry({
     //   //   key: `justCreated`,
@@ -82,8 +91,8 @@ export default {
 <style scoped>
 .tooltip{
   top: 0px;
-  right: calc((-150px) + (-10px));
-  width: 150px;
+  right: calc((-185px) + (-10px));
+  width: 185px;
 }
 
 .closer{

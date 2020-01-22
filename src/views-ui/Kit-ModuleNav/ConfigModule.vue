@@ -61,6 +61,7 @@ export default {
     removeModule () {
       if (window.prompt('Please type "' + this.mod.key + '" to confirm remove this module?') === this.mod.key) {
         API.removeModule({
+          moduleObj: this.mod,
           moduleID: this.mod._id,
           userID: this.app.userID
         }).then(() => {

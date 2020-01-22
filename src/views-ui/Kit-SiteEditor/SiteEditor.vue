@@ -3,9 +3,9 @@
     <SiteEditorToolbarTop :app="app"></SiteEditorToolbarTop>
 
     <div class="app-content flex justify-around items-center" v-if="app.mode === 'preview'">
-      <PreviewPhone type="phone" v-if="app" :app="app"></PreviewPhone>
-      <PreviewPhone type="phone-xl" v-if="app" :app="app"></PreviewPhone>
-      <PreviewPhone type="tab-v" v-if="app" :app="app"></PreviewPhone>
+      <PreviewPhone :around="true" type="phone" v-if="app" :app="app"></PreviewPhone>
+      <PreviewPhone :around="true" type="phone-xl" v-if="app" :app="app"></PreviewPhone>
+      <PreviewPhone :around="true" type="tab-v" v-if="app" :app="app"></PreviewPhone>
     </div>
     <div v-else class="app-content flex flex-row">
       <div class="nav-col">
@@ -25,7 +25,7 @@
 
       <div class="preview-col">
         <keep-alive>
-          <PreviewPhone v-if="app" :app="app"></PreviewPhone>
+          <PreviewPhone :type="'phone-xs'" :bottom="true" v-if="app" :app="app"></PreviewPhone>
         </keep-alive>
       </div>
     </div>
@@ -92,11 +92,11 @@ export default {
 }
 .working-area{
   height: 100%;
-  width: calc(100% - 180px - 240px);
+  width: calc(100% - 180px - 292px);
 }
 .preview-col{
   height: 100%;
-  width: 240px;
+  width: 292px;
   background-color: #FAFAFA;
   border-left: #D3D3D3 solid 1px;
 }

@@ -1,17 +1,17 @@
 <template>
   <div class="w-full h-full">
     <LayoutHeader>
-      <span @click="reload" class="mr-1 cursor-pointer">🔄</span>
+      <span @click="reloadPage" class="mr-1 cursor-pointer">🔄</span>
       <input type="checkbox" class="mr-1" v-model="autoSync">
       <span>
         Preview:
       </span>
-      <select v-model="pageKey">
+      <select v-model="pageKey" @change="syncOtherPages">
         <option :value="mod.key" :key="mod._id" v-for="mod in pages">{{ mod.key }}</option>
       </select>
     </LayoutHeader>
     <LayoutContent class="flex justify-center">
-      <iframe class="object-contain object-center" v-if="pageKey" ref="iframe" :class="{ [type]: true }" frameboder="0" :src="`/preview/${app.siteID}?previewPageKey=${pageKey}&r=${randomID}`"></iframe>
+      <iframe class="object-contain object-center" v-if="pageKey" ref="iframe" :class="{ ['around']: around, [type]: true, ['border-bottom']: bottom }" frameboder="0" :src="`/inside-iframe/${app.siteID}?previewPageKey=${pageKey}&r=${randomID}`"></iframe>
     </LayoutContent>
   </div>
 </template>
@@ -19,8 +19,20 @@
 <script>
 export default {
   props: {
+    page: {
+      default: 'home'
+    },
+    around: {
+      default: false
+    },
+    bottom: {
+      default: ''
+    },
     type: {
       default: 'phone'
+    },
+    syncAll: {
+      default: true
     },
     app: {}
   },
@@ -31,11 +43,16 @@ export default {
     return {
       randomID: 0,
       autoSync: true,
-      pageKey: false
+      pageKey: this.page
     }
   },
   watch: {
     currentPage () {
+      if (this.currentPage && this.currentPage.type === 'page' && this.autoSync) {
+        this.pageKey = this.currentPage.key
+      }
+    },
+    code () {
       if (this.currentPage && this.currentPage.type === 'page' && this.autoSync) {
         this.pageKey = this.currentPage.key
       }
@@ -45,44 +62,66 @@ export default {
     currentPage () {
       return this.app.current.module
     },
+    code () {
+      return this.app.current.code
+    },
     pages () {
       return this.app.modules.filter(m => m.type === 'page')
     }
   },
   mounted () {
+    if (this.currentPage && this.currentPage.type === 'page' && this.autoSync) {
+      this.pageKey = this.currentPage.key
+    }
+    if (this.syncAll) {
+      this.$root.$on('load-page-frame', (page) => {
+        if (this.autoSync) {
+          this.pageKey = page
+        }
+      })
+    }
     this.$root.$on('reload-iframe', () => {
-      this.reload()
+      this.reloadPage()
     })
     this.$root.$emit('reload-iframe')
   },
   methods: {
-    reload () {
-      if (this.currentPage && this.currentPage.type === 'page' && this.autoSync) {
-        this.pageKey = this.currentPage.key
-      } else {
-        this.pageKey = 'home'
-      }
+    syncOtherPages () {
+      this.$root.$emit('load-page-frame', this.pageKey)
+    },
+    reloadPage () {
       this.randomID = (Math.random() * 10000000).toFixed(0)
     }
   }
 }
 </script>
 
-<style scoped>
+<style scoped lang="postcss">
 .phone{
-  width: 240px;
-  height: calc(240px * 16 / 9);
+  width: 320px;
+  height: calc(320px * 16 / 9);
+}
+.phone-xs{
+  width: 292px;
+  height: calc(292px * 16 / 9);
+}
+.border-bottom{
+  border-bottom: #D3D3D3 solid 1px;
 }
 .tab-v{
-  width: 480px;
-  height: calc(480px * 4 / 3);
+  width: 320px;
+  height: calc(320px * 4 / 3);
 }
 .phone-xl{
-  width: 376px;
-  height: calc(376px * 2);
+  width: 300px;
+  height: calc(300px / 0.4618226601);
 }
 .area{
   width: 100%;
   height: 100%;
+}
+.around{
+  @apply mt-3;
+  border: #D3D3D3 solid 1px;
 }
 </style>

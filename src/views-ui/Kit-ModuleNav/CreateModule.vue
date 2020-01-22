@@ -6,8 +6,10 @@
     <transition name="fade">
       <div class="absolute tooltip rounded-lg mt-2 py-2 text-left px-2 border border-gray-200 bg-white hover:bg-gray-100 z-20" v-if="show.createModule">
         <div class="text-sm ml-1 mb-2">Create Module</div>
-        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addModule({ type: 'page' })">📑 Page</div>
-        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addModule({ type: 'code' })">👍🏻 Reusable Code</div>
+        <input placeholder="New Code Name" autofocus class="ml-1 rounded-lg px-3 py-1 mb-2 border border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500" type="text" v-model="key" />
+
+        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addModule({ key, type: 'page' })">📑 Page</div>
+        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addModule({ key, type: 'code' })">👍🏻 Reusable Code</div>
       </div>
     </transition>
   </div>
@@ -21,13 +23,35 @@ export default {
     show: {},
     app: {}
   },
+  data () {
+    return {
+      key: ''
+    }
+  },
   methods: {
-    addModule ({ type = 'code' }) {
+    addModule ({ key, type = 'code' }) {
       API.createModule({
-        key: `justCreated`,
+        key: key || 'newModule',
         type: type,
         userID: this.app.userID,
         siteID: this.app.siteID
+      }).then((moduleObj) => {
+        console.log(moduleObj)
+        let value = ''
+        if (type === 'page') {
+          value = `env.run = async () => {
+  console.log('started')
+};`
+        } else if (type === 'code') {
+          value = `env.run = async () => {
+  console.log('installed')
+};`
+        }
+        return API.createCode({ key: 'main', type: 'js', value, siteID: this.app.siteID, userID: this.app.userID, moduleID: moduleObj._id })
+          .then((code) => {
+            moduleObj.codes.push(code)
+            return API.updateModule({ mod: moduleObj, userID: this.app.userID })
+          })
       }).then(() => {
         return API.getSiteModules({ siteID: this.app.siteID })
           .then((data) => {
@@ -59,8 +83,8 @@ export default {
 <style scoped>
 .tooltip{
   top: 0px;
-  right: calc((-150px) + (-10px));
-  width: 150px;
+  right: calc((-185px) + (-10px));
+  width: 185px;
 }
 
 .closer{

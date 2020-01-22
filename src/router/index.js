@@ -47,10 +47,10 @@ const routes = [
   },
   {
     path: '/site-id/:siteID',
-    component: () => import(/* webpackChunkName: "second" */ '../views/SiteViewerPage.vue')
+    component: () => import(/* webpackChunkName: "second" */ '../views/PreviewiFrame.vue')
   },
   {
-    path: '/preview/:siteID',
+    path: '/inside-iframe/:siteID',
     component: () => import(/* webpackChunkName: "second" */ '../views/SiteViewerPage.vue')
   }
 

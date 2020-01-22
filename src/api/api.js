@@ -271,7 +271,11 @@ export const makeSiteApp = async ({ siteID, userID = false, previewPageKey }) =>
     .then((mods) => {
       let pages = mods.filter(m => m.type === 'page')
       if (pages[0]) {
-        app.selected.moduleID = pages[0]._id
+        let prefer = pages.find(e => e.key === 'home')
+        if (!prefer) {
+          prefer = pages[0]
+        }
+        app.selected.moduleID = prefer._id
         let codes = pages[0].codes
         if (codes && codes[0]) {
           app.selected.codeID = codes[0]._id
@@ -322,7 +326,21 @@ export const updateModule = ({ mod, userID }) => {
   }).then(onResOK, onResError)
 }
 
-export const removeModule = ({ moduleID, userID }) => {
+export const removeModule = async ({ moduleObj, moduleID, userID }) => {
+  let all = []
+  for (var codeKN in moduleObj.codes) {
+    all.push(removeCode({
+      codeID: moduleObj.codes[codeKN]._id,
+      userID
+    }))
+  }
+  for (var valueKN in moduleObj.values) {
+    all.push(removeValue({
+      valueID: moduleObj.values[valueKN]._id,
+      userID
+    }))
+  }
+  await Promise.all(all)
   return axios({
     method: 'DELETE',
     baseURL: apiURL,
@@ -395,4 +413,42 @@ export const getCode = ({ codeID }) => {
   }).then(onResOK, onResError)
 }
 
+// ----- Code End --------
+
+// ----- Code Start --------
+export const createValue = ({ siteID, userID, moduleID, key, value, type }) => {
+  return axios({
+    method: 'POST',
+    baseURL: apiURL,
+    url: `/values`,
+    headers: getHeaders(),
+    data: {
+      type,
+      siteID,
+      userID,
+      moduleID,
+      key,
+      value
+    }
+  }).then(onResOK, onResError)
+}
+
+export const updateValue = ({ value, userID }) => {
+  return axios({
+    method: 'PUT',
+    baseURL: apiURL,
+    url: `/values/${value._id}?userID=${userID}`,
+    headers: getHeaders(),
+    data: value
+  }).then(onResOK, onResError)
+}
+
+export const removeValue = ({ valueID, userID }) => {
+  return axios({
+    method: 'DELETE',
+    baseURL: apiURL,
+    url: `/values/${valueID}?userID=${userID}`,
+    headers: getHeaders()
+  }).then(onResOK, onResError)
+}
 // ----- Code End --------
