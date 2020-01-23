@@ -5,8 +5,7 @@
     <option value="vec2">Vector2</option>
     <option value="vec3">Vector3</option>
     <option value="vec4">Vector4</option>
-    <option value="colorHEX">colorHEX</option>
-    <option value="colorHSL">colorHSL</option>
+    <option value="color">Color</option>
     <option value="easing">Easing</option>
   </select>
 </template>

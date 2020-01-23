@@ -7,10 +7,10 @@
       Please select a module on the left.
     </LayoutContent>
     <LayoutContent v-if="app.current.module">
-      <div class=" scrolling-touch overflow-y-scroll h-full">
+      <div class=" scrolling-touch overflow-y-scroll h-full" ref="scroller">
         <CreateSettings :app="app" :mod="app.current.module"></CreateSettings>
-        <div class="inline-block">
-          <SettingsModifier :key="val._id" v-for="val in app.current.module.values" :value="val" :app="app" :mod="app.current.module" ></SettingsModifier>
+        <div class="flex justify-start items-baseline flex-wrap">
+          <SettingsModifier class="" :key="val._id" v-for="val in app.current.module.values" :value="val" :app="app" :mod="app.current.module" ></SettingsModifier>
         </div>
 
         <!-- <pre>{{ app.current.module.values }}</pre> -->
@@ -35,6 +35,11 @@ export default {
   },
   components: {
     ...require('../index')
+  },
+  mounted () {
+    this.$root.$on('scroll-bottom', () => {
+      this.$refs['scroller'].scrollTop = this.$refs['scroller'].scrollHeight
+    })
   },
   methods: {
 

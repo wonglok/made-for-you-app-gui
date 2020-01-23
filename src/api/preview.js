@@ -1,11 +1,26 @@
 import BezierEasing from 'bezier-easing'
 import VueRouter from 'vue-router'
 import Vue from 'vue'
+import * as THREE from 'three'
 // import Entry from '../views-preview/Kit-Preview/Entry.vue'
 // import CP from '../views-preview/index.js'
 
 export const makeEasing = ([b0, b1, b2, b3]) => {
   return BezierEasing(b0, b1, b2, b3)
+}
+
+export const getColorFromHex8 = (hex8) => {
+  return new THREE.Color(hex8.slice(0, hex8.length - 2))
+}
+
+export const withColorFromHex8 = (color, hex8) => {
+  return color.set(hex8.slice(0, hex8.length - 2))
+}
+
+export class DynamicColor {
+  constructor ({ hex8 = '#ffffffff' }) {
+    this.hex8 = hex8
+  }
 }
 
 export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
@@ -16,8 +31,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
   }
   let routes = []
 
-  let SetupTasks = []
-  let initCode = (modItem, code, myModules, setups) => {
+  let initCode = (modItem, code, myModules, setupPromiseTasks) => {
     let env = {
       get moduleName () {
         return modItem.key
@@ -39,8 +53,28 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
         }
         return mod[ck]
       },
+      getValue: (keyName) => {
+        return modItem.values.find(e => e.key === keyName)
+      },
       getOtherCode: (mk, ck) => env.getCode(mk, ck),
       getLocalCode: (codeKey) => env.getCode(modItem.key, codeKey),
+      streamValue: (valKey, streamFunction) => {
+        var value = modItem.values.find(e => e.key === valKey)
+        let intervalTimer = setInterval(() => {
+          let str = sessionStorage.getItem(value._id) || ''
+          str = JSON.parse(str)
+          if (str && str !== value.value) {
+            value.value = str
+            setTimeout(() => {
+              streamFunction(value.value)
+            })
+          }
+        })
+        streamFunction(value.value)
+        env._.clean[Math.random()] = () => {
+          clearInterval(intervalTimer)
+        }
+      },
       stream (streamFunction) {
         let intervalTimer = setInterval(() => {
           let value = sessionStorage.getItem(code._id) || ''
@@ -81,11 +115,12 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
         return initFunc();
       `)
 
-      setups.push(async () => StarterFn(env))
+      setupPromiseTasks.push(async () => StarterFn(env))
     }
     return env
   }
 
+  let SetupTasks = []
   let myModules = {}
   for (var knmods in app.modules) {
     let mod = app.modules[knmods]

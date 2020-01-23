@@ -59,8 +59,8 @@ export default {
   },
   data () {
     let es = this.easing
-    let ww = 300
-    let hh = 300
+    let ww = 280
+    let hh = 280
     let padX = 35
     let padY = 35
     return {
