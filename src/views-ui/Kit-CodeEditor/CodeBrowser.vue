@@ -17,7 +17,7 @@
         </div>
         <CodeEntryCreate :app="app" :show="show" :mod="mod"></CodeEntryCreate>
       </LayoutHeader>
-      <LayoutContent>
+      <LayoutContent class="overflow-scroll scrolling-touch">
         <div :key="code._id" v-for="code in app.current.module.codes">
           <CodeEntry :app="app" :mod="mod" :code="code"></CodeEntry>
         </div>
