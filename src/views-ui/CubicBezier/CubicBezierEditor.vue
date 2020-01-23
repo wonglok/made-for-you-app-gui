@@ -50,7 +50,12 @@ export default {
   props: {
     easing: {
       default () {
-        return [0.11, 0.63, 0.10, 0.92]
+        return {
+          x: 0.11,
+          y: 0.63,
+          z: 0.10,
+          w: 0.92
+        }
       }
     }
   },
@@ -58,11 +63,16 @@ export default {
     ...require('../index.js')
   },
   data () {
-    let es = this.easing
-    let ww = 280
-    let hh = 280
-    let padX = 35
-    let padY = 35
+    let es = [
+      this.easing.x,
+      this.easing.y,
+      this.easing.z,
+      this.easing.w
+    ]
+    let ww = 180
+    let hh = 180
+    let padX = 20
+    let padY = 20
     return {
       scale: {
         x: (ww + padX * 2) / ww,
@@ -135,7 +145,12 @@ export default {
     //   return { x, y }
     // },
     send () {
-      this.$emit('easing', this.cubicBezierArray.slice())
+      this.$emit('easing', {
+        x: this.cubicBezierArray[0],
+        y: this.cubicBezierArray[1],
+        z: this.cubicBezierArray[2],
+        w: this.cubicBezierArray[3]
+      })
     }
   }
 }

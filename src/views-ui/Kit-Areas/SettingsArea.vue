@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full h-full" v-if="app && app.current && app.current.module">
+  <div class="" v-if="app && app.current && app.current.module">
     <LayoutHeader>
-      Custom Settings for Module: {{ app.current.module.key }}
+      Settings: {{ app.current.module.key }}
     </LayoutHeader>
     <LayoutContent v-if="!app.current.module">
       Please select a module on the left.
@@ -10,7 +10,7 @@
       <div class=" scrolling-touch overflow-y-scroll h-full" ref="scroller">
         <CreateSettings :app="app" :mod="app.current.module"></CreateSettings>
         <div class="flex justify-start items-baseline flex-wrap">
-          <SettingsModifier class="" :key="val._id" v-for="val in app.current.module.values" :value="val" :app="app" :mod="app.current.module" ></SettingsModifier>
+          <SettingsModifier :mode="'full'" class="" :key="val._id" v-for="val in app.current.module.values" :value="val" :app="app" :mod="app.current.module" ></SettingsModifier>
         </div>
 
         <!-- <pre>{{ app.current.module.values }}</pre> -->

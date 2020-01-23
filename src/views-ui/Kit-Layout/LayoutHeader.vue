@@ -14,5 +14,6 @@ export default {
 .column-header{
   height: 33px;
   border-bottom: #DADADA solid 1px;
+  border-top: #DADADA solid 1px;
 }
 </style>

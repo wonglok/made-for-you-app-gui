@@ -25,7 +25,7 @@
         <ModuleEntry :app="app" @select="v => app.selected.moduleID = v._id" :mod="mod"></ModuleEntry>
       </div>
       <div class="text-sm ml-2 mt-3 text-gray-600 font-bold" v-if="getType('code').length > 0">
-        Reusable Module
+        Reusable Modules
       </div>
       <div class="" :key="mod._id" v-for="mod in getType('code')">
         <ModuleEntry :app="app" @select="v => app.selected.moduleID = v._id" :mod="mod"></ModuleEntry>
@@ -68,7 +68,7 @@ export default {
         return true
       } else {
         let q = this.query
-        let name = `@${mod.type}-${mod.key}`
+        let name = `@${mod.type === 'code' ? 'reusable' : 'page'}-${mod.key}`
         if (name.indexOf(q) !== -1) {
           return true
         }

@@ -1,26 +1,20 @@
 import BezierEasing from 'bezier-easing'
 import VueRouter from 'vue-router'
 import Vue from 'vue'
-import * as THREE from 'three'
+import { Color } from 'three'
 // import Entry from '../views-preview/Kit-Preview/Entry.vue'
 // import CP from '../views-preview/index.js'
 
-export const makeEasing = ([b0, b1, b2, b3]) => {
-  return BezierEasing(b0, b1, b2, b3)
+export const makeEasing = (obj) => {
+  return BezierEasing(obj.x, obj.y, obj.z, obj.w)
 }
 
 export const getColorFromHex8 = (hex8) => {
-  return new THREE.Color(hex8.slice(0, hex8.length - 2))
+  return new Color(hex8.slice(0, hex8.length - 2))
 }
 
 export const withColorFromHex8 = (color, hex8) => {
   return color.set(hex8.slice(0, hex8.length - 2))
-}
-
-export class DynamicColor {
-  constructor ({ hex8 = '#ffffffff' }) {
-    this.hex8 = hex8
-  }
 }
 
 export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
@@ -31,7 +25,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
   }
   let routes = []
 
-  let initCode = (modItem, code, myModules, setupPromiseTasks) => {
+  let initCode = (mods, modItem, code, MyModules, setupPromiseTasks) => {
     let env = {
       get moduleName () {
         return modItem.key
@@ -44,7 +38,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
       },
       async run () { return code.value },
       getCode: (mk, ck) => {
-        let mod = myModules[mk]
+        let mod = MyModules[mk]
         if (!mod) {
           throw new Error('module not found')
         }
@@ -53,28 +47,57 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
         }
         return mod[ck]
       },
-      getValue: (keyName) => {
-        return modItem.values.find(e => e.key === keyName)
+      makeValueReader: (modItem) => (keyName) => {
+        let get = () => {
+          let obj = modItem.values.find(e => e.key === keyName)
+          let str = sessionStorage.getItem(obj._id) || ''
+          str = JSON.parse(str)
+          if (str && str !== obj.value) {
+            obj.value = str
+          }
+          return obj
+        }
+        return {
+          get,
+          getColor: () => {
+            let obj = get()
+            return getColorFromHex8(obj.value)
+          },
+          getEasingFunc: () => {
+            let obj = get()
+            return makeEasing(obj.value)
+          },
+          stream: (streamFunction) => {
+            let obj = modItem.values.find(e => e.key === keyName)
+            if (!obj) {
+              throw new Error('setting value not found.')
+            }
+            let intervalTimer = setInterval(() => {
+              let str = sessionStorage.getItem(obj._id) || ''
+              str = JSON.parse(str)
+              if (str && str !== obj.value) {
+                obj.value = str
+                setTimeout(() => {
+                  streamFunction(obj.value)
+                })
+              }
+            })
+            streamFunction(obj.value)
+            env._.clean[Math.random()] = () => {
+              clearInterval(intervalTimer)
+            }
+          }
+        }
+      },
+      getOtherValue: (modName, keyName) => {
+        let mod = mods.find(m => m.key === modName)
+        return env.makeValueReader(mod)(keyName)
+      },
+      getLocalValue: (keyName) => {
+        return env.makeValueReader(modItem)(keyName)
       },
       getOtherCode: (mk, ck) => env.getCode(mk, ck),
       getLocalCode: (codeKey) => env.getCode(modItem.key, codeKey),
-      streamValue: (valKey, streamFunction) => {
-        var value = modItem.values.find(e => e.key === valKey)
-        let intervalTimer = setInterval(() => {
-          let str = sessionStorage.getItem(value._id) || ''
-          str = JSON.parse(str)
-          if (str && str !== value.value) {
-            value.value = str
-            setTimeout(() => {
-              streamFunction(value.value)
-            })
-          }
-        })
-        streamFunction(value.value)
-        env._.clean[Math.random()] = () => {
-          clearInterval(intervalTimer)
-        }
-      },
       stream (streamFunction) {
         let intervalTimer = setInterval(() => {
           let value = sessionStorage.getItem(code._id) || ''
@@ -121,13 +144,13 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
   }
 
   let SetupTasks = []
-  let myModules = {}
+  let MyModules = {}
   for (var knmods in app.modules) {
     let mod = app.modules[knmods]
-    myModules[mod.key] = myModules[mod.key] || {}
+    MyModules[mod.key] = MyModules[mod.key] || {}
     for (var kncode in mod.codes) {
       let code = mod.codes[kncode]
-      myModules[mod.key][code.key] = initCode(mod, code, myModules, SetupTasks)
+      MyModules[mod.key][code.key] = initCode(app.modules, mod, code, MyModules, SetupTasks)
     }
   }
 
@@ -146,7 +169,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
         async beforeDestroy () {
           let main = mod.codes.find(c => c.key === 'main')
           if (main) {
-            let env = myModules[mod.key][main.key]
+            let env = MyModules[mod.key][main.key]
             for (var cleanKN in env._.clean) {
               env._.clean[cleanKN]()
             }
@@ -161,7 +184,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
         async mounted () {
           let main = mod.codes.find(c => c.key === 'main')
           if (main) {
-            let env = myModules[mod.key][main.key]
+            let env = MyModules[mod.key][main.key]
             let api = {
               goPage: (path, query = {}) => {
                 return this.$router.push({
@@ -183,7 +206,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
                 env._.clean[Math.random() + ''] = fn
               },
 
-              // myModules,
+              // MyModules,
               // page: mod,
               // router,
               // route: this.$route,

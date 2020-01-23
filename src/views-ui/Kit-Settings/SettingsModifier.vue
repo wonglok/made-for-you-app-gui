@@ -1,15 +1,27 @@
 <template>
-  <div class="shadow-md text-xs m-2 p-4 border border-gray-400 rounded-lg inline-block">
-    <div>
-      <input placeholder="setting keyname" autofocus class="m-1 rounded-lg px-3 py-1 border border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500" type="text" @change="updateValue" v-model="value.key" />
-      <SettingsTypeSelect @change="updateValue" :obj="value"></SettingsTypeSelect>
-      <div class="inline-block py-1 px-2 ml-1 border border-gray-200 text-white bg-red-400 hover:bg-red-300 rounded-lg cursor-pointer" @click="removeValue()">Remove</div>
+  <div :class="{
+    'shadow-md text-xs w-56 m-2 p-4 border border-gray-400 rounded-lg inline-block': mode === 'full',
+    'text-xs border-b mb-3 w-full': mode === 'mini'
+  }">
+
+    <div class="flex hover-row">
+      <input placeholder="setting keyname" autofocus :class="{ 'text-green-600 ': mode === 'mini' }" class="m-1 namer rounded-lg px-3 py-1 border border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500" type="text" @change="updateValue" v-model="value.key" />
+      <img src="./img/trash.svg" class="hidden trash w-3 ml-1 cursor-pointer" alt="Remove this settings" @click="removeValue()">
+    </div>
+    <div class="flex">
+      <!-- <SettingsTypeSelect :disabled="true" @change="updateValue" :obj="value"></SettingsTypeSelect> -->
+      <!-- <div class="inline-block py-1 px-2 ml-1 border border-gray-200 text-white bg-red-400 hover:bg-red-300 rounded-lg cursor-pointer" @click="removeValue()">Remove</div> -->
     </div>
 
-    <SettingForString v-if="value.type === 'string'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForString>
-    <SettingForColor v-if="value.type === 'color'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForColor>
-    <SettingForEasing v-if="value.type === 'easing'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForEasing>
-    <SettingForNumber v-if="value.type === 'number'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForNumber>
+    <div class="overflow-x-hidden">
+      <SettingForString v-if="value.type === 'string'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForString>
+      <SettingForColor v-if="value.type === 'color'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForColor>
+      <SettingForEasing v-if="value.type === 'easing'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForEasing>
+      <SettingForNumber v-if="value.type === 'number'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForNumber>
+      <SettingForVec2 v-if="value.type === 'vec2'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForVec2>
+      <SettingForVec3 v-if="value.type === 'vec3'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForVec3>
+      <SettingForVec4 v-if="value.type === 'vec4'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForVec4>
+    </div>
   </div>
 </template>
 
@@ -19,7 +31,10 @@ export default {
   props: {
     value: {},
     app: {},
-    mod: {}
+    mod: {},
+    mode: {
+      default: 'full'
+    }
   },
   components: {
     ...require('../index')
@@ -43,5 +58,15 @@ export default {
 </script>
 
 <style lang="postcss" socped>
-
+.namer{
+  display: inline-block;
+  width: 100%;
+}
+.hover-row:hover .namer{
+  display: inline-block;
+  width: 80%;
+}
+.hover-row:hover .trash{
+  display: inline-block;
+}
 </style>

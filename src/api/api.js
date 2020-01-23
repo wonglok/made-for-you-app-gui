@@ -211,7 +211,7 @@ export const onResError = (err) => {
   return Promise.reject(msg)
 }
 
-export const makeSiteApp = async ({ siteID, userID = false, previewPageKey }) => {
+export const makeSiteApp = async ({ siteID, userID = false, getSiteFn = getSite, getSiteModulesFn = getSiteModules }) => {
   let bus = new EventEmitter()
   let notifier = {
     get (obj, prop) {
@@ -227,6 +227,7 @@ export const makeSiteApp = async ({ siteID, userID = false, previewPageKey }) =>
   let app = new Proxy({
     bus
   }, notifier)
+
   app.userID = userID
   app.siteID = siteID
   app.previewURL = ''
@@ -266,8 +267,8 @@ export const makeSiteApp = async ({ siteID, userID = false, previewPageKey }) =>
     codeID: false
   }
 
-  app.site = await getSite({ siteID })
-  app.modules = await getSiteModules({ siteID })
+  app.site = await getSiteFn({ siteID })
+  app.modules = await getSiteModulesFn({ siteID })
     .then((mods) => {
       let pages = mods.filter(m => m.type === 'page')
       if (pages[0]) {

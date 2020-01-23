@@ -11,10 +11,10 @@
         <span slot="name">Code</span>
       </ToolBarIcon>
 
-      <ToolBarIcon :isOn="app.mode === 'settings'" @on="app.mode = 'settings'; $forceUpdate()" class="">
+      <!-- <ToolBarIcon :isOn="app.mode === 'settings'" @on="app.mode = 'settings'; $forceUpdate()" class="">
         <img slot="icon" src="./img/settings.svg" alt="Settings">
         <span slot="name">Settings</span>
-      </ToolBarIcon>
+      </ToolBarIcon> -->
 
       <ToolBarIcon :isOn="app.mode === 'timeline'"  @on="app.mode = 'timeline'; $forceUpdate()" >
         <img slot="icon" src="./img/timeline.svg" alt="Timeline">

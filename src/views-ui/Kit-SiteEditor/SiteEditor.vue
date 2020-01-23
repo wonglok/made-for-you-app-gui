@@ -14,7 +14,7 @@
 
       <div class="working-area">
         <CodeArea :app="app" v-if="app.mode === 'code'"></CodeArea>
-        <SettingsArea :app="app" v-if="app.mode === 'settings'"></SettingsArea>
+        <!-- <SettingsArea :app="app" v-if="app.mode === 'settings'"></SettingsArea> -->
         <AssetArea :app="app" v-if="app.mode === 'asset'"></AssetArea>
         <!-- <PreviewArea :app="app" v-if="app.mode === 'preview'"></PreviewArea> -->
         <Layout3DArea :app="app" v-if="app.mode === 'layout'"></Layout3DArea>

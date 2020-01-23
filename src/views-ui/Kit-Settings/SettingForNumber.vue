@@ -1,7 +1,11 @@
 <template>
-  <div>
-    <input class="m-1 rounded-lg px-0 py-1 border border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500" type="range" min="0" max="100" step="0.01" @input="onChange" v-model="editable">
-    <input placeholder="Number" class="m-1 rounded-lg px-3 py-1 border border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500" type="number" min="0" max="100" step="0.01" @input="onChange" v-model="editable">
+  <div class="">
+    <div class="px-1">
+      <input placeholder="Number" class="w-full rounded-lg px-3 py-1 border border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500" type="number" min="0" max="100" step="0.01" @input="onChange" v-model="editable">
+    </div>
+    <div class="p-2">
+      <input class="w-full rounded-lg py-1 border border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500" type="range" min="0" max="100" step="0.01" @input="onChange" v-model="editable">
+    </div>
   </div>
 </template>
 
