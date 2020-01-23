@@ -37,7 +37,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
         return code.value
       },
       async run () { return code.value },
-      getCode: (mk, ck) => {
+      getAnyCode: (mk, ck) => {
         let mod = MyModules[mk]
         if (!mod) {
           throw new Error('module not found')
@@ -89,15 +89,16 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
           }
         }
       },
-      getOtherValue: (modName, keyName) => {
+      getOtherSetting: (modName, keyName) => {
         let mod = mods.find(m => m.key === modName)
         return env.makeValueReader(mod)(keyName)
       },
-      getLocalValue: (keyName) => {
+      getSetting: (keyName) => {
         return env.makeValueReader(modItem)(keyName)
       },
-      getOtherCode: (mk, ck) => env.getCode(mk, ck),
-      getLocalCode: (codeKey) => env.getCode(modItem.key, codeKey),
+      getOtherCode: (mk, ck) => env.getAnyCode(mk, ck),
+      getCode: (codeKey) => env.getAnyCode(modItem.key, codeKey),
+      getPackageCode: (codeKey) => env.getAnyCode(modItem.key, codeKey),
       stream (streamFunction) {
         let intervalTimer = setInterval(() => {
           let value = sessionStorage.getItem(code._id) || ''
