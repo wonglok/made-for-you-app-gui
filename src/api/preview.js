@@ -55,7 +55,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
             throw new Error(keyName + 'setting value not found.')
           }
           let str = sessionStorage.getItem(obj._id) || ''
-          str = JSON.parse(str)
+          try { str = JSON.parse(str) } catch (e) {}
           if (str && str !== obj.value) {
             obj.value = str
           }
@@ -78,7 +78,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
             }
             let intervalTimer = setInterval(() => {
               let str = sessionStorage.getItem(obj._id) || ''
-              str = JSON.parse(str)
+              try { str = JSON.parse(str) } catch (e) {}
               if (str && str !== obj.value) {
                 obj.value = str
                 setTimeout(() => {

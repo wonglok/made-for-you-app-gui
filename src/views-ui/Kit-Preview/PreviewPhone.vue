@@ -112,6 +112,10 @@ export default {
   width: 320px;
   height: calc(320px * 4 / 3);
 }
+.tab-h{
+  width: 400px;
+  height: calc(400px * 3 / 4);
+}
 .phone-xl{
   width: 300px;
   height: calc(300px / 0.4618226601);

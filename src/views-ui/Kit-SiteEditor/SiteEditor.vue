@@ -5,7 +5,7 @@
     <div class="app-content flex justify-around items-center" v-if="app.mode === 'preview'">
       <PreviewPhone :around="true" type="phone" v-if="app" :app="app"></PreviewPhone>
       <PreviewPhone :around="true" type="phone-xl" v-if="app" :app="app"></PreviewPhone>
-      <PreviewPhone :around="true" type="tab-v" v-if="app" :app="app"></PreviewPhone>
+      <PreviewPhone :around="true" type="tab-h" v-if="app" :app="app"></PreviewPhone>
     </div>
     <div v-else class="app-content flex flex-row">
       <div class="nav-col">
