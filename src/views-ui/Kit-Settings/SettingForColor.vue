@@ -1,7 +1,7 @@
 <template>
   <div class="m-2">
     <!-- <input class="m-1 rounded-lg px-3 py-1 border border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500" type="text" @change="onChange" v-model="editable"> -->
-    <Chrome :value="editable" @input="onChange"></Chrome>
+    <Chrome :style="{ width: '100%' }" :value="editable" @input="onChange"></Chrome>
   </div>
 </template>
 

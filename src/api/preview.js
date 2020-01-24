@@ -10,11 +10,11 @@ export const makeEasing = (obj) => {
 }
 
 export const getColorFromHex8 = (hex8) => {
-  return new Color(hex8.slice(0, hex8.length - 2))
+  return new Color(hex8.slice(0, hex8.length - 2).slice(1, hex8.length))
 }
 
-export const withColorFromHex8 = (color, hex8) => {
-  return color.set(hex8.slice(0, hex8.length - 2))
+export const setColorFromHex8 = (color, hex8) => {
+  return color.set(Number(hex8.slice(0, hex8.length - 2).slice(1, hex8.length)))
 }
 
 export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
@@ -47,6 +47,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
         }
         return mod[ck]
       },
+      setColorFromHex8,
       makeValueReader: (modItem) => (keyName) => {
         let get = () => {
           let obj = modItem.values.find(e => e.key === keyName)
