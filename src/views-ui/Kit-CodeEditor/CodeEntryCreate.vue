@@ -4,10 +4,10 @@
       <div class="fixed top-0 left-0 w-full h-full closer z-10" v-if="show.createCodeEntry" @click="show.createCodeEntry = false"></div>
     </transition>
     <transition name="fade">
-      <div class="absolute tooltip rounded-lg mt-2 py-2 text-left px-2 border border-gray-200 bg-white hover:bg-gray-100 z-20" v-if="show.createCodeEntry">
+      <div class="fixed tooltip rounded-lg mt-2 py-2 text-left px-2 border border-gray-200 bg-white hover:bg-gray-100 z-20" v-if="show.createCodeEntry">
         <div class="text-sm ml-1 mb-2">Create Code Entry</div>
 
-        <input placeholder="New Code Name" autofocus class="ml-1 rounded-lg px-3 py-1 mb-2 border border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500" type="text" v-model="key" />
+        <input placeholder="New Code Name" autofocus class="ml-1 text-xs rounded-lg px-3 py-1 mb-2 border border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500" type="text" v-model="key" />
 
         <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ key, type: 'js' })">☕️ JavaScript</div>
         <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ key, type: 'vert' })">🌈 Vertex Shader</div>
@@ -90,8 +90,8 @@ export default {
 
 <style scoped>
 .tooltip{
-  top: 0px;
-  right: calc((-185px) + (-10px));
+  top: 80px;
+  left: calc(200px + (185px) + (-10px));
   width: 185px;
 }
 

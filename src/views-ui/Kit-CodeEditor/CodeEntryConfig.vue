@@ -4,7 +4,7 @@
       <div class="fixed top-0 left-0 w-full h-full closer z-10" v-if="show.configCode" @click="show.configCode = false"></div>
     </transition>
     <transition name="fade">
-      <div class="absolute tooltip rounded-lg mt-2 py-2 text-left px-2 border border-gray-200 bg-white hover:bg-gray-100 z-20" v-if="show.configCode">
+      <div class="fixed tooltip rounded-lg mt-2 py-2 text-left px-2 border border-gray-200 bg-white hover:bg-gray-100 z-20" v-if="show.configCode">
         <div class="text-sm ml-1 mb-2">Edit Code Properties</div>
         <div class="text-xs">
           <div>
@@ -103,8 +103,8 @@ export default {
 
 <style scoped>
 .tooltip{
-  top: 0px;
-  right: calc((-200px) + (-10px));
+  top: 100px;
+  left: calc((380px) + (-10px));
   /* width: 200px; */
 }
 

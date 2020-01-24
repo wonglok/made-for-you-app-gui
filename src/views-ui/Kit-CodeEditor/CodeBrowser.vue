@@ -15,7 +15,6 @@
             <img class="cursor-pointer" src="./img/plus.svg" @click="$root.$emit('close-all-dark-overlay'); show.createCodeEntry = true;" />
           </div>
         </div>
-        <CodeEntryCreate :app="app" :show="show" :mod="mod"></CodeEntryCreate>
       </LayoutHeader>
       <LayoutContent class="overflow-scroll scrolling-touch">
         <div :key="code._id" v-for="code in app.current.module.codes">
@@ -23,6 +22,7 @@
         </div>
       </LayoutContent>
     </div>
+    <CodeEntryCreate :app="app" :show="show" :mod="mod"></CodeEntryCreate>
     <div class="setting-row">
       <LayoutHeader>
         <div class="w-full h-full flex justify-between">

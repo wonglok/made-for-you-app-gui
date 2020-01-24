@@ -50,6 +50,9 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
       makeValueReader: (modItem) => (keyName) => {
         let get = () => {
           let obj = modItem.values.find(e => e.key === keyName)
+          if (!obj) {
+            throw new Error(keyName + 'setting value not found.')
+          }
           let str = sessionStorage.getItem(obj._id) || ''
           str = JSON.parse(str)
           if (str && str !== obj.value) {
@@ -70,7 +73,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
           stream: (streamFunction) => {
             let obj = modItem.values.find(e => e.key === keyName)
             if (!obj) {
-              throw new Error('setting value not found.')
+              throw new Error(keyName + 'setting value not found.')
             }
             let intervalTimer = setInterval(() => {
               let str = sessionStorage.getItem(obj._id) || ''
