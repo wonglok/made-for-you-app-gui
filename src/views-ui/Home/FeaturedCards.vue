@@ -5,16 +5,31 @@
         Featured Sites
       </div>
       <div class="flex flex-col lg:flex-row justify-center items-center lg:justify-between px-3 py-6">
-        <div class=" rounded-lg m-3 w-64 h-64 xl:w-72 xl:h-72 bg-red-300"></div>
-        <div class=" rounded-lg m-3 w-64 h-64 xl:w-72 xl:h-72 bg-green-300"></div>
-        <div class=" rounded-lg m-3 w-64 h-64 xl:w-72 xl:h-72 bg-blue-300"></div>
+        <div :key="ft._id" v-for="ft in featureds" class=" rounded-lg m-3 w-64 h-64 xl:w-72 xl:h-72 bg-white border border-gray-500">
+          <iframe class="w-full h-full" frameboder="0" :src="`/inside-iframe/${ft.site._id}`"></iframe>
+        </div>
+        <!-- <div class=" rounded-lg m-3 w-64 h-64 xl:w-72 xl:h-72 bg-white border border-green-500">
+          <iframe class="w-full h-full" frameboder="0" :src="`/inside-iframe/${'5e226b84dfaa69312b37e987'}`"></iframe>
+        </div>
+        <div class=" rounded-lg m-3 w-64 h-64 xl:w-72 xl:h-72 bg-white border border-blue-500">
+          <iframe class="w-full h-full" frameboder="0" :src="`/inside-iframe/${'5e226b84dfaa69312b37e987'}`"></iframe>
+        </div> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import * as API from '../../api/api.js'
 export default {
+  data () {
+    return {
+      featureds: []
+    }
+  },
+  async mounted () {
+    this.featureds = await API.getFeatured()
+  }
 }
 </script>
 

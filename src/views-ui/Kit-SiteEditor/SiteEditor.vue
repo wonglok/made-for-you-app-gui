@@ -29,19 +29,11 @@
         </keep-alive>
       </div>
     </div>
-
-    <!-- <div>
-      SiteEditor {{ siteID }}
-    </div> -->
-    <div>
-      <!-- {{ easing }} -->
-      <!-- <CubicBezierEditor @easing="(v) => { easing = v }"></CubicBezierEditor> -->
-    </div>
   </div>
   <div v-else-if="app === null" class="">
     <div class="h-full w-full text-3xl flex justify-center items-center flex-col">
       <div>
-        Sorry, We can't find your siite 😭
+        Sorry, We can't find your site 😭
       </div>
       <div @click="$router.push('/profile')" class="hover:underline cursor-pointer">
         ⬅️ Back to Profile

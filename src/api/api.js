@@ -301,6 +301,19 @@ export const getSite = ({ siteID }) => {
   }).then(onResOK, onResError)
 }
 
+export const getFeatured = () => {
+  return axios({
+    method: 'GET',
+    baseURL: apiURL,
+    url: `/featureds?active=true`// ,
+    // headers: getHeaders()
+    // data: {
+    //   type,
+    //   key
+    // }
+  }).then(onResOK, onResError)
+}
+
 // ----- Module Start --------
 export const createModule = ({ key, type, siteID, userID }) => {
   return axios({
