@@ -5,7 +5,7 @@
         <div class="lg:w-5/12">
           <Logo></Logo>
           <div class="text-md pt-6 leading-normal text-gray-700">
-            MadeForYouApp is a pro-creation invetion for you to be the dream person you want to be with.
+            Creative Code Lab is a pro-creation invetion for you to be the dream person you want to be with.
           </div>
         </div>
         <div class="lg:w-3/12">

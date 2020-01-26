@@ -2,14 +2,14 @@
   <div class="flex">
     <router-link class="flex" to="/">
       <div class="logo-holder">
-        <img src="../../assets/images/logo-framed.svg" alt="MadeForYouAppLogo">
+        <img src="../../assets/images/logo-framed.svg" alt="CreativeCodeLabLogo">
       </div>
       <div class="flex flex-col items-start justify-center adjust-some">
         <div class="pl-2 text-xl font-title font-black text-black">
-          MadeForYouApp.com
+          CreativeCodeLab.com
         </div>
         <div class="pl-2 text-lg text-gray-700">
-          Your visual effect site builder.
+          Assisted Creative Coding.
         </div>
       </div>
     </router-link>

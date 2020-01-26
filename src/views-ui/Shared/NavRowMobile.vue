@@ -7,7 +7,7 @@
     </div>
     <div class="inline-block text-xl font-title font-black px-3 flex items-center  tracking-tighter">
       <router-link to="/">
-        MadeForYouApp.com
+        CreativeCodeLab.com
       </router-link>
     </div>
     <div class="inline-block w-16 h-16 flex justify-center items-center bg-white border-gray-500 border-l border-b cursor-pointer"  @click="$emit('menu-click')">
