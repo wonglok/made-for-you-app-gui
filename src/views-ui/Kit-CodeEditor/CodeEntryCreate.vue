@@ -15,6 +15,7 @@
         <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ key, type: 'html' })">🕸 HTML</div>
         <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ key, type: 'css' })">🕸 CSS</div>
         <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ key, type: 'vue' })">🕸 Vue</div>
+        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addCode({ key, type: 'json' })">🕸 JSON</div>
       </div>
     </transition>
   </div>

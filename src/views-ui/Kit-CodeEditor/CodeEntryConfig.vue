@@ -14,6 +14,7 @@
               <option value="html">📑 HTML</option>
               <option value="css">📑 CSS</option>
               <option value="vue">📑 Vue</option>
+              <option value="json">📑 JSON</option>
               <option value="vert">🌈 Vertex Shader</option>
               <option value="frag">🌈 Fragment Shader</option>
             </select>
@@ -69,7 +70,6 @@ export default {
           codeID: this.code._id,
           userID: this.app.userID
         })
-
         this.mod.codes.splice(this.mod.codes.findIndex(c => c._id === this.code._id), 1)
         this.show.configCode = false
       }

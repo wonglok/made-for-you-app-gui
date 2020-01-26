@@ -2,8 +2,9 @@
   <div :class="{ 'bg-green-200' : app.selected.codeID === code._id }" class="relative text-xs py-1 px-2 hover:bg-blue-200 flex justify-between rowhover hover:text-black flex justify-between items-center">
     <div class="pl-2 text-xs w-full overflow-hidden cursor-defaults cursor-pointer hover:underline" @click="$emit('select', code); app.selected.codeID = code._id">
       <span v-if="code.type === 'frag'">🌈</span>
-      <span v-if="code.type === 'vert'">🌈</span>
-      <span v-if="code.type === 'js'">☕️</span>
+      <span v-else-if="code.type === 'vert'">🌈</span>
+      <span v-else-if="code.type === 'js'">☕️</span>
+      <span v-else>🗂</span>
 
       {{ code.key }}.{{ code.type }}{{ isDirty ? '*' : '' }}
     </div>

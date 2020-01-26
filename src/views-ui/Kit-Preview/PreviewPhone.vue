@@ -117,8 +117,8 @@ export default {
   height: calc(400px * 3 / 4);
 }
 .phone-xl{
-  width: 300px;
-  height: calc(300px / 0.4618226601);
+  width: 292px;
+  height: calc(292px / 0.4618226601);
 }
 .area{
   width: 100%;

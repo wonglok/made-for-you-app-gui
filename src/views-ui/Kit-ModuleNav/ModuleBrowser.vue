@@ -9,7 +9,6 @@
         <div class="inline-flex justify-start items-center pl-1 pr-1">
           <input class="input-filter text-xs" type="text" v-model="query" placeholder="All Modules" />
         </div>
-
         <div class="inline-flex justify-center items-center mr-2">
           <img class="cursor-pointer" src="./img/plus.svg" @click="$root.$emit('close-all-dark-overlay'); show.createModule = true; " />
         </div>

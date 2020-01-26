@@ -62,16 +62,24 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
           return obj
         }
         return {
+          get value () {
+            let obj = get()
+            if (obj) {
+              return obj.value
+            } else {
+              return false
+            }
+          },
           get,
           getColor: () => {
             let obj = get()
             return getColorFromHex8(obj.value)
           },
-          getEasingFunc: () => {
+          getEasing: () => {
             let obj = get()
             return makeEasing(obj.value)
           },
-          stream: (streamFunction) => {
+          stream: (streamFunction, type = 'none') => {
             let obj = modItem.values.find(e => e.key === keyName)
             if (!obj) {
               throw new Error(keyName + 'setting value not found.')
@@ -81,19 +89,25 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
               try { str = JSON.parse(str) } catch (e) {}
               if (str && str !== obj.value) {
                 obj.value = str
-                setTimeout(() => {
+                if (type === 'hex') {
+                  streamFunction((obj.value + '').slice(0, 7))
+                } else {
                   streamFunction(obj.value)
-                })
+                }
               }
             })
-            streamFunction(obj.value)
+            if (type === 'hex') {
+              streamFunction((obj.value + '').slice(0, 7))
+            } else {
+              streamFunction(obj.value)
+            }
             env._.clean[Math.random()] = () => {
               clearInterval(intervalTimer)
             }
           }
         }
       },
-      getOtherSetting: (modName, keyName) => {
+      getAnySetting: (modName, keyName) => {
         let mod = mods.find(m => m.key === modName)
         return env.makeValueReader(mod)(keyName)
       },
@@ -108,9 +122,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
           let value = sessionStorage.getItem(code._id) || ''
           if (value && value !== code.value) {
             code.value = value
-            setTimeout(() => {
-              streamFunction(code.value)
-            })
+            streamFunction(code.value)
           }
         })
         streamFunction(code.value)

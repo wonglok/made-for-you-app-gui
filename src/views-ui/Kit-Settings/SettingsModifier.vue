@@ -5,7 +5,7 @@
   }">
 
     <div class="flex hover-row">
-      <input placeholder="setting keyname" autofocus :class="{ 'text-green-600 ': mode === 'mini' }" class="m-1 namer rounded-lg px-3 py-1 border border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500" type="text" @change="updateValue" v-model="value.key" />
+      <input placeholder="setting keyname" autofocus :class="{ 'text-green-700 ': mode === 'mini' }" class="m-1 namer rounded-lg px-3 py-1 border border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500" type="text" @change="updateValue" v-model="value.key" />
       <img src="./img/trash.svg" class="hidden trash w-3 ml-1 cursor-pointer" alt="Remove this settings" @click="removeValue()">
     </div>
     <div class="flex">

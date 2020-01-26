@@ -25,7 +25,7 @@
 
       <div class="preview-col">
         <keep-alive>
-          <PreviewPhone :type="'phone-xs'" :bottom="true" v-if="app" :app="app"></PreviewPhone>
+          <PreviewPhone :type="'phone-xl'" :bottom="true" v-if="app" :app="app"></PreviewPhone>
         </keep-alive>
       </div>
     </div>
@@ -33,7 +33,7 @@
   <div v-else-if="app === null" class="">
     <div class="h-full w-full text-3xl flex justify-center items-center flex-col">
       <div>
-        Sorry, We can't find your site 😭
+        Sorry, We can't find your site. 😭
       </div>
       <div @click="$router.push('/profile')" class="hover:underline cursor-pointer">
         ⬅️ Back to Profile
@@ -63,9 +63,7 @@ export default {
   methods: {
     async init () {
       this.app = await API.makeSiteApp({ siteID: this.siteID, userID: API.Token.Profile._id })
-        .then(api => api, () => {
-          return null
-        })
+        .then(api => api, () => null)
     }
   }
 }
