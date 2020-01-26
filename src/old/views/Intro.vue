@@ -14,7 +14,7 @@
 
           <div class="px-6 pt-5">
             <h2 class="text-2xl font-bold">
-              Made For You App.com
+              CreativeCodeLab.com
             </h2>
             <p class="my-4">
               When the Social World is too noisy,

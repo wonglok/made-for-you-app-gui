@@ -698,7 +698,7 @@ export const makeCenterText = async ({ cubeTexture, parent, scene, camera }) => 
   let height = visibleHeightAtZDepth(camera.position.z, camera)
   let min = Math.min(width, height)
 
-  let text = 'Made For You'
+  let text = 'Creative Code Lab'
   let geo = await makeFontGeo({ text, width: min * 0.12 * 0.6 })
   // let light = new THREE.PointLight(0xda2865, 1, 100)
   // light.position.z = 10
