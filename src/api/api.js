@@ -3,8 +3,8 @@ import axios from 'axios'
 
 // import slugify from 'slugify'
 
-export const guiURL = `https://madeforyouapp.com`
-export var apiURL = `https://api-ec2-3-91-80-85.madeforyouapp.com`
+export const guiURL = `https://creativecodelab.com`
+export var apiURL = `https://api-ec2-3-91-80-85.creativecodelab.com/`
 
 if (process.env.NODE_ENV === 'development') {
   apiURL = `http://` + location.hostname + ':1337'

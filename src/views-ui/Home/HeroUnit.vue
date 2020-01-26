@@ -6,11 +6,11 @@
       </div>
       <div class="p-6 py-6 lg:py-20 lg:order-1 lg:w-9/12">
         <div class="py-4 font-title font-black text-4xl lg:text-6xl tracking-tighter leading-none text-black">
-          Build fancy mobile sites with Visual Effect
+          Code fancy mobile sites with Visual Effect
         </div>
         <!-- <img src="../../assets/outlines/hero-h1.svg" alt="Heartfelt eCards with visual effects!"> -->
         <div class="pt-2 text-gray-700 text-2xl lg:text-2xl">
-          Next level marketing campaign for your brand.
+          Next level creative coding for your experiments.
         </div>
         <div class="lg:h-12"></div>
         <MakeCardCTA></MakeCardCTA>
