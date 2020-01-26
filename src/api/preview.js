@@ -40,10 +40,10 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
       getAnyCode: (mk, ck) => {
         let mod = MyModules[mk]
         if (!mod) {
-          throw new Error('module not found')
+          throw new Error(mk + ' module not found')
         }
         if (!mod[ck]) {
-          throw new Error('module code not found')
+          throw new Error(ck + ' module code not found')
         }
         return mod[ck]
       },
