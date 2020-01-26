@@ -39,6 +39,7 @@ export default {
   },
   mounted () {
     var ace = require('brace')
+    require(`brace/mode/json`)
     require(`brace/mode/javascript`)
     require(`brace/mode/css`)
     require(`brace/mode/glsl`)

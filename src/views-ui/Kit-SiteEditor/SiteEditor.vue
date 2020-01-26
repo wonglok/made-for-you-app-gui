@@ -1,11 +1,14 @@
 <template>
   <div class="w-full h-hull bg-white" v-if="app">
-    <SiteEditorToolbarTop :app="app"></SiteEditorToolbarTop>
+    <SiteEditorNav :app="app"></SiteEditorNav>
 
     <div class="app-content flex justify-around items-center" v-if="app.mode === 'preview'">
       <PreviewPhone :around="true" type="phone" v-if="app" :app="app"></PreviewPhone>
       <PreviewPhone :around="true" type="phone-xl" v-if="app" :app="app"></PreviewPhone>
       <PreviewPhone :around="true" type="tab-h" v-if="app" :app="app"></PreviewPhone>
+    </div>
+    <div class="app-content flex justify-around items-center" v-else-if="app.mode === 'snippet'">
+      <SnippetArea :app="app" v-if="app.mode === 'snippet'"></SnippetArea>
     </div>
     <div v-else class="app-content flex flex-row">
       <div class="nav-col">
@@ -19,7 +22,7 @@
         <!-- <PreviewArea :app="app" v-if="app.mode === 'preview'"></PreviewArea> -->
         <Layout3DArea :app="app" v-if="app.mode === 'layout'"></Layout3DArea>
         <TimelineArea :app="app" v-if="app.mode === 'timeline'"></TimelineArea>
-        <SnippetArea :app="app" v-if="app.mode === 'snippet'"></SnippetArea>
+
         <StoreArea :app="app" v-if="app.mode === 'store'"></StoreArea>
       </div>
 
