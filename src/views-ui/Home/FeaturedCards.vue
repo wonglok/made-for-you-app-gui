@@ -5,7 +5,7 @@
         Featured Sites
       </div>
       <div class="flex flex-col lg:flex-row justify-center items-center lg:justify-between px-3 py-6">
-        <div :key="ft._id" v-for="ft in featureds" class="relative rounded-lg m-3 w-64 h-64 xl:w-72 xl:h-72 bg-white border border-gray-500">
+        <div :key="ft._id" v-for="ft in featureds" class="relative rounded-lg m-3 w-64 h-128 xl:w-72 xl:h-144 bg-white border border-gray-500">
           <iframe class="w-full h-full" frameboder="0" :src="`/inside-iframe/${ft.site._id}`"></iframe>
           <a class="inline-block h-full w-full absolute top-0 left-0" target="_blank" :href="`/site-id/${ft.site._id}`">
           </a>
@@ -38,5 +38,11 @@ export default {
 <style scoped lang="postcss">
 .bg{
   background-color: #ffffff;
+}
+.h-128 {
+  height: 32rem;
+}
+.h-144 {
+  height: 48rem;
 }
 </style>
