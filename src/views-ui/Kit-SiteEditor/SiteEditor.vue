@@ -2,7 +2,7 @@
   <div class="w-full h-hull bg-white" v-if="app">
     <SiteEditorNav :app="app"></SiteEditorNav>
 
-    <div class="app-content flex justify-around items-center" v-if="app.mode === 'preview'">
+    <div class="app-content flex justify-around items-baseline" v-if="app.mode === 'preview'">
       <PreviewPhone :around="true" type="phone" v-if="app" :app="app"></PreviewPhone>
       <PreviewPhone :around="true" type="phone-xl" v-if="app" :app="app"></PreviewPhone>
       <PreviewPhone :around="true" type="tab-h" v-if="app" :app="app"></PreviewPhone>

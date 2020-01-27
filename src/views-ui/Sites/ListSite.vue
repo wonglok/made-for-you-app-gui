@@ -3,7 +3,7 @@
     <div class="brand-title">
       Sites
     </div>
-    <table class="table-auto bg-white shadow-xl  rounded-lg rounded-br-none rounded-bl-none">
+    <table class="bg-white shadow-xl  rounded-lg rounded-br-none rounded-bl-none max-w-full inline-block overflow-x-auto scrolling-touch">
       <thead>
         <tr>
           <th class="px-4 py-2">Title</th>
@@ -11,20 +11,23 @@
           <th class="px-4 py-2" colspan="3">Actions</th>
         </tr>
       </thead>
-      <tbody v-if="sites && sites.length > 0">
+      <tbody v-if="sites && sites.length > 0" class="">
         <tr :key="site._id" v-for="site in sites" class="hover:bg-gray-100">
           <td class="border px-4 py-2">{{ site.title }}</td>
           <td class="border px-4 py-2">{{ ago(site.createdAt) }}</td>
-          <a target="_blank" :href="`/site-id/${site._id}`">
-            <td class="cursor-pointer border px-4 py-2 text-blue-500 select-none hover:underline">
+          <td class="cursor-pointer border px-4 py-2 text-blue-500 select-none hover:underline">
+            <a class="w-full h-full inline-block" target="_blank" :href="`/site-id/${site._id}`">
               View
-            </td>
-          </a>
-          <a target="_blank" :href="`/site-editor/${site._id}`">
-            <td class="cursor-pointer border px-4 py-2 text-green-500 select-none hover:underline">
+            </a>
+          </td>
+          <td class="cursor-pointer border px-4 py-2 text-green-500 select-none hover:underline">
+            <a class="w-full h-full inline-block" target="_blank" :href="`/site-editor/${site._id}`">
               Edit
-            </td>
-          </a>
+            </a>
+          </td>
+          <td class="cursor-pointer border px-4 py-2 text-orange-500 select-none hover:underline"  @click="goRename(site)">
+            Rename
+          </td>
           <td class="cursor-pointer border px-4 py-2 text-red-500 select-none hover:underline" @click="goDelete(site)">
             Delete
           </td>
@@ -103,11 +106,22 @@ export default {
         path: `/site-editor/${site._id}`
       })
     },
+    async goRename (site) {
+      let pmpt = window.prompt(`What's the new name for the site?`)
+      if (pmpt) {
+        site.title = pmpt
+        await API.updateSite({
+          site,
+          userID: API.Token.Profile._id
+        })
+        await this.load()
+      }
+    },
     async goDelete (site) {
       this.$refs['removeSite'].pop({
         confirm: site.slug,
         ok: async () => {
-          await API.removeSite({ site, userID: this.app.userID })
+          await API.removeSite({ site, userID: API.Token.Profile._id })
           this.sites.splice(this.sites.findIndex(s => s._id === site._id), 1)
           this.load()
         },

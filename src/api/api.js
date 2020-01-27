@@ -157,7 +157,7 @@ export const checkUsernameTaken = async ({ username }) => {
   }).then(onResOK, onResError)
 }
 
-export const createSite = ({ title, owner }) => {
+export const createSite = async ({ title, owner }) => {
   return axios({
     method: 'POST',
     baseURL: apiURL,
@@ -167,6 +167,35 @@ export const createSite = ({ title, owner }) => {
       userID: owner._id,
       title
     }
+  }).then(onResOK)
+    .then(async (site) => {
+      let moduleObj = await createModule({
+        key: 'home',
+        type: 'page',
+        userID: Token.Profile._id,
+        siteID: site._id
+      })
+      let value = `env.run = async (api) => {
+  console.log('Happy Happy');
+  api.mounter.innerHTML = 'Happy Createive Coding';
+};
+`
+
+      let code = await createCode({ key: 'main', type: 'js', value: value, siteID: site._id, userID: Token.Profile._id, moduleID: moduleObj._id })
+      moduleObj.codes.push(code)
+      await updateModule({ mod: moduleObj, userID: Token.Profile._id })
+      return site
+    })
+    .catch(onResError)
+}
+
+export const updateSite = ({ site, userID }) => {
+  return axios({
+    method: 'PUT',
+    baseURL: apiURL,
+    url: `/sites/${site._id}?userID=${userID}`,
+    headers: getHeaders(),
+    data: site
   }).then(onResOK, onResError)
 }
 
