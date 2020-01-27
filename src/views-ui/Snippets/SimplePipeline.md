@@ -1,6 +1,7 @@
 # main.js
 
 ```js
+
 let THREE = await import('/lib/threejs-r112/build/three.module.js')
 env.run = async (api) => {
   var renderer = new THREE.WebGLRenderer({
@@ -29,9 +30,15 @@ env.run = async (api) => {
     renderer
   }
 
-  await Promise.all([
-    env.getCode('item-small-box').run(core)
-  ]);
+  var geometry = new THREE.BoxBufferGeometry(8, 8, 8, 5, 5, 5);
+  var material = new THREE.MeshBasicMaterial({ color: 0xffff00, wireframe: true });
+  var cube = new THREE.Mesh(geometry, material);
+  scene.add(cube);
+
+  api.loop(() => {
+    cube.rotation.x += 0.01;
+  	cube.rotation.y += 0.01;
+  });
 
   api.loop(() => {
   	core.renderer.render(scene, camera);
@@ -39,21 +46,4 @@ env.run = async (api) => {
 
 };
 
-```
-
-# item-msall-box.js
-
-```js
-let THREE = await import('/lib/threejs-r112/build/three.module.js')
-env.run = async (api) => {
-  var geometry = new THREE.BoxBufferGeometry(8, 8, 8, 5, 5, 5);
-  var material = new THREE.MeshBasicMaterial({ color: 0xffff00, wireframe: true });
-  var cube = new THREE.Mesh(geometry, material);
-  api.scene.add(cube);
-
-  api.loop(() => {
-    cube.rotation.x += 0.01;
-  	cube.rotation.y += 0.01;
-  });
-};
 ```

@@ -132,6 +132,10 @@ env.run = async (api) => {
       this.ctx.fill()
     }
   }
+  let touchTexture = new TouchTexture()
+  var touches = [
+    touchTexture
+  ]
   let mouse = new THREE.Vector2()
   let on = {
     onTouchMove (ev) {
@@ -161,13 +165,9 @@ env.run = async (api) => {
     }
   }
 
-  let t = new TouchTexture()
-  var touches = [
-    t
-  ]
 
   for (var i = 0; i < 10; i++) {
-    t.addTouch({
+    touchTexture.addTouch({
       x: Math.random(),
       y: Math.random()
     })
@@ -175,13 +175,13 @@ env.run = async (api) => {
 
   api.loop(() => {
     if (Math.random() < 0.8) {
-      t.addTouch({
+      touchTexture.addTouch({
         x: Math.random(),
         y: Math.random()
       })
     }
 
-    t.update()
+    touchTexture.update()
     cubeTexture.needsUpdate = true
   })
 
@@ -189,12 +189,12 @@ env.run = async (api) => {
   window.addEventListener('touchmove', on.onTouchMove, { passive: false })
 
   let cubeTexture = new THREE.CubeTexture([
-    t.canvas,
-    t.canvas,
-    t.canvas,
-    t.canvas,
-    t.canvas,
-    t.canvas
+    touchTexture.canvas,
+    touchTexture.canvas,
+    touchTexture.canvas,
+    touchTexture.canvas,
+    touchTexture.canvas,
+    touchTexture.canvas
   ])
   return cubeTexture
 }
