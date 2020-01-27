@@ -15,12 +15,16 @@
         <tr :key="site._id" v-for="site in sites" class="hover:bg-gray-100">
           <td class="border px-4 py-2">{{ site.title }}</td>
           <td class="border px-4 py-2">{{ ago(site.createdAt) }}</td>
-          <td class="cursor-pointer border px-4 py-2 text-blue-500 select-none hover:underline" @click="goView(site)">
-            View
-          </td>
-          <td class="cursor-pointer border px-4 py-2 text-green-500 select-none hover:underline" @click="goEdit(site)">
-            Edit
-          </td>
+          <a target="_blank" :href="`/site-id/${site._id}`">
+            <td class="cursor-pointer border px-4 py-2 text-blue-500 select-none hover:underline">
+              View
+            </td>
+          </a>
+          <a target="_blank" :href="`/site-editor/${site._id}`">
+            <td class="cursor-pointer border px-4 py-2 text-green-500 select-none hover:underline">
+              Edit
+            </td>
+          </a>
           <td class="cursor-pointer border px-4 py-2 text-red-500 select-none hover:underline" @click="goDelete(site)">
             Delete
           </td>
