@@ -12,7 +12,7 @@
         </div>
         <div class="px-12 py-12 pt-6 lg:py-20 lg:w-1/2">
           <div class="text-xl font-title tracking-tighter">
-            Remembering what I dremaed about. ❤️
+            Remembering what I dreamed about. ❤️
           </div>
           <div class="">
             Being truthful to myself has helped me a lot in life and career. By taking action and practicing coding, I'm keeping my dream self alive. It's my way of realising my vision. 🤲🏻
