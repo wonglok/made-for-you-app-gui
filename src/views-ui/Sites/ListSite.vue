@@ -11,7 +11,7 @@
           <th class="px-4 py-2" colspan="3">Actions</th>
         </tr>
       </thead>
-      <tbody v-if="sites.length > 0">
+      <tbody v-if="sites && sites.length > 0">
         <tr :key="site._id" v-for="site in sites" class="hover:bg-gray-100">
           <td class="border px-4 py-2">{{ site.title }}</td>
           <td class="border px-4 py-2">{{ ago(site.createdAt) }}</td>
@@ -27,10 +27,17 @@
         </tr>
       </tbody>
       <!-- type="module" -->
-      <tbody v-if="sites.length === 0">
+      <tbody v-if="sites && sites.length === 0">
         <tr>
           <td colspan="4" class="px-4 py-2 text-center border">
             - No Data -
+          </td>
+        </tr>
+      </tbody>
+      <tbody v-if="sites === false">
+        <tr>
+          <td colspan="4" class="px-4 py-2 text-center border">
+            Loading...
           </td>
         </tr>
       </tbody>
@@ -51,7 +58,7 @@ export default {
   data () {
     return {
       dialogue: false,
-      sites: [],
+      sites: false,
       bug: ''
     }
   },
@@ -96,7 +103,7 @@ export default {
       this.$refs['removeSite'].pop({
         confirm: site.slug,
         ok: async () => {
-          await API.removeSite({ site })
+          await API.removeSite({ site, userID: this.app.userID })
           this.sites.splice(this.sites.findIndex(s => s._id === site._id), 1)
           this.load()
         },

@@ -170,11 +170,11 @@ export const createSite = ({ title, owner }) => {
   }).then(onResOK, onResError)
 }
 
-export const removeSite = async ({ owner, site }) => {
+export const removeSite = async ({ userID, site }) => {
   return axios({
     method: 'DELETE',
     baseURL: apiURL,
-    url: `/sites/${site._id}?userID=${owner._id}`,
+    url: `/sites/${site._id}?userID=${userID}`,
     headers: getHeaders()
   }).then(onResOK, onResError)
 }
