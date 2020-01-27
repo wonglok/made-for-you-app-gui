@@ -11,6 +11,7 @@
     "netlify": "netlify deploy --dir=\"./dist\" --prod"
   },
   "dependencies": {
+    "@chenfengyuan/vue-qrcode": "^1.0.2",
     "@tensorflow-models/posenet": "^2.2.1",
     "@tensorflow/tfjs-converter": "^1.4.0",
     "@tensorflow/tfjs-core": "^1.4.0",

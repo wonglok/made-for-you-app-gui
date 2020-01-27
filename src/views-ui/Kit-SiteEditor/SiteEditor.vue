@@ -27,9 +27,8 @@
       </div>
 
       <div class="preview-col">
-        <keep-alive>
-          <PreviewPhone :type="'phone-xl'" :bottom="true" v-if="app" :app="app"></PreviewPhone>
-        </keep-alive>
+        <PreviewPhone :type="'phone-xl'" :bottom="true" v-if="app" :app="app"></PreviewPhone>
+        <QRCode v-if="app" :app="app"></QRCode>
       </div>
     </div>
   </div>
@@ -92,5 +91,7 @@ export default {
   width: 292px;
   background-color: #FAFAFA;
   border-left: #D3D3D3 solid 1px;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 </style>

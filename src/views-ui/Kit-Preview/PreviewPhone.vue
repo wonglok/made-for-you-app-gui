@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full">
+  <div class="w-full pb-2">
     <LayoutHeader>
       <span @click="reloadPage" class="mr-1 cursor-pointer">🔄</span>
       <input type="checkbox" class="mr-1" v-model="autoSync">
