@@ -78,10 +78,12 @@ export default {
   },
   methods: {
     async goClone (site) {
-      let userID = API.Token.Profile._id
-      let result = await API.cloneSite({ site, userID })
-      await this.load()
-      console.log(JSON.stringify(result, null, '  '))
+      if (window.confirm('clone site?')) {
+        let userID = API.Token.Profile._id
+        let result = await API.cloneSite({ site, userID })
+        await this.load()
+        console.log(JSON.stringify(result, null, '  '))
+      }
     },
     async load () {
       if (API.Token.Profile) {
