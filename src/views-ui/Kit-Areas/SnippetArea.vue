@@ -4,18 +4,16 @@
       <LayoutHeader>Snippets</LayoutHeader>
       <LayoutContent>
         <ul>
-
           <li :class="{ 'bg-teal-200': selected === item }" class="text-xs text-xs w-full overflow-hidden cursor-defaults cursor-pointer hover:underline" :key="idx" v-for="(item, idx) in items">
             <div class="text-xs py-1 px-2 hover:bg-blue-200 flex justify-between rowhover hover:text-black flex justify-between items-center" @click="selected = item">
               📑 {{ item.filename }}
             </div>
           </li>
         </ul>
-
       </LayoutContent>
     </div>
     <div class="content">
-      <LayoutHeader>Snippet Code</LayoutHeader>
+      <LayoutHeader>Snippet Code *Read Only, Unsaved*</LayoutHeader>
       <LayoutContent ref="rect">
         <Brace class="w-full h-full"  v-if="selected" :key="selected.key" :style="{ height }" :mode="'markdown'" :getter="() => { return selected.value }" :setter="() => {}" @save="() => {}"></Brace>
       </LayoutContent>
