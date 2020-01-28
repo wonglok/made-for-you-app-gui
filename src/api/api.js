@@ -157,6 +157,32 @@ export const checkUsernameTaken = async ({ username }) => {
   }).then(onResOK, onResError)
 }
 
+export const cloneSite = async ({ site, userID }) => {
+  return axios({
+    method: 'POST',
+    baseURL: apiURL,
+    url: `/apis/cloneSite`,
+    headers: getHeaders(),
+    data: {
+      siteID: site._id,
+      userID
+    }
+  }).then(onResOK, onResError)
+}
+
+export const createSiteOnly = ({ title, userID }) => {
+  return axios({
+    method: 'POST',
+    baseURL: apiURL,
+    url: `/sites`,
+    headers: getHeaders(),
+    data: {
+      userID: userID,
+      title
+    }
+  }).then(onResOK, onResError)
+}
+
 export const createSite = async ({ title, owner }) => {
   return axios({
     method: 'POST',

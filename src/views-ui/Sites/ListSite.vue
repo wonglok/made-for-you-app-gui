@@ -8,13 +8,16 @@
         <tr>
           <th class="px-4 py-2">Title</th>
           <th class="px-4 py-2" colspan="1">Date Created</th>
-          <th class="px-4 py-2" colspan="3">Actions</th>
+          <th class="px-4 py-2" colspan="5">Actions</th>
         </tr>
       </thead>
       <tbody v-if="sites && sites.length > 0" class="">
         <tr :key="site._id" v-for="site in sites" class="hover:bg-gray-100">
           <td class="border px-4 py-2">{{ site.title }}</td>
           <td class="border px-4 py-2">{{ ago(site.createdAt) }}</td>
+          <td class="cursor-pointer border px-4 py-2 text-blue-500 select-none hover:underline" @click="goClone(site)">
+            Clone
+          </td>
           <td class="cursor-pointer border px-4 py-2 text-blue-500 select-none hover:underline">
             <a class="w-full h-full inline-block" target="_blank" :href="`/site-id/${site._id}`">
               View
@@ -74,6 +77,12 @@ export default {
     this.$on('load', this.load)
   },
   methods: {
+    async goClone (site) {
+      let userID = API.Token.Profile._id
+      let result = await API.cloneSite({ site, userID })
+      await this.load()
+      console.log(JSON.stringify(result, null, '  '))
+    },
     async load () {
       if (API.Token.Profile) {
         this.bug = ''
@@ -86,7 +95,7 @@ export default {
           .then((data) => {
             this.sites = data
           }, (msg) => {
-            console.log(msg)
+            // console.log(msg)
             this.bug = msg
           })
       }
