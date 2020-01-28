@@ -200,6 +200,11 @@ export const updateSite = ({ site, userID }) => {
 }
 
 export const removeSite = async ({ userID, site }) => {
+  let modules = await getSiteModules({ siteID: site._id })
+  let all = modules.map((mod) => {
+    return removeModule({ mod, userID })
+  })
+  await Promise.all(all)
   return axios({
     method: 'DELETE',
     baseURL: apiURL,
@@ -369,17 +374,17 @@ export const updateModule = ({ mod, userID }) => {
   }).then(onResOK, onResError)
 }
 
-export const removeModule = async ({ moduleObj, moduleID, userID }) => {
+export const removeModule = async ({ mod, userID }) => {
   let all = []
-  for (var codeKN in moduleObj.codes) {
+  for (var codeKN in mod.codes) {
     all.push(removeCode({
-      codeID: moduleObj.codes[codeKN]._id,
+      codeID: mod.codes[codeKN]._id,
       userID
     }))
   }
-  for (var valueKN in moduleObj.values) {
+  for (var valueKN in mod.values) {
     all.push(removeValue({
-      valueID: moduleObj.values[valueKN]._id,
+      valueID: mod.values[valueKN]._id,
       userID
     }))
   }
@@ -387,7 +392,7 @@ export const removeModule = async ({ moduleObj, moduleID, userID }) => {
   return axios({
     method: 'DELETE',
     baseURL: apiURL,
-    url: `/modules/${moduleID}?userID=${userID}`,
+    url: `/modules/${mod._id}?userID=${userID}`,
     headers: getHeaders()
   }).then(onResOK, onResError)
 }
