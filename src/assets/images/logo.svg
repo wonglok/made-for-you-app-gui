@@ -1,53 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="45px" height="44px" viewBox="0 0 45 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
-    <title>Group 3</title>
+<svg width="29px" height="40px" viewBox="0 0 29 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>C</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <rect id="path-1" x="0" y="0" width="320" height="64"></rect>
-        <filter x="-8.1%" y="-34.4%" width="116.2%" height="181.2%" filterUnits="objectBoundingBox" id="filter-2">
-            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="8" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0.17254902   0 0 0 0 0.196078431   0 0 0 0 0.254901961  0 0 0 0.08 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
-        </filter>
-        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
-            <stop stop-color="#F12711" offset="0%"></stop>
-            <stop stop-color="#F5AF19" offset="100%"></stop>
-        </linearGradient>
-        <linearGradient x1="50%" y1="100%" x2="50%" y2="0.546347128%" id="linearGradient-4">
-            <stop stop-color="#A49ADE" offset="0%"></stop>
-            <stop stop-color="#D7F3FF" offset="100%"></stop>
-        </linearGradient>
-        <rect id="path-5" x="3" y="3" width="11" height="42" rx="5.5"></rect>
-        <linearGradient x1="50%" y1="100%" x2="50%" y2="0.546347128%" id="linearGradient-6">
-            <stop stop-color="#A49ADE" offset="0%"></stop>
-            <stop stop-color="#D7F3FF" offset="100%"></stop>
-        </linearGradient>
-        <linearGradient x1="50%" y1="100%" x2="50%" y2="0.546347128%" id="linearGradient-7">
-            <stop stop-color="#A49ADE" offset="0%"></stop>
-            <stop stop-color="#D7F3FF" offset="100%"></stop>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#B600FF" offset="0%"></stop>
+            <stop stop-color="#8000FF" offset="100%"></stop>
         </linearGradient>
     </defs>
-    <g id="Foundation:-niceverynice.com" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Responsive" transform="translate(-14.000000, -11.000000)">
-            <rect id="Rectangle-4" fill="#D5CDEF" fill-rule="nonzero" x="0" y="0" width="320" height="909"></rect>
-            <g id="Rectangle" fill-rule="nonzero">
-                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
-                <use fill="#FFFFFF" xlink:href="#path-1"></use>
-            </g>
-            <g id="Group-3" transform="translate(12.000000, 9.000000)">
-                <g id="Group-2">
-                    <g id="Group">
-                        <g id="Rectangle">
-                            <use fill="url(#linearGradient-3)" xlink:href="#path-5"></use>
-                            <use stroke="#FFFFFF" stroke-width="1" fill="url(#linearGradient-4)" xlink:href="#path-5"></use>
-                        </g>
-                        <rect id="Rectangle-Copy-2" stroke="#FFFFFF" fill="url(#linearGradient-4)" x="35" y="3" width="11" height="42" rx="5.5"></rect>
-                        <rect id="Rectangle-Copy-3" stroke="#FFFFFF" fill="url(#linearGradient-6)" transform="translate(32.928850, 18.064178) rotate(40.000000) translate(-32.928850, -18.064178) " x="27.4288496" y="0.0641777725" width="11" height="36" rx="5.5"></rect>
-                        <rect id="Rectangle-Copy-4" stroke="#FFFFFF" fill="url(#linearGradient-7)" transform="translate(16.392544, 18.447200) scale(-1, 1) rotate(40.000000) translate(-16.392544, -18.447200) " x="10.8925442" y="-0.052800006" width="11" height="37" rx="5.5"></rect>
-                    </g>
-                </g>
-            </g>
-        </g>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M20.0362108,40 C22.7538453,40 25.4181929,39.469496 27.9226796,38.4615385 C30.0541576,37.6127321 28.7219839,34.3236074 26.5372189,35.2254642 C24.4590278,36.0212202 22.3275497,36.4986737 20.0362108,36.4986737 C9.11238583,36.4986737 3.51725596,28.3819629 3.46396901,20.0530504 C3.46396901,10.7161804 10.2846988,3.50132626 19.87635,3.50132626 C22.1676889,3.50132626 24.4057408,3.92572944 26.5372189,4.82758621 C28.7219839,5.67639257 30.0541576,2.4403183 27.9226796,1.53846154 C25.4181929,0.530503979 22.7538453,0 20.0362108,0 C6.60789913,0 -0.0529697703,10.0795756 0.000317180903,20.1591512 C0.0536041321,30.0795756 6.76775998,40 20.0362108,40 Z M19.5860103,32.9966316 C22.1032124,33.0506504 24.6751363,32.4564436 27.028173,31.1059738 C29.1623226,29.971579 27.4112255,26.8925077 25.3317977,27.9728836 C23.471257,28.9992407 21.446551,29.4313911 19.5312886,29.3773723 C14.8252151,29.2153159 10.6116378,25.9741882 10.6116378,20.0321207 C10.6116378,11.6051886 18.9840707,8.52611721 25.3317977,11.9833201 C27.4112255,13.1717336 29.1623226,9.98462469 27.028173,8.90424878 C18.163244,3.98853839 7,8.90424878 7,20.0321207 C7,28.0269024 12.9099527,32.888594 19.5860103,32.9966316 Z" id="C" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
     </g>
 </svg>
