@@ -2,7 +2,7 @@
   <div class="bg my-12">
     <div class="home-container">
       <div class="px-6 py-4 font-title font-black text-5xl tracking-tighter leading-none text-black">
-        Featured Sites
+        Featured Works
       </div>
       <div class="flex flex-col lg:flex-row justify-center items-center lg:justify-between px-3 py-6">
         <div :key="ft._id" v-for="ft in featureds" class="relative rounded-lg m-3 w-72 h-128 max-w-full bg-white border border-gray-500">

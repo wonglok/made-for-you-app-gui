@@ -49,8 +49,8 @@
       </ToolBarIcon>
 
       <ToolBarIcon class="mr-3" :isOn="false" @on="openPage" >
-        <img slot="icon" src="./img/preview.svg" alt="Preview">
-        <span slot="name">Open</span>
+        <img slot="icon" src="./img/safari.svg" alt="Preview">
+        <span slot="name">New Tab</span>
       </ToolBarIcon>
 
     </div>
