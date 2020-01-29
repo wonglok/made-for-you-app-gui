@@ -10,20 +10,26 @@
     <div class="app-content flex justify-around items-center" v-else-if="app.mode === 'snippet'">
       <SnippetArea :app="app" v-if="app.mode === 'snippet'"></SnippetArea>
     </div>
+    <div class="app-content flex justify-around items-center" v-else-if="app.mode === 'store'">
+      <StoreArea :app="app" v-if="app.mode === 'store'"></StoreArea>
+    </div>
+
     <div v-else class="app-content flex flex-row">
       <div class="nav-col">
         <ModuleBrowser :app="app"></ModuleBrowser>
       </div>
 
       <div class="working-area">
-        <CodeArea :app="app" v-if="app.mode === 'code'"></CodeArea>
+        <PackageArea :app="app" v-if="app.mode === 'package'"></PackageArea>
+
+        <!-- <StoreArea :app="app" v-if="app.mode === 'store'"></StoreArea> -->
         <!-- <SettingsArea :app="app" v-if="app.mode === 'settings'"></SettingsArea> -->
+        <!-- <PackageArea :app="app" v-if="app.mode === 'package'"></PackageArea> -->
+
+        <CodeArea :app="app" v-if="app.mode === 'code'"></CodeArea>
         <AssetArea :app="app" v-if="app.mode === 'asset'"></AssetArea>
-        <!-- <PreviewArea :app="app" v-if="app.mode === 'preview'"></PreviewArea> -->
         <Layout3DArea :app="app" v-if="app.mode === 'layout'"></Layout3DArea>
         <TimelineArea :app="app" v-if="app.mode === 'timeline'"></TimelineArea>
-
-        <StoreArea :app="app" v-if="app.mode === 'store'"></StoreArea>
       </div>
 
       <div class="preview-col">
@@ -93,5 +99,6 @@ export default {
   border-left: #D3D3D3 solid 1px;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  overflow-x: hidden;
 }
 </style>

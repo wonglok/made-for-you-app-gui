@@ -9,10 +9,10 @@
         <div class="inline-flex justify-start items-center pl-1 pr-1">
           <input class="input-filter text-xs" type="text" v-model="query" placeholder="All Modules" />
         </div>
+
         <div class="inline-flex justify-center items-center mr-2">
           <img class="cursor-pointer" src="./img/plus.svg" @click="$root.$emit('close-all-dark-overlay'); show.createModule = true; " />
         </div>
-
       </div>
       <CreateModule :show="show" :app="app"></CreateModule>
     </LayoutHeader>
@@ -24,12 +24,11 @@
         <ModuleEntry :app="app" @select="v => app.selected.moduleID = v._id" :mod="mod"></ModuleEntry>
       </div>
       <div class="text-sm ml-2 mt-3 text-gray-600 font-bold" v-if="getType('code').length > 0">
-        Reusable Modules
+        Shared Modules
       </div>
       <div class="" :key="mod._id" v-for="mod in getType('code')">
         <ModuleEntry :app="app" @select="v => app.selected.moduleID = v._id" :mod="mod"></ModuleEntry>
       </div>
-      <!-- {{ modules }} -->
     </div>
   </div>
 </template>

@@ -9,7 +9,7 @@
         <input placeholder="New Code Name" autofocus class="ml-1 rounded-lg px-3 py-1 mb-2 border border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500" type="text" v-model="key" />
 
         <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addModule({ key, type: 'page' })">📑 Page</div>
-        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addModule({ key, type: 'code' })">👍🏻 Reusable Code</div>
+        <div class="text-xs ml-4 mb-1 hover:underline cursor-pointer" @click="addModule({ key, type: 'code' })">👍🏻 Shared Module</div>
       </div>
     </transition>
   </div>

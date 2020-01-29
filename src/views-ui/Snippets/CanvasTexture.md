@@ -140,7 +140,6 @@ env.run = async (api) => {
   let on = {
     onTouchMove (ev) {
       ev.preventDefault()
-
       ev.targetTouches.forEach((touch) => {
         mouse = {
           x: touch.clientX / window.innerWidth,
@@ -149,39 +148,35 @@ env.run = async (api) => {
 
         touches.forEach(e => e.addTouch(mouse))
       })
-      // const touch = ev.targetTouches[0]
-
-
-      // t.addTouch(mouse)
-      // onMouseMove({ clientX: touch.clientX, clientY: touch.clientY })
     },
     onMouseMove (ev) {
       mouse = {
         x: ev.clientX / window.innerWidth,
         y: 1 - ev.clientY / window.innerHeight
       }
-
       touches.forEach(e => e.addTouch(mouse))
     }
   }
 
 
   for (var i = 0; i < 10; i++) {
-    touchTexture.addTouch({
+    touches.forEach(e => e.addTouch({
       x: Math.random(),
       y: Math.random()
-    })
+    }))
   }
 
   api.loop(() => {
     if (Math.random() < 0.8) {
-      touchTexture.addTouch({
+      touches.forEach(e => e.addTouch({
         x: Math.random(),
         y: Math.random()
-      })
+      }))
     }
 
-    touchTexture.update()
+    touches.forEach((eachTouchTexture) => {
+      eachTouchTexture.update()
+    })
     cubeTexture.needsUpdate = true
   })
 

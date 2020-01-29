@@ -48,9 +48,6 @@ const makeText = async (api, text, envMap = undefined) => {
     envMap,
     transparent: true
   })
-  // env.getSetting('text-color').stream((v) => {
-  //   mat.color = new THREE.Color(v)
-  // }, 'hex')
 
   mat.needsUpdate = true
 

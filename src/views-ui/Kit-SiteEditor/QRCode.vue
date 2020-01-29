@@ -1,6 +1,6 @@
 <template>
   <div>
-    <VueQrcode :value="`${guiURL}/site-id/${app.siteID}`" :options="{ width: 292 }"></VueQrcode>
+    <VueQrcode :value="`${guiURL}/site-id/${app.siteID}`" :options="{ width: 289 }"></VueQrcode>
   </div>
 </template>
 

@@ -526,3 +526,35 @@ export const removeValue = ({ valueID, userID }) => {
   }).then(onResOK, onResError)
 }
 // ----- Code End --------
+
+export const getApprovedTimeStoreListing = ({ userID = '' }) => {
+  let qs = ''
+  if (userID) {
+    qs = `&userID=${userID}`
+  }
+  // http://localhost:1337/packages?approvalStatus_null=false
+  return axios({
+    method: 'GET',
+    baseURL: apiURL,
+    url: `/packages?approvalStatus_null=false&approvalStatus.approved=true${qs}`,
+    headers: getHeaders()
+  }).then(onResOK, onResError)
+}
+
+export const getMyTimeStore = ({ userID }) => {
+  return axios({
+    method: 'GET',
+    baseURL: apiURL,
+    url: `/packages?userID=${userID}`,
+    headers: getHeaders()
+  }).then(onResOK, onResError)
+}
+
+export const getTimeStoreItem = ({ itemID }) => {
+  return axios({
+    method: 'GET',
+    baseURL: apiURL,
+    url: `/packages/${itemID}`,
+    headers: getHeaders()
+  }).then(onResOK, onResError)
+}

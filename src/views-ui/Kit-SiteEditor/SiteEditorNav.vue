@@ -33,6 +33,10 @@
     </div>
 
     <div class="float-right">
+      <ToolBarIcon class="" :isOn="app.mode === 'package'" @on="app.mode = 'package'; $forceUpdate()" >
+        <img slot="icon" src="./img/package.svg" alt="Package">
+        <span slot="name">Package</span>
+      </ToolBarIcon>
       <ToolBarIcon class="" :isOn="app.mode === 'store'" @on="app.mode = 'store'; $forceUpdate()" >
         <img slot="icon" src="./img/store.svg" alt="Store">
         <span slot="name">Store</span>
@@ -50,7 +54,7 @@
 
       <ToolBarIcon class="mr-3" :isOn="false" @on="openPage" >
         <img slot="icon" src="./img/safari.svg" alt="Preview">
-        <span slot="name">New Tab</span>
+        <span slot="name">Open</span>
       </ToolBarIcon>
 
     </div>
