@@ -339,26 +339,45 @@ export const makeSiteApp = async ({ siteID, userID = false, getSiteFn = getSite,
     }
   })
 
-  app.selected = {
+  app.selected = new Proxy({
     moduleID: false,
     codeID: false
+  }, {
+    get (obj, props) {
+      return obj[props]
+    },
+    set (obj, props, v) {
+      if (props === 'moduleID' && app.modules && v !== app.selected.moduleID) {
+        let mod = app.modules.find(m => m._id === v)
+        if (mod && mod.codes && (mod.codes.find(e => e.key === 'main') || mod.codes[0])) {
+          let item = (mod.codes.find(e => e.key === 'main') || mod.codes[0])
+          app.selected.codeID = item._id
+        }
+      }
+      obj[props] = v
+      return true
+    }
+  })
+
+  let autoSelect = (mods) => {
+    let pages = mods.filter(m => m.type === 'page')
+    if (pages[0]) {
+      let prefer = pages.find(e => e.key === 'home')
+      if (!prefer) {
+        prefer = pages[0]
+      }
+      app.selected.moduleID = prefer._id
+      let codes = pages[0].codes
+      if (codes && codes[0]) {
+        app.selected.codeID = codes[0]._id
+      }
+    }
   }
 
   app.site = await getSiteFn({ siteID })
   app.modules = await getSiteModulesFn({ siteID })
     .then((mods) => {
-      let pages = mods.filter(m => m.type === 'page')
-      if (pages[0]) {
-        let prefer = pages.find(e => e.key === 'home')
-        if (!prefer) {
-          prefer = pages[0]
-        }
-        app.selected.moduleID = prefer._id
-        let codes = pages[0].codes
-        if (codes && codes[0]) {
-          app.selected.codeID = codes[0]._id
-        }
-      }
+      autoSelect(mods)
       return mods
     }, () => [])
 
