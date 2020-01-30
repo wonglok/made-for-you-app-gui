@@ -1,32 +1,41 @@
 <template>
-  <div class="full">
+  <div class="h-full w-full" v-if="anotherApp && anotherApp.current.module">
     <section class="cta-area px-6 flex justify-between items-center">
       <div class="text-5xl font-title hover:underline cursor-pointer inline-block" @click="$emit('back')">
         ← Back
       </div>
-      <div class="" v-if="md">
-        <button @click="cloneModule(md)" class="brand-btn brand-btn-primary text-lg mb-0 mr-0">Clone "{{ anotherApp.current.module.key }}" Module</button>
+      <div class="">
+        <button @click="cloneModule(anotherApp.current.module)" class="brand-btn brand-btn-primary text-lg mb-0 mr-0">Clone "{{ anotherApp.current.module.key }}" Module</button>
       </div>
     </section>
-
-    <section class="flex explore-area">
-      <div class="h-full border-l border-b fix-col">
+    <div class="flex h-full w-full border-l border-b">
+      <div class="fix-col border-r">
         <LayoutHeader>Explore Modules</LayoutHeader>
         <LayoutContent>
-          <div class :key="mod._id" v-for="mod in anotherApp.modules">
+          <div class="text-sm ml-2 mt-3 text-gray-600 font-bold" v-if="anotherApp.modules.filter(e => e.type === 'page').length > 0">
+            Pages
+          </div>
+          <div class :key="mod._id" v-for="mod in anotherApp.modules.filter(e => e.type === 'page')">
+            <ModuleEntry :readOnly="true" :app="anotherApp" @select="v => selectMod(v)" :mod="mod"></ModuleEntry>
+          </div>
+          <div class="text-sm ml-2 mt-3 text-gray-600 font-bold" v-if="anotherApp.modules.filter(e => e.type === 'code').length > 0">
+            Shared Modules
+          </div>
+          <div class :key="mod._id" v-for="mod in anotherApp.modules.filter(e => e.type === 'code')">
             <ModuleEntry :readOnly="true" :app="anotherApp" @select="v => selectMod(v)" :mod="mod"></ModuleEntry>
           </div>
         </LayoutContent>
       </div>
-      <div class="h-full remain-col">
-        <keep-alive>
-          <ModuleViewer v-if="md" :key="md._id + 'mviewer'" :around="false" :app="app" :modID="md._id" :siteID="siteID"></ModuleViewer>
-        </keep-alive>
-        <div v-if="!md" class="full flex border-l font-title text-4xl justify-center items-center">
-          Loading...
-        </div>
+      <div class="fix-col">
+        <CodeBrowser v-if="anotherApp" :app="anotherApp" :mod="anotherApp.current.module" :readOnly="true"></CodeBrowser>
       </div>
-    </section>
+      <div class="remain-col border-r border-b">
+        <CodeEditorBox v-if="anotherApp" :readOnly="true" :mod="anotherApp.current.module" :app="anotherApp" :code="anotherApp.current.code" class="h-full w-full"></CodeEditorBox>
+      </div>
+      <div class="phone-col">
+        <PreviewPhone :around="false" type="phone-xs" v-if="anotherApp" :app="anotherApp"></PreviewPhone>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -42,32 +51,29 @@ export default {
   },
   data () {
     return {
-      viewing: false,
       anotherApp: false
     }
   },
-  computed: {
-    md () {
-      if (this.anotherApp) {
-        return this.anotherApp.modules.find(e => e._id === this.viewing)
-      } else {
-        return false
-      }
-    }
+  watch: {
   },
   async mounted () {
     this.anotherApp = await API.makeSiteApp({ siteID: this.siteID })
-    let mod = this.anotherApp.modules.find(e => e.key === 'home')
-    let modID = false
-    if (mod) {
-      modID = mod._id
-    }
-    this.viewing = modID
   },
   methods: {
     selectMod (md) {
       this.anotherApp.selected.moduleID = md._id
-      this.viewing = md._id
+      let pages = this.anotherApp.modules.filter(m => m._id === this.anotherApp.selected.moduleID)
+      if (pages[0]) {
+        let prefer = pages.find(e => e.key === 'home')
+        if (!prefer) {
+          prefer = pages[0]
+        }
+        this.anotherApp.selected.moduleID = prefer._id
+        let codes = pages[0].codes
+        if (codes && codes[0]) {
+          this.anotherApp.selected.codeID = codes[0]._id
+        }
+      }
     },
     async cloneModule (md) {
       if (window.confirm(`Clone module: ${md.key}?`)) {
@@ -89,13 +95,13 @@ export default {
 .fix-col{
   width: 200px;
 }
+.phone-col{
+  width: 292px;
+}
 .remain-col{
-  width: calc(100% - 200px);
+  width: calc(100% - 200px - 292px);
 }
-.explore-area{
-  height: calc(100% - 80px);
-}
-.cta-area{
-  height: calc(80px);
+.module-section{
+  height: 600px;
 }
 </style>

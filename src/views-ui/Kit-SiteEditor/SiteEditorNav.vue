@@ -6,16 +6,16 @@
         <span slot="name">Home</span>
       </ToolBarIcon>
 
-      <ToolBarIcon :isOn="app.mode === 'snippet'" @on="app.mode = 'snippet'; $forceUpdate()" class="">
-        <img slot="icon" src="./img/snippet.svg" alt="Snippet">
-        <span slot="name">Snippets</span>
-      </ToolBarIcon>
-
       <div class="inline-block ml-12 divider"></div>
 
       <ToolBarIcon :isOn="app.mode === 'code'" @on="app.mode = 'code'; $forceUpdate()" class="">
         <img slot="icon" src="./img/code.svg" alt="Code">
         <span slot="name">Code</span>
+      </ToolBarIcon>
+
+      <ToolBarIcon :isOn="app.mode === 'snippet'" @on="app.mode = 'snippet'; $forceUpdate()" class="">
+        <img slot="icon" src="./img/snippet.svg" alt="Snippet">
+        <span slot="name">Snippets</span>
       </ToolBarIcon>
 
       <!-- <ToolBarIcon class="" :isOn="app.mode === 'asset'" @on="app.mode = 'asset'; $forceUpdate()" >
