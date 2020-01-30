@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <PackageViewer class="absolute top-0 left-0 w-full h-full" @back="page = 'store'" v-if="page === 'explore' && exploreSiteID" @bottom="toBottom" :app="app" :siteID="exploreSiteID"></PackageViewer>
+    <PackageViewer class="fixed package-viewer left-0 w-full h-full" @back="page = 'store'" v-if="page === 'explore' && exploreSiteID" @bottom="toBottom" :app="app" :siteID="exploreSiteID"></PackageViewer>
   </div>
 </template>
 
@@ -85,5 +85,8 @@ export default {
 }
 .view-height{
   height: 30rem;
+}
+.package-viewer{
+  top: 64px;
 }
 </style>
