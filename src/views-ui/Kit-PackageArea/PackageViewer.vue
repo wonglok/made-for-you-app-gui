@@ -22,6 +22,9 @@
         <keep-alive>
           <ModuleViewer v-if="md" :key="md._id + 'mviewer'" :around="false" :app="app" :modID="md._id" :siteID="siteID"></ModuleViewer>
         </keep-alive>
+        <div v-if="!md" class="full flex border-l font-title text-4xl justify-center items-center">
+          Loading...
+        </div>
       </div>
     </section>
   </div>
