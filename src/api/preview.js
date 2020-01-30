@@ -131,11 +131,20 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
                 }
               }
             })
-            if (type === 'hex') {
-              streamFunction((obj.value + '').slice(0, 7))
-            } else {
-              streamFunction(obj.value)
-            }
+            setTimeout(() => {
+              if (type === 'hex') {
+                streamFunction((obj.value + '').slice(0, 7))
+              } else {
+                streamFunction(obj.value)
+              }
+            })
+            setTimeout(() => {
+              if (type === 'hex') {
+                streamFunction((obj.value + '').slice(0, 7))
+              } else {
+                streamFunction(obj.value)
+              }
+            }, 10)
             env._.clean[Math.random()] = () => {
               clearInterval(intervalTimer)
             }
