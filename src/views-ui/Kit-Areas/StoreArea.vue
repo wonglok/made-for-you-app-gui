@@ -47,7 +47,7 @@ export default {
     }
   },
   async mounted () {
-    this.featureds = (await API.getFeatured({ type: 'store' })).filter(e => e.site.canShare).slice(0, 3)
+    this.featureds = (await API.getFeatured({ type: 'store' })).slice(0, 3)
     this.$on('bottom', () => {
       this.toBottom()
     })
