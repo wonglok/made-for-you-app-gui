@@ -7,6 +7,8 @@
       <div class="remain-col border-r border-b">
         <CodeEditorBox v-if="anotherApp" :readOnly="true" :mod="anotherApp.current.module" :app="anotherApp" :code="anotherApp.current.code" class="h-full w-full"></CodeEditorBox>
       </div>
+      <div>
+      </div>
     </div>
   </div>
 </template>

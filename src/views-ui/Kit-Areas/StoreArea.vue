@@ -1,29 +1,27 @@
 <template>
-  <div class="w-full h-full overflow-x-hidden" ref="scroller">
-    <keep-alive>
-      <div :key="'storeomgomgomg'" v-if="page === 'store'" class="px-6">
-        <div class="text-5xl font-title pt-2">
-          Creative Code Store
-        </div>
-        <div class="font-title text-xl text-gray-500">Discover what's possible with Web Graphics Library...</div>
-        <div class="w-full">
-          <div class="flex flex-wrap justify-between py-6">
-            <div :key="ft._id" v-for="(ft, fi) in featureds" class="relative mx-2 w-72" :class="{ 'ml-0': fi === 0, 'mr-0': ((fi + 1) % 3) === 0 }">
-              <div class="relative w-full view-height rounded-lg bg-gray-200">
-                <iframe class="rounded-lg w-full h-full" frameboder="0" :src="`/inside-iframe/${ft.site._id}`"></iframe>
-                <div @click="exploreCode(ft.site)" :target="'_' + ft.site.slug" class="absolute cursor-pointer block top-0 left-0 w-full h-full"></div>
-              </div>
-              <div class="actions mt-2">
-                <div class="brand-btn brand-btn-primary" @click="cloneSite(ft.site)">Clone Site</div>
-                <div class="brand-btn brand-btn-ok" @click="exploreCode(ft.site)">View Code</div>
-                <a class="brand-btn brand-btn-minor realtive" :href="`/site-id/${ft.site._id}`" :target="'_' + ft.site.slug" >View Site</a>
-              </div>
+  <div class="w-full h-full overflow-x-hidden relative" ref="scroller">
+    <div :key="'storeomgomgomg'" :class="{ 'invisible': page !== 'store' }" class="px-6">
+      <div class="text-5xl font-title pt-2">
+        Creative Code Store
+      </div>
+      <div class="font-title text-xl text-gray-500">Discover what's possible with Web Graphics Library...</div>
+      <div class="w-full">
+        <div class="flex flex-wrap justify-between py-6">
+          <div :key="ft._id" v-for="(ft, fi) in featureds" class="relative mx-2 w-72" :class="{ 'ml-0': fi === 0, 'mr-0': ((fi + 1) % 3) === 0 }">
+            <div class="relative w-full view-height rounded-lg bg-gray-200">
+              <iframe class="rounded-lg w-full h-full" frameboder="0" :src="`/inside-iframe/${ft.site._id}`"></iframe>
+              <div @click="exploreCode(ft.site)" :target="'_' + ft.site.slug" class="absolute cursor-pointer block top-0 left-0 w-full h-full"></div>
+            </div>
+            <div class="actions mt-2">
+              <div class="brand-btn brand-btn-primary" @click="cloneSite(ft.site)">Clone Site</div>
+              <div class="brand-btn brand-btn-ok" @click="exploreCode(ft.site)">View Code</div>
+              <a class="brand-btn brand-btn-minor realtive" :href="`/site-id/${ft.site._id}`" :target="'_' + ft.site.slug" >View Site</a>
             </div>
           </div>
         </div>
       </div>
-    </keep-alive>
-    <PackageViewer @back="page = 'store'" v-if="page === 'explore' && exploreSiteID" @bottom="toBottom" :app="app" :siteID="exploreSiteID"></PackageViewer>
+    </div>
+    <PackageViewer class="absolute top-0 left-0 w-full h-full" @back="page = 'store'" v-if="page === 'explore' && exploreSiteID" @bottom="toBottom" :app="app" :siteID="exploreSiteID"></PackageViewer>
   </div>
 </template>
 
