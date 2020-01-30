@@ -21,7 +21,8 @@
         </div>
       </div>
     </div>
-    <PackageViewer class="fixed package-viewer left-0 w-full h-full" @back="page = 'store'" v-if="page === 'explore' && exploreSiteID" @bottom="toBottom" :app="app" :siteID="exploreSiteID"></PackageViewer>
+    <PackageViewer class="" @back="page = 'store'" v-if="page === 'explore' && exploreSiteID" @bottom="toBottom" :app="app" :siteID="exploreSiteID"></PackageViewer>
+
   </div>
 </template>
 

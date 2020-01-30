@@ -57,7 +57,7 @@ export default {
   },
   async mounted () {
     this.anotherApp = await API.makeSiteApp({ siteID: this.siteID })
-    let mod = this.anotherApp.modules[0]
+    let mod = this.anotherApp.modules.find(e => e.key === 'home')
     let modID = false
     if (mod) {
       modID = mod._id
