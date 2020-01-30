@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     onChange () {
-      this.value.value = Number(this.editable)
+      this.value.value = this.editable
       sessionStorage.setItem(this.value._id, JSON.stringify(this.value.value))
       if (!this.readOnly) {
         this.debounceUpload()

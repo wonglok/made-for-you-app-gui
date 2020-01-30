@@ -89,9 +89,9 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
           if (!obj) {
             throw new Error(keyName + 'setting value not found.')
           }
-          let str = sessionStorage.getItem(obj._id) || ''
+          let str = sessionStorage.getItem(obj._id)
           try { str = JSON.parse(str) } catch (e) {}
-          if (str && str !== obj.value) {
+          if (str || str === '' || str === 0) {
             obj.value = str
           }
           return obj
@@ -115,12 +115,13 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
             return makeEasing(obj.value)
           },
           stream: (streamFunction, type = 'none') => {
-            let obj = modItem.values.find(e => e.key === keyName)
+            let obj = get()
             if (!obj) {
               throw new Error(keyName + 'setting value not found.')
             }
+            console.log(obj.key, obj.value)
             let intervalTimer = setInterval(() => {
-              let str = sessionStorage.getItem(obj._id) || ''
+              let str = sessionStorage.getItem(obj._id)
               try { str = JSON.parse(str) } catch (e) {}
               if (str || str === '' || str === 0) {
                 obj.value = str
@@ -131,20 +132,11 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
                 }
               }
             })
-            setTimeout(() => {
-              if (type === 'hex') {
-                streamFunction((obj.value + '').slice(0, 7))
-              } else {
-                streamFunction(obj.value)
-              }
-            })
-            setTimeout(() => {
-              if (type === 'hex') {
-                streamFunction((obj.value + '').slice(0, 7))
-              } else {
-                streamFunction(obj.value)
-              }
-            }, 10)
+            if (type === 'hex') {
+              streamFunction((obj.value + '').slice(0, 7))
+            } else {
+              streamFunction(obj.value)
+            }
             env._.clean[Math.random()] = () => {
               clearInterval(intervalTimer)
             }
@@ -156,7 +148,9 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
         return env.makeValueReader(mod)(keyName)
       },
       getSetting: (keyName) => {
-        return env.makeValueReader(modItem)(keyName)
+        let modName = modItem.key
+        let mod = mods.find(m => m.key === modName)
+        return env.makeValueReader(mod)(keyName)
       },
       getOtherCode: (mk, ck) => env.getAnyCode(mk, ck),
       getCode: (codeKey) => env.getAnyCode(modItem.key, codeKey),

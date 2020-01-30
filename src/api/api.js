@@ -6,9 +6,9 @@ import axios from 'axios'
 export const guiURL = `https://creativecodelab.com`
 export var apiURL = `https://api-ec2-3-91-80-85.creativecodelab.com/`
 
-if (process.env.NODE_ENV === 'development') {
-  apiURL = `http://` + location.hostname + ':1337'
-}
+// if (process.env.NODE_ENV === 'development') {
+//   apiURL = `http://` + location.hostname + ':1337'
+// }
 
 // console.log(apiURL)
 
