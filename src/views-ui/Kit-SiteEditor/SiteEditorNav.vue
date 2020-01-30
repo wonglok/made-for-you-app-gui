@@ -18,7 +18,7 @@
         <span slot="name">Code</span>
       </ToolBarIcon>
 
-      <ToolBarIcon class="" :isOn="app.mode === 'asset'" @on="app.mode = 'asset'; $forceUpdate()" >
+      <!-- <ToolBarIcon class="" :isOn="app.mode === 'asset'" @on="app.mode = 'asset'; $forceUpdate()" >
         <img slot="icon" src="./img/asset.svg" alt="Asset">
         <span slot="name">Asset</span>
       </ToolBarIcon>
@@ -31,7 +31,7 @@
       <ToolBarIcon :isOn="app.mode === 'timeline'"  @on="app.mode = 'timeline'; $forceUpdate()" >
         <img slot="icon" src="./img/timeline.svg" alt="Timeline">
         <span slot="name">Timeline</span>
-      </ToolBarIcon>
+      </ToolBarIcon> -->
     </div>
 
     <div class="float-right">
