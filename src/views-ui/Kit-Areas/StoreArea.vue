@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full overflow-x-hidden relative" ref="scroller">
-    <div :key="'storeomgomgomg'" :class="{ 'invisible': page !== 'store' }" class="px-6">
+    <div :key="'storeomgomgomg'" v-if="page === 'store'" class="px-6">
       <div class="text-5xl font-title pt-2">
         Creative Code Store
       </div>
