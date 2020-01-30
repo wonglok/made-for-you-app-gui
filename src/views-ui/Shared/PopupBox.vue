@@ -71,6 +71,8 @@ export default {
   position: absolute;
   top: 20px;
   right: 20px;
+  background-color: rgba(0, 0, 0, .5);
+  border-radius: 100%;
 }
 .modal-close-btn img{
   width: 40px;

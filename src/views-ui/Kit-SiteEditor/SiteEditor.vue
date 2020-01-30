@@ -5,7 +5,10 @@
     <div class="app-content flex justify-around items-baseline" v-if="app.mode === 'preview'">
       <PreviewPhone :around="true" type="phone" v-if="app" :app="app"></PreviewPhone>
       <PreviewPhone :around="true" type="phone-xl" v-if="app" :app="app"></PreviewPhone>
-      <PreviewPhone :around="true" type="tab-h" v-if="app" :app="app"></PreviewPhone>
+      <div class="inline-flex justify-center items-center flex-col">
+        <PreviewPhone :around="true" type="tab-h" v-if="app" :app="app"></PreviewPhone>
+        <QRCode v-if="app" :app="app"></QRCode>
+      </div>
     </div>
     <div class="app-content flex justify-around items-center" v-else-if="app.mode === 'snippet'">
       <SnippetArea :app="app" v-if="app.mode === 'snippet'"></SnippetArea>
@@ -41,7 +44,7 @@
   <div v-else-if="app === null" class="">
     <div class="h-full w-full text-3xl flex justify-center items-center flex-col">
       <div>
-        Sorry, We can't find your site. 😭
+        Sorry, We can't load your site. 😭
       </div>
       <div @click="$router.push('/profile')" class="hover:underline cursor-pointer">
         ⬅️ Back to Profile
@@ -72,6 +75,10 @@ export default {
     async init () {
       this.app = await API.makeSiteApp({ siteID: this.siteID, userID: API.Token.Profile._id })
         .then(api => api, () => null)
+
+      if (this.app && this.app.site.userID !== this.app.userID) {
+        this.app = null
+      }
     }
   }
 }

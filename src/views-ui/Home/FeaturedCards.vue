@@ -30,7 +30,7 @@ export default {
     }
   },
   async mounted () {
-    this.featureds = await API.getFeatured()
+    this.featureds = await API.getFeatured({ type: 'landing' })
   }
 }
 </script>

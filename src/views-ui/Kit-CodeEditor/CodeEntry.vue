@@ -8,7 +8,7 @@
 
       {{ code.key }}.{{ code.type }}{{ isDirty ? '*' : '' }}
     </div>
-    <img class="cursor-pointer ml-1 h-4 hidden showme"  @click="$root.$emit('close-all-dark-overlay'); show.configCode = true; " src="./img/gear.svg" alt="">
+    <img class="cursor-pointer ml-1 h-4 hidden showme" v-show="!readOnly" @click="$root.$emit('close-all-dark-overlay'); show.configCode = true; " src="./img/gear.svg" alt="">
     <CodeEntryConfig :code="code" :mod="mod" :app="app" :show="show"></CodeEntryConfig>
   </div>
 </template>
@@ -19,6 +19,7 @@ export default {
     ...require('../index.js')
   },
   props: {
+    readOnly: {},
     code: {},
     app: {},
     mod: {}

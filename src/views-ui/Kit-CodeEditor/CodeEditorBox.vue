@@ -22,6 +22,7 @@
 import * as API from '../../api/api'
 export default {
   props: {
+    readOnly: {},
     app: {},
     code: {},
     mod: {}
@@ -60,6 +61,9 @@ export default {
       }
     }
     setHeight()
+    this.$nextTick(() => {
+      setHeight()
+    })
     window.addEventListener('resize', setHeight)
   },
   methods: {
@@ -68,14 +72,19 @@ export default {
       sessionStorage.setItem(this.code._id, v)
     },
     regDirty () {
-      let isDirty = this.copy !== this.code.value
-      if (isDirty) {
-        this.app.dirtyFiles[this.code._id] = true
-      } else {
-        delete this.app.dirtyFiles[this.code._id]
+      if (!this.readOnly) {
+        let isDirty = this.copy !== this.code.value
+        if (isDirty) {
+          this.app.dirtyFiles[this.code._id] = true
+        } else {
+          delete this.app.dirtyFiles[this.code._id]
+        }
       }
     },
     onSaveCode () {
+      if (this.readOnly) {
+        return
+      }
       this.saving = true
       API.updateCode({
         userID: this.app.userID,

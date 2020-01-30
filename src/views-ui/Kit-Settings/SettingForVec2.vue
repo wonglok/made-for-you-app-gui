@@ -24,7 +24,8 @@ export default {
   props: {
     value: {},
     app: {},
-    mod: {}
+    mod: {},
+    readOnly: {}
   },
   components: {
     ...require('../index')
@@ -44,7 +45,9 @@ export default {
         y: Number(this.editable.y) || 0
       }
       sessionStorage.setItem(this.value._id, JSON.stringify(this.value.value))
-      this.debounceUpload()
+      if (!this.readOnly) {
+        this.debounceUpload()
+      }
     },
     debounceUpload: _.debounce(function () {
       this.$emit('change')

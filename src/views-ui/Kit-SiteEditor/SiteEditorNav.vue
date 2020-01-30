@@ -1,34 +1,36 @@
 <template>
-  <div class="site-tool-bar-top overflow-hidden">
+  <div class="site-tool-bar-top overflow-hidden" :class="{ 'shadow-xl--': app.mode === 'store' }">
     <div class="float-left">
       <ToolBarIcon :isOn="app.mode === 'home'" @on="$router.push('/profile')" class="ml-3">
         <img slot="icon" src="./img/home.svg" alt="Home">
         <span slot="name">Home</span>
       </ToolBarIcon>
 
-      <ToolBarIcon :isOn="app.mode === 'code'" @on="app.mode = 'code'; $forceUpdate()" class="ml-12">
-        <img slot="icon" src="./img/code.svg" alt="Code">
-        <span slot="name">Code</span>
-      </ToolBarIcon>
-
-      <ToolBarIcon class="" :isOn="app.mode === 'snippet'" @on="app.mode = 'snippet'; $forceUpdate()" >
+      <ToolBarIcon :isOn="app.mode === 'snippet'" @on="app.mode = 'snippet'; $forceUpdate()" class="">
         <img slot="icon" src="./img/snippet.svg" alt="Snippet">
         <span slot="name">Snippets</span>
       </ToolBarIcon>
 
-      <!-- <ToolBarIcon :isOn="app.mode === 'settings'" @on="app.mode = 'settings'; $forceUpdate()" class="">
-        <img slot="icon" src="./img/settings.svg" alt="Settings">
-        <span slot="name">Settings</span>
-      </ToolBarIcon> -->
+      <div class="inline-block ml-12 divider"></div>
 
-      <ToolBarIcon :isOn="app.mode === 'timeline'"  @on="app.mode = 'timeline'; $forceUpdate()" >
-        <img slot="icon" src="./img/timeline.svg" alt="Timeline">
-        <span slot="name">Timeline</span>
+      <ToolBarIcon :isOn="app.mode === 'code'" @on="app.mode = 'code'; $forceUpdate()" class="">
+        <img slot="icon" src="./img/code.svg" alt="Code">
+        <span slot="name">Code</span>
+      </ToolBarIcon>
+
+      <ToolBarIcon class="" :isOn="app.mode === 'asset'" @on="app.mode = 'asset'; $forceUpdate()" >
+        <img slot="icon" src="./img/asset.svg" alt="Asset">
+        <span slot="name">Asset</span>
       </ToolBarIcon>
 
       <ToolBarIcon :isOn="app.mode === 'layout'" @on="app.mode = 'layout'; $forceUpdate()" >
         <img slot="icon" src="./img/layout.svg" alt="3D Layout">
         <span slot="name">3D Layout</span>
+      </ToolBarIcon>
+
+      <ToolBarIcon :isOn="app.mode === 'timeline'"  @on="app.mode = 'timeline'; $forceUpdate()" >
+        <img slot="icon" src="./img/timeline.svg" alt="Timeline">
+        <span slot="name">Timeline</span>
       </ToolBarIcon>
     </div>
 
@@ -40,11 +42,6 @@
       <ToolBarIcon class="" :isOn="app.mode === 'store'" @on="app.mode = 'store'; $forceUpdate()" >
         <img slot="icon" src="./img/store.svg" alt="Store">
         <span slot="name">Store</span>
-      </ToolBarIcon>
-
-      <ToolBarIcon class="" :isOn="app.mode === 'asset'" @on="app.mode = 'asset'; $forceUpdate()" >
-        <img slot="icon" src="./img/asset.svg" alt="Asset">
-        <span slot="name">Asset</span>
       </ToolBarIcon>
 
       <ToolBarIcon class="" :isOn="app.mode === 'preview'" @on="app.mode = 'preview'; $forceUpdate()" >

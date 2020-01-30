@@ -1,12 +1,13 @@
 <template>
   <div :class="{
+    'editable': !readOnly,
     'shadow-md text-xs w-56 m-2 p-4 border border-gray-400 rounded-lg inline-block': mode === 'full',
     'text-xs border-b mb-3 w-full': mode === 'mini'
   }">
 
     <div class="flex hover-row">
-      <input placeholder="setting keyname" autofocus :class="{ 'text-green-700 ': mode === 'mini' }" class="m-1 namer rounded-lg px-3 py-1 border border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500" type="text" @change="updateValue" v-model="value.key" />
-      <img src="./img/trash.svg" class="hidden trash w-3 ml-1 cursor-pointer" alt="Remove this settings" @click="removeValue()">
+      <input placeholder="setting keyname" :disabled="readOnly" autofocus :class="{ 'text-green-700 ': mode === 'mini' }" class="m-1 namer rounded-lg px-3 py-1 border border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500" type="text" @change="updateValue" v-model="value.key" />
+      <img src="./img/trash.svg" v-show="!readOnly" class="hidden trash w-3 ml-1 cursor-pointer" alt="Remove this settings" @click="removeValue()">
     </div>
     <div class="flex">
       <!-- <SettingsTypeSelect :disabled="true" @change="updateValue" :obj="value"></SettingsTypeSelect> -->
@@ -14,13 +15,13 @@
     </div>
 
     <div class="overflow-x-hidden">
-      <SettingForString v-if="value.type === 'string'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForString>
-      <SettingForColor v-if="value.type === 'color'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForColor>
-      <SettingForEasing v-if="value.type === 'easing'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForEasing>
-      <SettingForNumber v-if="value.type === 'number'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForNumber>
-      <SettingForVec2 v-if="value.type === 'vec2'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForVec2>
-      <SettingForVec3 v-if="value.type === 'vec3'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForVec3>
-      <SettingForVec4 v-if="value.type === 'vec4'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForVec4>
+      <SettingForString :readOnly="readOnly" v-if="value.type === 'string'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForString>
+      <SettingForColor :readOnly="readOnly" v-if="value.type === 'color'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForColor>
+      <SettingForEasing :readOnly="readOnly" v-if="value.type === 'easing'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForEasing>
+      <SettingForNumber :readOnly="readOnly" v-if="value.type === 'number'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForNumber>
+      <SettingForVec2 :readOnly="readOnly" v-if="value.type === 'vec2'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForVec2>
+      <SettingForVec3 :readOnly="readOnly" v-if="value.type === 'vec3'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForVec3>
+      <SettingForVec4 :readOnly="readOnly" v-if="value.type === 'vec4'" @change="updateValue" :value="value" :app="app" :mod="mod"></SettingForVec4>
     </div>
   </div>
 </template>
@@ -29,6 +30,7 @@
 import * as API from '../../api/api'
 export default {
   props: {
+    readOnly: {},
     value: {},
     app: {},
     mod: {},
@@ -62,7 +64,7 @@ export default {
   display: inline-block;
   width: 100%;
 }
-.hover-row:hover .namer{
+.editable .hover-row:hover .namer{
   display: inline-block;
   width: 80%;
 }

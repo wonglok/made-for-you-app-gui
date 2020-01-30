@@ -5,7 +5,7 @@
       <span v-if="mod.type === 'page'">📑 {{ mod.key }}</span>
     </div>
 
-    <img class="cursor-pointer h-4 hidden showme"  @click="$root.$emit('close-all-dark-overlay'); show.configModule = true; " src="./img/gear.svg" alt="">
+    <img v-if="!readOnly" class="cursor-pointer h-4 hidden showme"  @click="$root.$emit('close-all-dark-overlay'); show.configModule = true; " src="./img/gear.svg" alt="">
     <ConfigModule :mod="mod" :app="app" :show="show"></ConfigModule>
   </div>
 </template>
@@ -16,6 +16,7 @@ export default {
     ...require('../index.js')
   },
   props: {
+    readOnly: {},
     app: {},
     mod: {}
   },

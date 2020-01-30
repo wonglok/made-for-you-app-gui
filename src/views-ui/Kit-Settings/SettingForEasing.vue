@@ -12,7 +12,8 @@ export default {
   props: {
     value: {},
     app: {},
-    mod: {}
+    mod: {},
+    readOnly: {}
   },
   components: {
     ...require('../index')
@@ -38,7 +39,9 @@ export default {
       this.value.value = easing
       // this.value.value = `${color.hex8}`
       sessionStorage.setItem(this.value._id, JSON.stringify(this.value.value))
-      this.debounceUpload()
+      if (!this.readOnly) {
+        this.debounceUpload()
+      }
     },
     debounceUpload: _.debounce(function () {
       this.$emit('change')

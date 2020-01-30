@@ -12,13 +12,13 @@
           </div>
 
           <div class="inline-flex justify-center items-center mr-2 w-5">
-            <img class="cursor-pointer" src="./img/plus.svg" @click="$root.$emit('close-all-dark-overlay'); show.createCodeEntry = true;" />
+            <img v-show="!readOnly" class="cursor-pointer" src="./img/plus.svg" @click="$root.$emit('close-all-dark-overlay'); show.createCodeEntry = true;" />
           </div>
         </div>
       </LayoutHeader>
       <LayoutContent class="overflow-scroll scrolling-touch">
         <div :key="code._id" v-for="code in app.current.module.codes">
-          <CodeEntry :app="app" :mod="mod" :code="code"></CodeEntry>
+          <CodeEntry :readOnly="readOnly" :app="app" :mod="mod" :code="code"></CodeEntry>
         </div>
       </LayoutContent>
     </div>
@@ -35,7 +35,7 @@
           </div>
 
           <div class="inline-flex justify-center items-center mr-2 w-5">
-            <img class="cursor-pointer" src="./img/plus.svg" @click="showAdder = !showAdder" />
+            <img v-show="!readOnly" class="cursor-pointer" src="./img/plus.svg" @click="showAdder = !showAdder" />
           </div>
         </div>
       </LayoutHeader>
@@ -43,7 +43,7 @@
       <LayoutContent class="overflow-scroll scrolling-touch" ref="scroller">
         <CreateSettings v-if="showAdder" :mode="'mini'" :app="app" :mod="app.current.module"></CreateSettings>
         <div class="flex justify-start items-baseline flex-wrap mt-2">
-          <SettingsModifier :mode="'mini'" class="" :key="val._id" v-for="val in app.current.module.values" :value="val" :app="app" :mod="app.current.module" ></SettingsModifier>
+          <SettingsModifier :readOnly="readOnly" :mode="'mini'" class="" :key="val._id" v-for="val in app.current.module.values" :value="val" :app="app" :mod="app.current.module" ></SettingsModifier>
         </div>
       </LayoutContent>
     </div>
@@ -53,6 +53,7 @@
 <script>
 export default {
   props: {
+    readOnly: { default: false },
     app: {},
     mod: {}
   },

@@ -144,7 +144,7 @@ export const getHeaders = () => {
   }
   return headers
 }
-
+// Custom APIs - Start
 export const checkUsernameTaken = async ({ username }) => {
   return axios({
     method: 'POST',
@@ -169,6 +169,23 @@ export const cloneSite = async ({ site, userID }) => {
     }
   }).then(onResOK, onResError)
 }
+
+export const cloneModule = ({ sourceModuleID, sourceSiteID, currentSiteID, currentUserID }) => {
+  return axios({
+    method: 'POST',
+    baseURL: apiURL,
+    url: `/apis/cloneModule`,
+    headers: getHeaders(),
+    data: {
+      sourceModuleID,
+      sourceSiteID,
+      currentSiteID,
+      currentUserID
+    }
+  }).then(onResOK, onResError)
+}
+
+// Custom APIs - End
 
 export const createSiteOnly = ({ title, userID }) => {
   return axios({
@@ -361,11 +378,15 @@ export const getSite = ({ siteID }) => {
   }).then(onResOK, onResError)
 }
 
-export const getFeatured = () => {
+export const getFeatured = ({ type }) => {
+  let qs = ``
+  if (type) {
+    qs = `&type=${type}`
+  }
   return axios({
     method: 'GET',
     baseURL: apiURL,
-    url: `/featureds?active=true`// ,
+    url: `/featureds?active=true${qs}`// ,
     // headers: getHeaders()
     // data: {
     //   type,

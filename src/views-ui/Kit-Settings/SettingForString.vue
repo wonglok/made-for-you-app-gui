@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <input placeholder="Your words..." class="m-1 rounded-lg px-3 py-1 border border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500" type="text" @change="onChange" v-model="editable">
+  <div class="px-1 mr-1">
+    <input placeholder="Your words..." class="m-1 w-full rounded-lg py-1 px-2 border border-gray-300 focus:outline-none focus:bg-white focus:border-gray-500" type="text" @change="onChange" v-model="editable">
   </div>
 </template>
 
@@ -10,7 +10,8 @@ export default {
   props: {
     value: {},
     app: {},
-    mod: {}
+    mod: {},
+    readOnly: {}
   },
   components: {
     ...require('../index')
@@ -24,7 +25,9 @@ export default {
     onChange () {
       this.value.value = this.editable
       sessionStorage.setItem(this.value._id, JSON.stringify(this.value.value))
-      this.debounceUpload()
+      if (!this.readOnly) {
+        this.debounceUpload()
+      }
     },
     debounceUpload: _.debounce(function () {
       this.$emit('change')

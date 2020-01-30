@@ -2,10 +2,10 @@
   <div class="pt-4 px-4">
     <div class="m-2">
       <div class="text-md text-gray-500">
-        Package Discovery
+        Package Sharing
       </div>
       <div class="mt-4">
-        <Switches :color="'green'" label type-bold="true" v-model="app.site.discoverable"></Switches>
+        <Switches :color="'green'" label type-bold="true" v-model="app.site.canShare"></Switches>
       </div>
     </div>
     <div class="m-2">
@@ -33,6 +33,7 @@
 <script>
 import Switches from 'vue-switches'
 import * as API from '../../api/api.js'
+
 export default {
   props: {
     app: {}

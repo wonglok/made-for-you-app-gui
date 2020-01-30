@@ -16,6 +16,7 @@
           </div>
           <div class="ml-1 mt-3 flex justify-between">
             <button class="px-3 rounded-lg py-1 border border-red-500 text-red-500 hover:bg-red-400 hover:text-white  mr-1" @click="removeModule()">Remove</button>
+            <button class="px-3 rounded-lg py-1 border border-blue-400 hover:bg-blue-400 bg-blue-500 text-white" @click="cloneModule()">Clone</button>
             <button class="px-3 rounded-lg py-1 border border-blue-400 hover:bg-blue-400 bg-blue-500 text-white" @click="show.configModule = false">OK</button>
           </div>
         </div>
@@ -80,6 +81,21 @@ export default {
           key: this.mod.key
         }
       })
+    },
+    async cloneModule () {
+      if (window.confirm('Clone module?')) {
+        await API.cloneModule({
+          sourceModuleID: this.mod._id,
+          sourceSiteID: this.app.siteID,
+          currentSiteID: this.app.siteID,
+          currentUserID: this.app.userID
+        })
+        this.show.configModule = false
+        await API.getSiteModules({ siteID: this.app.siteID })
+          .then((data) => {
+            this.app.modules = data
+          })
+      }
     },
     updateModuleType () {
       API.updateModule({
