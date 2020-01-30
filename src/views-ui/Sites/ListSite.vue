@@ -6,6 +6,7 @@
     <table class="bg-white shadow-xl  rounded-lg rounded-br-none rounded-bl-none max-w-full inline-block overflow-x-auto scrolling-touch">
       <thead>
         <tr>
+          <th class="px-4 py-2">Public</th>
           <th class="px-4 py-2">Title</th>
           <th class="px-4 py-2" colspan="1">Date Created</th>
           <th class="px-4 py-2" colspan="5">Actions</th>
@@ -13,6 +14,7 @@
       </thead>
       <tbody v-if="sites && sites.length > 0" class="">
         <tr :key="site._id" v-for="site in sites" class="hover:bg-gray-100">
+          <td class="border px-4 py-2 text-center">{{ site.canShare ? `👍🏻` : `` }}</td>
           <td class="border px-4 py-2">{{ site.title }}</td>
           <td class="border px-4 py-2">{{ ago(site.createdAt) }}</td>
           <td class="cursor-pointer border px-4 py-2 text-blue-500 select-none hover:underline" @click="goClone(site)">
