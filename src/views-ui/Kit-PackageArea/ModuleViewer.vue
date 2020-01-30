@@ -1,13 +1,14 @@
 <template>
   <div class="h-full w-full" v-if="anotherApp && anotherApp.current.module">
-    <div class="flex h-full w-full border-l border-r border-b">
+    <div class="flex h-full w-full border-l border-b">
       <div class="fix-col">
         <CodeBrowser v-if="anotherApp" :app="anotherApp" :mod="anotherApp.current.module" :readOnly="true"></CodeBrowser>
       </div>
       <div class="remain-col border-r border-b">
         <CodeEditorBox v-if="anotherApp" :readOnly="true" :mod="anotherApp.current.module" :app="anotherApp" :code="anotherApp.current.code" class="h-full w-full"></CodeEditorBox>
       </div>
-      <div>
+      <div class="phone-col">
+        <PreviewPhone :around="false" type="phone-xs" v-if="anotherApp" :app="anotherApp"></PreviewPhone>
       </div>
     </div>
   </div>
@@ -65,8 +66,11 @@ export default {
 .fix-col{
   width: 200px;
 }
+.phone-col{
+  width: 292px;
+}
 .remain-col{
-  width: calc(100% - 200px);
+  width: calc(100% - 200px - 292px);
 }
 .module-section{
   height: 600px;

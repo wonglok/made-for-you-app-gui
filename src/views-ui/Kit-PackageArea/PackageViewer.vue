@@ -20,7 +20,7 @@
       </div>
       <div class="h-full remain-col">
         <keep-alive>
-          <ModuleViewer v-if="md" :key="md._id + 'mviewer'" :app="app" :modID="md._id" :siteID="siteID"></ModuleViewer>
+          <ModuleViewer v-if="md" :key="md._id + 'mviewer'" :around="false" :app="app" :modID="md._id" :siteID="siteID"></ModuleViewer>
         </keep-alive>
       </div>
     </section>

@@ -21,6 +21,9 @@ export default {
     setter: {
     },
     getter: {
+    },
+    readOnly: {
+      default: false
     }
   },
   data () {
@@ -69,6 +72,10 @@ export default {
     }
 
     var editor = ace.edit(this.divid)
+    if (this.readOnly) {
+      editor.setReadOnly(this.readOnly)
+    }
+
     this.editor = editor
     editor.getSession().setMode(`ace/mode/${getMode()}`)
     // editor.setStyle('inconsolata-ace')

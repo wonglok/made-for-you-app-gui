@@ -12,7 +12,7 @@
       <!-- {{ code.value }}
       {{ copy }} -->
       <keep-alive>
-        <Brace class="w-full h-full" :key="code._id" :style="{ height }" :mode="code.type" :getter="() => { return code.value }" :setter="setter" @save="onSaveCode()"></Brace>
+        <Brace class="w-full h-full" :readOnly="readOnly" :key="code._id" :style="{ height }" :mode="code.type" :getter="() => { return code.value }" :setter="setter" @save="onSaveCode()"></Brace>
       </keep-alive>
     </LayoutContent>
   </div>
