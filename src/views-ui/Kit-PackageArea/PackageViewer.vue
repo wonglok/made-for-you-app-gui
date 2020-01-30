@@ -60,14 +60,14 @@ export default {
     this.otherApp = await API.makeSiteApp({ siteID: this.siteID })
   },
   methods: {
-    selectMod (md) {
-      this.otherApp.selected.moduleID = md._id
+    selectMod (mod) {
+      this.otherApp.selected.moduleID = mod._id
     },
-    async cloneModule (md) {
-      if (window.confirm(`Clone module: ${md.key}?`)) {
+    async cloneModule (mod) {
+      if (window.confirm(`Clone module: ${mod.key}?`)) {
         await API.cloneModule({
           sourceSiteID: this.siteID,
-          sourceModuleID: md._id,
+          sourceModuleID: mod._id,
           currentSiteID: this.app.siteID,
           currentUserID: this.app.userID
         })
