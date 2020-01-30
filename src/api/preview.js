@@ -122,7 +122,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
             let intervalTimer = setInterval(() => {
               let str = sessionStorage.getItem(obj._id) || ''
               try { str = JSON.parse(str) } catch (e) {}
-              if (str && str !== obj.value) {
+              if (typeof str !== 'undefined' && str !== null) {
                 obj.value = str
                 if (type === 'hex') {
                   streamFunction((obj.value + '').slice(0, 7))
