@@ -145,12 +145,13 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
                   streamFunction(obj.value)
                 }
               }
-            })
+            }, 60 / 1000)
             if (type === 'hex') {
               streamFunction((obj.value + '').slice(0, 7))
             } else {
               streamFunction(obj.value)
             }
+
             env._.clean[Math.random()] = () => {
               clearInterval(intervalTimer)
             }
@@ -176,7 +177,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
             code.value = value
             streamFunction(code.value)
           }
-        })
+        }, 60 / 1000)
         streamFunction(code.value)
         env._.clean[Math.random()] = () => {
           clearInterval(intervalTimer)
