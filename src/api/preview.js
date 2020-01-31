@@ -27,7 +27,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
 
   /* eslint-disable */
   // long version
-  function loadExt (files, after) {
+  function LoaderEXT (files, after) {
     var _this=this;
     _this.files = files;
     _this.js = [];
@@ -57,11 +57,20 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
     }
     if (_this.js.length>0) _this.loadScript(0);
     else _this.after();
+
+    return this
   }
   /* eslint-enable */
 
   let initCode = (mods, modItem, code, MyModules, setupPromiseTasks) => {
     let env = {
+      loadScript (files) {
+        return new Promise((resolve) => {
+          let loader = new LoaderEXT(files, () => {
+            resolve(loader)
+          })
+        })
+      },
       get moduleName () {
         return modItem.key
       },
