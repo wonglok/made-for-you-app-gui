@@ -286,6 +286,9 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
 
             await env.run(api)
             window.dispatchEvent(new Event('resize'))
+            setTimeout(() => {
+              window.dispatchEvent(new Event('resize'))
+            }, 100)
           } else {
             this.$router.push('/needs-to-add-mainjs')
           }
