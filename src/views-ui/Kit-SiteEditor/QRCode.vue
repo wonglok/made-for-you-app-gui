@@ -1,12 +1,14 @@
 <template>
   <div>
-    <VueQrcode :value="`${guiURL}/site-id/${app.siteID}`" :options="{ width: 289 }"></VueQrcode>
+    <a :target="`_${app.siteID}`" :href="`${guiURL}/site-id/${app.siteID}`">
+      <VueQrcode :value="`${guiURL}/site-id/${app.siteID}`" :options="{ width: 289 }"></VueQrcode>
+    </a>
   </div>
 </template>
 
 <script>
 import VueQrcode from '@chenfengyuan/vue-qrcode'
-// import * as API from '../../api/api.js'
+import * as API from '../../api/api.js'
 export default {
   props: {
     app: {}
@@ -16,7 +18,7 @@ export default {
   },
   data () {
     return {
-      guiURL: `${location.protocol}//${location.host}`
+      guiURL: API.remoteURL
     }
   }
 }

@@ -71,7 +71,8 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
       get text () {
         return code.value
       },
-      async run () { return code.value },
+      // placeholder only
+      async run () { console.log('running a placeholder function'); return code.value },
       getAnyCode: (mk, ck) => {
         let mod = MyModules[mk]
         if (!mod) {
@@ -107,6 +108,10 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
           },
           get,
           getColor: () => {
+            let obj = get()
+            return getColorFromHex8(obj.value)
+          },
+          getHex8: () => {
             let obj = get()
             return getColorFromHex8(obj.value)
           },

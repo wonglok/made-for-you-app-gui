@@ -3,11 +3,13 @@ import axios from 'axios'
 
 // import slugify from 'slugify'
 
-export const guiURL = `https://creativecodelab.com`
+export var guiURL = `https://creativecodelab.com`
 export var apiURL = `https://api-ec2-3-91-80-85.creativecodelab.com/`
+export var remoteURL = guiURL
 
 // if (process.env.NODE_ENV === 'development') {
 //   apiURL = `http://` + location.hostname + ':1337'
+//   remoteURL = `${location.protocol}//${location.host}`
 // }
 
 export const getCardByID = async ({ id }) => {
