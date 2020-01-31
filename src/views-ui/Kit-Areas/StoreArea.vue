@@ -22,7 +22,6 @@
       </div>
     </div>
     <PackageViewer class="" @back="page = 'store'" v-if="page === 'explore' && exploreSiteID" @bottom="toBottom" :app="app" :siteID="exploreSiteID"></PackageViewer>
-
   </div>
 </template>
 

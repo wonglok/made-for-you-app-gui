@@ -25,7 +25,7 @@
               Created with ❤️ by Lok Lok
             </div>
             <div class="py-4 font-title font-black text-5xl tracking-tighter leading-none text-black">
-              Utilisting Award Winning Web Invetions
+              Utilisting Award Winning Web Inventions
             </div>
             <div class="text-lg text-gray-700">
               “Practicing Composing Technology is a way to improve my thinking. EffectNode and iGraph are one of the my favourite invetions, my coding practices and discovery for inspiration.”
