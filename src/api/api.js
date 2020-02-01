@@ -257,7 +257,6 @@ export const removeSite = async ({ userID, site }) => {
 }
 
 export const listSite = ({ owner, pageAt = 0, perPage = 25, search = '' }) => {
-  console.log(owner)
   let qs = `_start=${pageAt * perPage}&_limit=${perPage}${search ? `&title_contains=` + encodeURIComponent(search) : ''}&_sort=createdAt:DESC`
   return axios({
     method: 'GET',
@@ -393,6 +392,19 @@ export const getSite = ({ siteID }) => {
     method: 'GET',
     baseURL: apiURL,
     url: `/sites/${siteID}`,
+    headers: getHeaders()
+  }).then(onResOK, onResError)
+}
+
+export const getSitePackages = ({ search = '', perPage = 10, pageAt = 0 }) => {
+  let qs = ''
+  if (search) {
+    qs += `&title_contains=${search}`
+  }
+  return axios({
+    method: 'GET',
+    baseURL: apiURL,
+    url: `/sites?canShare=true${qs}&_start=${pageAt * perPage}&_limit=${perPage}&_sort=updatedAt:DESC`,
     headers: getHeaders()
   }).then(onResOK, onResError)
 }
@@ -577,24 +589,6 @@ export const getApprovedTimeStoreListing = ({ userID = '' }) => {
     method: 'GET',
     baseURL: apiURL,
     url: `/packages?approvalStatus_null=false&approvalStatus.approved=true${qs}`,
-    headers: getHeaders()
-  }).then(onResOK, onResError)
-}
-
-export const getMyTimeStore = ({ userID }) => {
-  return axios({
-    method: 'GET',
-    baseURL: apiURL,
-    url: `/packages?userID=${userID}`,
-    headers: getHeaders()
-  }).then(onResOK, onResError)
-}
-
-export const getTimeStoreItem = ({ itemID }) => {
-  return axios({
-    method: 'GET',
-    baseURL: apiURL,
-    url: `/packages/${itemID}`,
     headers: getHeaders()
   }).then(onResOK, onResError)
 }

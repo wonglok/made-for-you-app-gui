@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full w-full" v-if="otherApp && otherApp.current.module">
+  <div class="w-full" v-if="otherApp && otherApp.current.module">
     <section class="cta-area px-6 flex justify-between items-center">
       <div class="text-5xl font-title hover:underline cursor-pointer inline-block" @click="$emit('back')">
         ← Back

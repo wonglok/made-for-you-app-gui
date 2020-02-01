@@ -6,7 +6,7 @@
     <table class="bg-white shadow-xl  rounded-lg rounded-br-none rounded-bl-none max-w-full inline-block overflow-x-auto scrolling-touch">
       <thead>
         <tr>
-          <th class="px-4 py-2">Shared Package</th>
+          <th class="px-4 py-2">Shared</th>
           <th class="px-4 py-2">Title</th>
           <th class="px-4 py-2" colspan="1">Date Created</th>
           <th class="px-4 py-2" colspan="5">Actions</th>

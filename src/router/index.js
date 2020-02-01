@@ -52,11 +52,11 @@ const routes = [
   {
     path: '/inside-iframe/:siteID',
     component: () => import(/* webpackChunkName: "second" */ '../views/SiteViewerPage.vue')
-  },
-  {
-    path: '/inside-inventory/:itemID',
-    component: () => import(/* webpackChunkName: "second" */ '../views/InvetoryViewerPage.vue')
   }
+  // {
+  //   path: '/inside-inventory/:itemID',
+  //   component: () => import(/* webpackChunkName: "second" */ '../views/InvetoryViewerPage.vue')
+  // }
 
   // ,
   // {
