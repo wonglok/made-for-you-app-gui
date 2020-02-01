@@ -1,8 +1,11 @@
 <template>
   <div>
-    <div class="brand-title">
-      My Sites
+    <div>
+      <input type="text" placeholder="Search My Sites" class="font-title placeholder-black border-b border-gray-900 focus:outline-none text-4xl p-3 pb-0 px-0 my-2 bg-transparent" v-model="search" @keydown.enter="load()">
+      <button class="px-6 py-2 hover:opacity-75 focus:outline-none mx-2 text-white bg-green-400 border-gray-400 rounded-full shadow-xl" @click="pageAt += 1; load()">Next</button>
+      <button class="px-6 py-2 hover:opacity-75 focus:outline-none mx-2 text-white bg-blue-400 border-gray-400 rounded-full shadow-xl" @click="pageAt += -1; load()">Previous</button>
     </div>
+
     <table class="bg-white shadow-xl  rounded-lg rounded-br-none rounded-bl-none max-w-full inline-block overflow-x-auto scrolling-touch">
       <thead>
         <tr>
@@ -70,6 +73,9 @@ export default {
   },
   data () {
     return {
+      perPage: 100,
+      pageAt: 0,
+      search: '',
       dialogue: false,
       sites: false,
       bug: ''
@@ -78,6 +84,11 @@ export default {
   mounted () {
     this.load()
     this.$on('load', this.load)
+  },
+  watch: {
+    search () {
+      this.pageAt = 0
+    }
   },
   methods: {
     async goClone (site) {
@@ -93,9 +104,9 @@ export default {
         this.bug = ''
         API.listSite({
           owner: API.Token.Profile,
-          pageAt: 0,
-          perPage: 15,
-          search: ''
+          pageAt: this.pageAt,
+          perPage: this.perPage,
+          search: this.search
         })
           .then((data) => {
             this.sites = data
