@@ -4,9 +4,9 @@
       Sites
     </div> -->
     <div>
-      <input type="text" placeholder="Search Package" class="font-title placeholder-gray-700 border-b border-gray-900 focus:outline-none text-5xl p-3 pb-0 px-0 my-2" v-model="search" @keydown.enter="load()">
+      <input type="text" placeholder="Search Template" class="font-title placeholder-black border-b border-gray-900 focus:outline-none text-4xl p-3 pb-0 px-0 my-2 bg-transparent" v-model="search" @keydown.enter="load()">
     </div>
-    <table class="bg-gray-200 pt-5 shadow-xl rounded-lg rounded-br-none rounded-bl-none max-w-full inline-block overflow-x-auto scrolling-touch">
+    <table class="bg-white pt-5 shadow-xl rounded-lg rounded-br-none rounded-bl-none max-w-full inline-block overflow-x-auto scrolling-touch">
       <thead>
         <tr>
           <th class="px-4 py-2">Title</th>
@@ -22,7 +22,7 @@
           <td class="cursor-pointer border px-4 py-2 text-orange-500 select-none hover:underline" @click="goClone(site)">
             Clone
           </td>
-          <td class="cursor-pointer border px-4 py-2 text-green-500 select-none hover:underline" @click="$emit('explore', site)">
+          <td v-if="!isTemplate" class="cursor-pointer border px-4 py-2 text-green-500 select-none hover:underline" @click="$emit('explore', site)">
             View Code
           </td>
           <td class="cursor-pointer border px-4 py-2 text-blue-500 select-none hover:underline">
@@ -56,6 +56,11 @@ import * as API from '../../api/api'
 import moment from 'moment'
 
 export default {
+  props: {
+    isTemplate: {
+      default: false
+    }
+  },
   data () {
     return {
       pageAt: 0,
@@ -80,8 +85,7 @@ export default {
       if (window.confirm('clone site?')) {
         let userID = API.Token.Profile._id
         let result = await API.cloneSite({ site, userID })
-        await this.load()
-        console.log(JSON.stringify(result, null, '  '))
+        this.$router.push(`/site-editor/${result._id}`)
       }
     },
     ago (v) {

@@ -7,6 +7,7 @@
       </div> -->
       <div class="px-5">
         <CreateSite @ok="$refs['sites'] && $refs['sites'].$emit('load')"></CreateSite>
+        <PackageListing :isTemplate="true"></PackageListing>
         <ListSite ref="sites"></ListSite>
       </div>
     </div>

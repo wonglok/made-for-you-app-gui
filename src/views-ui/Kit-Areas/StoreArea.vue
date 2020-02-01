@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full">
+  <div class="w-full h-full bg-gray-200">
     <div class="w-full h-full overflow-x-hidden relative" ref="scroller">
       <div :key="'storeomgomgomg'" :class="{ 'visible': page === 'store' }" class="px-6">
         <div class="text-5xl font-title pt-2">
