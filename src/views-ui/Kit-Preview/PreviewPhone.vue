@@ -1,6 +1,7 @@
 <template>
   <div class="w-full">
     <LayoutHeader>
+      <span @click="openFrame" class="mr-1 cursor-pointer">🖥 </span>
       <span @click="reloadPage" class="mr-1 cursor-pointer">🔄</span>
       <input type="checkbox" class="mr-1" v-model="autoSync">
       <span>
@@ -82,6 +83,9 @@ export default {
     }
     this.$root.$on('reload-iframe', () => {
       this.reloadPage()
+      if (this.win) {
+        this.win.location.reload()
+      }
     })
     this.$root.$emit('reload-iframe')
   },
@@ -91,6 +95,12 @@ export default {
     },
     reloadPage () {
       this.randomID = (Math.random() * 10000000).toFixed(0)
+    },
+    openFrame () {
+      let url = `/inside-iframe/${this.app.siteID}?previewPageKey=${this.pageKey}&r=${this.randomID}`
+      let ww = 1024
+      let fts = `top=${window.screenTop},left=${window.outerWidth},width=${ww},height=${ww * 3 / 4},menubar=no,location=no,resizable=no,scrollbars=no,status=no`
+      this.win = window.open(url, 'preview-window', fts)
     }
   }
 }
