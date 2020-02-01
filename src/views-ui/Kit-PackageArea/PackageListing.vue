@@ -6,7 +6,7 @@
     <div>
       <input type="text" placeholder="Search Template" class="font-title placeholder-black border-b border-gray-900 focus:outline-none text-4xl p-3 pb-0 px-0 my-2 bg-transparent" v-model="search" @keydown.enter="load()">
     </div>
-    <table class="bg-white pt-5 shadow-xl rounded-lg rounded-br-none rounded-bl-none max-w-full inline-block overflow-x-auto scrolling-touch">
+    <table class="bg-white pt-5 border-gray-700 shadow-xl rounded-lg rounded-br-none rounded-bl-none max-w-full inline-block overflow-x-auto scrolling-touch">
       <thead>
         <tr>
           <th class="px-4 py-2">Title</th>

@@ -9,7 +9,7 @@
         <div class="w-full">
           <div class="flex flex-wrap justify-between py-6">
             <div :key="ft._id" v-for="(ft, fi) in featureds" class="relative mx-2 w-72" :class="{ 'ml-0': fi === 0, 'mr-0': ((fi + 1) % 3) === 0 }">
-              <div class="relative w-full view-height rounded-lg bg-gray-200">
+              <div class="relative w-full view-height rounded-lg bg-gray-300">
                 <iframe v-if="page === 'store'" class="rounded-lg w-full h-full" frameboder="0" :src="`/inside-iframe/${ft.site._id}`"></iframe>
                 <div @click="exploreCode(ft.site)" :target="'_' + ft.site.slug" class="absolute cursor-pointer block top-0 left-0 w-full h-full"></div>
               </div>
