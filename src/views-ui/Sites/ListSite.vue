@@ -14,7 +14,7 @@
       </thead>
       <tbody v-if="sites && sites.length > 0" class="">
         <tr :key="site._id" v-for="site in sites" class="hover:bg-gray-100">
-          <td class="border px-4 py-2 text-center">{{ site.canShare ? `💎` : `` }}</td>
+          <td @click="toggleShare(site)" class="border px-4 py-2 text-center hover:bg-gray-300">{{ site.canShare ? `💎` : `` }}</td>
           <td class="border px-4 py-2">{{ site.title }}</td>
           <td class="cursor-pointer border px-4 py-2 text-blue-500 select-none hover:underline">
             <a class="w-full h-full inline-block" target="_blank" :href="`/site-id/${site._id}`">
@@ -130,6 +130,14 @@ export default {
         })
         await this.load()
       }
+    },
+    async toggleShare (site) {
+      site.canShare = !site.canShare
+      await API.updateSite({
+        site,
+        userID: API.Token.Profile._id
+      })
+      await this.load()
     },
     async goDelete (site) {
       this.$refs['removeSite'].pop({

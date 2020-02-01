@@ -10,7 +10,7 @@
       <thead>
         <tr>
           <th class="px-4 py-2">Title</th>
-          <th class="px-4 py-2" colspan="1">Date Created</th>
+          <th class="px-4 py-2" colspan="1">Date Updated</th>
           <th class="px-4 py-2" colspan="5">Actions</th>
         </tr>
       </thead>
