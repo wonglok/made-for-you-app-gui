@@ -5,8 +5,8 @@
     </div> -->
     <div>
       <input type="text" placeholder="Search Template" class="font-title placeholder-black border-b border-gray-900 focus:outline-none text-4xl p-3 pb-0 px-0 my-2 bg-transparent" v-model="search" @keydown.enter="load()">
-      <button class="px-6 py-2 hover:opacity-75 focus:outline-none mx-2 text-white bg-green-400 border-gray-400 rounded-full shadow-xl" @click="pageAt += 1; load()">Next</button>
-      <button class="px-6 py-2 hover:opacity-75 focus:outline-none mx-2 text-white bg-blue-400 border-gray-400 rounded-full shadow-xl" @click="pageAt += -1; load()">Previous</button>
+      <button class="px-6 py-2 hover:opacity-75 focus:outline-none mx-2 bg-white text-green-400 border-green-500 rounded-full shadow-xl" @click="pageAt += 1; load()">Next</button>
+      <button class="px-6 py-2 hover:opacity-75 focus:outline-none mx-2 bg-white text-blue-400 border-blue-500 rounded-full shadow-xl" @click="pageAt += -1; load()">Previous</button>
     </div>
     <table class="bg-white pt-5 border-gray-700 shadow-xl rounded-lg rounded-br-none rounded-bl-none max-w-full inline-block overflow-x-auto scrolling-touch">
       <thead>

@@ -83,7 +83,7 @@ export default {
     }
     this.$root.$on('reload-iframe', () => {
       this.reloadPage()
-      if (this.win) {
+      if (this.win && this.win.location && this.win.reload) {
         this.win.location.reload()
       }
     })
@@ -98,7 +98,7 @@ export default {
     },
     openFrame () {
       let url = `/inside-iframe/${this.app.siteID}?previewPageKey=${this.pageKey}&r=${this.randomID}`
-      let ww = 1024
+      let ww = 1440
       let fts = `top=${window.screenTop},left=${window.outerWidth},width=${ww},height=${ww * 3 / 4},menubar=no,location=no,resizable=no,scrollbars=no,status=no`
       this.win = window.open(url, 'preview-window', fts)
     }

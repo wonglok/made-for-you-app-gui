@@ -16,6 +16,9 @@
     <div class="app-content flex justify-around items-center" v-else-if="app.mode === 'store'">
       <StoreArea :app="app" v-if="app.mode === 'store'"></StoreArea>
     </div>
+    <div class="app-content flex justify-around items-center" v-else-if="app.mode === 'package'">
+      <PackageArea :app="app" v-if="app.mode === 'package'"></PackageArea>
+    </div>
 
     <div v-else class="app-content flex flex-row">
       <div class="nav-col">
@@ -23,7 +26,6 @@
       </div>
 
       <div class="working-area">
-        <PackageArea :app="app" v-if="app.mode === 'package'"></PackageArea>
 
         <!-- <StoreArea :app="app" v-if="app.mode === 'store'"></StoreArea> -->
         <!-- <SettingsArea :app="app" v-if="app.mode === 'settings'"></SettingsArea> -->
