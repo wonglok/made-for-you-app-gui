@@ -152,7 +152,7 @@ export default {
         site,
         userID: API.Token.Profile._id
       })
-      await this.load()
+      // await this.load()
     },
     async goDelete (site) {
       this.$refs['removeSite'].pop({
