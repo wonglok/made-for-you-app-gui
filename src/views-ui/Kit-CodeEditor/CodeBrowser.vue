@@ -17,7 +17,7 @@
         </div>
       </LayoutHeader>
       <LayoutContent class="overflow-scroll scrolling-touch">
-        <div :key="code._id" v-for="code in app.current.module.codes">
+        <div :key="code._id" v-for="code in app.current.module.codes.slice().sort(byTitle)">
           <CodeEntry :readOnly="readOnly" :app="app" :mod="mod" :code="code"></CodeEntry>
         </div>
       </LayoutContent>
@@ -77,6 +77,15 @@ export default {
     }
   },
   methods: {
+    byTitle (a, b) {
+      if (a.key > b.key) {
+        return -1
+      } else if (a.key < b.key) {
+        return 1
+      } else if (a.key === b.key) {
+        return 0
+      }
+    }
   }
 }
 </script>
