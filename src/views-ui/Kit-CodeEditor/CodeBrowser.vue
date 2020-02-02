@@ -17,7 +17,7 @@
         </div>
       </LayoutHeader>
       <LayoutContent class="overflow-scroll scrolling-touch">
-        <div :key="code._id" v-for="code in app.current.module.codes.slice().sort(byTitle)">
+        <div :key="code._id" v-for="code in app.current.module.codes">
           <CodeEntry :readOnly="readOnly" :app="app" :mod="mod" :code="code"></CodeEntry>
         </div>
       </LayoutContent>
@@ -66,7 +66,15 @@ export default {
       if (scroller) {
         scroller.scrollTop = 0
       }
+    },
+    mod () {
+      this.app.current.module.values = this.app.current.module.values.sort(this.byTitle)
+      this.app.current.module.codes = this.app.current.module.codes.sort(this.byTitle)
     }
+  },
+  mounted () {
+    this.app.current.module.values = this.app.current.module.values.sort(this.byTitle)
+    this.app.current.module.codes = this.app.current.module.codes.sort(this.byTitle)
   },
   data () {
     return {
@@ -79,9 +87,9 @@ export default {
   methods: {
     byTitle (a, b) {
       if (a.key > b.key) {
-        return -1
-      } else if (a.key < b.key) {
         return 1
+      } else if (a.key < b.key) {
+        return -1
       } else if (a.key === b.key) {
         return 0
       }
