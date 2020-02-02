@@ -256,8 +256,8 @@ export const removeSite = async ({ userID, site }) => {
   }).then(onResOK, onResError)
 }
 
-export const listSite = ({ owner, pageAt = 0, perPage = 25, search = '' }) => {
-  let qs = `_start=${pageAt * perPage}&_limit=${perPage}${search ? `&title_contains=` + encodeURIComponent(search) : ''}&_sort=createdAt:DESC`
+export const listSite = ({ owner, pageAt = 0, perPage = 25, search = '', sort = 'createdAt', order = 'DESC' }) => {
+  let qs = `_start=${pageAt * perPage}&_limit=${perPage}${search ? `&title_contains=` + encodeURIComponent(search) : ''}&_sort=${sort}:${order}`
   return axios({
     method: 'GET',
     baseURL: apiURL,

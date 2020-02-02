@@ -2,7 +2,7 @@
   <div>
 
     <div>
-      <input type="text" placeholder="Search My Sites" class=" max-w-full font-title placeholder-black border-b border-gray-900 focus:outline-none text-4xl p-3 pb-0 px-0 my-2 bg-transparent" v-model="search" @keydown.enter="load()">
+      <input type="text" placeholder="Recent Sites" class=" max-w-full font-title placeholder-black border-b border-gray-900 focus:outline-none text-4xl p-3 pb-0 px-0 my-2 bg-transparent" v-model="search" @keydown.enter="load()">
       <button class="px-6 py-2 mb-3 hover:opacity-75 focus:outline-none mx-2 bg-white text-green-400 border-green-500 rounded-full shadow-xl" @click="pageAt += 1; load()">Next</button>
       <button class="px-6 py-2 mb-3 hover:opacity-75 focus:outline-none mx-2 bg-white text-blue-400 border-blue-500 rounded-full shadow-xl" @click="pageAt += -1; load()">Previous</button>
     </div>
@@ -13,7 +13,7 @@
           <th class="px-4 py-2">Shared</th>
           <th class="px-4 py-2">Title</th>
           <th class="px-4 py-2" colspan="5">Actions</th>
-          <th class="px-4 py-2" colspan="1">Date Created</th>
+          <th class="px-4 py-2" colspan="1">Date Updated</th>
         </tr>
       </thead>
       <tbody v-if="sites && sites.length > 0" class="">
@@ -39,7 +39,7 @@
           <td class="cursor-pointer border px-4 py-2 text-red-500 select-none hover:underline" @click="goDelete(site)">
             Delete
           </td>
-          <td class="border px-4 py-2">{{ ago(site.createdAt) }}</td>
+          <td class="border px-4 py-2">{{ ago(site.updatedAt) }}</td>
 
         </tr>
       </tbody>
@@ -74,7 +74,7 @@ export default {
   },
   data () {
     return {
-      perPage: 100,
+      perPage: 10,
       pageAt: 0,
       search: '',
       dialogue: false,
@@ -108,7 +108,9 @@ export default {
           owner: API.Token.Profile,
           pageAt: this.pageAt,
           perPage: this.perPage,
-          search: this.search
+          search: this.search,
+          sort: 'updatedAt',
+          order: 'DESC'
         })
           .then((data) => {
             this.sites = data
