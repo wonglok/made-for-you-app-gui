@@ -5,7 +5,7 @@
       <!-- <div>
         Temp Sites Created on this machine.
       </div> -->
-      <div class="px-5">
+      <div class="px-5 pb-10">
         <CreateSite @ok="$refs['sites'] && $refs['sites'].$emit('load')"></CreateSite>
         <PackageListing :isTemplate="true"></PackageListing>
         <ListSite ref="sites"></ListSite>
