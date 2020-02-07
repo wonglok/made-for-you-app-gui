@@ -95,7 +95,7 @@ export default {
     },
     reloadPage () {
       this.randomID = (Math.random() * 10000000).toFixed(0)
-      if (this.win) {
+      if (this.win && this.win.location && this.win.location.reload) {
         this.win.location.reload()
       }
     },
