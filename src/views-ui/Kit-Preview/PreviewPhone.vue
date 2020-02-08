@@ -99,21 +99,25 @@ export default {
         this.win.location.reload()
       }
     },
+    getAllSessionItems () {
+      let items = []
+      for (var i = 0; i < sessionStorage.length; i++) {
+        let kn = sessionStorage.key(i)
+        items.push({
+          key: kn,
+          value: sessionStorage.getItem(kn)
+        })
+      }
+      return items
+    },
     openFrame () {
       let url = `/inside-iframe/${this.app.siteID}?previewPageKey=${this.pageKey}&r=${this.randomID}`
-      let ww = 1440
-      let fts = `top=${window.screenTop},left=${window.outerWidth},width=${ww},height=${ww * 3 / 4},menubar=no,location=no,resizable=no,scrollbars=no,status=no`
+      let ww = 1080
+      let fts = `top=${window.screenTop},left=${window.outerWidth},width=${ww},height=${ww},menubar=no,location=no,resizable=no,scrollbars=no,status=no`
       this.win = window.open(url, 'preview-window', fts)
       let ttt = setInterval(() => {
         if (this.win) {
-          let items = []
-          for (var i = 0; i < sessionStorage.length; i++) {
-            let kn = sessionStorage.key(i)
-            items.push({
-              key: kn,
-              value: sessionStorage.getItem(kn)
-            })
-          }
+          let items = this.getAllSessionItems()
           this.win.postMessage({
             type: 'sessionStorage',
             data: items

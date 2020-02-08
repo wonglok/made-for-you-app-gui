@@ -10,7 +10,7 @@ export const makeEasing = (obj) => {
 }
 
 export const getColorFromHex8 = (hex8) => {
-  return new Color(hex8.slice(0, hex8.length - 2).slice(1, hex8.length))
+  return new Color('#' + hex8.slice(0, hex8.length - 2).slice(1, hex8.length))
 }
 
 export const setColorFromHex8 = (color, hex8) => {
