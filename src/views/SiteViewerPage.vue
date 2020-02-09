@@ -33,6 +33,7 @@ export default {
         }
       }
     }, false)
+
     this.app = await API.makeSiteApp({ siteID: this.siteID })
     this.preview = await Preview.makePreviewer({ app: this.app, mounter: this.$refs.mounter, previewPageKey: this.previewPageKey })
   }
