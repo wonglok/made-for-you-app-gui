@@ -5,7 +5,7 @@
         Featured Works
       </div>
       <div class="flex flex-col lg:flex-row justify-center items-center lg:justify-between px-3 py-6">
-        <div :key="ft._id" v-for="ft in featureds" class="relative rounded-lg m-3 w-72 h-128 max-w-full bg-white border border-gray-500">
+        <div :key="ft._id" v-for="(ft, fi) in featureds" :class="{ 'item-transform': true, [`item-${fi}`]: true }" class="relative rounded-lg m-3 w-72 h-128 max-w-full bg-white border border-gray-500">
           <iframe class="w-full h-full rounded-lg" frameboder="0" :src="`/inside-iframe/${ft.site._id}`"></iframe>
           <a class="inline-block h-full w-full absolute top-0 left-0" target="_blank" :href="`/site-id/${ft.site._id}`">
           </a>
@@ -44,5 +44,24 @@ export default {
 }
 .h-144 {
   height: 48rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .item-0{
+    transform: perspective(100vmax) rotateY(-21deg) rotateX(35deg);
+  }
+  .item-1{
+    transform: perspective(100vmax) rotateY(0deg) rotateX(19deg);
+  }
+  .item-2{
+    transform: perspective(100vmax)  translateZ(-160px) rotateY(38deg) rotateX(35deg);
+  }
+  .item-transform{
+    transition: transform 0.5s;
+  }
+  .item-transform:hover{
+    transform: perspective(100vmax);
+    transition: transform 0.5s;
+  }
 }
 </style>
