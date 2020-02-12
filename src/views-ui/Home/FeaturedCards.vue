@@ -48,19 +48,19 @@ export default {
 
 @media screen and (min-width: 1024px) {
   .item-0{
-    transform: perspective(100vmax) rotateY(-21deg) rotateX(35deg);
+    transform: perspective(100vmin) scale(0.9) rotateY(-15deg) rotateX(25deg);
   }
   .item-1{
-    transform: perspective(100vmax) rotateY(0deg) rotateX(19deg);
+    transform: perspective(100vmin) scale(0.9) rotateY(-15deg) rotateX(25deg);
   }
   .item-2{
-    transform: perspective(100vmax)  translateZ(-160px) rotateY(38deg) rotateX(35deg);
+    transform: perspective(100vmin) scale(0.9) rotateY(-15deg) rotateX(25deg);
   }
   .item-transform{
     transition: transform 0.5s;
   }
   .item-transform:hover{
-    transform: perspective(100vmax);
+    transform: perspective(100vmin);
     transition: transform 0.5s;
   }
 }

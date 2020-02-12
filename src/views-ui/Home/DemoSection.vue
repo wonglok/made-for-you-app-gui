@@ -19,7 +19,7 @@
             </div> -->
 
             <div class="pb-6">
-              <img class="border border-gray-300 shadow-2xl rounded-lg" src="./img/editor.png" alt="">
+              <img class="bordergray border shadow-2xl rounded-lg" src="./img/editor.png" alt="">
             </div>
           </div>
         </div>
@@ -34,4 +34,7 @@ export default {
 </script>
 
 <style scoped lang="postcss">
+.bordergray{
+  border-color: #d5d5d5;
+}
 </style>
