@@ -27,6 +27,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
 
   /* eslint-disable */
   // long version
+  let loaded = {}
   function LoaderEXT (files, after) {
     var _this=this;
     _this.files = files;
@@ -49,6 +50,7 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
         else _this.after();
       };
       script.onload = function() { loadNextScript() };
+
       _this.head.appendChild(script);
     }
     for (var i=0;i<_this.files.length;i++) {
