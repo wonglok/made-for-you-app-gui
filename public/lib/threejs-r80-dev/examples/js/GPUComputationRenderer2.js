@@ -20,7 +20,7 @@
  *
  * Each variable can have different size (resolution) than the default size given in the GPUComputationRenderer constructor.
  * To do that, modify the sizeX and sizeY members of the variable just after adding it.
- *
+ * 
  * The size of each texture (sizeX, sizeY) is defined as [variable name] + 'Resolution' automatically in the shader. For example:
  * #DEFINE texturePositionResolution vec2( 1024.0, 1024.0 )
  *
@@ -92,7 +92,7 @@
  * // And compute each frame, before rendering to screen:
  * gpuCompute.doRenderTarget( myFilter1, myRenderTarget );
  * gpuCompute.doRenderTarget( myFilter2, outputRenderTarget );
- *
+ * 
  *
  *
  * @param {int} sizeX Default computation problem size (texture resolution) for variables
@@ -143,7 +143,7 @@ function GPUComputationRenderer( sizeX, sizeY, renderer ) {
 		this.variables.push( variable );
 
 		return variable;
-
+		
 	};
 
 	this.setVariableDependencies = function( variable, dependencies ) {
@@ -200,7 +200,7 @@ function GPUComputationRenderer( sizeX, sizeY, renderer ) {
 							}
 
 						}
-
+						
 						if ( ! found ) {
 							return "Variable dependency not found. Variable=" + variable.name + ", dependency=" + depVar.name;
 						}
@@ -288,7 +288,7 @@ function GPUComputationRenderer( sizeX, sizeY, renderer ) {
 	this.createShaderMaterial = createShaderMaterial;
 
 	this.createRenderTarget = function( wrapS, wrapT, sizeXTexture, sizeYTexture, minFilter, magFilter ) {
-
+		
 		wrapS = wrapS || THREE.ClampToEdgeWrapping;
 		wrapT = wrapT || THREE.ClampToEdgeWrapping;
 
