@@ -46,7 +46,7 @@ export default {
   height: 48rem;
 }
 
-@media screen and (min-width: 1024px) {
+/* @media screen and (min-width: 1920px) {
   .item-0{
     transform: perspective(100vmin) scale(0.9) rotateY(-15deg) rotateX(25deg);
   }
@@ -63,5 +63,5 @@ export default {
     transform: perspective(100vmin);
     transition: transform 0.5s;
   }
-}
+} */
 </style>
