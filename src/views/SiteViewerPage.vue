@@ -7,7 +7,7 @@ import * as API from '../api/api'
 import * as Preview from '../api/preview'
 export default {
   components: {
-    ...require('../views-ui/index.js')
+    // ...require('../views-ui/index.js')
   },
   computed: {
     siteID () {

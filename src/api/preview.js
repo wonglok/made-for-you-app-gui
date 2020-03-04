@@ -68,6 +68,14 @@ export const makePreviewer = async ({ app, mounter, previewPageKey }) => {
     let env = {
       loadScript (files) {
         return new Promise((resolve) => {
+          // files = files.map(e => {
+          //   if (e.indexOf('/') === 0) {
+          //     return `https://creativecodelab.com${e}`
+          //   } else {
+          //     return e
+          //   }
+          // })
+
           let loader = new LoaderEXT(files, () => {
             resolve(loader)
           })
