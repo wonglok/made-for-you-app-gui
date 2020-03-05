@@ -3,6 +3,8 @@
     Site Not Found
   </div>
   <div v-else-if="siteIDNum" ref="mounter" class="w-full h-full">
+    <div v-if="app === 'loading'" class="center-title loading-area w-full h-full">
+    </div>
   </div>
   <div v-else class="center-title full">
     Not Found
@@ -31,7 +33,7 @@ export default {
   data () {
     return {
       notFound: false,
-      app: false
+      app: 'loading'
     }
   },
   async mounted () {
@@ -82,5 +84,17 @@ html,body{
   justify-content: center;
   align-items: center;
   font-size: 3rem;
+}
+
+@keyframes loading {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+.loading-area{
+  background: linear-gradient(45deg, #ffffff, #e1e1e1);
+  background-size: 400% 400%;
+
+  animation: loading 2s ease infinite;
 }
 </style>

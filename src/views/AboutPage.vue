@@ -10,10 +10,10 @@
           Lok's Work
         </div>
         <div class="px-3 py-6">
-          <div :key="ft._id" v-for="ft in featureds" class="inline-block">
+          <div :key="ft._id" v-for="(ft, fti) in featureds" class="animation-icon inline-block w-1/4 ">
 
             <a target="_blank" :href="`/runner.html?siteID=${ft.site._id}`">
-              <img class="w-64 m-1" v-if="ft.site && ft.site.cover" :src="getURL(ft.site.cover)" alt="">
+              <img class="w-full" :class="{ x: fti % 2 === 0, y: fti % 2 === 1 }" v-if="ft.site && ft.site.cover" :src="getURL(ft.site.cover)" alt="">
             </a>
 
             <!-- <iframe class="w-full h-full rounded-lg" frameboder="0" :src="`/inside-iframe/${ft.site._id}`"></iframe>
@@ -75,5 +75,16 @@ export default {
 }
 .iframebox{
   width: 22rem;
+}
+.animation-icon img{
+  backface-visibility: visible;
+  transition: transform 1s;
+  transform: perspective(500px) rotateY(0deg);
+}
+.animation-icon:hover img.x{
+  transform: perspective(500px) rotateX(-180deg);
+}
+.animation-icon:hover img.y{
+  transform: perspective(500px) rotateY(-180deg);
 }
 </style>
