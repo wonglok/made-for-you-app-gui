@@ -9,12 +9,13 @@
         <div class="px-6 py-4 font-title font-black text-5xl tracking-tighter leading-none text-black">
           Lok's Work
         </div>
-        <div class="flex flex-col lg:flex-row flex-wrap justify-center items-center lg:justify-between px-3 py-6">
-          <div :key="ft._id" v-for="ft in featureds">
+        <div class="px-3 py-6">
+          <div :key="ft._id" v-for="ft in featureds" class="inline-block">
 
-            <a class="" target="_blank" :href="`/runner.html?siteID=${ft.site._id}`">
+            <a target="_blank" :href="`/runner.html?siteID=${ft.site._id}`">
               <img class="w-64 m-1" v-if="ft.site && ft.site.cover" :src="getURL(ft.site.cover)" alt="">
             </a>
+
             <!-- <iframe class="w-full h-full rounded-lg" frameboder="0" :src="`/inside-iframe/${ft.site._id}`"></iframe>
             <a class="inline-block h-full w-full absolute top-0 left-0" target="_blank" :href="`/runner.html?siteID=${ft.site._id}`">
             </a> -->
