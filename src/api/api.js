@@ -373,18 +373,22 @@ export const makeSiteApp = async ({ siteID, userID = false, getSiteFn = getSite,
     }
   }
 
-  app.site = await getSiteFn({ siteID })
-  app.modules = await getSiteModulesFn({ siteID })
-    .then((mods) => {
-      autoSelect(mods)
-      return mods
-    }, () => [])
+  try {
+    app.site = await getSiteFn({ siteID })
+    app.modules = await getSiteModulesFn({ siteID })
+      .then((mods) => {
+        autoSelect(mods)
+        return mods
+      })
 
-  // bus.on('set:mode', (newVal, oldVal) => {
-  //   console.log(newVal, oldVal)
-  // })
+    // bus.on('set:mode', (newVal, oldVal) => {
+    //   console.log(newVal, oldVal)
+    // })
 
-  return app
+    return app
+  } catch (e) {
+    return false
+  }
 }
 
 export const getSite = ({ siteID }) => {

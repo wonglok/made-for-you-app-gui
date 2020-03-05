@@ -111,7 +111,7 @@ export default {
       return items
     },
     openFrame () {
-      let url = `/inside-iframe/${this.app.siteID}?previewPageKey=${this.pageKey}&r=${this.randomID}`
+      let url = `/runner.html?siteID=${this.app.siteID}&previewPageKey=${this.pageKey}&r=${this.randomID}`
       let ww = 1080
       let fts = `top=${window.screenTop},left=${window.outerWidth},width=${ww},height=${ww},menubar=no,location=no,resizable=no,scrollbars=no,status=no`
       this.win = window.open(url, 'preview-window', fts)

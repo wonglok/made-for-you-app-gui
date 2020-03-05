@@ -52,6 +52,10 @@ const routes = [
   {
     path: '/inside-iframe/:siteID',
     component: () => import(/* webpackChunkName: "second" */ '../views/SiteViewerPage.vue')
+  },
+  {
+    path: '/runner.html',
+    component: () => import(/* webpackChunkName: "second" */ '../views/SiteViewerPage.vue')
   }
   // {
   //   path: '/inside-inventory/:itemID',

@@ -14,5 +14,11 @@ module.exports = {
   configureWebpack: {
     plugins: [
     ]
+  },
+  pages: {
+    index: 'src/main.js',
+    runner: {
+      entry: 'src/runner.js'
+    }
   }
 }
