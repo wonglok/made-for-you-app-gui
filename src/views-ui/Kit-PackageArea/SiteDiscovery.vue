@@ -22,6 +22,18 @@
     </div>
     <div class="m-2">
       <div class="text-md text-gray-500">
+        Cover
+      </div>
+      <img v-if="app.site.cover" class="w-64 mb-2" :src="getURL(app.site.cover)" alt="">
+      <button v-if="app.site.cover" @click="onRemoveSiteCover(app.site)" class="text-lg p-2 px-4 placeholder-gray-700 rounded-lg bg-gray-200">Remove Cover</button>
+      <form ref="coverform" v-if="!app.site.cover">
+        <input v-show="false" type="file" name="files" ref="file" accept="image/*" />
+      </form>
+      <button v-if="!app.site.cover" @click="onUploadSiteCover(app.site, $refs.file)" class="text-lg p-2 px-4 placeholder-gray-700 rounded-lg bg-gray-200">Upload Cover</button>
+    </div>
+
+    <div class="m-2">
+      <div class="text-md text-gray-500">
         Submit
       </div>
       <button class="text-lg p-2 px-4 placeholder-gray-700 rounded-lg" :class="{ 'bg-gray-200': msg === 'Submit', 'bg-blue-200': msg === 'Loading', 'bg-green-200': msg === 'OK', 'bg-red-200': msg === 'Failed' }" :disabled="msg === 'Loading'" @click="updateSite">{{ msg }}</button>
@@ -48,6 +60,34 @@ export default {
     }
   },
   methods: {
+    async onUploadSiteCover (site, file) {
+      file.onchange = async (evt) => {
+        if (evt.target.files && evt.target.files[0]) {
+          let formData = new FormData(this.$refs['coverform'])
+          let fileData = await API.uploadFile({ formData })
+          console.log(fileData)
+          site.cover = fileData[0]
+          await this.updateSite()
+        }
+      }
+      file.click()
+    },
+    async onRemoveSiteCover (site) {
+      console.log(site.cover)
+      if (site.cover && site.cover._id) {
+        await API.removeFile({ fileID: site.cover._id })
+        site.cover = null
+        await this.updateSite()
+      }
+      // site.cover = null
+    },
+    getURL (media) {
+      let url = media.url
+      if (url.indexOf('http') === 0) {
+        return url
+      }
+      return API.apiURL + url
+    },
     async updateSite () {
       this.msg = 'Loading'
       await API.updateSite({ site: this.app.site, userID: this.app.userID })

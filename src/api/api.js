@@ -596,3 +596,22 @@ export const getApprovedTimeStoreListing = ({ userID = '' }) => {
     headers: getHeaders()
   }).then(onResOK, onResError)
 }
+
+export const removeFile = ({ fileID }) => {
+  return axios({
+    method: 'DELETE',
+    baseURL: apiURL,
+    url: `/upload/files/${fileID}`,
+    headers: getHeaders()
+  }).then(onResOK, onResError)
+}
+
+export const uploadFile = ({ formData }) => {
+  return axios({
+    method: 'POST',
+    baseURL: apiURL,
+    url: `/upload`,
+    data: formData,
+    headers: getHeaders()
+  }).then(onResOK, onResError)
+}
