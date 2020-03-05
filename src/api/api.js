@@ -413,10 +413,13 @@ export const getSitePackages = ({ search = '', perPage = 10, pageAt = 0 }) => {
   }).then(onResOK, onResError)
 }
 
-export const getFeatured = ({ type }) => {
+export const getFeatured = ({ type, desc = true }) => {
   let qs = ``
   if (type) {
     qs = `&type=${type}`
+  }
+  if (desc) {
+    qs += `&_sort=createdAt:DESC`
   }
   return axios({
     method: 'GET',
