@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     openPage () {
-      window.open(`/site-id/${this.app.siteID}`)
+      window.open(`/runner.html?siteID=${this.app.siteID}`)
     }
   }
 }

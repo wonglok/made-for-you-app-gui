@@ -1,7 +1,7 @@
 <template>
   <div>
-    <a :target="`_${app.siteID}`" :href="`${guiURL}/site-id/${app.siteID}`">
-      <VueQrcode :value="`${guiURL}/site-id/${app.siteID}`" :options="{ width: 289 }"></VueQrcode>
+    <a :target="`_${app.siteID}`" :href="`${guiURL}/runner.html?siteID=${app.siteID}`">
+      <VueQrcode :value="`${guiURL}/runner.html?siteID=${app.siteID}`" :options="{ width: 289 }"></VueQrcode>
     </a>
   </div>
 </template>

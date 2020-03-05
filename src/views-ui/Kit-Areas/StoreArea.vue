@@ -16,7 +16,7 @@
               <div class="actions mt-2">
                 <div class="brand-btn brand-btn-primary" @click="cloneSite(ft.site)">Clone Site</div>
                 <div class="brand-btn brand-btn-ok" @click="exploreCode(ft.site)">View Code</div>
-                <a class="brand-btn brand-btn-minor realtive" :href="`/site-id/${ft.site._id}`" :target="'_' + ft.site.slug" >View Site</a>
+                <a class="brand-btn brand-btn-minor realtive" :href="`/runner.html?siteID=${ft.site._id}`" :target="'_' + ft.site.slug" >View Site</a>
               </div>
             </div>
           </div>

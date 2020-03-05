@@ -21,7 +21,7 @@
           <td @click="toggleShare(site)" class="border px-4 py-2 text-center cursor-pointer hover:bg-gray-300">{{ site.canShare ? `💎` : `` }}</td>
           <td class="border px-4 py-2">{{ site.title }}</td>
           <td class="cursor-pointer border px-4 py-2 text-blue-500 select-none hover:underline">
-            <a class="w-full h-full inline-block" target="_blank" :href="`/site-id/${site._id}`">
+            <a class="w-full h-full inline-block" target="_blank" :href="`/runner.html?siteID=${site._id}`">
               View
             </a>
           </td>
