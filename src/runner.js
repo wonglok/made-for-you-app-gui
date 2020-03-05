@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import router from './router/index'
+import router from './router/runnerRouter'
 import Runner from './views/SiteViewerPage.vue'
 let params = new URLSearchParams(window.location.search)
 new Vue({
