@@ -13,9 +13,9 @@
         <span slot="name">Code</span>
       </ToolBarIcon>
 
-      <ToolBarIcon :isOn="app.mode === 'snippet'" @on="app.mode = 'snippet'; $forceUpdate()" class="">
-        <img slot="icon" src="./img/snippet.svg" alt="Snippet">
-        <span slot="name">Snippets</span>
+      <ToolBarIcon class="" :isOn="app.mode === 'package'" @on="app.mode = 'package'; $forceUpdate()" >
+        <img slot="icon" src="./img/package.svg" alt="Package">
+        <span slot="name">Package</span>
       </ToolBarIcon>
 
       <!-- <ToolBarIcon class="" :isOn="app.mode === 'asset'" @on="app.mode = 'asset'; $forceUpdate()" >
@@ -35,10 +35,11 @@
     </div>
 
     <div class="float-right">
-      <ToolBarIcon class="" :isOn="app.mode === 'package'" @on="app.mode = 'package'; $forceUpdate()" >
-        <img slot="icon" src="./img/package.svg" alt="Package">
-        <span slot="name">Package</span>
+      <ToolBarIcon :isOn="app.mode === 'snippet'" @on="app.mode = 'snippet'; $forceUpdate()" class="">
+        <img slot="icon" src="./img/snippet.svg" alt="Snippet">
+        <span slot="name">Snippets</span>
       </ToolBarIcon>
+
       <ToolBarIcon class="" :isOn="app.mode === 'store'" @on="app.mode = 'store'; $forceUpdate()" >
         <img slot="icon" src="./img/store.svg" alt="Store">
         <span slot="name">Store</span>

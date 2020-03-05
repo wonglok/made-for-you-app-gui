@@ -64,9 +64,14 @@ export default {
       file.onchange = async (evt) => {
         if (evt.target.files && evt.target.files[0]) {
           let formData = new FormData(this.$refs['coverform'])
+          setTimeout(() => {
+            this.msg = 'Submit'
+          }, 1000)
+          this.msg = 'Loading'
           let fileData = await API.uploadFile({ formData })
           console.log(fileData)
           site.cover = fileData[0]
+          this.msg = 'OK'
           await this.updateSite()
         }
       }
@@ -75,7 +80,12 @@ export default {
     async onRemoveSiteCover (site) {
       console.log(site.cover)
       if (site.cover && site.cover._id) {
+        setTimeout(() => {
+          this.msg = 'Submit'
+        }, 1000)
+        this.msg = 'Loading'
         await API.removeFile({ fileID: site.cover._id })
+        this.msg = 'OK'
         site.cover = null
         await this.updateSite()
       }

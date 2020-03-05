@@ -23,6 +23,12 @@ const routes = [
     component: () => import(/* webpackChunkName: "first" */ '../views/HomePage.vue')
   },
   {
+    path: '/system',
+    beforeEnter: (to, from, next) => {
+      window.location.assign('https://api-ec2-3-91-80-85.creativecodelab.com/admin')
+    }
+  },
+  {
     path: '/about',
     component: () => import(/* webpackChunkName: "first" */ '../views/AboutPage.vue')
   },
