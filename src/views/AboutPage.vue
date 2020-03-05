@@ -10,7 +10,7 @@
           Lok's Work
         </div>
         <div class="px-3 py-6">
-          <div :key="ft._id" v-for="(ft, fti) in featureds" class="animation-icon inline-block w-1/4 ">
+          <div :key="ft._id" v-for="(ft, fti) in featureds" class="animation-icon inline-block w-1/2 lg:w-1/4 ">
 
             <a target="_blank" :href="`/runner.html?siteID=${ft.site._id}`">
               <img class="w-full" :class="{ x: fti % 2 === 0, y: fti % 2 === 1 }" v-if="ft.site && ft.site.cover" :src="getURL(ft.site.cover)" alt="">
@@ -67,16 +67,17 @@ export default {
 .bg{
   background-color: #ffffff;
 }
-.h-128 {
+/* .h-128 {
   height: 32rem;
 }
 .h-144 {
   height: 48rem;
-}
-.iframebox{
+} */
+/* .iframebox{
   width: 22rem;
-}
+} */
 .animation-icon img{
+  margin-bottom: -6px;
   backface-visibility: visible;
   transition: transform 1s;
   transform: perspective(500px) rotateY(0deg);
