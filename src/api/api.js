@@ -5,6 +5,7 @@ import axios from 'axios'
 
 export var guiURL = `https://creativecodelab.com`
 export var apiURL = `https://api-ec2-3-91-80-85.creativecodelab.com/`
+apiURL = `https://creativecodelab-backend.herokuapp.com/`
 export var remoteURL = guiURL
 
 // if (process.env.NODE_ENV === 'development') {

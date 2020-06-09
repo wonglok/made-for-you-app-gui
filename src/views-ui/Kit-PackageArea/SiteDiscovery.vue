@@ -38,6 +38,7 @@
       </div>
       <button class="text-lg p-2 px-4 placeholder-gray-700 rounded-lg" :class="{ 'bg-gray-200': msg === 'Submit', 'bg-blue-200': msg === 'Loading', 'bg-green-200': msg === 'OK', 'bg-red-200': msg === 'Failed' }" :disabled="msg === 'Loading'" @click="updateSite">{{ msg }}</button>
     </div>
+
     <!-- <pre>{{ app.site }}</pre> -->
   </div>
 </template>
