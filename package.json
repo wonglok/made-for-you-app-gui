@@ -15,7 +15,7 @@
     "@tensorflow-models/posenet": "^2.2.1",
     "@tensorflow/tfjs-converter": "^1.4.0",
     "@tensorflow/tfjs-core": "^1.4.0",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bezier-easing": "^2.1.0",
     "brace": "^0.11.1",
     "core-js": "^3.4.3",
